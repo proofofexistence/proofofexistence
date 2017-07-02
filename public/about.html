@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Proof of Existence</title>
+  <meta charset='utf-8' />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="description" content="Proof of Existence" />
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <link href="./css/bootstrap.css" rel="stylesheet">
+  <link href="./css/bootstrap-notify.css" rel="stylesheet">
+  <link href="./css/main.css" rel="stylesheet">
+
+  <script type="text/javascript" src="./js/jquery.1.8.0.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.form.js"></script>
+  <script type="text/javascript" src="./js/crypto.js"></script>
+  <script type="text/javascript" src="./js/sprintf.js"></script>
+  <script type="text/javascript" src="./js/filedrop.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.js"></script>
+  <script type="text/javascript" src="./js/bootstrap-notify.js"></script>
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./">Proof of Existence</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="./">Prove</a></li>
+            <li class="active"><a href="./about">About</a></li>
+            <li><a href="./developers">API</a></li>
+            <li><a href="./contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top:40px;">
+    <div style="margin-top:48px;" class="notifications top-right"></div>
+
+    <div id="content">
+
+      <h1>What is proof of existence?</h1>
+      <br />
+      <p>
+        Use our service to anonymously and securely store an online distributed proof of existence for any document.
+
+        <strong>Your documents are NOT stored in our database or in the bitcoin blockchain</strong>, so you don't have to worry about your data being accessed by others.
+
+      </p>
+      <p>
+
+        All we store is a <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic
+    digest</a> of the file, linked to the time in which you submitted the document. In this way, you can later certify that the data existed at that time. This is the first online service allowing you to publicly prove that you have certain information without revealing the data or yourself, with a decentralized certification based on the <a href="http://bitcoin.org/">bitcoin network</a>.
+
+      </p>
+      <p>
+
+        The key advantages are anonymity, privacy, and getting a decentralized proof which can't be erased or modified by anyone (third parties or governments). <strong>Your
+    document's existence is permanently validated by the blockchain even
+    if this site is compromised or down</strong>, so you don't depend or need to trust any central authority. All previous data timestamping solutions lack this freedom.
+
+      </p>
+
+      <h3 style="padding-top: 40px;">Common uses</h3>
+      <div class="row">
+        <div class="span4">
+          <i class="icon-lock"></i><strong> Demonstrating data
+      ownership without revealing actual data.</strong>
+          <br /> You can publicly reveal the digest and if conflict arises you can prove you had the data that generates the digest. Useful for copyrighted material, patents, etc.
+        </div>
+        <div class="span4">
+          <i class="icon-time"></i><strong> Document timestamping.</strong>
+          <br /> You can prove certain data exists at a certain moment of time. As we use the <a href="https://blockchain.info/">bitcoin blockchain</a> to store the document proof, you can certify the existence of your document without the need of a central authority. Use the computing power of the whole bitcoin network to certify your data.
+
+        </div>
+        <div class="span4">
+          <i class="icon-search"></i><strong> Checking for document
+      integrity.</strong>
+          <br /> If you store a proof for your document and later re-upload it, the system will only recognize it if it is completely and fully the same document. The slightest change, and we'll recognize it is different, giving you the security that certified data can't be changed.
+        </div>
+      </div>
+
+      <h3 id="technical" style="padding-top: 40px;">Technical foundations</h3>
+      <div class="row">
+        <p>
+
+          The document is certified via embedding its <a href="https://en.wikipedia.org/wiki/SHA-2">SHA256</a> digest in the bitcoin blockchain. This is done by generating a special bitcoin transaction that encodes/contains the hash via an <a href="">OP_RETURN script</a>. This is a <a href="https://en.bitcoin.it/wiki/Script">
+    bitcoin scripting opcode</a> that marks the transaction output as
+          <a href="https://en.bitcoin.it/wiki/Script#Provably_Unspendable.2FPrunable_Outputs">
+    provably unspendable</a> and allows a small amount of data to be inserted, which in our case is the document's hash, plus a marker to identify all of our transactions.
+
+        </p>
+
+        <p>
+          Once the transaction is confirmed, the document is permanently certified and proven to exist at least as early as the time the transaction was confirmed. If the document hadn't existed at the time the transaction entered the blockchain, it would have been impossible to embed its digest in the transaction (This is because of the hash function's property of being <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function#Properties">
+    second pre-image resistant</a>). Embedding some hash and then adapting a future document to match the hash is also impossible (due to the <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function#Properties">
+    pre-image resistance of hash functions</a>). This is why <strong>once the
+    bitcoin blockchain confirms the transaction generated for the
+    document, its existence is proven, permanently, with no trust required</strong>.</p>
+
+        <p>If anyone wants to manually confirm the document's existence at the timestamped time, they should just follow these steps:
+          <ul>
+            <li>Calculate the document's SHA256 digest.</li>
+            <li>Find a transaction in the bitcoin blockchain containing an OP_RETURN output with the document's hash prepended by our marker bytes, which are 0x444f4350524f4f46 (or 'DOCPROOF' in ascii).</li>
+            <li>Some online services like <a href="http://coinsecrets.org/">
+    Coin Secrets</a> or <a href="https://blockchain.info/strange-transactions">
+    blockchain.info's list</a> can help you locate OP_RETURN transactions more easily.</li>
+            <li>The existence of that transaction in the blockchain proves that the document existed at the time the transaction got included into a block.</li>
+
+          </ul>
+
+        </p>
+      </div>
+
+      <h3 style="padding-top: 40px;">Developed by</h3>
+      <p>
+      Manuel Araoz - <a href="https://twitter.com/maraoz">@maraoz</a>.
+      </p>
+      <p>
+      Esteban Ordano - <a href="https://twitter.com/eordano">@eordano</a>.
+      </p>
+
+      <h3 style="padding-top: 40px;">Press, media, and mentions</h3>
+      <div class="row">
+        <ul>
+          <li><a href="http://www.computerworld.com/s/article/9239513/Could_the_Bitcoin_network_be_used_as_an_ultrasecure_notary_service_">"Could
+        the Bitcoin network be used as an ultrasecure notary service?"</a> - computerworld.com - by Jeremy Kirk</li>
+          <li><a href="http://www.techinasia.com/bitcoin-change-world/">
+        "Bitcoin will change the world, but no one knows how"</a> - by Terence Lee
+          </li>
+          <li><a href="http://www.genbeta.com/web/proof-of-existence-certificando-documentos-con-bitcoin">
+        "Proof of Existence, certificando documentos con Bitcoin"</a> - by Guillermo Julian</li>
+
+          <li><a href="https://www.youtube.com/watch?v=6YHiuZeWyrE">"Block-chain
+        Notary Service, ProofOfExistence.com"</a> - interview by Andreas Antonopoulos
+          </li>
+
+          <li><a href="http://blog.erratasec.com/2013/05/bitcoin-is-public-ledger.html">
+    "BitCoin is a public ledger"</a> - by Robert Graham</li>
+
+          <li><a href="http://cdixon.org/2013/12/12/coinbase/">
+    "Coinbase"</a> - by Chris Dixon</li>
+
+          <li><a href="http://www.businessinsider.com/the-future-of-the-blockchain-2014-4">
+    "SATOSHI'S REVOLUTION: How The Creator Of Bitcoin May Have Stumbled Onto Something Much, Much Bigger"</a> - Rob Wile, Business Insider</li>
+
+          <li><a href="http://www.forbes.com/sites/mikemontgomery/2015/09/15/bitcoin-is-only-the-beginning-for-blockchain-technology/">
+    "Bitcoin Is Only The Beginning For Blockchain Technology"</a> - Mike Montgomery, Forbes</li>
+
+
+        </ul>
+      </div>
+
+    </div>
+
+    <hr>
+    <footer style="margin-bottom:24px;">
+      &copy; Proof of existence 2012-2015 - by Manuel Araoz (<a href="https://twitter.com/maraoz">@maraoz</a>)
+    </footer>
+
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-40823064-1', 'proofofexistence.com');
+      ga('send', 'pageview');
+    </script>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Proof of Existence</title>
+  <meta charset='utf-8' />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="description" content="Proof of Existence" />
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <link href="./css/bootstrap.css" rel="stylesheet">
+  <link href="./css/bootstrap-notify.css" rel="stylesheet">
+  <link href="./css/main.css" rel="stylesheet">
+
+  <script type="text/javascript" src="./js/jquery.1.8.0.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.form.js"></script>
+  <script type="text/javascript" src="./js/crypto.js"></script>
+  <script type="text/javascript" src="./js/sprintf.js"></script>
+  <script type="text/javascript" src="./js/filedrop.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.js"></script>
+  <script type="text/javascript" src="./js/bootstrap-notify.js"></script>
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./">Proof of Existence</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="./">Prove</a></li>
+            <li><a href="./about">About</a></li>
+            <li class="active"><a href="./developers">API</a></li>
+            <li><a href="./contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top:40px;">
+    <div style="margin-top:48px;" class="notifications top-right"></div>
+
+    <div id="content">
+
+    <h1>Developer API</h1>
+
+<p>This API allows developers to integrate their systems with
+  proofofexistence's functionality. You can access all of the app's
+  features through an HTTP interface.</p>
+<p>It consists of the following two POST endpoints:
+<ul>
+  <li><strong>https://proofofexistence.com/api/v1/register</strong>:
+    used to register a new document's <a href="#sha256">SHA256 digest</a>.
+    Returns a payment address where you need to send the bitcoins to have
+    the document certified in the blockchain, and the amount of bitcoins
+    you need to send expressed in satoshis (100000000 satoshis = 1 BTC)</li>
+  <li><strong>https://proofofexistence.com/api/v1/status</strong>:
+    Receives a digest and returns the status of that document. If the status
+    is <code>pending</code>, you'll also get the payment address and price to
+    confirm the document in the blockchain.</li>
+</ul>
+<p>Let's explain the API using an example:</p>
+First we compute the SHA256 checksum hexdigest for a file we want to
+certify on the blockchain:
+<pre><code>shasum -a 256 somefile.txt
+15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832  somefile.txt</code>
+</pre>
+
+
+Checking the status for a digest which was never submitted will give
+"success": false, as follows:
+
+<pre><code>curl -d d=15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832 https://proofofexistence.com/api/v1/status; echo
+{
+  "success": false,
+  "reason": "nonexistent"
+}</code>
+</pre>
+
+
+
+
+So, first, we want to register the document's digest in
+proofofexistence. This will return a bitcoin payment address, and the
+minimum price (in satoshi, 0.00000001 BTC = 1 satoshi) to be paid to
+that address in order to get the document proof inserted in the
+blockchain.
+<pre><code>curl -d d=15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832 https://proofofexistence.com/api/v1/register; echo
+{
+  "success":"true",
+  "digest":"15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832",
+  "pay_address":"1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3",
+  "price":500000
+}</code>
+</pre>
+
+
+
+
+If we now check the document's digest status, we get it's pending.
+<pre><code>curl -d d=15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832 https://proofofexistence.com/api/v1/status; echo
+{
+  "digest":"15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832",
+  "payment_address":"1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3",
+  "pending":true,
+  "timestamp":"2015-09-28 18:16:50",
+  "network":"livenet",
+  "success":true,
+  "txstamp":"",
+  "blockstamp":""
+}</code>
+</pre>
+
+
+
+After making payment to indicated address
+(1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3) for a minimum value of 500000
+satoshis:
+
+<pre><code>curl -d d=15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832 https://proofofexistence.com/api/v1/status; echo
+{
+  "digest":"15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832",
+  "payment_address":"1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3",
+  "pending":false,
+  "timestamp":"2015-09-28 18:16:50",
+  "tx":"f8db93646769eaf614cf5f26fb1bf1b78ee3f83ba6bebb5f7da9223f0022577d",
+  "txstamp":"2015-09-28 18:26:31",
+  "network":"livenet",
+  "success":true,
+  "blockstamp":""
+}</code>
+</pre>
+
+
+This indicates the address received payment and that the transaction
+proving the document's existence was sent to the blockchain. You can see
+the document's <code>timestamp</code> (when it was received by our servers).
+Additional interesting fields are <code>txstamp</code> (when payment transaction
+was received and certifying transaction with OP_RETURN was sent to the blockchain),
+<code>tx</code> (transaction containing proof of existence of the document),
+and <code>blockstamp</code> (timestamp of the bitcoin block containing the transaction),
+which is currently empty because the transaction was not yet confirmed.
+
+Once the certifying transaction is confirmed, you'll see that field populated:
+
+<pre><code>curl -d d=15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832 https://proofofexistence.com/api/v1/status; echo
+{
+  "digest":"15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832",
+  "payment_address":"1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3",
+  "pending":false,
+  "timestamp":"2015-09-28 18:16:50",
+  "tx":"f8db93646769eaf614cf5f26fb1bf1b78ee3f83ba6bebb5f7da9223f0022577d",
+  "txstamp":"2015-09-28 18:26:31",
+  "network":"livenet",
+  "success":true,
+  "blockstamp":"2015-09-28 19:32:54"
+}</code>
+</pre>
+
+
+That's it! If you have any questions/feedback/problems,
+<a href="mailto:admin@proofofexistence.com">drop me an email!</a>
+
+<a id="sha256"> </a>
+<h3>Calculating the SHA256 digest</h3>
+<p>Here are ways in which you can calculate your document's SHA256
+  digest. Of course you can also implement your own, these are here for
+  reference.
+<ul>
+  <li><strong>Using a client-side JS library</strong>: <a
+    href="/static/js/crypto.js">crypto.js</a>. Usage Example: <pre>
+<code>
+var data = "Hello world!";
+var progress = function(p) {
+  var w = (p*100);
+  alert(w + "% hashed");
+}
+
+var crypto_finish = function(hash) {
+  alert("Document hash: "+hash);
+}
+CryptoJS.SHA256(data,progress,crypto_finish);</code>
+    </pre></li>
+
+</ul>
+
+    
+
+    </div>
+
+    <hr>
+    <footer style="margin-bottom:24px;">
+      &copy; Proof of existence 2012-2015 - by Manuel Araoz (<a href="https://twitter.com/maraoz">@maraoz</a>)
+    </footer>
+
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-40823064-1', 'proofofexistence.com');
+      ga('send', 'pageview');
+    </script>
+
+  </div>
+
+</body>
+
+</html>
