@@ -3,7 +3,7 @@ import bitcore from 'bitcore'
 
 // TODO: Change these and move to ENV variables
 
-bitcore.Networks.defaultNetwork = bitcore.Networks.testnet
+//bitcore.Networks.defaultNetwork = bitcore.Networks.testnet
 var BLOCKCYPHER_TOKEN = '327387b19e8148c2aea563935eb6cde3'
 var MAGIC_NUMBER = 'UsblXqKxH8wzEdFPRUwru2xqCztrhJcJrxQWTR9fLI'
 
@@ -25,10 +25,10 @@ if (bitcore.Networks.defaultNetwork === bitcore.Networks.testnet) {
 }
 
 
-var SERVER_URL = 'https://smartcontractsolutions.com/poe/'
+var SERVER_URL = 'https://proofofexistence.com/'
 var networkName = bitcore.Networks.defaultNetwork.name === 'testnet' ? 'test3' : 'main';
 
-var DEBUG = true
+var DEBUG = false
 
 
 export {
