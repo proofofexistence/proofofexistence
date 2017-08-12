@@ -38,7 +38,7 @@ var mail = new nodemailer.createTransport({
 })
 
 // 5 mBTC
-var DOCUMENT_PRICE = 500000
+var DOCUMENT_PRICE = 100000
 var SIGN_PRICE = 2000000
 
 var app = express()
