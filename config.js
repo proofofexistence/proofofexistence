@@ -10,7 +10,7 @@ var MAGIC_NUMBER = 'UsblXqKxH8wzEdFPRUwru2xqCztrhJcJrxQWTR9fLI'
 var BASE_PRIVATE_KEY
 var TARGET_PAYMENT_ADDRESS
 
-
+var FEE_MULTIPLIER = 1.5;
 
 
 if (bitcore.Networks.defaultNetwork === bitcore.Networks.testnet) {
@@ -38,5 +38,6 @@ export {
   TARGET_PAYMENT_ADDRESS,
   SERVER_URL,
   networkName,
-  DEBUG
+  DEBUG,
+  FEE_MULTIPLIER
 }

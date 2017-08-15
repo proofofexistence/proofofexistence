@@ -1,8 +1,9 @@
 {
+    "asi": true,
     "bitwise": false,     // Prohibit bitwise operators (&, |, ^, etc.).
     "browser": true,      // Standard browser globals e.g. `window`, `document`.
     "camelcase": false,   // Permit only camelcase for `var` and `object indexes`.
-    "curly": true,        // Require {} for every new block or scope.
+    "curly": false,        // Require {} for every new block or scope.
     "devel": false,       // Allow development statements e.g. `console.log();`.
     "eqeqeq": true,       // Require triple equals i.e. `===`.
     "esnext": true,       // Allow ES.next specific features such as `const` and `let`.
@@ -29,6 +30,7 @@
     "maxdepth": 4,        // Maximum depth of nested control structures
     "maxlen": 120,        // Maximum number of cols in a line
     "multistr": true,     // Allow use of multiline EOL escaping
+    "experimental": ["asyncawait", "asyncreqawait"],
 
     "predef": [ // Extra globals.
         "after",
@@ -39,9 +41,9 @@
         "describe",
         "exports",
         "it",
-        "module",
-        "require",
-        "$",
-        "CryptoJS"
+        "web3",
+        "artifacts",
+        "contract",
+        "assert"
     ]
 }

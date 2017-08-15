@@ -17,7 +17,8 @@ import {
   TARGET_PAYMENT_ADDRESS,
   SERVER_URL,
   networkName,
-  DEBUG
+  DEBUG,
+  FEE_MULTIPLIER
 } from './config'
 
 
@@ -170,11 +171,13 @@ var doRegister = (req, res) => {
   }).then(result => {
 
     storeObject.feePerKilobyte = result.body.medium_fee_per_kb
-    var expectedSize = 148 // one input size
-      + 34 // pubkey output size
-      + 42 // op_return size
-      + 10 // version, nlocktime, input size, output size
-    storeObject.fee = Math.ceil(expectedSize * storeObject.feePerKilobyte / 1024)
+    var expectedSize = 148 +// one input size
+      34 + // pubkey output size
+      42 + // op_return size
+      10// version, nlocktime, input size, output size
+    storeObject.fee = Math.ceil(
+      expectedSize * storeObject.feePerKilobyte * FEE_MULTIPLIER /
+      1024)
 
     return db.putAsync(address.toString(), JSON.stringify(storeObject))
 
