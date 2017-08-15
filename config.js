@@ -10,7 +10,7 @@ var MAGIC_NUMBER = 'UsblXqKxH8wzEdFPRUwru2xqCztrhJcJrxQWTR9fLI'
 var BASE_PRIVATE_KEY
 var TARGET_PAYMENT_ADDRESS
 
-var FEE_MULTIPLIER = 1.5;
+var FEE_MULTIPLIER = 2;
 
 
 if (bitcore.Networks.defaultNetwork === bitcore.Networks.testnet) {
