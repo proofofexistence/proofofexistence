@@ -25,7 +25,7 @@ if (bitcore.Networks.defaultNetwork === bitcore.Networks.testnet) {
 }
 
 
-var SERVER_URL = 'https://proofofexistence.com/'
+var SERVER_URL = 'https://proofofexistence.com'
 var networkName = bitcore.Networks.defaultNetwork.name === 'testnet' ? 'test3' : 'main';
 
 var DEBUG = false
