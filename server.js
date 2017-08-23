@@ -536,7 +536,9 @@ app.post('/unconfirmed/' + MAGIC_NUMBER + '/:address', function(req, res) {
       }
     })
 
-  }).then(requestResult => {
+  }).then((requestResult, err) => {
+
+    console.log(err)
 
     result.tx = requestResult.body.tx.hash
     result.pending = false
