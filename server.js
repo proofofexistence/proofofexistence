@@ -177,7 +177,12 @@ var doRegister = (req, res) => {
       10// version, nlocktime, input size, output size
     storeObject.fee = Math.ceil(
       expectedSize * storeObject.feePerKilobyte * FEE_MULTIPLIER /
-      1024)
+      1024);
+
+    if (storeObject.fee > DOCUMENT_PRICE) {
+      console.log("We should increase the price!", DOCUMENT_PRICE, "vs", storeObject.fee);
+      storeObject.fee = DOCUMENT_PRICE - 1;
+    }
 
     return db.putAsync(address.toString(), JSON.stringify(storeObject))
 
