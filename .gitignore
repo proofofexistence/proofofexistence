@@ -3,3 +3,5 @@ node_modules
 *.sw[a-z]
 database
 public/bundle.js
+log/
+server.pid
