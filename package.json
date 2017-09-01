@@ -4,7 +4,7 @@
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "babel-node server.js"
   },
   "repository": {
     "type": "git",
