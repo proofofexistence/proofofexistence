@@ -71,23 +71,27 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 hbs.registerPartials(path.join(__dirname, 'views/partials'))
 
-app.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home', active: { home: true } });
-});
-
-var html_dir = __dirname + '/public/'
-var statics = ['contact', 'developers', 'about', 'sign'];
-
-statics.map(name => {
-  app.get('/' + name, function(req, res) {
-    res.sendFile(html_dir + name + '.html')
-  });
+// routes
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Home', active: { home: true } })
 })
-app.get('/detail/:hash', function(req, res) {
-  res.sendFile(html_dir + 'detail.html')
+app.get('/about', (req, res) => {
+  res.render('about', { title: 'About', active: { prove: true } })
 })
-app.get('/sign/:hash', function(req, res) {
-  res.sendFile(html_dir + 'beta.html')
+app.get('/developers', (req, res) => {
+  res.render('developers', { title: 'API', active: { developers: true } })
+})
+app.get('/contact', (req, res) => {
+  res.render('contact', { title: 'Contact', active: { contact: true } })
+})
+app.get('/detail/:hash', (req, res) => {
+  res.render('detail', { title: 'Document Information', active: { prove: true } })
+})
+app.get('/sign', (req, res) => {
+  res.render('sign', { title: 'Sign', active: { prove: true } })
+})
+app.get('/sign/:hash', (req, res) => {
+  res.render('beta', { title: 'Document Information', active: { prove: true } })
 })
 
 var BLOCKCYPHER_URL_TOKEN = '?token=' + BLOCKCYPHER_TOKEN
