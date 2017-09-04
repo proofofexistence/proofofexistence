@@ -5,6 +5,8 @@ import fs from 'fs'
 import path from 'path'
 import nodemailer from 'nodemailer'
 
+import hbs from 'hbs'
+
 import bitcore from 'bitcore'
 import popsicle from 'popsicle'
 var _ = bitcore.deps._
@@ -67,9 +69,10 @@ app.use(bodyParser.urlencoded())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
+hbs.registerPartials(path.join(__dirname, 'views/partials'))
 
 app.get('/', function(req, res, next) {
-  res.render('index', { title: 'Proof of Existence' });
+  res.render('index', { title: 'Proof of Existence', active: { home: true } });
 });
 
 var html_dir = __dirname + '/public/'
