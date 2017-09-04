@@ -2,6 +2,7 @@ import bluebird from 'bluebird'
 import bodyParser from 'body-parser'
 import express from 'express'
 import fs from 'fs'
+import path from 'path'
 import nodemailer from 'nodemailer'
 
 import bitcore from 'bitcore'
@@ -62,6 +63,10 @@ var isAddressAnOutput = isAddressAnCPoint('output')
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'hbs')
 
 var html_dir = __dirname + '/public/'
 var statics = ['contact', 'developers', 'about', 'sign'];
