@@ -72,7 +72,7 @@ app.set('view engine', 'hbs')
 hbs.registerPartials(path.join(__dirname, 'views/partials'))
 
 app.get('/', function(req, res, next) {
-  res.render('index', { title: 'Proof of Existence', active: { home: true } });
+  res.render('index', { title: 'Home', active: { home: true } });
 });
 
 var html_dir = __dirname + '/public/'
