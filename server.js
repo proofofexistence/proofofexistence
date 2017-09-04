@@ -68,6 +68,10 @@ app.use(bodyParser.urlencoded())
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 
+app.get('/', function(req, res, next) {
+  res.render('index', { title: 'Proof of Existence' });
+});
+
 var html_dir = __dirname + '/public/'
 var statics = ['contact', 'developers', 'about', 'sign'];
 
