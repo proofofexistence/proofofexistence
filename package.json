@@ -20,6 +20,7 @@
     "body-parser": "^1.13.3",
     "browser-request": "^0.3.3",
     "express": "^4.13.3",
+    "hbs": "^4.0.1",
     "leveldown": "^1.4.1",
     "levelup": "^1.2.1",
     "lodash": "^3.10.1",

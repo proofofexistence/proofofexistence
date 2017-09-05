@@ -2,7 +2,10 @@ import bluebird from 'bluebird'
 import bodyParser from 'body-parser'
 import express from 'express'
 import fs from 'fs'
+import path from 'path'
 import nodemailer from 'nodemailer'
+
+import hbs from 'hbs'
 
 import bitcore from 'bitcore'
 import popsicle from 'popsicle'
@@ -63,19 +66,50 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 
-var html_dir = __dirname + '/public/'
-var statics = ['contact', 'developers', 'about', 'sign'];
+// view engine setup
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'hbs')
+hbs.registerPartials(path.join(__dirname, 'views/partials'))
 
-statics.map(name => {
-  app.get('/' + name, function(req, res) {
-    res.sendFile(html_dir + name + '.html')
-  });
+// register block and extends view helpers
+var blocks = {}
+hbs.registerHelper('extend', (name, context) => {
+  var block = blocks[name]
+  if (!block) {
+    block = blocks[name] = []
+  }
+
+  block.push(context.fn(this))
 })
-app.get('/detail/:hash', function(req, res) {
-  res.sendFile(html_dir + 'detail.html')
+hbs.registerHelper('block', (name) => {
+  var val = (blocks[name] || []).join('\n')
+
+  // clear the block
+  blocks[name] = []
+  return val
 })
-app.get('/sign/:hash', function(req, res) {
-  res.sendFile(html_dir + 'beta.html')
+
+// routes
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Home', active: { home: true } })
+})
+app.get('/about', (req, res) => {
+  res.render('about', { title: 'About', active: { prove: true } })
+})
+app.get('/developers', (req, res) => {
+  res.render('developers', { title: 'API', active: { developers: true } })
+})
+app.get('/contact', (req, res) => {
+  res.render('contact', { title: 'Contact', active: { contact: true } })
+})
+app.get('/detail/:hash', (req, res) => {
+  res.render('detail', { title: 'Document Information', active: { prove: true } })
+})
+app.get('/sign', (req, res) => {
+  res.render('sign', { title: 'Sign', active: { prove: true } })
+})
+app.get('/sign/:hash', (req, res) => {
+  res.render('beta', { title: 'Document Information', active: { prove: true } })
 })
 
 var BLOCKCYPHER_URL_TOKEN = '?token=' + BLOCKCYPHER_TOKEN

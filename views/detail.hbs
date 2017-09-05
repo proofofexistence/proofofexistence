@@ -1,0 +1,61 @@
+  {{#extend "scripts"}}
+  <script type="text/javascript" src="/js/qrcode.min.js"></script>
+  <script type="text/javascript" src="/js/controllers/detail.js"></script>
+  {{/extend}}
+
+  <div class="container" style="padding-top:40px;">
+    <div style="margin-top:48px;" class="notifications top-right"></div>
+
+    <div id="content">
+
+
+      <h3>
+  Document information <small id="digest">Loading...</small>
+</h3>
+      <div id="timestamp">Please wait</div>
+
+      <div class='hero-unit' id='certify_message' style="display: none;">
+        <h3>Want this document certified by a decentralized proof of
+    existence?</h3>
+        <p>We can embed the document's digest in the blockchain for you!</p>
+        <p>
+          You'll need to pay <strong>2 mBTC</strong> to do so, to cover our costs. Please pay to the following address:
+        </p>
+
+        <hr />
+        <div class='row-fluid'>
+          <div class='span6' id='qr'></div>
+          <div class='span6' id='payment_text'>
+            <div>Please send <strong>2 mBTC</strong> or more to:</div>
+            <strong id='payment_link'>
+            </strong>
+            <div id="wait" class="row">
+              <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+              </div>
+              Waiting for payment... the page will refresh automatically when a payment is received.
+            </div>
+          </div>
+        </div>
+        <hr />
+
+      </div>
+      <div class='hero-unit' id='confirming_message' style="display: none;">
+        <p>
+          In case you are curious, we are waiting for a transaction to occur in the Bitcoin network containing a cryptographic proof of your document's existence. This will embed the document's digest in the blockchain permanently.
+        </p>
+      </div>
+      <div class='hero-unit' id='confirmed_message' style="display: none;">
+        <h3>Congratulations!</h3>
+        <p>This document's digest was successfully embedded in the Bitcoin blockchain. It is now permanently certified and proven to exist since the transaction was confirmed.</p>
+        <p id="tx"></p>
+        <p>If you want to verify this document in the future, just re-submit it in
+          <a href="/">the homepage</a> and we'll recognize and validate it. To manually verify the document was certified in the blockchain, follow the steps detailed in the <a href="/about#technical">technical foundations section</a>.
+        </p>
+      </div>
+
+    </div>
