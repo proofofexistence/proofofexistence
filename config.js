@@ -1,5 +1,11 @@
-
+import dotenv from 'dotenv'
 import bitcore from 'bitcore'
+
+/**
+ * Configure dotenv.
+ */
+
+dotenv.config()
 
 // TODO: Change these and move to ENV variables
 
