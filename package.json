@@ -19,6 +19,7 @@
     "bluebird": "^2.10.0",
     "body-parser": "^1.13.3",
     "browser-request": "^0.3.3",
+    "dotenv": "^4.0.0",
     "express": "^4.13.3",
     "hbs": "^4.0.1",
     "leveldown": "^1.4.1",
