@@ -4,8 +4,15 @@ An online service to prove the existence of documents
 
 ## Instructions
 
+### Installation
+
 ```sh
 npm install
+```
+
+### Running
+
+```sh
 npm start
 ```
 
