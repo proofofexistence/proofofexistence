@@ -71,6 +71,24 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 hbs.registerPartials(path.join(__dirname, 'views/partials'))
 
+// register block and extends view helpers
+var blocks = {}
+hbs.registerHelper('extend', (name, context) => {
+  var block = blocks[name]
+  if (!block) {
+    block = blocks[name] = []
+  }
+
+  block.push(context.fn(this))
+})
+hbs.registerHelper('block', (name) => {
+  var val = (blocks[name] || []).join('\n')
+
+  // clear the block
+  blocks[name] = []
+  return val
+})
+
 // routes
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home', active: { home: true } })
