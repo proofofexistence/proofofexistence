@@ -30,7 +30,11 @@ if (bitcore.Networks.defaultNetwork === bitcore.Networks.testnet) {
   TARGET_PAYMENT_ADDRESS = new bitcore.HDPublicKey('xpub661MyMwAqRbcG7ihktKz8TrGScA83Caw2n8DivtKDTj1ornJ9tJpwDJMmGnKLip5XMom873npGF27nuWbsjAm9HjKgPCjomr6cHpLes7dGW')
 }
 
+/**
+ * Configure the server.
+ */
 
+var PORT = normalizePort(process.env.PORT || '3003')
 var SERVER_URL = 'https://proofofexistence.com'
 var networkName = bitcore.Networks.defaultNetwork.name === 'testnet' ? 'test3' : 'main';
 
@@ -62,6 +66,7 @@ export {
   BASE_PRIVATE_KEY,
   TARGET_PAYMENT_ADDRESS,
   SERVER_URL,
+  PORT,
   networkName,
   DEBUG,
   FEE_MULTIPLIER
