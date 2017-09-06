@@ -5,3 +5,4 @@ database
 public/bundle.js
 log/
 server.pid
+.env
