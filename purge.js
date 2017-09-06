@@ -8,7 +8,7 @@ import {
   SERVER_URL,
   networkName,
   DEBUG
-} from './config'
+} from './lib/config'
 
 
 var MAX_HOOKS = 120;
