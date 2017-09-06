@@ -10,6 +10,14 @@ An online service to prove the existence of documents
 npm install
 ```
 
+## Set up
+
+```sh
+node setup.js
+```
+
+Edit `.env` for environment variables.
+
 ### Running
 
 ```sh
