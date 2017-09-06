@@ -2,6 +2,6 @@
 
 mkdir -p log
 [ -f "server.pid" ] && pkill -9 -P `cat server.pid`
-babel-node server.js >> log/log-`date "+%Y%m%d"` 2>&1 &
+babel-node lib/server.js >> log/log-`date "+%Y%m%d"` 2>&1 &
 PID=$!
 echo $PID > server.pid

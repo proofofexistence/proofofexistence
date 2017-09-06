@@ -4,5 +4,6 @@ node_modules
 database
 public/bundle.js
 log/
+dist/
 server.pid
 .env

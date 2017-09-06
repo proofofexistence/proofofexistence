@@ -4,7 +4,10 @@
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node server.js"
+    "clean": "rm -Rf dist",
+    "start": "babel-node lib/server.js",
+    "build": "babel lib --out-dir dist --copy-files",
+    "serve": "node dist/server.js"
   },
   "repository": {
     "type": "git",
