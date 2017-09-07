@@ -1,26 +1,29 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
-      <a class="brand" href="/">Proof of Existence</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li class="{{#if active.prove}}active{{/if}}">
-            <a href="/">Prove</a>
-          </li>
-          <li class="{{#if active.about}}active{{/if}}">
-            <a href="/about">About</a>
-          </li>
-          <li class="{{#if active.developers}}active{{/if}}">
-            <a href="/developers">API</a>
-          </li>
-          <li class="{{#if active.contact}}active{{/if}}">
-            <a href="/contact">Contact</a>
-          </li>
-        </ul>
-      </div>
+      <a class="navbar-brand" href="/">Proof of Existence</a>
     </div>
-  </div>
-</div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="{{#if active.prove}}active{{/if}}">
+          <a href="/">Prove</a>
+        </li>
+        <li class="{{#if active.about}}active{{/if}}">
+          <a href="/about">About</a>
+        </li>
+        <li class="{{#if active.developers}}active{{/if}}">
+          <a href="/developers">API</a>
+        </li>
+        <li class="{{#if active.contact}}active{{/if}}">
+          <a href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
