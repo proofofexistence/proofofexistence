@@ -20,7 +20,7 @@
       </div>
       <div id="timestamp">Please wait</div>
 
-      <div class='hero-unit' id='signatures' style="display: none; padding-top: 15px; padding-bottom: 20px;">
+      <div class='jumbotron' id='signatures' style="display: none; padding-top: 15px; padding-bottom: 20px;">
         <div id="explainSignatures">
           <h3>Sign this document using your PGP Key</h3>
           <ul>
@@ -72,13 +72,13 @@
             <div id="errorSigning" style="display: none; color: red; font-size: 1.2em;">
             </div>
             <div class="row" style="text-align:right; margin-top: 20px;">
-              <button class="btn" id="cancelSignature">Cancel</button>
+              <button class="btn btn-default" id="cancelSignature">Cancel</button>
               <button class="btn btn-primary" id="okSignature">Sign</button>
             </div>
           </form>
         </div>
       </div>
-      <div class='hero-unit' id='certify_message' style="display: none; padding-top: 20px; padding-bottom: 25px;">
+      <div class='jumbotron' id='certify_message' style="display: none; padding-top: 20px; padding-bottom: 25px;">
         <h3>Want this <u>signed</u> document certified by a decentralized proof of
     existence?</h3>
         <p>We can embed the document's digest  and its signatures in the blockchain for you!</p>
@@ -87,9 +87,9 @@
         </p>
 
         <hr />
-        <div class='row-fluid'>
-          <div class='span6' id='qr'></div>
-          <div class='span6' id='payment_text'>
+        <div class='row'>
+          <div class='col-md-6' id='qr'></div>
+          <div class='col-md-6' id='payment_text'>
             <div>Send <strong>0.02 BTC</strong> to:</div>
             <strong id='payment_link'> </strong>
             <div id="wait" class="row">
@@ -107,12 +107,12 @@
         <hr />
 
       </div>
-      <div class='hero-unit' id='confirming_message' style="display: none;">
+      <div class='jumbotron' id='confirming_message' style="display: none;">
         <p>
           In case you are curious, we are waiting for a transaction to occur in the Bitcoin network containing a cryptographic proof of your document's existence. This will embed the document's digest in the blockchain permanently.
         </p>
       </div>
-      <div class='hero-unit' id='confirmed_message' style="display: none;">
+      <div class='jumbotron' id='confirmed_message' style="display: none;">
         <h3>Congratulations!</h3>
         <p>This document's digest was successfully embedded in the Bitcoin blockchain. It is now permanently certified and proven to exist since the transaction was confirmed.</p>
         <p id="tx"></p>

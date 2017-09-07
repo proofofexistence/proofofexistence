@@ -26,7 +26,7 @@ $(document).ready(function() {
     'added': translate('File successfully added to system. Redirecting...')
   };
 
-  var bar = $('.bar');
+  var bar = $('.progress-bar');
   var upload_submit = $('#upload_submit');
   var upload_form = $('#upload_form');
   var latest = $('#latest');
@@ -104,10 +104,7 @@ $(document).ready(function() {
       });
 
       table.empty();
-      $('<div/>', {
-        'class': 'unstyled',
-        html: items.join('<br />')
-      }).appendTo(table);
+      table.append(items.join());
     });
   };
   refreshLatest(false, latest);
@@ -118,7 +115,7 @@ $(document).ready(function() {
     if (json.success) {
       show_message(vsprintf(message['added'], []), 'success');
     } else {
-      show_message(message[json.reason], 'warn');
+      show_message(message[json.reason], 'warning');
     }
     if (json.digest) {
       window.setTimeout(function() {
