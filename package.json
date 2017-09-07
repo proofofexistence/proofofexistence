@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "clean": "rm -Rf dist",
-    "start": "babel-node lib/server.js",
+    "start": "nodemon lib/server.js -e js,hbs --exec babel-node",
     "build": "babel lib --out-dir dist --copy-files",
     "serve": "node dist/server.js"
   },
