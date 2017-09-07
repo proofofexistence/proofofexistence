@@ -25,6 +25,8 @@
     "dotenv": "^4.0.0",
     "express": "^4.13.3",
     "hbs": "^4.0.1",
+    "jquery": "^1.12.4",
+    "jquery-form": "^3.50.0",
     "leveldown": "^1.4.1",
     "levelup": "^1.2.1",
     "lodash": "^3.10.1",
