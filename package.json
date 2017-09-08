@@ -37,7 +37,8 @@
     "nodemailer": "^1.4.0",
     "popsicle": "^1.1.0",
     "prompt": "^0.2.14",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "sprintf-js": "^1.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
