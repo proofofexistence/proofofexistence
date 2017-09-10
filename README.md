@@ -4,6 +4,13 @@ An online service to prove the existence of documents
 
 ## Instructions
 
+### Git
+
+```sh
+git clone git@github.com:poexio/proofofexistence.git
+cd proofofexistence
+```
+
 ### Installation
 
 #### Mac OS X
