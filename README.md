@@ -54,5 +54,5 @@ npm run clean
 
 ## License
 
-© Copyright 2017 PoEx Limited, all rights reserved.
+© Copyright 2017 PoEx Limited, all rights reserved.<br />
 © Copyright 2015-2017 Smart Contract Solutions Inc., all rights reserved.
