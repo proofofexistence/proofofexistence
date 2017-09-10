@@ -6,6 +6,12 @@ An online service to prove the existence of documents
 
 ### Installation
 
+#### Mac OS X
+
+- Follow guide https://treehouse.github.io/installation-guides/mac/node-mac.html
+
+#### General
+
 ```sh
 npm install
 ```
