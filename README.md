@@ -4,7 +4,15 @@ An online service to prove the existence of documents
 
 ## Instructions
 
-### Git
+### Setup
+
+#### Mac OS X
+
+- Install brew: https://brew.sh/
+- brew install git (will trigger installation of Xcode, do it!)
+- Follow guide https://treehouse.github.io/installation-guides/mac/node-mac.html
+- Ready!
+
 
 ```sh
 git clone git@github.com:poexio/proofofexistence.git
@@ -12,12 +20,6 @@ cd proofofexistence
 ```
 
 ### Installation
-
-#### Mac OS X
-
-- Follow guide https://treehouse.github.io/installation-guides/mac/node-mac.html
-
-#### General
 
 ```sh
 npm install
