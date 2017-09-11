@@ -14,7 +14,8 @@
     "url": "git@smartcontracts.xyz:scs/payout"
   },
   "author": "SCS, Inc.",
-  "license": "proprietary",
+  "license": "UNLICENSED",
+  "private": true,
   "dependencies": {
     "animate.css": "^3.5.2",
     "bitcore": "^0.13.3",
