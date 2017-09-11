@@ -52,7 +52,7 @@ $(document).ready(function() {
     reader.onload = function(e) {
       var data = e.target.result;
       bar.width(0 + '%');
-      bar.addClass('bar-success');
+      bar.addClass('progress-bar-success');
       explain.html(translate('Now hashing... ') + translate('Initializing'));
       setTimeout(function() {
         CryptoJS.SHA256(data, crypto_callback, crypto_finish);
@@ -147,10 +147,10 @@ $(document).ready(function() {
       dataType: 'json',
       beforeSubmit: function() {
         var percentVal = '0%';
-        bar.removeClass('bar-danger');
-        bar.removeClass('bar-warning');
-        bar.removeClass('bar-success');
-        bar.addClass('bar-info');
+        bar.removeClass('progress-bar-danger');
+        bar.removeClass('progress-bar-warning');
+        bar.removeClass('progress-bar-success');
+        bar.addClass('progress-bar-info');
         bar.width(percentVal);
       },
       uploadProgress: function(event, position, total, percentComplete) {
