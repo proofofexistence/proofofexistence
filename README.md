@@ -13,16 +13,21 @@ An online service to prove the existence of documents
 - Follow guide https://treehouse.github.io/installation-guides/mac/node-mac.html
 - Ready!
 
-
 ```sh
 git clone git@github.com:poexio/proofofexistence.git
 cd proofofexistence
 ```
 
+### Requirements
+
+```sh
+npm install -g yarn
+```
+
 ### Installation
 
 ```sh
-npm install
+yarn install
 ```
 
 ## Set up
