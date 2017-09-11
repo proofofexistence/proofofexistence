@@ -15,6 +15,7 @@
   },
   "author": "SCS, Inc.",
   "license": "UNLICENSED",
+  "private": true,
   "dependencies": {
     "animate.css": "^3.5.2",
     "bitcore": "^0.13.3",
