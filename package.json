@@ -38,6 +38,7 @@
     "moment": "^2.10.6",
     "nodemailer": "^1.4.0",
     "openpgp": "^1.3.0",
+    "paper-dashboard": "https://github.com/creativetimofficial/paper-dashboard.git",
     "popsicle": "^1.1.0",
     "prompt": "^0.2.14",
     "qrcodejs": "^1.0.0",
