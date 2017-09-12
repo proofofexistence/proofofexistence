@@ -1,34 +1,34 @@
 .dropbox {
-	height: 120px;
-	font-weight: bold;
-	text-align: center;
-	padding: 1em 0;
-	margin: 1em 0;
-	color: #555;
-	border: 2px dashed #555;
-	border-radius: 7px;
-	cursor: default;
+  height: 120px;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em 0;
+  color: #555;
+  border: 2px dashed #555;
+  border-radius: 7px;
+  cursor: default;
 }
 
 .hover {
-	color: #468847;
-	border-color: #468847;
-	border-style: solid;
-	box-shadow: inset 0 3px 4px #888;
+  color: #7AC29A;
+  border-color: #7AC29A;
+  border-style: solid;
 }
 
 #icon {
-	text-align: center;
+  text-align: center;
 }
 
-#content {
-	min-height: 420px;
+/* paper-dashboard */
+.sidebar .nav > li.nav-bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
 }
-
-select.language {
-	margin-bottom: 0;
-	margin-top: 5px;
-	padding-top: 0;
+.sidebar .nav > li.nav-bottom a{
+  background: rgba(255, 255, 255, 0.14);
+  opacity: 1;
+  color: #FFFFFF;
 }
 
 /* pretty spinner */
