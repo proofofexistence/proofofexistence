@@ -79,7 +79,7 @@ $(document).ready(function() {
         msg = translate('Document proof not yet embedded in the bitcoin blockchain.');
         clz = 'alert-danger';
         img_src = 'warn.png';
-        var uri = 'bitcoin:' + data.payment_address + '?amount=0.001';
+        var uri = 'bitcoin:' + data.payment_address + '?amount=0.002';
         if (!qrcode) {
           qrcode = new QRCode('qr', {
             text: uri,
