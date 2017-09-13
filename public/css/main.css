@@ -31,6 +31,10 @@
   color: #FFFFFF;
 }
 
+.nav-open .collapse.navbar-collapse.off-canvas-sidebar .sidebar-wrapper .nav.navbar-nav {
+  width: 100%;
+}
+
 /* paper-kit modal */
 
 .modal {
