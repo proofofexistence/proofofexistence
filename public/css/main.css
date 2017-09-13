@@ -20,6 +20,15 @@
 }
 
 /* paper-dashboard */
+
+body {
+  font-family: 'Muli', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, .navbar, .brand, a, .td-name, td {
+  font-family: 'Muli', "Helvetica", Arial, sans-serif;
+}
+
 .sidebar .nav > li.nav-bottom {
   position: absolute;
   width: 100%;
