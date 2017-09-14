@@ -31,6 +31,7 @@ $(document).ready(function() {
   var latest = $('#latest');
   var latest_confirmed = $('#latest_confirmed');
   var explain = $('#explain');
+  var progress = $('#hash-progress');
   var dropbox = $('.dropbox');
 
   // uncomment this to try non-HTML support:
@@ -43,6 +44,7 @@ $(document).ready(function() {
     if (!html5) {
       return;
     }
+    progress.show();
     explain.html(translate('Loading document...'));
     var output = '';
     output = translate('Preparing to hash ') + escape(f.name) + ' (' + (f.type || translate('n/a')) + ') - ' + f.size + translate(' bytes, last modified: ') + (f.lastModifiedDate ? f.lastModifiedDate
