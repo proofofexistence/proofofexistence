@@ -22,11 +22,16 @@
 /* paper-dashboard */
 
 body {
-  font-family: 'Muli', Arial, sans-serif;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p, .navbar, .brand, a, .td-name, td {
-  font-family: 'Muli', "Helvetica", Arial, sans-serif;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .sidebar, .navbar, .nav p, .logo, .logo a, .brand, .navbar-brand {
+  font-family: 'Nunito',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  font-weight: 700;
 }
 
 .sidebar .nav > li.nav-bottom {
@@ -38,6 +43,18 @@ h1, h2, h3, h4, h5, h6, p, .navbar, .brand, a, .td-name, td {
   background: rgba(255, 255, 255, 0.14);
   opacity: 1;
   color: #FFFFFF;
+}
+
+.navbar .navbar-brand {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 6px 0px 4px;
+}
+
+.nav p,
+.sidebar .nav p {
+  font-size: 13px;
+  text-transform: uppercase;
 }
 
 .nav-open .collapse.navbar-collapse.off-canvas-sidebar .sidebar-wrapper .nav.navbar-nav {
