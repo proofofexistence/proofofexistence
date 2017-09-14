@@ -133,6 +133,12 @@ h1, h2, h3, h4, h5, h6, .sidebar, .navbar, .nav p, .logo, .logo a, .brand, .navb
   opacity: 0.25;
 }
 
+/* themify icons */
+
+[class^="ti-"], [class*=" ti-"] {
+  font-weight: normal;
+}
+
 /* pretty spinner */
 .spinner {
   margin: 50px auto;
