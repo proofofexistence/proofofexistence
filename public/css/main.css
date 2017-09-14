@@ -19,6 +19,11 @@
   text-align: center;
 }
 
+.digest {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 /* paper-dashboard */
 
 body {
