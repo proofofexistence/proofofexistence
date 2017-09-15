@@ -66,6 +66,17 @@ To clean up:
 npm run clean
 ```
 
+### Deployment
+
+```sh
+ssh ubuntu@poex.io
+cd /home/ubuntu/poex/
+git pull origin master
+yarn install
+npm run build
+sudo service poex_prod restart
+```
+
 ## License
 
 © Copyright 2017 PoEx Limited, all rights reserved.<br />
