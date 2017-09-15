@@ -33,6 +33,7 @@ $(document).ready(function() {
   var explain = $('#explain');
   var progress = $('#hash-progress');
   var dropbox = $('.dropbox');
+  var digestLink = $('#digest-link');
 
   // uncomment this to try non-HTML support:
   //window.File = window.FileReader = window.FileList = window.Blob = null;
@@ -45,6 +46,7 @@ $(document).ready(function() {
       return;
     }
     progress.show();
+    digestLink.hide();
     explain.html(translate('Loading document...'));
     var output = '';
     output = translate('Preparing to hash ') + escape(f.name) + ' (' + (f.type || translate('n/a')) + ') - ' + f.size + translate(' bytes, last modified: ') + (f.lastModifiedDate ? f.lastModifiedDate
@@ -119,8 +121,15 @@ $(document).ready(function() {
       show_message(message[json.reason], 'warning');
     }
     if (json.digest) {
+      var link = './detail/' + json.digest;
+      digestLink.prop("href", link);
+
       window.setTimeout(function() {
-        window.location.replace('./detail/' + json.digest);
+        digestLink.show();
+      }, 4500);
+
+      window.setTimeout(function() {
+        window.location.href = link;
       }, 5000);
     }
   };
