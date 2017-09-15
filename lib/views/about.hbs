@@ -46,7 +46,7 @@
       <h3 id="technical">Technical foundations</h3>
         <p>
 
-          The document is certified via embedding its <a href="https://en.wikipedia.org/wiki/SHA-2">SHA256</a> digest in the bitcoin blockchain. This is done by generating a special bitcoin transaction that encodes/contains the hash via an <a href="">OP_RETURN script</a>. This is a <a href="https://en.bitcoin.it/wiki/Script">
+          The document is certified via embedding its <a href="https://en.wikipedia.org/wiki/SHA-2">SHA256</a> digest in the bitcoin blockchain. This is done by generating a special bitcoin transaction that encodes/contains the hash via an <a href="https://en.bitcoin.it/wiki/OP_RETURN">OP_RETURN script</a>. This is a <a href="https://en.bitcoin.it/wiki/Script">
     bitcoin scripting opcode</a> that marks the transaction output as
           <a href="https://en.bitcoin.it/wiki/Script#Provably_Unspendable.2FPrunable_Outputs">
     provably unspendable</a> and allows a small amount of data to be inserted, which in our case is the document's hash, plus a marker to identify all of our transactions.
