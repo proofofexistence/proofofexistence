@@ -1,0 +1,36 @@
+<div class="sidebar" data-background-color="white" data-active-color="danger">
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      <a href="/" class="simple-text">
+        POEX.IO
+      </a>
+    </div>
+
+    <ul class="nav">
+      <li class="{{#if active.prove}}active{{/if}}">
+        <a href="/">
+          <i class="ti-star"></i>
+          <p>Prove</p>
+        </a>
+      </li>
+      <li class="{{#if active.about}}active{{/if}}">
+        <a href="/about">
+          <i class="ti-comment-alt"></i>
+          <p>About</p>
+        </a>
+      </li>
+      <li class="{{#if active.developers}}active{{/if}}">
+        <a href="/developers">
+          <i class="ti-harddrives"></i>
+          <p>Developers</p>
+        </a>
+      </li>
+      <li class="nav-bottom {{#if active.contact}}active{{/if}}">
+        <a href="/contact">
+          <i class="ti-email"></i>
+          <p>Contact</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

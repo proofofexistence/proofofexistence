@@ -3,15 +3,18 @@
   <script type="text/javascript" src="/js/controllers/detail.js"></script>
   {{/extend}}
 
-  <div class="container" style="padding-top:40px;">
-    <div style="margin-top:48px;" class="notifications top-right"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="content">
+          <div class="row">
+            <div class="col-lg-12">
 
-    <div id="content">
-
-
-      <h3>
-  Document information <small id="digest">Loading...</small>
-</h3>
+              <h3>
+                Document information<br>
+                <small id="digest" class="digest">Loading...</small>
+              </h3>
       <div id="timestamp">Please wait</div>
 
       <div class='jumbotron' id='certify_message' style="display: none;">
@@ -30,6 +33,7 @@
             <strong id='payment_link'>
             </strong>
             <div id="wait" class="row">
+              <div class="col-lg-12">
               <div class="spinner">
                 <div class="rect1"></div>
                 <div class="rect2"></div>
@@ -38,6 +42,7 @@
                 <div class="rect5"></div>
               </div>
               Waiting for payment... the page will refresh automatically when a payment is received.
+              </div>
             </div>
           </div>
         </div>
@@ -58,4 +63,10 @@
         </p>
       </div>
 
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>

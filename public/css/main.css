@@ -1,34 +1,147 @@
 .dropbox {
-	height: 120px;
-	font-weight: bold;
-	text-align: center;
-	padding: 1em 0;
-	margin: 1em 0;
-	color: #555;
-	border: 2px dashed #555;
-	border-radius: 7px;
-	cursor: default;
+  height: 120px;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em 0;
+  color: #555;
+  border: 2px dashed #555;
+  border-radius: 7px;
+  cursor: default;
 }
 
 .hover {
-	color: #468847;
-	border-color: #468847;
-	border-style: solid;
-	box-shadow: inset 0 3px 4px #888;
+  color: #7AC29A;
+  border-color: #7AC29A;
+  border-style: solid;
 }
 
 #icon {
-	text-align: center;
+  text-align: center;
 }
 
-#content {
-	min-height: 420px;
+.digest {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-select.language {
-	margin-bottom: 0;
-	margin-top: 5px;
-	padding-top: 0;
+/* paper-dashboard */
+
+body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, .navbar, .brand, a, .td-name, td {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .sidebar, .navbar, .nav p, .logo, .logo a, .brand, .navbar-brand {
+  font-family: 'Nunito',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  font-weight: 700;
+}
+
+.sidebar .nav > li.nav-bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+}
+.sidebar .nav > li.nav-bottom a{
+  background: rgba(255, 255, 255, 0.14);
+  opacity: 1;
+  color: #FFFFFF;
+}
+
+.navbar .navbar-brand {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 6px 0px 4px;
+}
+
+.nav p,
+.sidebar .nav p {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.nav-open .collapse.navbar-collapse.off-canvas-sidebar .sidebar-wrapper .nav.navbar-nav {
+  width: 100%;
+}
+
+/* paper-kit modal */
+
+.modal {
+  z-index: 10001;
+}
+
+.modal-backdrop {
+  z-index: 10000;
+}
+
+.modal-header {
+  border-bottom: 1px solid #DDDDDD;
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-content {
+  border: 0 none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.modal-dialog {
+  padding-top: 60px;
+}
+
+.modal-body {
+  padding: 20px 50px;
+}
+
+.modal-footer {
+  border-top: 1px solid #DDDDDD;
+  padding: 0px;
+}
+
+.modal-footer .left-side, .modal-footer .right-side {
+  display: inline-block;
+  text-align: center;
+  width: 49%;
+}
+
+.modal-footer .btn-simple {
+  padding: 20px;
+  width: 100%;
+}
+
+.modal-footer .divider {
+  background-color: #DDDDDD;
+  display: inline-block;
+  float: inherit;
+  height: 63px;
+  margin: 0px -3px;
+  position: absolute;
+  width: 1px;
+}
+
+.modal.fade .modal-dialog {
+  transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+}
+
+.modal.in .modal-dialog {
+  transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+}
+
+.modal-backdrop.in {
+  opacity: 0.25;
+}
+
+/* themify icons */
+
+[class^="ti-"], [class*=" ti-"] {
+  font-weight: normal;
 }
 
 /* pretty spinner */
