@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/poexio/proofofexistence.git"
   },
-  "author": "SCS, Inc.",
+  "author": "PoEx Co., Ltd",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
