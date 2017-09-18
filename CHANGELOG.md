@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+### Changed
+    * Revert to NPM for dependency management
+
 ## [1.1.0] - 2017-09-15
 
 ### Added
