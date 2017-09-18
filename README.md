@@ -18,16 +18,10 @@ git clone git@github.com:poexio/proofofexistence.git
 cd proofofexistence
 ```
 
-### Requirements
-
-```sh
-npm install -g yarn
-```
-
 ### Installation
 
 ```sh
-yarn install
+npm install
 ```
 
 ## Set up
@@ -72,7 +66,7 @@ npm run clean
 ssh ubuntu@poex.io
 cd /home/ubuntu/poex/
 git pull origin master
-yarn install
+npm install
 npm run build
 sudo service poex_prod restart
 ```
