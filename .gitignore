@@ -2,6 +2,7 @@ bower_components
 node_modules
 *.sw[a-z]
 database
+assets/vendor
 public/bundle.js
 log/
 dist/
