@@ -1,1 +1,4 @@
 PORT=3003
+HOST=proofofexistence.com
+HOST_SCHEME=https
+HOST_PORT=443
