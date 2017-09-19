@@ -50,7 +50,7 @@ blockchain.
   "success":"true",
   "digest":"15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832",
   "pay_address":"1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3",
-  "price":500000
+  "price":{{ documentPrice }}
 }</code>
 </pre>
 
@@ -74,7 +74,7 @@ If we now check the document's digest status, we get it's pending.
 
 
 After making payment to indicated address
-(1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3) for a minimum value of 500000
+(1Zmxnd5CmLqhVnCbEcvxNxCoeqa2qhun3) for a minimum value of {{ documentPrice }}
 satoshis:
 
 <pre><code>curl -d d=15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832 {{ hostUrl }}/api/v1/status; echo
