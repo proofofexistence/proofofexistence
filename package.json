@@ -4,7 +4,8 @@
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "server.js",
   "scripts": {
-    "build": "babel lib --out-dir dist --copy-files",
+    "build": "npm run build:lib",
+    "build:lib": "babel lib --out-dir dist --copy-files",
     "clean": "npm run clean:dist && npm run clean:vendor",
     "clean:dist": "rm -Rf dist",
     "clean:vendor": "rm -Rf assets/vendor",
