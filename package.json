@@ -5,8 +5,12 @@
   "main": "server.js",
   "scripts": {
     "build": "babel lib --out-dir dist --copy-files",
-    "clean": "rm -Rf dist && rm -Rf assets/vendor",
-    "postinstall": "./vendor.sh",
+    "clean": "npm run clean:dist && npm run clean:vendor",
+    "clean:dist": "rm -Rf dist",
+    "clean:vendor": "rm -Rf assets/vendor",
+    "install:paper": "git clone --depth 1 https://github.com/creativetimofficial/paper-dashboard.git assets/vendor/paper-dashboard",
+    "install:vendor": "npm run install:paper",
+    "postinstall": "npm run clean:vendor && npm run install:vendor",
     "serve": "node dist/server.js",
     "start": "nodemon lib/server.js -e js,hbs --exec babel-node"
   },
