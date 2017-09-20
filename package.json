@@ -12,7 +12,8 @@
     "install:vendor": "npm run install:paper",
     "postinstall": "npm run clean:vendor && npm run install:vendor",
     "serve": "node dist/server.js",
-    "start": "nodemon lib/server.js -e js,hbs --exec babel-node"
+    "start": "babel-node lib/server.js",
+    "watch": "nodemon -e js,hbs --exec npm start"
   },
   "repository": {
     "type": "git",

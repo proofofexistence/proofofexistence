@@ -35,7 +35,7 @@ Edit `.env` for environment variables.
 ### Running
 
 ```sh
-npm start
+npm run watch
 ```
 
 The app will be listening at http://localhost:3003/.
