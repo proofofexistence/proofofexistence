@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+    * Environment configuration for host, bitcoin and API keys, prices,
+      database, email, and tracking
+
 ### Changed
     * Revert to NPM for dependency management
 
