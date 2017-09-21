@@ -24,13 +24,14 @@ cd proofofexistence
 npm install
 ```
 
-## Set up
+#### Configuration
 
 ```sh
 node setup.js
 ```
 
-Edit `.env` for environment variables.
+Edit `.env` for environment variables. All values are **required**. Check your
+copy of `.env` against `.sample-env` to see if any variables have been added.
 
 ### Running
 
