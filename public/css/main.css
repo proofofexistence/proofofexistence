@@ -15,6 +15,46 @@
   border-style: solid;
 }
 
+/* logo */
+
+.sidebar .logo .simple-text,
+.off-canvas-sidebar .logo .simple-text,
+.logo .logo-svg {
+  display: inline-block;
+}
+
+.logo .logo-wordmark {
+  padding-left: 5px;
+}
+
+.logo .logo-svg {
+  position: relative;
+  top: -3px;
+  margin-right: 12px;
+}
+
+.logo .logo-svg .logo-img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 991px) {
+  .off-canvas-sidebar .logo {
+    margin: 0 16px;
+  }
+
+  .off-canvas-sidebar .logo .logo-svg {
+    margin-right: 10px;
+  }
+
+  .off-canvas-sidebar .logo .logo-svg .logo-img {
+    width: 22px;
+    height: 22px;
+    left: 0px;
+  }
+}
+
+
 #icon {
   text-align: center;
 }
