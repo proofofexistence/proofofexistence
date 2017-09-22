@@ -30,8 +30,28 @@ npm install
 node setup.js
 ```
 
-Edit `.env` for environment variables. All values are **required**. Check your
-copy of `.env` against `.sample-env` to see if any variables have been added.
+Edit `.env` for environment variables. All values are **required**.
+
+* `PORT` - The local port to run the app on.
+* `HOST` - The host or domain name.
+* `HOST_SCHEME` - e.g, `http` or `https`
+* `HOST_PORT` - e.g., `80` or `443`
+* `DB_PATH` - Path to the LevelDB directory.
+* `DOCUMENT_PRICE` - Document certification price in satoshis.
+* `SIGN_PRICE` - Document signing price in satoshis.
+* `BLOCKCYPHER_TOKEN` - BlockCypher API token.
+* `BITCOIN_HD_PRIVATE_KEY` - HD wallet private key for generating addresses.
+* `BITCOIN_HD_PUBLIC_KEY` - HD wallet public key for receiving payments.
+* `MAGIC_NUMBER` - Token for some private API routes.
+* `MAIL_FROM` - Name/email to send as.
+* `MAIL_TO` - Email address to send notifications to.
+* `GMAIL_USER` - GMail account for sending notifications.
+* `GMAIL_PASS` - Gmail password for sending notifications.
+* `GOOGLE_TRACKING_ID` - Google Analytics tracking ID.
+* `ENABLE_GOOGLE_ANALYTICS` - `true` or `false`
+
+Any environment variables that are set when the app is run will override the
+values in the `.env` file.
 
 ### Running
 
