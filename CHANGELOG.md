@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.2.0] - 2017-09-22
+
 ### Added
     * Environment configuration for host, bitcoin and API keys, prices,
       database, email, and tracking
