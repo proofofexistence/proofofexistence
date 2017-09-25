@@ -101,9 +101,10 @@ $(document).ready(function() {
         if (obj.tx) {
           badge = '<span class="label label-success">✔</span>';
         }
+        var timestamp = obj.pending ? obj.timestamp : obj.blockstamp;
         items.push('<tr><td>' + badge + '</td><td><a href="./detail/' + obj.digest +
           '">' + obj.digest +
-          '</a></td><td> ' + obj.timestamp + '</td></tr>');
+          '</a></td><td> ' + timestamp + '</td></tr>');
       });
 
       table.empty();
