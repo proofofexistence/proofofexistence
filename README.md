@@ -53,6 +53,12 @@ Edit `.env` for environment variables. All values are **required**.
 Any environment variables that are set when the app is run will override the
 values in the `.env` file.
 
+### Building
+
+```sh
+npm run build
+```
+
 ### Running
 
 ```sh
