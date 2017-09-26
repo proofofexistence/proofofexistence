@@ -1,3 +1,11 @@
+.no-js .js-content {
+  display: none;
+}
+
+.js .nojs-content {
+  display: none;
+}
+
 .dropbox {
   height: 120px;
   font-weight: bold;
