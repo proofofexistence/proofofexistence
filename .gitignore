@@ -3,7 +3,7 @@ node_modules
 *.sw[a-z]
 database
 assets/vendor
-public/bundle.js
+public/vendor
 log/
 dist/
 server.pid
