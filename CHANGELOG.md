@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+## [1.2.1] - 2017-09-29
+
+### Added
+    * Show message if JavaScript is disabled
+
+### Changed
+    * Show block timestamp in last confirmed list instead of submission time
+
 ## [1.2.0] - 2017-09-22
 
 ### Added
