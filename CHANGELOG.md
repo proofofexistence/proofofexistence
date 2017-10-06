@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.3.0] - 2017-10-06
+
+### Added
+
+* Add moment.js
+
 ## [1.2.1] - 2017-09-29
 
 ### Added
