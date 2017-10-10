@@ -4,7 +4,7 @@
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "server.js",
   "scripts": {
-    "build": "npm run build:lib && npm run build:modernizr",
+    "build": "npm run build:lib && npm run build:modernizr && ./scripts/vendor.sh",
     "build:lib": "babel lib --out-dir dist --copy-files",
     "build:modernizr": "modernizr --config modernizr-config.json --dest public/vendor/modernizr.js",
     "clean": "npm run clean:dist && npm run clean:vendor",
