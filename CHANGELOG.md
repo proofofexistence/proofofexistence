@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+* Switch notification email from bitpay.com to blocktrail.com.
+
 ## [1.3.0] - 2017-10-06
 
 ### Added
