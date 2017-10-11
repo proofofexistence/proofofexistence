@@ -98,7 +98,21 @@ npm run build
 sudo service poex_prod restart
 ```
 
+### News
+
+The `/news` route should be handled by [poexio/poex-news]. This can be
+configured in Nginx with a directive like:
+
+```
+location /news {
+        alias /home/ubuntu/news/_site;
+        error_page 404 /news/404.html;
+}
+```
+
 ## License
 
 © Copyright 2017 PoEx Limited, all rights reserved.<br />
 © Copyright 2015-2017 Smart Contract Solutions Inc., all rights reserved.
+
+[poexio/poex-news]: https://github.com/poexio/poex-news
