@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+* Link to /news page, which should be served by poex-news.
+
 ### Changed
 
 * Serve vendored assets from public directory.
