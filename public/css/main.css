@@ -186,6 +186,69 @@ h1, h2, h3, h4, h5, h6, .sidebar, .navbar, .nav p, .logo, .logo a, .brand, .navb
   opacity: 0.25;
 }
 
+/* paper-kit pagination */
+
+.pagination > li > a,
+.pagination > li > span,
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  background-color: transparent;
+  border: 2px solid #66615B;
+  border-radius: 20px;
+  color: #66615B;
+  height: 36px;
+  margin: 0 2px;
+  min-width: 36px;
+  padding: 5px 12px;
+}
+
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > a:active,
+.pagination > li.active > a,
+.pagination > li.active > span,
+.pagination > li.active > a:hover,
+.pagination > li.active > span:hover,
+.pagination > li.active > a:focus,
+.pagination > li.active > span:focus {
+  background-color: #66615B;
+  border-color: #66615B;
+  color: #FFFFFF;
+}
+
+.pagination-primary > li > a,
+.pagination-primary > li > span,
+.pagination-primary > li:first-child > a,
+.pagination-primary > li:first-child > span,
+.pagination-primary > li:last-child > a,
+.pagination-primary > li:last-child > span {
+  border: 2px solid #7A9E9F;
+  color: #7A9E9F;
+}
+
+.pagination-primary > li > a:hover,
+.pagination-primary > li > a:focus,
+.pagination-primary > li > a:active,
+.pagination-primary > li.active > a,
+.pagination-primary > li.active > span,
+.pagination-primary > li.active > a:hover,
+.pagination-primary > li.active > span:hover,
+.pagination-primary > li.active > a:focus,
+.pagination-primary > li.active > span:focus {
+  background-color: #7A9E9F;
+  border-color: #7A9E9F;
+  color: #FFFFFF;
+}
+
+.pagination-primary > li:first-child > span,
+.pagination-primary > li:last-child > span {
+  background-color: #7A9E9F;
+  border-color: #7A9E9F;
+  color: #FFFFFF;
+}
+
 /* themify icons */
 
 [class^="ti-"], [class*=" ti-"] {
