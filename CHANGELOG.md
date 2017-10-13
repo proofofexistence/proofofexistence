@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.4.0] - 2017-10-13
+
 ### Added
 
 * Link to /news page, which should be served by poex-news.
