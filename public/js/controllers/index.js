@@ -102,9 +102,10 @@ $(document).ready(function() {
           badge = '<span class="label label-success">✔</span>';
         }
         var timestamp = obj.pending ? obj.timestamp : obj.blockstamp;
+        var displayTime = moment(timestamp).format("YYYY-MM-DD HH:mm:ss");
         items.push('<tr><td>' + badge + '</td><td><a href="./detail/' + obj.digest +
           '">' + obj.digest +
-          '</a></td><td> ' + timestamp + '</td></tr>');
+          '</a></td><td> ' + displayTime + '</td></tr>');
       });
 
       table.empty();
