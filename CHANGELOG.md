@@ -3,6 +3,7 @@
 ### Changed
 
 * Return more transactions from blockcypher API
+* Stop serving vendored libs from node
 
 ## [1.4.0] - 2017-10-13
 
