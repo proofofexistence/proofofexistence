@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.5.0] - 2017-10-20
+
 ### Changed
 
 * Return more transactions from blockcypher API
