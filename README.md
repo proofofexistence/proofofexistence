@@ -79,6 +79,25 @@ Run the app in test mode with:
 NODE_ENV=test npm run watch
 ```
 
+#### ngrok
+
+To test all functionality, the test app running locally needs to be able to
+receive web hook requests from the Internet.
+
+Sign up for an [ngrok](https://ngrok.com) account, download the client, and
+connect it to your account. Run `ngrok` with the port from your `.env.test`
+file:
+
+```sh
+ngrok http 3003
+```
+
+Note the "Forwarding" address and run the app with:
+
+```sh
+NODE_ENV=test HOST=xxxxxxxx.ngrok.io HOST_SCHEME=https HOST_PORT=443 npm run watch
+```
+
 ### Production
 
 Build the app:
