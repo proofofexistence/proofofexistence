@@ -65,6 +65,20 @@ npm run watch
 
 The app will be listening at http://localhost:3003/.
 
+### Testing
+
+To run the app in test mode, create a `.env.test` file with the desired
+configuration.
+
+You must use a **Testnet3 wallet** for the public and private keys. It is
+recommended to change the database path to a `/tmp` location.
+
+Run the app in test mode with:
+
+```sh
+NODE_ENV=test npm run watch
+```
+
 ### Production
 
 Build the app:
