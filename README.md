@@ -47,8 +47,6 @@ Edit `.env` for environment variables. All values are **required**.
 * `MAIL_TO` - Email address to send notifications to.
 * `GMAIL_USER` - GMail account for sending notifications.
 * `GMAIL_PASS` - Gmail password for sending notifications.
-* `GOOGLE_TRACKING_ID` - Google Analytics tracking ID.
-* `ENABLE_GOOGLE_ANALYTICS` - `true` or `false`
 
 Any environment variables that are set when the app is run will override the
 values in the `.env` file.
