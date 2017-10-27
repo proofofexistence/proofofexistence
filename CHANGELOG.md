@@ -1,5 +1,16 @@
 ## [Unreleased]
 
+## [1.6.0] - 2017-10-27
+
+### Added
+
+* Environment specific `.env` files
+* Mode for running in test environment with testnet
+
+### Changed
+
+* Dropped Google Analytics
+
 ## [1.5.0] - 2017-10-20
 
 ### Changed
