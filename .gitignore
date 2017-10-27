@@ -7,4 +7,4 @@ public/vendor
 log/
 dist/
 server.pid
-.env
+.env*

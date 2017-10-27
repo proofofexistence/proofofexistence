@@ -65,6 +65,39 @@ npm run watch
 
 The app will be listening at http://localhost:3003/.
 
+### Testing
+
+To run the app in test mode, create a `.env.test` file with the desired
+configuration.
+
+You must use a **Testnet3 wallet** for the public and private keys. It is
+recommended to change the database path to a `/tmp` location.
+
+Run the app in test mode with:
+
+```sh
+NODE_ENV=test npm run watch
+```
+
+#### ngrok
+
+To test all functionality, the test app running locally needs to be able to
+receive web hook requests from the Internet.
+
+Sign up for an [ngrok](https://ngrok.com) account, download the client, and
+connect it to your account. Run `ngrok` with the port from your `.env.test`
+file:
+
+```sh
+ngrok http 3003
+```
+
+Note the "Forwarding" address and run the app with:
+
+```sh
+NODE_ENV=test HOST=xxxxxxxx.ngrok.io HOST_SCHEME=https HOST_PORT=443 npm run watch
+```
+
 ### Production
 
 Build the app:
