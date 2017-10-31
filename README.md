@@ -98,6 +98,19 @@ Note the "Forwarding" address and run the app with:
 NODE_ENV=test HOST=xxxxxxxx.ngrok.io HOST_SCHEME=https HOST_PORT=443 npm run watch
 ```
 
+#### Test Certifications
+
+Finally, to certify a document on the testnet blockchain:
+
+1. Create a `.env.test` file with all your configuration
+1. Set up a new testnet wallet and note down the Private Key WIF
+1. Fund the testnet wallet, e.g. using a Bitcoin testnet3 faucet
+1. Run the app locally in test mode, with ngrok active
+1. Submit a document hash to the running app on localhost
+1. Note down the target address for payment
+1. Send payment with `node test/payment.js PRIVATE_KEY_WIF TARGET_ADDRESS`
+1. Wait for the transaction to be confirmed on testnet blockchain
+
 ### Production
 
 Build the app:
