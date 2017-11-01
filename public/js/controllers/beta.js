@@ -115,8 +115,8 @@ $(document).ready(function() {
       var clz = '';
       var in_blockchain = !data.pending && data.tx && data.tx.length > 1;
       var img_src = '';
-      var txURL = 'https://www.blocktrail.com/' +
-        (data.network === 'testnet' ? 't' : '') + 'BTC/tx/' +
+      var txURL = 'https://live.blockcypher.com/' +
+        (data.network === 'testnet' ? 'btc-testnet' : 'btc') + '/tx/' +
         data.tx;
       if (in_blockchain) {
         console.log('in blockchain');
