@@ -1,5 +1,17 @@
 ## [Unreleased]
 
+## [1.6.1] - 2017-11-03
+
+### Added
+
+* Add helper script for making testnet payments
+
+### Changed
+
+* Link admin emails to tBTC transactions in test mode
+* Replace BlockTrail links with BlockCypher
+* Fix order of API access chart
+
 ## [1.6.0] - 2017-10-27
 
 ### Added
