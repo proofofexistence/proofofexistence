@@ -1,6 +1,6 @@
 {
   "name": "poe",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "server.js",
   "scripts": {

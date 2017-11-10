@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+## [1.6.2] - 2017-11-10
+
+### Added
+
+* Add charts for web access
+* Keep track of weekly API access performance
+* Added doc link for test.poex.io
+
 ## [1.6.1] - 2017-11-03
 
 ### Added
