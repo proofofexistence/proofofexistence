@@ -2,7 +2,7 @@
   "name": "poe",
   "version": "1.6.2",
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
-  "main": "server.js",
+  "main": "lib/server.js",
   "scripts": {
     "build": "npm run build:lib && npm run build:modernizr && ./scripts/vendor.sh",
     "build:lib": "babel lib --out-dir dist --copy-files",
