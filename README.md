@@ -67,6 +67,12 @@ The app will be listening at http://localhost:3003/.
 
 ### Testing
 
+```sh
+npm test
+```
+
+### Development
+
 To run the app in test mode, create a `.env.test` file with the desired
 configuration.
 
