@@ -148,6 +148,14 @@ npm run build
 sudo service poex_prod restart
 ```
 
+### Webhooks
+
+Webhooks can be purged by running:
+
+```sh
+node purge.js
+```
+
 ### News
 
 The `/news` route should be handled by [poexio/poex-news]. This can be
