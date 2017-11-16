@@ -15,7 +15,7 @@ var documentPrice = parseInt(process.env.DOCUMENT_PRICE)
 var privateKey = bitcore.PrivateKey.fromWIF(privateKeyWIF)
 var sourceAddress = privateKey.toAddress(bitcore.Networks.testnet)
 
-insight.getUnspentUtxos(sourceAddress, function(error, utxos) {
+insight.getUnspentUtxos(sourceAddress, function (error, utxos) {
   if (error) {
     console.log(error)
   } else {
@@ -28,7 +28,7 @@ insight.getUnspentUtxos(sourceAddress, function(error, utxos) {
     tx.sign(privateKey)
     tx.serialize()
 
-    insight.broadcast(tx, function(error, transactionId) {
+    insight.broadcast(tx, function (error, transactionId) {
       if (error) {
         console.log(error)
       } else {

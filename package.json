@@ -13,6 +13,7 @@
     "postinstall": "npm run clean:vendor && npm run install:vendor",
     "serve": "npm run start",
     "start": "node lib/server.js",
+    "test": "standard 'lib/**/*.js'",
     "watch": "nodemon -e js,hbs --exec npm start"
   },
   "repository": {
@@ -53,6 +54,7 @@
   },
   "devDependencies": {
     "nodemon": "^1.12.0",
+    "standard": "^10.0.3",
     "vinyl-source-stream": "^1.1.0"
   }
 }
