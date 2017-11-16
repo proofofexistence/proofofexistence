@@ -4,17 +4,15 @@
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "lib/server.js",
   "scripts": {
-    "build": "npm run build:lib && npm run build:modernizr && ./scripts/vendor.sh",
-    "build:lib": "babel lib --out-dir dist --copy-files",
+    "build": "npm run build:modernizr && ./scripts/vendor.sh",
     "build:modernizr": "modernizr --config modernizr-config.json --dest public/vendor/modernizr.js",
-    "clean": "npm run clean:dist && npm run clean:vendor",
-    "clean:dist": "rm -Rf dist",
+    "clean": "npm run clean:vendor",
     "clean:vendor": "rm -Rf assets/vendor && rm -Rf public/vendor",
     "install:paper": "git clone --depth 1 https://github.com/creativetimofficial/paper-dashboard.git assets/vendor/paper-dashboard",
     "install:vendor": "npm run install:paper",
     "postinstall": "npm run clean:vendor && npm run install:vendor",
-    "serve": "node dist/server.js",
-    "start": "babel-node lib/server.js",
+    "serve": "npm run start",
+    "start": "node lib/server.js",
     "watch": "nodemon -e js,hbs --exec npm start"
   },
   "repository": {
@@ -54,10 +52,6 @@
     "sprintf-js": "^1.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^6.3.0",
-    "browserify": "^11.1.0",
     "nodemon": "^1.12.0",
     "vinyl-source-stream": "^1.1.0"
   }

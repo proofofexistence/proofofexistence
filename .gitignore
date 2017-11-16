@@ -5,6 +5,5 @@ database
 assets/vendor
 public/vendor
 log/
-dist/
 server.pid
 .env*
