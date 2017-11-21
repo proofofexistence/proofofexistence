@@ -40,6 +40,8 @@ Edit `.env` for environment variables. All values are **required**.
 * `DOCUMENT_PRICE` - Document certification price in satoshis.
 * `SIGN_PRICE` - Document signing price in satoshis.
 * `BLOCKCYPHER_TOKEN` - BlockCypher API token.
+* `BITCOIN_NETWORK` - Default bitcoin network for Bitcore. Options are `livenet`
+  or `testnet`.
 * `BITCOIN_HD_PRIVATE_KEY` - HD wallet private key for generating addresses.
 * `BITCOIN_HD_PUBLIC_KEY` - HD wallet public key for receiving payments.
 * `MAGIC_NUMBER` - Token for some private API routes.
