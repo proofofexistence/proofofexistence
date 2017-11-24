@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+## [1.7.0] - 2017-11-24
+
+### Changed
+
+* Calculate mining stats from Slushpool
+* Dropped usage of babel-node
+* Make bitcoin network configurable
+
 ## [1.6.2] - 2017-11-10
 
 ### Added
