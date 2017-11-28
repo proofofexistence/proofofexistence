@@ -170,6 +170,31 @@ location /news {
 }
 ```
 
+## Extracting funds
+
+To extract the funds from the app you should:
+
+1. From the project's root directory, run:
+
+  ```sh
+  curl -X POST https://poex.io/sweep/$MAGIC_NUMBER > tool/data-DD-MM-YYYY.txt
+  ```
+
+Change the date in the file name each time you run it.
+
+2. Run
+
+  ```
+  babel-node tool/sweep.js
+  ```
+
+When prompted, enter these:
+
+* xpriv - private HD key
+* xpub - public HD key
+* file - the `tool/data-DD-MM-YYYY.txt` file generated in step 1
+* address - bitcoin address where you want to send funds to
+
 ## License
 
 © Copyright 2017 PoEx Limited, all rights reserved.<br />
