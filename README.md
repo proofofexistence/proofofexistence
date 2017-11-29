@@ -139,6 +139,28 @@ To clean up:
 npm run clean
 ```
 
+### Service
+
+The app can be run as a systemd service with a startup script such as:
+
+```
+[Unit]
+Description=Poex prod
+After=network.target
+
+[Service]
+WorkingDirectory=/home/ubuntu/poex/
+Environment="NODE_ENV=production"
+Environment="PORT=3003"
+Type=simple
+User=ubuntu
+ExecStart=/usr/bin/node /home/ubuntu/poex/lib/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
 ### Deployment
 
 ```sh
