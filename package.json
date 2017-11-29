@@ -12,6 +12,7 @@
     "install:vendor": "npm run install:paper",
     "postinstall": "npm run clean:vendor && npm run install:vendor",
     "serve": "npm run start",
+    "setup": "node lib/setup.js",
     "start": "node lib/server.js",
     "test": "standard 'lib/**/*.js'",
     "watch": "nodemon -e js,hbs --exec npm start"

@@ -27,7 +27,7 @@ npm install
 #### Configuration
 
 ```sh
-node setup.js
+npm run setup
 ```
 
 Edit `.env` for environment variables. All values are **required**.
