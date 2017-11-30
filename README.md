@@ -62,7 +62,7 @@ npm run build
 ### Running
 
 ```sh
-npm run watch
+npm start
 ```
 
 The app will be listening at http://localhost:3003/.
