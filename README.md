@@ -75,21 +75,21 @@ npm test
 
 ### Development
 
-To run the app in test mode, create a `.env.test` file with the desired
+To run the app in development mode, create a `.env.dev` file with the desired
 configuration.
 
 You must use a **Testnet3 wallet** for the public and private keys. It is
 recommended to change the database path to a `/tmp` location.
 
-Run the app in test mode with:
+Run the app in dev mode with:
 
 ```sh
-NODE_ENV=test npm run watch
+NODE_ENV=dev npm run watch
 ```
 
 #### ngrok
 
-To test all functionality, the test app running locally needs to be able to
+To test all functionality, the dev app running locally needs to be able to
 receive web hook requests from the Internet.
 
 Sign up for an [ngrok](https://ngrok.com) account, download the client, and
@@ -103,17 +103,17 @@ ngrok http 3003
 Note the "Forwarding" address and run the app with:
 
 ```sh
-NODE_ENV=test HOST=xxxxxxxx.ngrok.io HOST_SCHEME=https HOST_PORT=443 npm run watch
+NODE_ENV=dev HOST=xxxxxxxx.ngrok.io HOST_SCHEME=https HOST_PORT=443 npm run watch
 ```
 
 #### Test Certifications
 
 Finally, to certify a document on the testnet blockchain:
 
-1. Create a `.env.test` file with all your configuration
+1. Create a `.env.dev` file with all your configuration
 1. Set up a new testnet wallet and note down the Private Key WIF
 1. Fund the testnet wallet, e.g. using a Bitcoin testnet3 faucet
-1. Run the app locally in test mode, with ngrok active
+1. Run the app locally in dev mode, with ngrok active
 1. Submit a document hash to the running app on localhost
 1. Note down the target address for payment
 1. Send payment with `node test/payment.js PRIVATE_KEY_WIF TARGET_ADDRESS`
