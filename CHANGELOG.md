@@ -1,5 +1,16 @@
 ## [Unreleased]
 
+# 1.8.0 - 2017-12-01
+
+### Changed
+
+* Restore babel packages
+* Base mining pool update time on user hashrate
+* Document sweep script
+* Show test messsage only if not using livenet
+* Move setup script to npm command
+* Remove deprecated start script
+
 ## [1.7.0] - 2017-11-24
 
 ### Changed
