@@ -25,6 +25,7 @@ insight.getUnspentUtxos(sourceAddress, function (error, utxos) {
     tx.from(utxos)
     tx.to(targetAddress, documentPrice)
     tx.change(sourceAddress)
+    tx.fee(50000)
     tx.sign(privateKey)
     tx.serialize()
 
