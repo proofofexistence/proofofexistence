@@ -50,12 +50,14 @@ $(document).ready(function() {
       timestamp.html(times);
       var msg = '';
       var clz = '';
-      var in_blockchain = !data.pending && data.tx && data.tx.length > 1;
+      var has_tx = data.tx && data.tx.length > 1;
+      var has_blockstamp = data.blockstamp && data.blockstamp.length > 1;
+      var is_confirmed = !data.pending && has_tx && has_blockstamp;
       var img_src = '';
       var txURL = 'https://live.blockcypher.com/' +
         (data.network === 'testnet' ? 'btc-testnet' : 'btc') + '/tx/' +
         data.tx;
-      if (in_blockchain) {
+      if (is_confirmed) {
         console.log('in blockchain');
         msg = translate('Document proof embedded in the Bitcoin blockchain!');
         clz = 'alert-success';
