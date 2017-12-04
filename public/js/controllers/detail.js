@@ -73,6 +73,7 @@ $(document).ready(function() {
           'the bitcoin transaction is confirmed by the network.');
         clz = 'alert-warn';
         img_src = 'wait.png';
+        tx.html('<a href="' + txURL + '"> ' + translate('Transaction') + ' ' + data.tx + '</a>');
         confirmed_message.hide();
         confirming_message.show();
         certify_message.hide();
