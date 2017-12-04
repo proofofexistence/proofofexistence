@@ -76,6 +76,7 @@ $(document).ready(function() {
         confirmed_message.hide();
         confirming_message.show();
         certify_message.hide();
+        setTimeout(askDetails, 5000);
       } else {
         console.log('registered');
         msg = translate('Document proof not yet embedded in the bitcoin blockchain.');
