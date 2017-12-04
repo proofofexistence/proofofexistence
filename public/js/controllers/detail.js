@@ -9,7 +9,7 @@ $(document).ready(function() {
   var certify_message = $('#certify_message');
   var confirmed_message = $('#confirmed_message');
   var confirming_message = $('#confirming_message');
-  var tx = $('#tx');
+  var tx = $('.tx');
   var plink = $('#payment_link');
   var qrcode;
 
