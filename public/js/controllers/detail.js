@@ -9,7 +9,7 @@ $(document).ready(function() {
   var certify_message = $('#certify_message');
   var confirmed_message = $('#confirmed_message');
   var confirming_message = $('#confirming_message');
-  var tx = $('#tx');
+  var tx = $('.tx');
   var plink = $('#payment_link');
   var qrcode;
 
@@ -50,12 +50,15 @@ $(document).ready(function() {
       timestamp.html(times);
       var msg = '';
       var clz = '';
-      var in_blockchain = !data.pending && data.tx && data.tx.length > 1;
+      var has_tx = data.tx && data.tx.length > 1;
+      var has_blockstamp = data.blockstamp && data.blockstamp.length > 1;
+      var is_unconfirmed = !data.pending && has_tx;
+      var is_confirmed = !data.pending && has_tx && has_blockstamp;
       var img_src = '';
       var txURL = 'https://live.blockcypher.com/' +
         (data.network === 'testnet' ? 'btc-testnet' : 'btc') + '/tx/' +
         data.tx;
-      if (in_blockchain) {
+      if (is_confirmed) {
         console.log('in blockchain');
         msg = translate('Document proof embedded in the Bitcoin blockchain!');
         clz = 'alert-success';
@@ -64,15 +67,17 @@ $(document).ready(function() {
         confirmed_message.show();
         confirming_message.hide();
         certify_message.hide();
-      } else if (!data.pending) {
+      } else if (is_unconfirmed) {
         console.log('payment processing');
         msg = translate('Payment being processed. Please wait while ' +
           'the bitcoin transaction is confirmed by the network.');
         clz = 'alert-warn';
         img_src = 'wait.png';
+        tx.html('<a href="' + txURL + '"> ' + translate('Transaction') + ' ' + data.tx + '</a>');
         confirmed_message.hide();
         confirming_message.show();
         certify_message.hide();
+        setTimeout(askDetails, 5000);
       } else {
         console.log('registered');
         msg = translate('Document proof not yet embedded in the bitcoin blockchain.');
