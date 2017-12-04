@@ -52,6 +52,7 @@ $(document).ready(function() {
       var clz = '';
       var has_tx = data.tx && data.tx.length > 1;
       var has_blockstamp = data.blockstamp && data.blockstamp.length > 1;
+      var is_unconfirmed = !data.pending && has_tx;
       var is_confirmed = !data.pending && has_tx && has_blockstamp;
       var img_src = '';
       var txURL = 'https://live.blockcypher.com/' +
@@ -66,7 +67,7 @@ $(document).ready(function() {
         confirmed_message.show();
         confirming_message.hide();
         certify_message.hide();
-      } else if (!data.pending) {
+      } else if (is_unconfirmed) {
         console.log('payment processing');
         msg = translate('Payment being processed. Please wait while ' +
           'the bitcoin transaction is confirmed by the network.');
