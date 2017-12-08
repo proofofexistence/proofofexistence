@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+# 1.8.1 - 2017-12-08
+
+### Changed
+
+* Wait for tx confirmation before showing proof message
+* Link proof waiting message to transaction
+* Remove incomplete weeks from web/api charts
+
 # 1.8.0 - 2017-12-01
 
 ### Changed
