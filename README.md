@@ -207,12 +207,11 @@ Change the date in the file name each time you run it.
 2. Run
 
   ```
-  babel-node tool/sweep.js
+  npm run sweep
   ```
 
 When prompted, enter these:
 
-* hdPrivateKey - private HD key
 * file - the `tool/data-DD-MM-YYYY.txt` file generated in step 1
 * address - bitcoin address where you want to send funds to
 
