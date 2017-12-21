@@ -15,7 +15,7 @@
     "setup": "node lib/setup.js",
     "start": "node lib/server.js",
     "sweep": "node lib/sweep.js",
-    "test": "standard 'lib/**/*.js'",
+    "test": "mocha && standard 'lib/**/*.js'",
     "watch": "nodemon -e js,hbs --exec npm start"
   },
   "repository": {
