@@ -34,5 +34,5 @@ describe('/GET latest confirmed', () => {
 })
 
 after(() => {
-  server.stop()
+  server.destroy()
 })
