@@ -69,6 +69,11 @@ The app will be listening at http://localhost:3003/.
 
 ### Testing
 
+Create a `.env.test` file with the desired configuration. It is recommended to
+change the database path to a `/tmp` location.
+
+Run the tests with:
+
 ```sh
 npm test
 ```
