@@ -57,6 +57,7 @@ describe('register a document', () => {
         expect(status.digest).to.equal(digest)
         expect(status.payment_address).to.equal(register.pay_address)
         expect(status.payment_amount).to.equal(expected_price_btc)
+        expect(status.price).to.equal(expected_price_satoshi)
         expect(status.network).to.equal(expected_network)
         expect(status.timestamp).to.be.a('string')
         expect(status.txstamp).to.be.a('string')
