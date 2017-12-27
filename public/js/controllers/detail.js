@@ -55,6 +55,7 @@ $(document).ready(function() {
       var is_unconfirmed = !data.pending && has_tx;
       var is_confirmed = !data.pending && has_tx && has_blockstamp;
       var img_src = '';
+      var payment_amount = 0;
       var txURL = 'https://live.blockcypher.com/' +
         (data.network === 'testnet' ? 'btc-testnet' : 'btc') + '/tx/' +
         data.tx;
@@ -83,7 +84,8 @@ $(document).ready(function() {
         msg = translate('Document proof not yet embedded in the bitcoin blockchain.');
         clz = 'alert-danger';
         img_src = 'warn.png';
-        var uri = 'bitcoin:' + data.payment_address + '?amount=' + data.payment_amount;
+        payment_amount = btcConvert(data.price, 'Satoshi', 'BTC')
+        var uri = 'bitcoin:' + data.payment_address + '?amount=' + payment_amount;
         if (!qrcode) {
           qrcode = new QRCode('qr', {
             text: uri,
