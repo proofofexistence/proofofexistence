@@ -27,6 +27,7 @@
   "private": true,
   "dependencies": {
     "animate.css": "^3.5.2",
+    "bitcoin-convert": "^1.0.4",
     "bitcore": "^0.13.3",
     "bitcore-explorers": "^0.12.0",
     "blockcypher": "^0.2.0",

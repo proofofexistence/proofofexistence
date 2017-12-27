@@ -9,3 +9,4 @@ cp -R node_modules/openpgp/dist public/vendor/openpgp
 cp -R node_modules/qrcodejs public/vendor/qrcodejs
 cp -R node_modules/clipboard/dist public/vendor/clipboard
 cp -R node_modules/moment/min public/vendor/moment
+cp node_modules/bitcoin-convert/dist/bitcoin-convert.min.js public/vendor
