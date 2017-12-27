@@ -18,7 +18,6 @@ describe('register a document', () => {
   var register
 
   expected_price_satoshi = config.DOCUMENT_PRICE
-  expected_price_btc = Unit.fromSatoshis(config.DOCUMENT_PRICE).toBTC()
   expected_network = bitcore.Networks.defaultNetwork.name
 
   it('it should return payment details', (done) => {
@@ -56,7 +55,6 @@ describe('register a document', () => {
         expect(status.pending).to.equal(true)
         expect(status.digest).to.equal(digest)
         expect(status.payment_address).to.equal(register.pay_address)
-        expect(status.payment_amount).to.equal(expected_price_btc)
         expect(status.price).to.equal(expected_price_satoshi)
         expect(status.network).to.equal(expected_network)
         expect(status.timestamp).to.be.a('string')
