@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+# 1.8.2 - 2018-01-03
+
+### Changed
+
+* Increase transaction fee security margin and fee per kb
+
 # 1.8.1 - 2017-12-08
 
 ### Changed
