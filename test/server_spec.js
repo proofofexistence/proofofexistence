@@ -10,6 +10,7 @@ var bitcore = require('bitcore')
 var Unit = bitcore.Unit
 
 const config = require('config')
+const db = require('../lib/db')
 const server = require('../lib/server')
 const request = chai.request(server)
 
@@ -90,5 +91,6 @@ describe('/GET latest confirmed', () => {
 })
 
 after(() => {
-  server.destroy()
+  server.stop()
+  db.destroy()
 })
