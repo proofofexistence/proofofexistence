@@ -9,7 +9,7 @@ chai.use(chaiHttp)
 var bitcore = require('bitcore')
 var Unit = bitcore.Unit
 
-const config = require('../lib/config')
+const config = require('config')
 const server = require('../lib/server')
 const request = chai.request(server)
 
@@ -17,7 +17,7 @@ describe('register a document', () => {
   var digest = '15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832'
   var register
 
-  expected_price_satoshi = config.DOCUMENT_PRICE
+  expected_price_satoshi = config.get('DOCUMENT_PRICE')
   expected_network = bitcore.Networks.defaultNetwork.name
 
   it('it should return payment details', (done) => {
