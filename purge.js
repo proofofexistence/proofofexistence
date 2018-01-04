@@ -1,11 +1,11 @@
 'use strict'
 
 var bcypher = require('blockcypher')
-var config = require('./lib/config')
+var config = require('config')
 
 var MAX_HOOKS = 120
 var BCypher = bcypher
-var bcapi = new BCypher('btc', config.networkName, config.BLOCKCYPHER_TOKEN)
+var bcapi = new BCypher('btc', config.get('networkName'), config.get('BLOCKCYPHER_TOKEN'))
 function printResponse (err, data) {
   if (err !== null) {
     console.log(err)

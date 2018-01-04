@@ -1,5 +1,6 @@
 'use strict'
 
+const raw = require('config/raw').raw
 var dotenv = require('dotenv')
 var bitcore = require('bitcore')
 var fs = require('fs')
@@ -40,12 +41,13 @@ if (bitcoinNetwork) {
  */
 
 config.BLOCKCYPHER_TOKEN = process.env.BLOCKCYPHER_TOKEN
+
 config.MAGIC_NUMBER = process.env.MAGIC_NUMBER
 
 config.FEE_MULTIPLIER = 2
 
-config.BASE_PRIVATE_KEY = new bitcore.HDPrivateKey(process.env.BITCOIN_HD_PRIVATE_KEY)
-config.TARGET_PAYMENT_ADDRESS = new bitcore.HDPublicKey(process.env.BITCOIN_HD_PUBLIC_KEY)
+config.BASE_PRIVATE_KEY = raw(new bitcore.HDPrivateKey(process.env.BITCOIN_HD_PRIVATE_KEY))
+config.TARGET_PAYMENT_ADDRESS = raw(new bitcore.HDPublicKey(process.env.BITCOIN_HD_PUBLIC_KEY))
 
 /**
  * Configure prices.
