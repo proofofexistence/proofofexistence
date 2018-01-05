@@ -38,8 +38,75 @@ function confirmedTxHook (body, token) {
   }
 }
 
+function unconfirmedTx (address) {
+  return {
+    block_height: -1,
+    block_index: -1,
+    hash: "8ee19f29d2b33440d4ebafd981342024edaad9c704f08e78c8e3434eecc8c20d",
+    addresses: [
+      address,
+      "mug8RpLkkPjv56gSXKxckXNo1Hez5yjYxt"
+    ],
+    total: 118980000,
+    fees: 50000,
+    ver: 1,
+    double_spend: false,
+    confirmations: 0,
+    inputs: [
+      {
+        output_value: 119030000,
+        addresses: [
+          "mug8RpLkkPjv56gSXKxckXNo1Hez5yjYxt"
+        ],
+      }
+    ],
+    outputs: [
+      {
+        value: 200000,
+        addresses: [
+          address
+        ],
+      },
+      {
+        value: 118780000,
+        addresses: [
+          "mug8RpLkkPjv56gSXKxckXNo1Hez5yjYxt"
+        ],
+      }
+    ]
+  }
+}
+
+function addressFull (address) {
+  return  {
+    address: address,
+    total_received: 0,
+    total_sent: 0,
+    balance: 0,
+    unconfirmed_balance: 200000,
+    final_balance: 200000,
+    n_tx: 0,
+    unconfirmed_n_tx: 0,
+    final_n_tx: 0,
+    txs: [
+      unconfirmedTx(address)
+    ]
+  }
+}
+
+function txPush () {
+  return {
+    tx: {
+      hash: "c0646857029f58834b84fafe17a3f15eb455d265a7b555ee2faca6e2069ce56a"
+    }
+  }
+}
+
 module.exports = {
   index: index,
   unconfirmedTxHook: unconfirmedTxHook,
-  confirmedTxHook: confirmedTxHook
+  confirmedTxHook: confirmedTxHook,
+  unconfirmedTx: unconfirmedTx,
+  addressFull: addressFull,
+  txPush: txPush
 }

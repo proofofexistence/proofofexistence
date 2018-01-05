@@ -19,6 +19,7 @@ const btc = require('./fixtures/btc')
 
 const networkName = config.get('networkName')
 const blockcypherToken = config.get('BLOCKCYPHER_TOKEN')
+const magicNumber = config.get('MAGIC_NUMBER')
 
 describe('register a document', () => {
   beforeEach(() => {
@@ -43,6 +44,24 @@ describe('register a document', () => {
       .reply(201, ((uri, body) => {
         return btc.confirmedTxHook(body, blockcypherToken)
       }))
+
+    addrsRegex = /\/v1\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
+    explorer.get(addrsRegex)
+      .query({token: blockcypherToken, limit: 50, txlimit: 2000})
+      .reply(200, ((uri) => {
+        address = uri.match(addrsRegex)[1]
+        return btc.addressFull(address)
+      }), {
+        'Content-Type': 'application/json'
+      })
+
+    explorer.post(`/v1/btc/${networkName}/txs/push`)
+      .query({token: blockcypherToken})
+      .reply(200, ((uri, body) => {
+        return btc.txPush()
+      }), {
+        'Content-Type': 'application/json'
+      })
   })
 
   var digest = '15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832'
@@ -91,6 +110,18 @@ describe('register a document', () => {
         expect(status.timestamp).to.be.a('string')
         expect(status.txstamp).to.be.a('string')
         expect(status.blockstamp).to.be.a('string')
+        done()
+      })
+  })
+
+  it('it should process an unconfirmed tx webhook', (done) => {
+    request
+      .post(`/unconfirmed/${magicNumber}/${register.pay_address}`)
+      .type('application/json')
+      .send(btc.unconfirmedTx(register.pay_address))
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res).to.have.status(200)
         done()
       })
   })
