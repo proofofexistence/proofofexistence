@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'test'
 var chai = require('chai')
 var chaiHttp = require('chai-http')
 var expect = chai.expect
+var nock = require('nock')
 
 chai.use(chaiHttp)
 
@@ -14,7 +15,36 @@ const db = require('../lib/db')
 const server = require('../lib/server')
 const request = chai.request(server)
 
+const btc = require('./fixtures/btc')
+
+const networkName = config.get('networkName')
+const blockcypherToken = config.get('BLOCKCYPHER_TOKEN')
+
 describe('register a document', () => {
+  beforeEach(() => {
+    var explorer = nock('https://api.blockcypher.com')
+
+    explorer.get(`/v1/btc/${networkName}`)
+      .query({token: blockcypherToken})
+      .reply(200, btc.index)
+
+    explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
+      return body.event === 'unconfirmed-tx'
+    }))
+      .query({token: blockcypherToken})
+      .reply(201, ((uri, body) => {
+        return btc.unconfirmedTxHook(body, blockcypherToken)
+      }))
+
+    explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
+      return body.event === 'confirmed-tx'
+    }))
+      .query({token: blockcypherToken})
+      .reply(201, ((uri, body) => {
+        return btc.confirmedTxHook(body, blockcypherToken)
+      }))
+  })
+
   var digest = '15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832'
   var register
 
