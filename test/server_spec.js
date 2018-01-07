@@ -22,47 +22,6 @@ const blockcypherToken = config.get('BLOCKCYPHER_TOKEN')
 const magicNumber = config.get('MAGIC_NUMBER')
 
 describe('register a document', () => {
-  beforeEach(() => {
-    var explorer = nock('https://api.blockcypher.com')
-
-    explorer.get(`/v1/btc/${networkName}`)
-      .query({token: blockcypherToken})
-      .reply(200, btc.index)
-
-    explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
-      return body.event === 'unconfirmed-tx'
-    }))
-      .query({token: blockcypherToken})
-      .reply(201, ((uri, body) => {
-        return btc.unconfirmedTxHook(body, blockcypherToken)
-      }))
-
-    explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
-      return body.event === 'confirmed-tx'
-    }))
-      .query({token: blockcypherToken})
-      .reply(201, ((uri, body) => {
-        return btc.confirmedTxHook(body, blockcypherToken)
-      }))
-
-    addrsRegex = /\/v1\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
-    explorer.get(addrsRegex)
-      .query({token: blockcypherToken, limit: 50, txlimit: 2000})
-      .reply(200, ((uri) => {
-        address = uri.match(addrsRegex)[1]
-        return btc.addressFull(address)
-      }), {
-        'Content-Type': 'application/json'
-      })
-
-    explorer.post(`/v1/btc/${networkName}/txs/push`)
-      .query({token: blockcypherToken})
-      .reply(200, ((uri, body) => {
-        return btc.txPush()
-      }), {
-        'Content-Type': 'application/json'
-      })
-  })
 
   var digest = '15db6dbff590000ea13246e1c166802b690663c4e0635bfca78049d5a8762832'
   var register
@@ -149,6 +108,48 @@ describe('/GET latest confirmed', () => {
         done()
       })
   })
+})
+
+before(() => {
+  var explorer = nock('https://api.blockcypher.com', {allowUnmocked: false})
+
+  explorer.get(`/v1/btc/${networkName}`)
+    .query({token: blockcypherToken})
+    .reply(200, btc.index)
+
+  explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
+    return body.event === 'unconfirmed-tx'
+  }))
+    .query({token: blockcypherToken})
+    .reply(201, ((uri, body) => {
+      return btc.unconfirmedTxHook(body, blockcypherToken)
+    }))
+
+  explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
+    return body.event === 'confirmed-tx'
+  }))
+    .query({token: blockcypherToken})
+    .reply(201, ((uri, body) => {
+      return btc.confirmedTxHook(body, blockcypherToken)
+    }))
+
+  addrsRegex = /\/v1\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
+  explorer.get(addrsRegex)
+    .query({token: blockcypherToken, limit: 50, txlimit: 2000})
+    .reply(200, ((uri) => {
+      address = uri.match(addrsRegex)[1]
+      return btc.addressFull(address)
+    }), {
+      'Content-Type': 'application/json'
+    })
+
+  explorer.post(`/v1/btc/${networkName}/txs/push`)
+    .query({token: blockcypherToken})
+    .reply(200, ((uri, body) => {
+      return btc.txPush()
+    }), {
+      'Content-Type': 'application/json'
+    })
 })
 
 after(() => {
