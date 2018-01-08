@@ -13,14 +13,31 @@ An online service to prove the existence of documents
 - Follow guide https://treehouse.github.io/installation-guides/mac/node-mac.html
 - Ready!
 
+#### Docker
+
+- Install Docker CE: https://docs.docker.com/engine/installation/
+- Build docker-node (`Only build it once`)
+
+Download [Dockerfile](./Dockerfile), then build it in the same path
+
 ```sh
-git clone git@github.com:poexio/proofofexistence.git
-cd proofofexistence
+docker build -t docker-node .
+```
+
+- Start docker-node as daemon
+```sh
+docker run -d -i --rm --name docker-node -p 3003:3003 docker-node
+```
+- Attach to the docker-node
+```
+docker exec --user node -w /home/node -ti docker-node bash
 ```
 
 ### Installation
 
 ```sh
+git clone git@github.com:poexio/proofofexistence.git
+cd proofofexistence
 npm install
 ```
 
