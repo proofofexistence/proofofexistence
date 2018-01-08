@@ -77,6 +77,45 @@ function unconfirmedTx (address) {
   }
 }
 
+function confirmedTx (address) {
+  return {
+    block_height: 1257491,
+    block_index: 53,
+    hash: "24852ec70736688248cb7b7813b5c2d929a76ad600fba14c8d0d9046aeb4a58a",
+    addresses: [
+      address,
+      "n3NWAcCQCzVhMrixun8uYp7T4ur3NAGWUS"
+    ],
+    total: 143282,
+    fees: 56718,
+    ver: 1,
+    double_spend: false,
+    confirmations: 1,
+    inputs: [
+      {
+        output_value: 200000,
+        addresses: [
+          address
+        ],
+      }
+    ],
+    outputs: [
+      {
+      value: 0,
+      addresses: null,
+      script_type: "null-data",
+      data_hex: "444f4350524f4f46d62e3b7424e7c2c7e9b5e3d560024fd782ed93ce6f8e7f9d9c61f8dc6a198035"
+      },
+      {
+        "value": 143282,
+        "addresses": [
+          "n3NWAcCQCzVhMrixun8uYp7T4ur3NAGWUS"
+        ],
+      }
+    ]
+  }
+}
+
 function addressFull (address) {
   return  {
     address: address,
@@ -107,6 +146,7 @@ module.exports = {
   unconfirmedTxHook: unconfirmedTxHook,
   confirmedTxHook: confirmedTxHook,
   unconfirmedTx: unconfirmedTx,
+  confirmedTx: confirmedTx,
   addressFull: addressFull,
   txPush: txPush
 }

@@ -4,6 +4,7 @@ var chai = require('chai')
 var chaiHttp = require('chai-http')
 var expect = chai.expect
 var nock = require('nock')
+var extend = require('util')._extend
 
 chai.use(chaiHttp)
 
@@ -89,6 +90,28 @@ describe('register a document', () => {
           .post(`/unconfirmed/${magicNumber}/${address}`)
           .type('application/json')
           .send(btc.unconfirmedTx(address))
+          .end((err, res) => {
+            expect(err).to.be.null
+            expect(res).to.have.status(200)
+            done()
+          })
+      })
+  })
+
+  it('it should process a confirmed tx webhook', (done) => {
+    var doc = extend({}, document)
+    doc.pending = false
+    doc.txstamp = new Date()
+    doc.tx = btc.txPush().tx.hash
+
+    db.batch()
+      .put(`map-${digest}`, address)
+      .put(address, JSON.stringify(doc))
+      .write(() => {
+        request
+          .post(`/confirmed/${magicNumber}/${address}`)
+          .type('application/json')
+          .send(btc.confirmedTx(address))
           .end((err, res) => {
             expect(err).to.be.null
             expect(res).to.have.status(200)
