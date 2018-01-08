@@ -50,13 +50,13 @@ npm run setup
 Edit `.env` for environment variables. All values are **required**.
 
 * `PORT` - The local port to run the app on.
-* `HOST` - The host or domain name.
-* `HOST_SCHEME` - e.g, `http` or `https`
-* `HOST_PORT` - e.g., `80` or `443`
+* `HOST` - The host or domain name. (`NOTE: you maybe need to use ngrok`)
+* `HOST_SCHEME` - e.g. `http` or `https`.
+* `HOST_PORT` - e.g. `80` or `443`.
 * `DB_PATH` - Path to the LevelDB directory.
 * `DOCUMENT_PRICE` - Document certification price in satoshis.
 * `SIGN_PRICE` - Document signing price in satoshis.
-* `BLOCKCYPHER_TOKEN` - BlockCypher API token.
+* `BLOCKCYPHER_TOKEN` - BlockCypher API token, Register it [here](https://www.blockcypher.com/).
 * `BITCOIN_NETWORK` - Default bitcoin network for Bitcore. Options are `livenet`
   or `testnet`.
 * `BITCOIN_HD_PRIVATE_KEY` - HD wallet private key for generating addresses.
@@ -236,6 +236,20 @@ When prompted, enter these:
 
 * file - the `tool/data-DD-MM-YYYY.txt` file generated in step 1
 * address - bitcoin address where you want to send funds to
+
+## FAQ
+
+1. How can I get my `BITCOIN_HD_PRIVATE_KEY` and `BITCOIN_HD_PUBLIC_KEY`?
+
+For now, the [bcwallet](https://github.com/blockcypher/bcwallet) is the best choice.
+
+When you start the wallet, choose the type of network, then you should get all of these.
+
+2. It always show 'Waiting for payment' even I send the payment in my local PoEx node
+
+Because the core code use webhooks from BlockCypher, please check the status of webhooks
+
+See [List WebHooks Endpoint](https://www.blockcypher.com/dev/bitcoin/#using-webhooks), It usually happened with incorrect HOST or PORT setting in the .env
 
 ## License
 
