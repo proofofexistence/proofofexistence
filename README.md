@@ -21,8 +21,8 @@ An online service to prove the existence of documents
 
 Download [Dockerfile](./Dockerfile), then build it in the same path.
 
-```wget
-https://raw.githubusercontent.com/poexio/proofofexistence/master/Dockerfile
+```sh
+wget https://raw.githubusercontent.com/poexio/proofofexistence/master/Dockerfile
 ```
 
 ```sh
