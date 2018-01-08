@@ -17,8 +17,13 @@ An online service to prove the existence of documents
 
 - Install Docker CE: https://docs.docker.com/engine/installation/
 - Build docker-node (`Only build it once`)
+- Alternative is to install from brew: https://stackoverflow.com/questions/40523307/brew-install-docker-does-not-include-docker-engine
 
-Download [Dockerfile](./Dockerfile), then build it in the same path
+Download [Dockerfile](./Dockerfile), then build it in the same path.
+
+```wget
+https://raw.githubusercontent.com/poexio/proofofexistence/master/Dockerfile
+```
 
 ```sh
 docker build -t docker-node .
