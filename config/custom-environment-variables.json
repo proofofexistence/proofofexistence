@@ -1,0 +1,10 @@
+{
+  "nodemailer": {
+    "options": {
+      "auth": {
+        "user": "GMAIL_USER",
+        "pass": "GMAIL_PASS"
+      }
+    }
+  }
+}
