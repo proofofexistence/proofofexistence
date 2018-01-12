@@ -1,5 +1,21 @@
 ## [Unreleased]
 
+# 1.9.0 - 2018-01-12
+
+### Added
+
+* Make sweep command prompt for master private key
+* Add instructions for running with Docker
+* Add testing framework
+
+### Changed
+
+* Move test payment helper into scripts directory
+* Include price demonimated in satoshis in docproof status payload, and drop
+  payment amount in mBTC
+
+### Changed
+
 # 1.8.2 - 2018-01-03
 
 ### Changed
