@@ -54,7 +54,6 @@ config.TARGET_PAYMENT_ADDRESS = raw(new bitcore.HDPublicKey(process.env.BITCOIN_
  */
 
 config.DOCUMENT_PRICE = parseInt(process.env.DOCUMENT_PRICE)
-config.SIGN_PRICE = parseInt(process.env.SIGN_PRICE)
 
 /**
  * Configure the database.
