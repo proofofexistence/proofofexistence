@@ -238,10 +238,8 @@ To extract the funds from the app you should:
 1. From the project's root directory, run:
 
   ```sh
-  curl -X POST https://poex.io/sweep/$MAGIC_NUMBER > tool/data-DD-MM-YYYY.txt
+  curl -X POST https://poex.io/sweep/$MAGIC_NUMBER > /tmp/poex-paths.txt
   ```
-
-Change the date in the file name each time you run it.
 
 2. Run
 
@@ -253,7 +251,7 @@ When prompted, enter these:
 
 * hdPrivateKey - the master extended private key that is paired with the
   `BITCOIN_HD_PUBLIC_KEY` from the `.env` file
-* file - the `tool/data-DD-MM-YYYY.txt` file generated in step 1
+* file - the `/tmp/poex-paths.txt` file generated in step 1
 * address - bitcoin address where you want to send funds to
 
 ## FAQ
