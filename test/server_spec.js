@@ -155,7 +155,7 @@ before(() => {
 
   explorer.get(`/v1/btc/${networkName}`)
     .query({token: blockcypherToken})
-    .reply(200, btc.index)
+    .reply(200, btc.index, {'Content-Type': 'application/json'})
 
   explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
     return body.event === 'unconfirmed-tx'
@@ -163,7 +163,9 @@ before(() => {
     .query({token: blockcypherToken})
     .reply(201, ((uri, body) => {
       return btc.unconfirmedTxHook(body, blockcypherToken)
-    }))
+    }), {
+      'Content-Type': 'application/json'
+    })
 
   explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
     return body.event === 'confirmed-tx'
@@ -171,7 +173,9 @@ before(() => {
     .query({token: blockcypherToken})
     .reply(201, ((uri, body) => {
       return btc.confirmedTxHook(body, blockcypherToken)
-    }))
+    }), {
+      'Content-Type': 'application/json'
+    })
 
   addrsRegex = /\/v1\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
   explorer.get(addrsRegex)
