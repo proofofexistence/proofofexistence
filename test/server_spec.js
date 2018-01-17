@@ -123,24 +123,40 @@ describe('register a document', () => {
 
 describe('/GET latest unconfirmed', () => {
   it('it should GET the latest unconfirmed', (done) => {
-    request
-      .get('/api/internal/latest/unconfirmed')
-      .end((err, res) => {
-        expect(err).to.be.null
-        expect(res).to.have.status(200)
-        done()
+    db.batch()
+      .put('latest-unconfirmed', JSON.stringify([records.unconfirmed]))
+      .write(() => {
+        request
+          .get('/api/internal/latest/unconfirmed')
+          .end((err, res) => {
+            expect(err).to.be.null
+            expect(res).to.have.status(200)
+
+            var unconfirmed = JSON.parse(res.text)[0]
+            expect(unconfirmed.digest).to.equal(records.unconfirmed.digest)
+            expect(unconfirmed.timestamp).to.equal('2018-01-07 15:51:00')
+            done()
+          })
       })
   })
 })
 
 describe('/GET latest confirmed', () => {
   it('it should GET the latest confirmed', (done) => {
-    request
-      .get('/api/internal/latest/confirmed')
-      .end((err, res) => {
-        expect(err).to.be.null
-        expect(res).to.have.status(200)
-        done()
+    db.batch()
+      .put('latest-confirmed', JSON.stringify([records.confirmed]))
+      .write(() => {
+        request
+          .get('/api/internal/latest/confirmed')
+          .end((err, res) => {
+            expect(err).to.be.null
+            expect(res).to.have.status(200)
+
+            var confirmed = JSON.parse(res.text)[0]
+            expect(confirmed.digest).to.equal(records.confirmed.digest)
+            expect(confirmed.timestamp).to.equal('2018-01-07 15:51:00')
+            done()
+          })
       })
   })
 })
