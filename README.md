@@ -60,6 +60,8 @@ Edit `.env` for environment variables. All values are **required**.
 * `HOST_PORT` - e.g. `80` or `443`.
 * `DB_PATH` - Path to the LevelDB directory.
 * `DOCUMENT_PRICE` - Document certification price in satoshis.
+* `FEE_MULTIPLIER` - Multiply estimated fee by this value to change its
+  priority. Defaults to `2`.
 * `BLOCKCYPHER_TOKEN` - BlockCypher API token, Register it [here](https://www.blockcypher.com/).
 * `BITCOIN_NETWORK` - Default bitcoin network for Bitcore. Options are `livenet`
   or `testnet`.

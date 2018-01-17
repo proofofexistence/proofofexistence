@@ -44,8 +44,6 @@ config.BLOCKCYPHER_TOKEN = process.env.BLOCKCYPHER_TOKEN
 
 config.MAGIC_NUMBER = process.env.MAGIC_NUMBER
 
-config.FEE_MULTIPLIER = 2
-
 config.BASE_PRIVATE_KEY = raw(new bitcore.HDPrivateKey(process.env.BITCOIN_HD_PRIVATE_KEY))
 config.TARGET_PAYMENT_ADDRESS = raw(new bitcore.HDPublicKey(process.env.BITCOIN_HD_PUBLIC_KEY))
 
@@ -54,6 +52,8 @@ config.TARGET_PAYMENT_ADDRESS = raw(new bitcore.HDPublicKey(process.env.BITCOIN_
  */
 
 config.DOCUMENT_PRICE = parseInt(process.env.DOCUMENT_PRICE)
+
+config.FEE_MULTIPLIER = parseInt(process.env.FEE_MULTIPLIER || 2)
 
 /**
  * Configure the database.
