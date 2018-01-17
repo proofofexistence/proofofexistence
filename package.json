@@ -60,7 +60,6 @@
     "mocha": "^4.0.1",
     "nock": "^9.1.5",
     "nodemon": "^1.12.0",
-    "standard": "^10.0.3",
-    "vinyl-source-stream": "^1.1.0"
+    "standard": "^10.0.3"
   }
 }
