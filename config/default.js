@@ -120,4 +120,15 @@ function normalizePort (val) {
   return false
 }
 
+/**
+ * Function to generate random bytes.
+ */
+
+config.crypto = {
+  randomBytes: function(size) {
+    var crypto = require('crypto');
+    return crypto.randomBytes(size);
+  }
+}
+
 module.exports = config
