@@ -5,6 +5,7 @@ var chaiHttp = require('chai-http')
 var expect = chai.expect
 var nock = require('nock')
 var extend = require('util')._extend
+var _ = require('lodash')
 
 chai.use(chaiHttp)
 
@@ -205,7 +206,14 @@ before(() => {
       'Content-Type': 'application/json'
     })
 
-  explorer.post(`/v1/btc/${networkName}/txs/push`)
+  explorer.post(`/v1/btc/${networkName}/txs/push`, ((body) => {
+    let tx = new bitcore.Transaction(body.tx)
+    var checkDocproof = _.any(tx.toObject().outputs, {
+      script: '6a28444f4350524f4f468d1321a1d31f5603be10bab6a11b58009c03658e1a29248656db7a7e4f86d814'
+    })
+    checkHash = tx.hash === '95caad86bfe284bbd286f04229b15c3003bd6ac4c1030f7182c693e11c52c9a7'
+    return checkHash && checkDocproof
+  }))
     .query({token: blockcypherToken})
     .reply(200, ((uri, body) => {
       return btc.txPush()
