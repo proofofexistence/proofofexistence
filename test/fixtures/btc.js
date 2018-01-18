@@ -1,3 +1,6 @@
+const fs = require('fs')
+var path = require('path')
+
 index = {
   name: "BTC.test3",
   height: 1257475,
@@ -38,82 +41,26 @@ function confirmedTxHook (body, token) {
   }
 }
 
-function unconfirmedTx (address) {
-  return {
-    block_height: -1,
-    block_index: -1,
-    hash: "8ee19f29d2b33440d4ebafd981342024edaad9c704f08e78c8e3434eecc8c20d",
-    addresses: [
-      address,
-      "mug8RpLkkPjv56gSXKxckXNo1Hez5yjYxt"
-    ],
-    total: 118980000,
-    fees: 50000,
-    ver: 1,
-    double_spend: false,
-    confirmations: 0,
-    inputs: [
-      {
-        output_value: 119030000,
-        addresses: [
-          "mug8RpLkkPjv56gSXKxckXNo1Hez5yjYxt"
-        ],
-      }
-    ],
-    outputs: [
-      {
-        value: 200000,
-        addresses: [
-          address
-        ],
-      },
-      {
-        value: 118780000,
-        addresses: [
-          "mug8RpLkkPjv56gSXKxckXNo1Hez5yjYxt"
-        ],
-      }
-    ]
-  }
+var unconfirmedPaymentFile = require('./tx/unconfirmed-payment.json')
+var unconfirmedDocproofFile = require('./tx/unconfirmed-docproof.json')
+
+var confirmedPaymentFile = require('./tx/confirmed-payment.json')
+var confirmedDocproofFile = require('./tx/confirmed-docproof.json')
+
+function unconfirmedPaymentTx () {
+  return unconfirmedPaymentFile
 }
 
-function confirmedTx (address) {
-  return {
-    block_height: 1257491,
-    block_index: 53,
-    hash: "24852ec70736688248cb7b7813b5c2d929a76ad600fba14c8d0d9046aeb4a58a",
-    addresses: [
-      address,
-      "n3NWAcCQCzVhMrixun8uYp7T4ur3NAGWUS"
-    ],
-    total: 143282,
-    fees: 56718,
-    ver: 1,
-    double_spend: false,
-    confirmations: 1,
-    inputs: [
-      {
-        output_value: 200000,
-        addresses: [
-          address
-        ],
-      }
-    ],
-    outputs: [
-      {
-      value: 0,
-      addresses: null,
-      script_type: "null-data",
-      data_hex: "444f4350524f4f46d62e3b7424e7c2c7e9b5e3d560024fd782ed93ce6f8e7f9d9c61f8dc6a198035"
-      },
-      {
-        "value": 143282,
-        "addresses": [
-          "n3NWAcCQCzVhMrixun8uYp7T4ur3NAGWUS"
-        ],
-      }
-    ]
-  }
+function unconfirmedDocproofTx () {
+  return unconfirmedDocproofFile
+}
+
+function confirmedPaymentTx () {
+  return confirmedPaymentFile
+}
+
+function confirmedDocproofTx () {
+  return confirmedDocproofFile
 }
 
 function addressFull (address) {
@@ -128,7 +75,7 @@ function addressFull (address) {
     unconfirmed_n_tx: 0,
     final_n_tx: 0,
     txs: [
-      unconfirmedTx(address)
+      unconfirmedPaymentTx()
     ]
   }
 }
@@ -136,7 +83,7 @@ function addressFull (address) {
 function txPush () {
   return {
     tx: {
-      hash: "c0646857029f58834b84fafe17a3f15eb455d265a7b555ee2faca6e2069ce56a"
+      hash: "b4d42409fefd3286e4f4f13e8e65caa525eaa3251ddafa0b9902ef7a26239816"
     }
   }
 }
@@ -145,8 +92,10 @@ module.exports = {
   index: index,
   unconfirmedTxHook: unconfirmedTxHook,
   confirmedTxHook: confirmedTxHook,
-  unconfirmedTx: unconfirmedTx,
-  confirmedTx: confirmedTx,
+  unconfirmedPaymentTx: unconfirmedPaymentTx,
+  unconfirmedDocproofTx: unconfirmedDocproofTx,
+  confirmedPaymentTx: confirmedPaymentTx,
+  confirmedDocproofTx: confirmedDocproofTx,
   addressFull: addressFull,
   txPush: txPush
 }

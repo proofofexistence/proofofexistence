@@ -89,7 +89,7 @@ describe('register a document', () => {
         request
           .post(`/unconfirmed/${magicNumber}/${address}`)
           .type('application/json')
-          .send(btc.unconfirmedTx(address))
+          .send(btc.unconfirmedPaymentTx())
           .end((err, res) => {
             expect(err).to.be.null
             expect(res).to.have.status(200)
@@ -111,7 +111,7 @@ describe('register a document', () => {
         request
           .post(`/confirmed/${magicNumber}/${address}`)
           .type('application/json')
-          .send(btc.confirmedTx(address))
+          .send(btc.confirmedDocproofTx())
           .end((err, res) => {
             expect(err).to.be.null
             expect(res).to.have.status(200)

@@ -1,4 +1,16 @@
 {
+  "btc": {
+    "wallet": {
+      "incoming": {
+        "privateKey": "tprv8ZgxMBicQKsPeewq23StQ8B32pn7Vxyhpn4ViPHnfNFi2sXvShkSYzjFYZ5dfhqszEBdzFk5oxDqKt5bxthSjNGWnPhtvUg7KtBuZuckTuD"
+      },
+      "outgoing": {
+        "publicKey": "tpubD6NzVbkrYhZ4Y6BbebPozJGFnyvtqE7rhmweyeJNWhen2BZw21LSt9cMjHKNmY2dNa7dFmyqMjbo64cwH6DqwNbBupBSt7Q9nTZmtJjve8H"
+      }
+    }
+  },
+  "DOCUMENT_PRICE": 200000,
+  "FEE_MULTIPLIER": 4,
   "nodemailer": {
     "options": {
       "jsonTransport": true
