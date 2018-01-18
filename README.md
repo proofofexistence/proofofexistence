@@ -65,8 +65,8 @@ Edit `.env` for environment variables. All values are **required**.
 * `BLOCKCYPHER_TOKEN` - BlockCypher API token, Register it [here](https://www.blockcypher.com/).
 * `BITCOIN_NETWORK` - Default bitcoin network for Bitcore. Options are `livenet`
   or `testnet`.
-* `BITCOIN_HD_PRIVATE_KEY` - HD wallet private key for generating payment addresses.
-* `BITCOIN_HD_PUBLIC_KEY` - HD wallet public key for generating change addresses.
+* `BITCOIN_HD_PRIVATE_KEY` - HD wallet private key to handle incoming payments.
+* `BITCOIN_HD_PUBLIC_KEY` - HD wallet public key to accept outgoing payments.
 * `MAGIC_NUMBER` - Token for some private API routes.
 * `MAIL_FROM` - Name/email to send as.
 * `MAIL_TO` - Email address to send notifications to.
@@ -77,14 +77,14 @@ Any environment variables that are set when the app is run will override the
 values in the `.env` file.
 
 **Note**: You must create two different HD wallets. The first wallet is the
-*Payment* wallet, which is used to generate payment addresses for the user, and
-to sign transactions embedding docproofs. The second wallet is the *Change*
+*Incoming* wallet, which is used to generate payment addresses for the user, and
+to sign transactions embedding docproofs. The second wallet is the *Outgoing*
 wallet, which is used to generate addresses where the change from docproof
 transactions is sent.
 
-The private key for the *Payment* wallet must be the `BITCOIN_HD_PRIVATE_KEY`.
+The private key for the *Incoming* wallet must be the `BITCOIN_HD_PRIVATE_KEY`.
 
-The public key for the *Change* wallet must be `BITCOIN_HD_PUBLIC_KEY`. The
+The public key for the *Outoing* wallet must be `BITCOIN_HD_PUBLIC_KEY`. The
 private key for the change wallet should be kept secret, and can be used later
 to sweep the funds.
 
