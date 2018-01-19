@@ -7,3 +7,4 @@ public/vendor
 log/
 server.pid
 .env*
+config/local*
