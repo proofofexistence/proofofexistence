@@ -1,7 +1,0 @@
-{
-  "nodemailer": {
-    "options": {
-      "service": "Gmail"
-    }
-  }
-}

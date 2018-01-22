@@ -21,8 +21,8 @@ const btc = require('./fixtures/btc')
 const records = require('./fixtures/records')
 
 const networkName = config.get('networkName')
-const blockcypherToken = config.get('BLOCKCYPHER_TOKEN')
-const magicNumber = config.get('MAGIC_NUMBER')
+const blockcypherToken = config.get('services.blockcypher.token')
+const magicNumber = config.get('app.magicNumber')
 
 describe('register a document', () => {
 
@@ -30,7 +30,7 @@ describe('register a document', () => {
   var digest = records.digest
   var document = records.document
 
-  expected_price_satoshi = config.get('DOCUMENT_PRICE')
+  expected_price_satoshi = config.get('documentPrice')
   expected_network = bitcore.Networks.defaultNetwork.name
 
   it('it should return payment details', (done) => {

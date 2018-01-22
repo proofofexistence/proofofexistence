@@ -1,0 +1,32 @@
+app:
+  port: 3004
+  url:
+    scheme: http
+    host: localhost
+    port: 3004
+  magicNumber: MAGIC_NUMBER
+
+db:
+  path: /tmp/poex-database-test
+
+currencies:
+  btc:
+    defaultNetwork: testnet
+    networks:
+      testnet:
+        incomingPrivateKey: tprv8ZgxMBicQKsPeewq23StQ8B32pn7Vxyhpn4ViPHnfNFi2sXvShkSYzjFYZ5dfhqszEBdzFk5oxDqKt5bxthSjNGWnPhtvUg7KtBuZuckTuD
+        outgoingPublicKey: tpubD6NzVbkrYhZ4Y6BbebPozJGFnyvtqE7rhmweyeJNWhen2BZw21LSt9cMjHKNmY2dNa7dFmyqMjbo64cwH6DqwNbBupBSt7Q9nTZmtJjve8H
+        documentPrice: 200000
+        feeMultiplier: 4
+
+services:
+  blockcypher:
+    token: BLOCKCYPHER_TOKEN
+
+mail:
+  from: poex@localhost
+  to: poex@localhost
+
+nodemailer:
+  options:
+    jsonTransport: true

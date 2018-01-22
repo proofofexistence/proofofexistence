@@ -4,6 +4,7 @@ var dotenv = require('dotenv')
 var bitcore = require('bitcore')
 var fs = require('fs')
 var path = require('path')
+var defer = require('config/defer').deferConfig;
 
 var config = {}
 
@@ -31,94 +32,55 @@ var bitcoinNetwork = process.env.BITCOIN_NETWORK
 
 if (bitcoinNetwork) {
   bitcore.Networks.defaultNetwork = bitcore.Networks[bitcoinNetwork]
-} else if (nodeEnv === 'test') {
+} else {
   bitcore.Networks.defaultNetwork = bitcore.Networks.testnet
 }
 
-var btc = {
-  wallet: {
-    incoming: {
-      privateKey: process.env.BITCOIN_HD_PRIVATE_KEY
-    },
-    outgoing: {
-      publicKey: process.env.BITCOIN_HD_PUBLIC_KEY
+config.currencies = defer(function() {
+  let bitcoinNetworks = {}
+
+  bitcoinNetworks[bitcoinNetwork] = {
+    incomingPrivateKey: process.env.BITCOIN_HD_PRIVATE_KEY,
+    outgoingPublicKey: process.env.BITCOIN_HD_PUBLIC_KEY,
+    documentPrice: parseInt(process.env.DOCUMENT_PRICE),
+    feeMultiplier: parseInt(process.env.FEE_MULTIPLIER || 2)
+  }
+
+  return {
+    btc: {
+      defaultNetwork: bitcoinNetwork,
+      networks: bitcoinNetworks
     }
   }
-}
-
-config.btc = btc
-
-/**
- * Configure keys and tokens.
- */
-
-config.BLOCKCYPHER_TOKEN = process.env.BLOCKCYPHER_TOKEN
-
-config.MAGIC_NUMBER = process.env.MAGIC_NUMBER
+})
 
 /**
  * Configure prices.
  */
 
-config.DOCUMENT_PRICE = parseInt(process.env.DOCUMENT_PRICE)
+config.documentPrice = defer(function() {
+  let btc = this.currencies.btc
+  let documentPrice = btc.networks[btc.defaultNetwork].documentPrice
+  return documentPrice
+})
 
-config.FEE_MULTIPLIER = parseInt(process.env.FEE_MULTIPLIER || 2)
-
-/**
- * Configure the database.
- */
-
-config.DB_PATH = process.env.DB_PATH
-
-/**
- * Configure mail.
- */
-
-config.MAIL_FROM = process.env.MAIL_FROM
-config.MAIL_TO = process.env.MAIL_TO
-config.MAIL_USER = process.env.GMAIL_USER
-config.MAIL_PASS = process.env.GMAIL_PASS
+config.feeMultiplier = defer(function() {
+  let btc = this.currencies.btc
+  let documentPrice = btc.networks[btc.defaultNetwork].feeMultiplier
+  return documentPrice
+})
 
 /**
  * Configure the server.
  */
 
-config.PORT = normalizePort(process.env.PORT || '3003')
-config.HOST = process.env.HOST
-config.HOST_URL = normalizeHostUrl(
-  process.env.HOST_SCHEME,
-  process.env.HOST,
-  process.env.HOST_PORT
-)
+config.hostUrl = defer(function() {
+  let url = this.app.url
+  let port = parseInt(url.port)
+  return url.scheme + '://' + url.host + (port === 80 || port === 443 ? '' : ':' + port)
+})
+
 config.networkName = bitcore.Networks.defaultNetwork.name === 'testnet' ? 'test3' : 'main'
-
-/**
- * Normalize host from a scheme, host, and port
- */
-
-function normalizeHostUrl (scheme, host, port) {
-  return scheme + '://' + host + (port === 80 || port === 443 ? '' : ':' + port)
-}
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort (val) {
-  var port = parseInt(val, 10)
-
-  if (isNaN(port)) {
-    // named pipe
-    return val
-  }
-
-  if (port >= 0) {
-    // port number
-    return port
-  }
-
-  return false
-}
 
 /**
  * Function to generate random bytes.

@@ -1,0 +1,41 @@
+app:
+  port: 3003
+  url:
+    scheme: http
+    host: localhost
+    port: 3003
+  magicNumber: MAGIC_NUMBER
+
+db:
+  path: /tmp/poex-database-dev
+
+currencies:
+  btc:
+    defaultNetwork: testnet
+    networks:
+      mainnet:
+        incomingPrivateKey: xprvXXXXX
+        outgoingPublicKey: xprvXXXXX
+        documentPrice: 200000
+        feeMultiplier: 2
+      testnet:
+        incomingPrivateKey: tprvXXXXX
+        outgoingPublicKey: tprvXXXXX
+        documentPrice: 100000
+        feeMultiplier: 4
+
+services:
+  blockcypher:
+    token:
+    url: https://api.blockcypher.com/v1
+
+mail:
+  from:
+  to:
+
+nodemailer:
+  options:
+    service: Gmail
+    auth:
+      user:
+      pass:

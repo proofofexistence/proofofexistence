@@ -1,0 +1,24 @@
+app:
+  port: PORT
+  url:
+    scheme: HOST_SCHEME
+    host: HOST
+    port: HOST_PORT
+  magicNumber: MAGIC_NUMBER
+
+db:
+  path: DB_PATH
+
+services:
+  blockcypher:
+    token: BLOCKCYPHER_TOKEN
+
+mail:
+  from: MAIL_FROM
+  to: MAIL_TO
+
+nodemailer:
+  options:
+    auth:
+      user: GMAIL_USER
+      pass: GMAIL_PASS

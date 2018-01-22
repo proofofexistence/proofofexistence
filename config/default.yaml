@@ -1,0 +1,10 @@
+app:
+  port: 3003
+
+services:
+  blockcypher:
+    url: https://api.blockcypher.com/v1
+
+nodemailer:
+  options:
+    service: Gmail
