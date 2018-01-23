@@ -43,7 +43,7 @@ describe('register a document', () => {
         expect(res).to.have.status(200)
         expect(res).to.be.json
 
-        var register = JSON.parse(res.text)
+        var register = res.body
         expect(register.success).to.equal('true')
         expect(register.digest).to.equal(digest)
         expect(register.price).to.equal(expected_price_satoshi)
@@ -67,7 +67,7 @@ describe('register a document', () => {
             expect(res).to.have.status(200)
             expect(res).to.be.json
 
-            status = JSON.parse(res.text)
+            status = res.body
             expect(status.success).to.equal(true)
             expect(status.pending).to.equal(true)
             expect(status.digest).to.equal(digest)
