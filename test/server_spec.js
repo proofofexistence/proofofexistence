@@ -136,7 +136,6 @@ describe('/GET latest unconfirmed', () => {
 
             var unconfirmed = res.body[0]
             expect(unconfirmed.digest).to.equal(records.unconfirmed.digest)
-            expect(unconfirmed.timestamp).to.match(/^[0-9-]+ [0-9:]+$/)
             done()
           })
       })
@@ -157,7 +156,6 @@ describe('/GET latest confirmed', () => {
 
             var confirmed = res.body[0]
             expect(confirmed.digest).to.equal(records.confirmed.digest)
-            expect(confirmed.timestamp).to.match(/^[0-9-]+ [0-9:]+$/)
             done()
           })
       })
