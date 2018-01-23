@@ -53,6 +53,20 @@ describe('register a document', () => {
       })
   })
 
+  it('it should return an error on invalid hash', (done) => {
+    request
+      .post('/api/v1/register')
+      .type('form')
+      .send({d: 'invalid'})
+      .end((err, res) => {
+        expect(err).to.not.be.null
+        expect(res).to.have.status(400)
+        expect(res).to.be.json
+        expect(res.body).to.deep.equal({reason: 'Invalid `hash` field' })
+        done()
+      })
+  })
+
   it('it should have a status', (done) => {
     db.batch()
       .put(`map-${digest}`, address)
