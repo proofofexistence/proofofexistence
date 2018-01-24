@@ -1,7 +1,7 @@
 'use strict'
 
 var dotenv = require('dotenv')
-var bitcore = require('bitcore')
+var bitcore = require('bitcore-lib')
 var fs = require('fs')
 var path = require('path')
 var defer = require('config/defer').deferConfig;

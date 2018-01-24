@@ -1,5 +1,5 @@
 var dotenv = require('dotenv')
-var bitcore = require('bitcore')
+var bitcore = require('bitcore-lib')
 
 var config = require('config')
 var blockcypher = require('../lib/clients/blockcypher')

@@ -28,7 +28,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "bitcoin-convert": "^1.0.4",
-    "bitcore": "^0.13.3",
+    "bitcore-lib": "^0.15.0",
     "blockcypher": "^0.2.0",
     "body-parser": "^1.13.3",
     "bootstrap": "^3.3.7",

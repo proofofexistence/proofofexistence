@@ -9,7 +9,7 @@ var _ = require('lodash')
 
 chai.use(chaiHttp)
 
-var bitcore = require('bitcore')
+var bitcore = require('bitcore-lib')
 var Unit = bitcore.Unit
 
 const config = require('config')
@@ -223,7 +223,7 @@ before(() => {
     var checkDocproof = _.any(tx.toObject().outputs, {
       script: '6a28444f4350524f4f468d1321a1d31f5603be10bab6a11b58009c03658e1a29248656db7a7e4f86d814'
     })
-    checkHash = tx.hash === '95caad86bfe284bbd286f04229b15c3003bd6ac4c1030f7182c693e11c52c9a7'
+    checkHash = tx.hash === '8226119494e53ef6c4c709ae9f547b6503a0775068a995ea4abb464de1137a10'
     return checkHash && checkDocproof
   }))
     .query({token: blockcypherToken})
