@@ -184,7 +184,7 @@ beforeEach(() => {
 before(() => {
   var explorer = nock('https://api.blockcypher.com', {allowUnmocked: false})
 
-  explorer.get(`/v1/btc/${networkName}`)
+  explorer.get(`/v1/btc/${networkName}/`)
     .query({token: blockcypherToken})
     .reply(200, btc.index, {'Content-Type': 'application/json'})
 
