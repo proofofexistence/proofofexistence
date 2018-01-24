@@ -220,7 +220,7 @@ before(() => {
 
   explorer.post(`/v1/btc/${networkName}/txs/push`, ((body) => {
     let tx = new bitcore.Transaction(body.tx)
-    var checkDocproof = _.any(tx.toObject().outputs, {
+    var checkDocproof = _.some(tx.toObject().outputs, {
       script: '6a28444f4350524f4f468d1321a1d31f5603be10bab6a11b58009c03658e1a29248656db7a7e4f86d814'
     })
     checkHash = tx.hash === '8226119494e53ef6c4c709ae9f547b6503a0775068a995ea4abb464de1137a10'
