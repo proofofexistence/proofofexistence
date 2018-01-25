@@ -1,6 +1,6 @@
-## [Unreleased]
+# Changelog
 
-# 1.9.0 - 2018-01-12
+## 1.9.0 - 2018-01-12
 
 ### Added
 
@@ -14,28 +14,24 @@
 * Include price demonimated in satoshis in docproof status payload, and drop
   payment amount in mBTC
 
-### Changed
-
-# 1.8.2 - 2018-01-03
+## 1.8.2 - 2018-01-03
 
 ### Changed
 
 * Increase transaction fee security margin and fee per kb
 
-# 1.8.1 - 2017-12-08
+## 1.8.1 - 2017-12-08
 
 ### Changed
 
 * Wait for tx confirmation before showing proof message
 * Link proof waiting message to transaction
-* Remove incomplete weeks from web/api charts
 
-# 1.8.0 - 2017-12-01
+## 1.8.0 - 2017-12-01
 
 ### Changed
 
 * Restore babel packages
-* Base mining pool update time on user hashrate
 * Document sweep script
 * Show test messsage only if not using livenet
 * Move setup script to npm command
@@ -45,7 +41,6 @@
 
 ### Changed
 
-* Calculate mining stats from Slushpool
 * Dropped usage of babel-node
 * Make bitcoin network configurable
 
@@ -53,8 +48,6 @@
 
 ### Added
 
-* Add charts for web access
-* Keep track of weekly API access performance
 * Added doc link for test.poex.io
 
 ## [1.6.1] - 2017-11-03
@@ -67,7 +60,6 @@
 
 * Link admin emails to tBTC transactions in test mode
 * Replace BlockTrail links with BlockCypher
-* Fix order of API access chart
 
 ## [1.6.0] - 2017-10-27
 
