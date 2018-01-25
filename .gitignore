@@ -2,7 +2,6 @@ bower_components
 node_modules
 *.sw[a-z]
 database
-assets/vendor
 public/vendor
 log/
 server.pid
