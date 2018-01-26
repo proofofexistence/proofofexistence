@@ -3,8 +3,8 @@ app:
   site:
     title: Proof of Existence
     description: >-
-      Anonymously & securely store an online distributed proof of existence
-      for any document.
+      The original Blockchain notary service. Instant & secure Proof of
+      Existence for any document.
 
 services:
   blockcypher:
