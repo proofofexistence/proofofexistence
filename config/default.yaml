@@ -1,5 +1,10 @@
 app:
   port: 3003
+  site:
+    title: Proof of Existence
+    description: >-
+      Anonymously & securely store an online distributed proof of existence
+      for any document.
 
 services:
   blockcypher:
