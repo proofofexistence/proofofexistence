@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.10.0 - 2018-01-26
+
+### Added
+
+* Config for fee multiplier, site description
+* Facebook and Twitter meta tags
+* BlockCypher client wrapper module
+* Support node-config for all config
+
+### Changed
+
+* Upgrade to bitcore-lib 0.15.0
+* Switch to paper-dashboard npm package
+
+### Fixed
+
+* Hide default ports 80 and 443 in doc examples
+* Corrected timezone of submission list
+
+### Removed
+
+* Signing feature from v1 API
+* Original tools/sweep.js script
+* Babel, bluebird, popsicle, bitcore-explorers deps
+
 ## 1.9.0 - 2018-01-12
 
 ### Added
