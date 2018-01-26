@@ -6,6 +6,12 @@
   display: none;
 }
 
+.index-page .jumbotron {
+  background: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .dropbox {
   height: 120px;
   font-weight: bold;
