@@ -5,6 +5,19 @@ app:
     description: >-
       The original Blockchain notary service. Instant & secure Proof of
       Existence for any document.
+    keywords:
+      - blockchain
+      - notary
+      - proof of existence
+      - bitcoin
+      - p2p
+      - anonymous
+      - secure
+      - permanent
+      - distributed
+      - documents
+      - agreements
+      - contracts
 
 services:
   blockcypher:
