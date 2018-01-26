@@ -2,9 +2,8 @@ app:
   port: 3003
   site:
     title: Proof of Existence
-    description: >-
-      The original Blockchain notary service. Instant & secure Proof of
-      Existence for any document.
+    slogan: The original Blockchain notary service
+    tagline: Instant & secure Proof of Existence for any document
     keywords:
       - blockchain
       - notary

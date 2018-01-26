@@ -25,6 +25,18 @@ if (fs.existsSync(nodeEnvPath)) {
 dotenv.config({path: envPath})
 
 /**
+ * Configure app
+ */
+
+config.app = {
+  site: {
+    description: defer(function() {
+      return `${this.app.site.slogan}. ${this.app.site.tagline}.`
+    })
+  }
+}
+
+/**
  * Configure network
  */
 
