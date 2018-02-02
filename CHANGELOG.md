@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.10.1 - 2018-02-02
+
+### Changed
+
+* Parse FEE_MULTIPLIER env as float
+* Serve paper dashboard copy of bootstrap css
+
+### Removed
+
+* Glyphicon usage
+* List of press on About page
+
 ## 1.10.0 - 2018-01-26
 
 ### Added
