@@ -55,7 +55,7 @@ config.currencies = defer(function() {
     incomingPrivateKey: process.env.BITCOIN_HD_PRIVATE_KEY,
     outgoingPublicKey: process.env.BITCOIN_HD_PUBLIC_KEY,
     documentPrice: parseInt(process.env.DOCUMENT_PRICE),
-    feeMultiplier: parseInt(process.env.FEE_MULTIPLIER || 2)
+    feeMultiplier: parseFloat(process.env.FEE_MULTIPLIER || 2)
   }
 
   return {
