@@ -6,8 +6,7 @@ var blockcypher = require('../lib/clients/blockcypher')
 
 var privateKeyWIF = process.argv[2]
 var targetAddress = process.argv[3]
-
-var documentPrice = config.get('documentPrice')
+var paymentAmount = parseInt(process.argv[4] || config.get('documentPrice'))
 
 var privateKey = bitcore.PrivateKey.fromWIF(privateKeyWIF)
 var sourceAddress = privateKey.toAddress(bitcore.Networks.testnet)
@@ -33,7 +32,7 @@ blockcypher.getAddr(sourceAddress, { unspentOnly: true, includeScript: true })
 
     let tx = new bitcore.Transaction()
     tx.from(utxos)
-    tx.to(targetAddress, documentPrice)
+    tx.to(targetAddress, paymentAmount)
     tx.change(sourceAddress)
     tx.fee(50000)
     tx.sign(privateKey)
