@@ -11,7 +11,7 @@ module.exports = {
     payment_address: address,
     pending: true,
     timestamp: timestamp,
-    fee: null
+    fee: 113435
   },
   unconfirmed: {
     digest: digest,
