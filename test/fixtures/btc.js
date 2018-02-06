@@ -80,10 +80,10 @@ function addressFull (address) {
   }
 }
 
-function txPush () {
+function txPush (hash) {
   return {
     tx: {
-      hash: "b4d42409fefd3286e4f4f13e8e65caa525eaa3251ddafa0b9902ef7a26239816"
+      hash: hash
     }
   }
 }

@@ -228,7 +228,8 @@ before(() => {
   }))
     .query({token: blockcypherToken})
     .reply(200, ((uri, body) => {
-      return btc.txPush()
+      const tx = new bitcore.Transaction(body.tx)
+      return btc.txPush(tx.hash)
     }), {
       'Content-Type': 'application/json'
     })
