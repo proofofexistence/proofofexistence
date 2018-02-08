@@ -230,7 +230,7 @@ before(() => {
     })
 
     const checkFee = _.some(tx.outputs, {
-      satoshis: config.get('documentPrice') - records.document.fee
+      satoshis: 79872
     })
 
     return checkPayment && checkDocproof && checkFee
