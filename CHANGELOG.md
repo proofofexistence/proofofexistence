@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.10.2 - 2018-02-09
+
+### Added
+
+* Let payment test script send arbitary amounts
+
+### Changed
+
+* Increase estimate of docproof tx to 242 bytes
+* Calculate tx fee during docproof creation instead of registration
+
+### Fixed
+
+* Better handling of errors during unconfirmed processing
+
+
 ## 1.10.1 - 2018-02-02
 
 ### Changed
