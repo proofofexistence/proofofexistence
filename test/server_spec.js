@@ -7,6 +7,8 @@ var nock = require('nock')
 var extend = require('util')._extend
 var _ = require('lodash')
 
+const { URL } = require('url')
+
 chai.use(chaiHttp)
 
 var bitcore = require('bitcore-lib')
@@ -22,6 +24,7 @@ const records = require('./fixtures/records')
 
 const networkName = config.get('networkName')
 const blockcypherToken = config.get('services.blockcypher.token')
+const blockcypherUrl = new URL(config.get('services.blockcypher.url'))
 const magicNumber = config.get('app.magicNumber')
 
 describe('register a document', () => {
@@ -182,13 +185,14 @@ beforeEach(() => {
 })
 
 before(() => {
-  var explorer = nock('https://api.blockcypher.com', {allowUnmocked: false})
+  const explorer = nock(blockcypherUrl.origin, {allowUnmocked: false})
+  const expath = blockcypherUrl.pathname === '/' ? '' : blockcypherUrl.pathname
 
-  explorer.get(`/v1/btc/${networkName}/`)
+  explorer.get(`${expath}/btc/${networkName}/`)
     .query({token: blockcypherToken})
     .reply(200, btc.index, {'Content-Type': 'application/json'})
 
-  explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
+  explorer.post(`${expath}/btc/${networkName}/hooks`, ((body) => {
     return body.event === 'unconfirmed-tx'
   }))
     .query({token: blockcypherToken})
@@ -198,7 +202,7 @@ before(() => {
       'Content-Type': 'application/json'
     })
 
-  explorer.post(`/v1/btc/${networkName}/hooks`, ((body) => {
+  explorer.post(`${expath}/btc/${networkName}/hooks`, ((body) => {
     return body.event === 'confirmed-tx'
   }))
     .query({token: blockcypherToken})
@@ -208,7 +212,7 @@ before(() => {
       'Content-Type': 'application/json'
     })
 
-  addrsRegex = /\/v1\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
+  addrsRegex = /\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
   explorer.get(addrsRegex)
     .query({token: blockcypherToken, limit: 50, txlimit: 2000})
     .reply(200, ((uri) => {
@@ -218,7 +222,7 @@ before(() => {
       'Content-Type': 'application/json'
     })
 
-  explorer.post(`/v1/btc/${networkName}/txs/push`, ((body) => {
+  explorer.post(`${expath}/btc/${networkName}/txs/push`, ((body) => {
     const tx = new bitcore.Transaction(body.tx).toObject()
 
     const checkPayment = _.some(tx.inputs, {
