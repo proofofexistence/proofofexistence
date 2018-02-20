@@ -22,10 +22,10 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@poexio/blockcypher": "^0.3.0",
     "animate.css": "^3.5.2",
     "bitcoin-convert": "^1.0.4",
     "bitcore-lib": "^0.15.0",
-    "blockcypher": "^0.2.0",
     "body-parser": "^1.13.3",
     "bootstrap": "^3.3.7",
     "bootstrap-notify": "^3.1.3",
