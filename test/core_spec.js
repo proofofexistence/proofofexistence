@@ -6,6 +6,7 @@ const expect = chai.expect
 const core = require('../lib/core')
 const docproof = core.docproof
 const transaction = core.transaction
+const wallet = core.wallet
 
 const btc = require('./fixtures/btc')
 
@@ -71,6 +72,15 @@ describe('check if an address is a transaction output', () => {
     expect(transaction.isAddressAnOutput('test', {})).to.be.false
     expect(transaction.isAddressAnOutput('test', {outputs: []})).to.be.false
     expect(transaction.isAddressAnOutput('test', {outputs: [{}]})).to.be.false
+    done()
+  })
+})
+
+describe('generate a random non-hardened HD child key derivation path', () => {
+  it('it should generate a path with three levels', (done) => {
+    randomPath = wallet.getRandomPath()
+    expect(randomPath).to.be.a('string')
+    expect(randomPath).to.match(/^m\/\d+\/\d+\/\d+$/)
     done()
   })
 })
