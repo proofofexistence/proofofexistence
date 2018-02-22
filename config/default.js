@@ -4,7 +4,7 @@ var dotenv = require('dotenv')
 var bitcore = require('bitcore-lib')
 var fs = require('fs')
 var path = require('path')
-var defer = require('config/defer').deferConfig;
+var defer = require('config/defer').deferConfig
 
 var config = {}
 
@@ -30,7 +30,7 @@ dotenv.config({path: envPath})
 
 config.app = {
   site: {
-    description: defer(function() {
+    description: defer(function () {
       return `${this.app.site.slogan}. ${this.app.site.tagline}.`
     })
   }
@@ -48,7 +48,7 @@ if (bitcoinNetwork) {
   bitcore.Networks.defaultNetwork = bitcore.Networks.testnet
 }
 
-config.currencies = defer(function() {
+config.currencies = defer(function () {
   let bitcoinNetworks = {}
 
   bitcoinNetworks[bitcoinNetwork] = {
@@ -70,13 +70,13 @@ config.currencies = defer(function() {
  * Configure prices.
  */
 
-config.documentPrice = defer(function() {
+config.documentPrice = defer(function () {
   let btc = this.currencies.btc
   let documentPrice = btc.networks[btc.defaultNetwork].documentPrice
   return documentPrice
 })
 
-config.feeMultiplier = defer(function() {
+config.feeMultiplier = defer(function () {
   let btc = this.currencies.btc
   let documentPrice = btc.networks[btc.defaultNetwork].feeMultiplier
   return documentPrice
@@ -86,7 +86,7 @@ config.feeMultiplier = defer(function() {
  * Configure the server.
  */
 
-config.hostUrl = defer(function() {
+config.hostUrl = defer(function () {
   let url = this.app.url
   let port = parseInt(url.port)
   return url.scheme + '://' + url.host + (port === 80 || port === 443 ? '' : ':' + port)
@@ -99,9 +99,9 @@ config.networkName = bitcore.Networks.defaultNetwork.name === 'testnet' ? 'test3
  */
 
 config.crypto = {
-  randomBytes: function(size) {
-    var crypto = require('crypto');
-    return crypto.randomBytes(size);
+  randomBytes: function (size) {
+    var crypto = require('crypto')
+    return crypto.randomBytes(size)
   }
 }
 

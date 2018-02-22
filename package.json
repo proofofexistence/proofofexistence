@@ -11,7 +11,7 @@
     "setup": "node lib/setup.js",
     "start": "node lib/server.js",
     "sweep": "node lib/sweep.js",
-    "test": "mocha --timeout 10000 && standard 'lib/**/*.js'",
+    "test": "mocha --timeout 10000 && standard 'lib/**/*.js' 'config/*.js'",
     "watch": "nodemon --watch lib --watch config -e js,hbs,yaml,json --exec npm start"
   },
   "repository": {

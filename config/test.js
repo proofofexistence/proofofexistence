@@ -7,7 +7,7 @@ var config = {}
  */
 
 config.crypto = {
-  randomBytes: function(size) {
+  randomBytes: function (size) {
     return Buffer.from(new Array(size).fill(0))
   }
 }
