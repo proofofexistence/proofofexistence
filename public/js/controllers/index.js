@@ -145,7 +145,8 @@ $(document).ready(function() {
   var crypto_finish = function(hash) {
     bar.width(100 + '%');
     explain.html(translate('Document hash: ') + hash);
-    $.post('./api/v1/register/' + hash, onRegisterSuccess);
+    var postData = { 'd': hash.toString() };
+    $.post('./api/v1/register/', postData, onRegisterSuccess);
   };
 
 
