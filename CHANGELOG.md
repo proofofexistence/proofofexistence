@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.10.3 - 2018-02-23
+
+### Changed
+
+* Switch to @poexio/blockcypher package
+* Use documnted register and status API resources on frontend
+
+### Removed
+
+* JS files from sign feature
+
 ## 1.10.2 - 2018-02-09
 
 ### Added
@@ -14,7 +25,6 @@
 ### Fixed
 
 * Better handling of errors during unconfirmed processing
-
 
 ## 1.10.1 - 2018-02-02
 
