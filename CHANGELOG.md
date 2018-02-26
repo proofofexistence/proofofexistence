@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.10.4 - 2018-02-26
+
+### Fixed
+
+* Switch purge script to blockcypher client module
+
 ## 1.10.3 - 2018-02-23
 
 ### Changed
