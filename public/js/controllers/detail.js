@@ -110,7 +110,7 @@ $(document).ready(function() {
   };
 
   var askDetails = function() {
-    $.post('../api/v1/status', postData, onSuccess, 'json').fail(onFail);
+    $.get('../api/v1/status/'+ uuid, onSuccess, 'json').fail(onFail);
   };
 
   askDetails();
