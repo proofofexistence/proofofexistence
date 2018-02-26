@@ -56,6 +56,29 @@ describe('register a document', () => {
       })
   })
 
+  it('it should return an error message if the document is already registered', (done) => {
+    db.batch()
+      .put(`map-${digest}`, address)
+      .put(address, JSON.stringify(document))
+      .write(() => {
+        request
+          .post('/api/v1/register')
+          .type('form')
+          .send({d: digest})
+          .end((err, res) => {
+            expect(err).to.be.null
+            expect(res).to.have.status(200)
+            expect(res).to.be.json
+
+            let register = res.body
+            expect(register.success).to.be.false
+            expect(register.reason).to.equal('existing')
+            expect(register.digest).to.equal(digest)
+            done()
+          })
+      })
+  })
+
   it('it should return an error on invalid hash', (done) => {
     request
       .post('/api/v1/register')
