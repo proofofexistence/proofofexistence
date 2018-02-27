@@ -166,6 +166,18 @@ describe('register a document', () => {
       })
   })
 
+  it('it should return an error if the unconfirmed tx webhook token is wrong', (done) => {
+    request
+      .post(`/unconfirmed/BAD_TOKEN/${address}`)
+      .type('application/json')
+      .send({})
+      .end((err, res) => {
+        expect(err.message).to.equal('Not Found')
+        expect(res).to.have.status(404)
+        done()
+      })
+  })
+
   it('it should process a confirmed tx webhook', (done) => {
     var doc = extend({}, document)
     doc.pending = false
@@ -185,6 +197,18 @@ describe('register a document', () => {
             expect(res).to.have.status(200)
             done()
           })
+      })
+  })
+
+  it('it should return an error if the confirmed tx webhook token is wrong', (done) => {
+    request
+      .post(`/confirmed/BAD_TOKEN/${address}`)
+      .type('application/json')
+      .send({})
+      .end((err, res) => {
+        expect(err.message).to.equal('Not Found')
+        expect(res).to.have.status(404)
+        done()
       })
   })
 })
