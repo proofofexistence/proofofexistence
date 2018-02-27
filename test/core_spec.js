@@ -9,6 +9,7 @@ const transaction = core.transaction
 const wallet = core.wallet
 
 const btc = require('./fixtures/btc')
+const records = require('./fixtures/records')
 
 describe('estimate docproof fees', () => {
   it('it should estimate a fee based on fee per kb', (done) => {
@@ -22,6 +23,21 @@ describe('estimate docproof fees', () => {
     feePerKb = 124099
     docproofFee = docproof.estimateFee(feePerKb, 4)
     expect(docproofFee).to.equal(120128)
+    done()
+  })
+})
+
+describe('validate a document digest hash', () => {
+  it('it should return true for valid digests', (done) => {
+    expect(docproof.isValidDigest(records.digest)).to.be.true
+    done()
+  })
+
+  it('it should return false for invalid digests', (done) => {
+    expect(docproof.isValidDigest('test')).to.be.false
+    expect(docproof.isValidDigest(null)).to.be.false
+    expect(docproof.isValidDigest('')).to.be.false
+    expect(docproof.isValidDigest()).to.be.false
     done()
   })
 })
