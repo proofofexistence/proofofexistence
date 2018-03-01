@@ -153,8 +153,8 @@ describe('register a document', () => {
     request
       .get(`/api/v1/status/${digest}`)
       .end((err, res) => {
-        expect(err).to.be.null
-        expect(res).to.have.status(200)
+        expect(err).to.not.be.null
+        expect(res).to.have.status(404)
         expect(res).to.be.json
 
         status = res.body
