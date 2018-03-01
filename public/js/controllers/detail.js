@@ -4,6 +4,9 @@ $(document).ready(function() {
 
   var digest = $('#digest');
   var timestamp = $('#timestamp');
+  var registration = $('#registration');
+  var digestInput = $('#digestInput');
+  var digestSubmit = $('#digestSubmit');
   var blockchain_message = $('#blockchain_message');
   var icon = $('#icon');
   var certify_message = $('#certify_message');
@@ -25,6 +28,7 @@ $(document).ready(function() {
 
     if (xhr.status == 404) {
       errorMessage = 'We couldn\'t find that document';
+      showRegistration();
     } else if (xhr.status == 400) {
       errorMessage = 'The document is not a valid hash';
     }
@@ -112,10 +116,22 @@ $(document).ready(function() {
       blockchain_message.addClass(clz);
 
       icon.html('<img src="/img/' + img_src + '" />');
-    } else {
-      // TODO do we ever reach this?
     }
   };
+
+  var showRegistration = function() {
+    registration.show();
+    digestInput.val(uuid);
+  }
+
+  registration.submit(function(event) {
+    digestSubmit.attr('disabled', 'disabled')
+    $.post('../api/v1/register/', postData, function (data) {
+      registration.hide();
+      askDetails();
+    });
+    event.preventDefault();
+  });
 
   var askDetails = function() {
     $.get('../api/v1/status/'+ uuid, onSuccess, 'json').fail(onFail);
