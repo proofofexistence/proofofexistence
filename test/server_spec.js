@@ -149,6 +149,21 @@ describe('register a document', () => {
       })
   })
 
+  it('it should handle a missing status', (done) => {
+    request
+      .get(`/api/v1/status/${digest}`)
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res).to.have.status(200)
+        expect(res).to.be.json
+
+        status = res.body
+        expect(status.success).to.be.false
+        expect(status.reason).to.equal('nonexistent')
+        done()
+      })
+  })
+
   it('it should process an unconfirmed tx webhook', (done) => {
     db.batch()
       .put(`map-${digest}`, address)
