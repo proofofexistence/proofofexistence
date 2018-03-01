@@ -20,12 +20,20 @@ $(document).ready(function() {
     'd': uuid
   };
 
-  var onFail = function() {
-    digest.html(translate('Error!'));
-    timestamp.html(translate('We couldn\'t find that document'));
+  var onFail = function(xhr, status, error) {
+    var errorMessage;
+
+    if (xhr.status == 404) {
+      errorMessage = 'We couldn\'t find that document';
+    } else if (xhr.status == 400) {
+      errorMessage = 'The document is not a valid hash';
+    }
+
+    digest.html(error);
+    timestamp.html(errorMessage);
   };
 
-  var onSuccess = function(data) {
+  var onSuccess = function(data, status, xhr) {
     if (data.success == true) {
       confirming_message.hide();
       blockchain_message.show();
@@ -105,7 +113,7 @@ $(document).ready(function() {
 
       icon.html('<img src="/img/' + img_src + '" />');
     } else {
-      onFail();
+      // TODO do we ever reach this?
     }
   };
 
