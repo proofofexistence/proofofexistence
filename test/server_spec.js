@@ -93,7 +93,7 @@ describe('register a document', () => {
       })
   })
 
-  it('it should have a status', (done) => {
+  it('it should update a status', (done) => {
     db.batch()
       .put(`map-${digest}`, address)
       .put(address, JSON.stringify(document))
@@ -109,7 +109,7 @@ describe('register a document', () => {
 
             status = res.body
             expect(status.success).to.equal(true)
-            expect(status.pending).to.equal(true)
+            expect(status.pending).to.equal(false)
             expect(status.digest).to.equal(digest)
             expect(status.payment_address).to.equal(address)
             expect(status.price).to.equal(expected_price_satoshi)
@@ -274,7 +274,7 @@ beforeEach(() => {
 })
 
 before(() => {
-  const explorer = nock(blockcypherUrl.origin, {allowUnmocked: false})
+  const explorer = nock(blockcypherUrl.origin, {allowUnmocked: false}).persist()
   const expath = blockcypherUrl.pathname === '/' ? '' : blockcypherUrl.pathname
 
   explorer.get(`${expath}/btc/${networkName}/`)
