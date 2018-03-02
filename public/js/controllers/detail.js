@@ -4,6 +4,9 @@ $(document).ready(function() {
 
   var digest = $('#digest');
   var timestamp = $('#timestamp');
+  var registration = $('#registration');
+  var digestInput = $('#digestInput');
+  var digestSubmit = $('#digestSubmit');
   var blockchain_message = $('#blockchain_message');
   var icon = $('#icon');
   var certify_message = $('#certify_message');
@@ -20,12 +23,21 @@ $(document).ready(function() {
     'd': uuid
   };
 
-  var onFail = function() {
-    digest.html(translate('Error!'));
-    timestamp.html(translate('We couldn\'t find that document'));
+  var onFail = function(xhr, status, error) {
+    var errorMessage;
+
+    if (xhr.status == 404) {
+      errorMessage = 'We couldn\'t find that document';
+      showRegistration();
+    } else if (xhr.status == 400) {
+      errorMessage = 'The document is not a valid hash';
+    }
+
+    digest.html(error);
+    timestamp.html(errorMessage);
   };
 
-  var onSuccess = function(data) {
+  var onSuccess = function(data, status, xhr) {
     if (data.success == true) {
       confirming_message.hide();
       blockchain_message.show();
@@ -104,13 +116,25 @@ $(document).ready(function() {
       blockchain_message.addClass(clz);
 
       icon.html('<img src="/img/' + img_src + '" />');
-    } else {
-      onFail();
     }
   };
 
+  var showRegistration = function() {
+    registration.show();
+    digestInput.val(uuid);
+  }
+
+  registration.submit(function(event) {
+    digestSubmit.attr('disabled', 'disabled')
+    $.post('../api/v1/register/', postData, function (data) {
+      registration.hide();
+      askDetails();
+    });
+    event.preventDefault();
+  });
+
   var askDetails = function() {
-    $.post('../api/v1/status', postData, onSuccess, 'json').fail(onFail);
+    $.get('../api/v1/status/'+ uuid, onSuccess, 'json').fail(onFail);
   };
 
   askDetails();

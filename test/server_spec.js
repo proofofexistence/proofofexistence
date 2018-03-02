@@ -56,6 +56,29 @@ describe('register a document', () => {
       })
   })
 
+  it('it should return an error message if the document is already registered', (done) => {
+    db.batch()
+      .put(`map-${digest}`, address)
+      .put(address, JSON.stringify(document))
+      .write(() => {
+        request
+          .post('/api/v1/register')
+          .type('form')
+          .send({d: digest})
+          .end((err, res) => {
+            expect(err).to.be.null
+            expect(res).to.have.status(200)
+            expect(res).to.be.json
+
+            let register = res.body
+            expect(register.success).to.be.false
+            expect(register.reason).to.equal('existing')
+            expect(register.digest).to.equal(digest)
+            done()
+          })
+      })
+  })
+
   it('it should return an error on invalid hash', (done) => {
     request
       .post('/api/v1/register')
@@ -99,6 +122,48 @@ describe('register a document', () => {
       })
   })
 
+  it('it should get a status', (done) => {
+    db.batch()
+      .put(`map-${digest}`, address)
+      .put(address, JSON.stringify(document))
+      .write(() => {
+        request
+          .get(`/api/v1/status/${digest}`)
+          .end((err, res) => {
+            expect(err).to.be.null
+            expect(res).to.have.status(200)
+            expect(res).to.be.json
+
+            status = res.body
+            expect(status.success).to.equal(true)
+            expect(status.pending).to.equal(true)
+            expect(status.digest).to.equal(digest)
+            expect(status.payment_address).to.equal(address)
+            expect(status.price).to.equal(expected_price_satoshi)
+            expect(status.network).to.equal(expected_network)
+            expect(status.timestamp).to.be.a('string')
+            expect(status.txstamp).to.be.a('string')
+            expect(status.blockstamp).to.be.a('string')
+            done()
+          })
+      })
+  })
+
+  it('it should handle a missing status', (done) => {
+    request
+      .get(`/api/v1/status/${digest}`)
+      .end((err, res) => {
+        expect(err).to.not.be.null
+        expect(res).to.have.status(404)
+        expect(res).to.be.json
+
+        status = res.body
+        expect(status.success).to.be.false
+        expect(status.reason).to.equal('nonexistent')
+        done()
+      })
+  })
+
   it('it should process an unconfirmed tx webhook', (done) => {
     db.batch()
       .put(`map-${digest}`, address)
@@ -113,6 +178,18 @@ describe('register a document', () => {
             expect(res).to.have.status(200)
             done()
           })
+      })
+  })
+
+  it('it should return an error if the unconfirmed tx webhook token is wrong', (done) => {
+    request
+      .post(`/unconfirmed/BAD_TOKEN/${address}`)
+      .type('application/json')
+      .send({})
+      .end((err, res) => {
+        expect(err.message).to.equal('Not Found')
+        expect(res).to.have.status(404)
+        done()
       })
   })
 
@@ -135,6 +212,18 @@ describe('register a document', () => {
             expect(res).to.have.status(200)
             done()
           })
+      })
+  })
+
+  it('it should return an error if the confirmed tx webhook token is wrong', (done) => {
+    request
+      .post(`/confirmed/BAD_TOKEN/${address}`)
+      .type('application/json')
+      .send({})
+      .end((err, res) => {
+        expect(err.message).to.equal('Not Found')
+        expect(res).to.have.status(404)
+        done()
       })
   })
 })
