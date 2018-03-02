@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.10.5 - 2018-03-02
+
+### Added
+
+* Allow registering document from detail page if it's missing
+
+### Changed
+
+* Factored out web, controllers, and core modules
+* Return 404 when getting a missing document status
+* Validate length of document digest
+
+### Removed
+
+* API get routes
+
 ## 1.10.4 - 2018-02-26
 
 ### Fixed
