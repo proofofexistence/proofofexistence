@@ -7,6 +7,8 @@ $(document).ready(function() {
   var registration = $('#registration');
   var digestInput = $('#digestInput');
   var digestSubmit = $('#digestSubmit');
+  var refresh = $('#refresh');
+  var refreshSubmit = $('#refreshSubmit');
   var blockchain_message = $('#blockchain_message');
   var icon = $('#icon');
   var certify_message = $('#certify_message');
@@ -80,6 +82,7 @@ $(document).ready(function() {
         confirmed_message.show();
         confirming_message.hide();
         certify_message.hide();
+        refreshSubmit.hide();
       } else if (is_unconfirmed) {
         console.log('payment processing');
         msg = translate('Payment being processed. Please wait while ' +
@@ -128,6 +131,15 @@ $(document).ready(function() {
     digestSubmit.attr('disabled', 'disabled')
     $.post('../api/v1/register/', postData, function (data) {
       registration.hide();
+      askDetails();
+    });
+    event.preventDefault();
+  });
+
+  refresh.submit(function(event) {
+    refreshSubmit.attr('disabled', 'disabled');
+    $.post('../api/v1/status/', postData, function (data) {
+      refreshSubmit.removeAttr('disabled')
       askDetails();
     });
     event.preventDefault();
