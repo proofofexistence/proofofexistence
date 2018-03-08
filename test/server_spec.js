@@ -149,6 +149,33 @@ describe('register a document', () => {
       })
   })
 
+  it('it should query a status', (done) => {
+    db.batch()
+      .put(`map-${digest}`, address)
+      .put(address, JSON.stringify(document))
+      .write(() => {
+        request
+          .get(`/api/v1/status?d=${digest}`)
+          .end((err, res) => {
+            expect(err).to.be.null
+            expect(res).to.have.status(200)
+            expect(res).to.be.json
+
+            status = res.body
+            expect(status.success).to.equal(true)
+            expect(status.pending).to.equal(true)
+            expect(status.digest).to.equal(digest)
+            expect(status.payment_address).to.equal(address)
+            expect(status.price).to.equal(expected_price_satoshi)
+            expect(status.network).to.equal(expected_network)
+            expect(status.timestamp).to.be.a('string')
+            expect(status.txstamp).to.be.a('string')
+            expect(status.blockstamp).to.be.a('string')
+            done()
+          })
+      })
+  })
+
   it('it should handle a missing status', (done) => {
     request
       .get(`/api/v1/status/${digest}`)
