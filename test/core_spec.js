@@ -8,7 +8,8 @@ const docproof = core.docproof
 const transaction = core.transaction
 const wallet = core.wallet
 
-const btc = require('./fixtures/btc')
+const Btc = require('./fixtures/btc')
+const btc = new Btc()
 const records = require('./fixtures/records')
 
 describe('estimate docproof fees', () => {
