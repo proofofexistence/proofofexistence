@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.10.6 - 2018-03-09
+
+### Changed
+
+* A POST request to the status resource will refresh the document, creating or
+  confirming a docproof if possible
+
+### Fixed
+
+* Status query route
+
+### Removed
+
+* Register hash route
+* resubmit script
+
 ## 1.10.5 - 2018-03-02
 
 ### Added
