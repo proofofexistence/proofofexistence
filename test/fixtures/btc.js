@@ -79,12 +79,25 @@ Btc.prototype.addressFull = function (address) {
     total_received: 0,
     total_sent: 0,
     balance: 0,
-    unconfirmed_balance: 200000,
-    final_balance: 200000,
+    unconfirmed_balance: 0,
+    final_balance: 0,
     n_tx: 0,
     unconfirmed_n_tx: 0,
     final_n_tx: 0,
-    txs: [
+    txs: []
+  }
+
+  if (this.confirmed) {
+    fullAddr.total_received = 200000
+    fullAddr.total_sent = 200000
+    fullAddr.txs = [
+      this.confirmedPaymentTx(),
+      this.confirmedDocproofTx()
+    ]
+  } else {
+    fullAddr.unconfirmed_balance = 200000
+    fullAddr.final_balance = 200000
+    fullAddr.txs = [
       this.unconfirmedPaymentTx()
     ]
   }
