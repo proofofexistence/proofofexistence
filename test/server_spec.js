@@ -227,6 +227,8 @@ describe('register a document', () => {
     doc.txstamp = new Date()
     doc.tx = btc.txPush().tx.hash
 
+    btc.confirmed = true
+
     db.batch()
       .put(`map-${digest}`, address)
       .put(address, JSON.stringify(doc))
