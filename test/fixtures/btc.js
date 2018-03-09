@@ -1,7 +1,17 @@
 const fs = require('fs')
 var path = require('path')
 
-index = {
+const Btc = function () {
+  this.confirmed = false
+}
+
+module.exports = Btc
+
+Btc.prototype.reset = function() {
+  this.confirmed = false
+}
+
+Btc.prototype.index = {
   name: "BTC.test3",
   height: 1257475,
   hash: "000000000000036b6d00499fb5f0f2e9338c522beac7f990c5fd1eb21606a2c9",
@@ -18,7 +28,7 @@ index = {
   last_fork_hash: "00000000a649380ad02f853a0c871e881c2fefbb53349f86a27e7668ad10535f"
 }
 
-function unconfirmedTxHook (body, token) {
+Btc.prototype.unconfirmedTxHook = function (body, token) {
   return {
     id: 'ec9fe9d9-d8e1-4530-a1ed-1b099e6df26e',
     token: token,
@@ -29,7 +39,7 @@ function unconfirmedTxHook (body, token) {
   }
 }
 
-function confirmedTxHook (body, token) {
+Btc.prototype.confirmedTxHook = function (body, token) {
   return {
     id: 'd297fc60-4fe7-426e-b496-8ec80d0ce8e2',
     token: token,
@@ -47,24 +57,24 @@ var unconfirmedDocproofFile = require('./tx/unconfirmed-docproof.json')
 var confirmedPaymentFile = require('./tx/confirmed-payment.json')
 var confirmedDocproofFile = require('./tx/confirmed-docproof.json')
 
-function unconfirmedPaymentTx () {
+Btc.prototype.unconfirmedPaymentTx = function () {
   return unconfirmedPaymentFile
 }
 
-function unconfirmedDocproofTx () {
+Btc.prototype.unconfirmedDocproofTx = function () {
   return unconfirmedDocproofFile
 }
 
-function confirmedPaymentTx () {
+Btc.prototype.confirmedPaymentTx = function () {
   return confirmedPaymentFile
 }
 
-function confirmedDocproofTx () {
+Btc.prototype.confirmedDocproofTx = function () {
   return confirmedDocproofFile
 }
 
-function addressFull (address) {
-  return  {
+Btc.prototype.addressFull = function (address) {
+  const fullAddr =  {
     address: address,
     total_received: 0,
     total_sent: 0,
@@ -75,27 +85,17 @@ function addressFull (address) {
     unconfirmed_n_tx: 0,
     final_n_tx: 0,
     txs: [
-      unconfirmedPaymentTx()
+      this.unconfirmedPaymentTx()
     ]
   }
+
+  return fullAddr
 }
 
-function txPush (hash) {
+Btc.prototype.txPush = function (hash) {
   return {
     tx: {
       hash: hash
     }
   }
-}
-
-module.exports = {
-  index,
-  unconfirmedTxHook,
-  confirmedTxHook,
-  unconfirmedPaymentTx,
-  unconfirmedDocproofTx,
-  confirmedPaymentTx,
-  confirmedDocproofTx,
-  addressFull,
-  txPush
 }

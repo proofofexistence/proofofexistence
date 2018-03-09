@@ -19,7 +19,8 @@ const db = require('../lib/db')
 const server = require('../lib/server')
 const request = chai.request(server)
 
-const btc = require('./fixtures/btc')
+const Btc = require('./fixtures/btc')
+const btc = new Btc()
 const records = require('./fixtures/records')
 
 const networkName = config.get('networkName')
@@ -367,4 +368,5 @@ before(() => {
 after(() => {
   server.stop()
   db.destroy()
+  btc.reset()
 })
