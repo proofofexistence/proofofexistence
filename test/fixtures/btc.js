@@ -89,13 +89,13 @@ function txPush (hash) {
 }
 
 module.exports = {
-  index: index,
-  unconfirmedTxHook: unconfirmedTxHook,
-  confirmedTxHook: confirmedTxHook,
-  unconfirmedPaymentTx: unconfirmedPaymentTx,
-  unconfirmedDocproofTx: unconfirmedDocproofTx,
-  confirmedPaymentTx: confirmedPaymentTx,
-  confirmedDocproofTx: confirmedDocproofTx,
-  addressFull: addressFull,
-  txPush: txPush
+  index,
+  unconfirmedTxHook,
+  confirmedTxHook,
+  unconfirmedPaymentTx,
+  unconfirmedDocproofTx,
+  confirmedPaymentTx,
+  confirmedDocproofTx,
+  addressFull,
+  txPush
 }
