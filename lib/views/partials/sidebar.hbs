@@ -1,41 +1,41 @@
-<div class="sidebar" data-background-color="white" data-active-color="danger">
+<div class="sidebar" data-color="black" data-image="">
   <div class="sidebar-wrapper">
     <div class="logo">
       <div class="logo-wordmark">
         <div class="logo-svg" >
-          <img class="logo-img" src="/img/poex-logo.svg">
+          <img class="logo-img" src="/img/poex-logo-white.svg">
         </div>
         <a href="/" class="simple-text">POEX.IO</a>
       </div>
     </div>
 
     <ul class="nav">
-      <li class="{{#if active.prove}}active{{/if}}">
-        <a href="/">
+      <li class="nav-item {{#if active.prove}}active{{/if}}">
+        <a class="nav-link" href="/">
           <i class="ti-stamp"></i>
           <p>Prove</p>
         </a>
       </li>
-      <li class="{{#if active.about}}active{{/if}}">
-        <a href="/about">
+      <li class="nav-item {{#if active.about}}active{{/if}}">
+        <a class="nav-link" href="/about">
           <i class="ti-comment-alt"></i>
           <p>About</p>
         </a>
       </li>
-      <li class="{{#if active.news}}active{{/if}}">
-        <a href="/news">
+      <li class="nav-item {{#if active.news}}active{{/if}}">
+        <a class="nav-link" href="/news">
           <i class="ti-announcement"></i>
           <p>News</p>
         </a>
       </li>
-      <li class="{{#if active.developers}}active{{/if}}">
-        <a href="/developers">
+      <li class="nav-item {{#if active.developers}}active{{/if}}">
+        <a class="nav-link" href="/developers">
           <i class="ti-harddrives"></i>
           <p>Developers</p>
         </a>
       </li>
-      <li class="nav-bottom {{#if active.contact}}active{{/if}}">
-        <a href="/contact">
+      <li class="nav-item nav-bottom {{#if active.contact}}active{{/if}}">
+        <a class="nav-link" href="/contact">
           <i class="ti-email"></i>
           <p>Contact</p>
         </a>

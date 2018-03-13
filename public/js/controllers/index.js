@@ -31,8 +31,8 @@ $(document).ready(function() {
   var latest = $('#latest');
   var latest_confirmed = $('#latest_confirmed');
   var explain = $('#explain');
-  var progress = $('#hash-progress');
-  var dropbox = $('.dropbox');
+  var hashProgress = $('#hash-progress');
+  var dropbox = $('#dropbox');
   var digestLink = $('#digest-link');
 
   // uncomment this to try non-HTML support:
@@ -45,7 +45,7 @@ $(document).ready(function() {
     if (!html5) {
       return;
     }
-    progress.show();
+    hashProgress.show();
     digestLink.hide();
     explain.html(translate('Loading document...'));
     var output = '';
@@ -76,12 +76,8 @@ $(document).ready(function() {
     explain.html(translate('disclaimer'));
     upload_form.show();
   } else {
-    dropbox.show();
     dropbox.filedrop({
       callback: handleFileSelect
-    });
-    dropbox.click(function() {
-      $('#file').click();
     });
   }
 
@@ -131,6 +127,7 @@ $(document).ready(function() {
       }, 4500);
 
       window.setTimeout(function() {
+        dropbox.removeClass('hover');
         window.location.href = link;
       }, 5000);
     }

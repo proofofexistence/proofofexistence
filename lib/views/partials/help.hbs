@@ -1,9 +1,11 @@
 <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="helpModalLabel">Help</h4>
+        <h5 class="modal-title" id="helpModalLabel">Help</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <ul>
@@ -34,13 +36,8 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <div class="left-side">
-            <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Cancel</button>
-        </div>
-        <div class="divider"></div>
-        <div class="right-side">
-          <button type="button" class="btn btn-success btn-simple" data-dismiss="modal">Ok</button>
-        </div>
+        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

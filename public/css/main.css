@@ -12,24 +12,17 @@
   padding-bottom: 0;
 }
 
-.dropbox {
-  height: 120px;
-  font-weight: bold;
-  text-align: center;
-  padding: 1em 0;
-  color: #555;
-  border: 2px dashed #555;
-  border-radius: 7px;
-  cursor: default;
-}
-
-.hover {
-  color: #7AC29A;
+#dropbox.hover {
+  opacity: 0.633;
   border-color: #7AC29A;
   border-style: solid;
 }
 
 /* logo */
+
+.sidebar .logo, body > .navbar-collapse .logo {
+  padding-bottom: 6px;
+}
 
 .sidebar .logo .simple-text,
 .off-canvas-sidebar .logo .simple-text,
@@ -38,7 +31,7 @@
 }
 
 .logo .logo-wordmark {
-  padding-left: 5px;
+  padding-left: 12px;
 }
 
 .logo .logo-svg {
@@ -76,6 +69,35 @@
 .digest {
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+/* light-bootstrap-dashboard */
+
+code {
+  background-color: inherit;
+}
+
+pre {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  white-space: pre-wrap;
+}
+
+.alert a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.sidebar .nav li .nav-link [class^="ti-"],
+body > .navbar-collapse .nav li .nav-link [class^="ti-"] {
+  font-size: 22px;
 }
 
 /* paper-dashboard */
@@ -120,7 +142,7 @@ h1, h2, h3, h4, h5, h6, .sidebar, .navbar, .nav p, .logo, .logo a, .brand, .navb
   width: 100%;
 }
 
-/* paper-kit modal */
+/* modal */
 
 .modal {
   z-index: 10001;
@@ -128,68 +150,6 @@ h1, h2, h3, h4, h5, h6, .sidebar, .navbar, .nav p, .logo, .logo a, .brand, .navb
 
 .modal-backdrop {
   z-index: 10000;
-}
-
-.modal-header {
-  border-bottom: 1px solid #DDDDDD;
-  padding: 20px;
-  text-align: center;
-}
-
-.modal-content {
-  border: 0 none;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-.modal-dialog {
-  padding-top: 60px;
-}
-
-.modal-body {
-  padding: 20px 50px;
-}
-
-.modal-footer {
-  border-top: 1px solid #DDDDDD;
-  padding: 0px;
-}
-
-.modal-footer .left-side, .modal-footer .right-side {
-  display: inline-block;
-  text-align: center;
-  width: 49%;
-}
-
-.modal-footer .btn-simple {
-  padding: 20px;
-  width: 100%;
-}
-
-.modal-footer .divider {
-  background-color: #DDDDDD;
-  display: inline-block;
-  float: inherit;
-  height: 63px;
-  margin: 0px -3px;
-  position: absolute;
-  width: 1px;
-}
-
-.modal.fade .modal-dialog {
-  transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-}
-
-.modal.in .modal-dialog {
-  transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-}
-
-.modal-backdrop.in {
-  opacity: 0.25;
 }
 
 /* paper-kit pagination */
