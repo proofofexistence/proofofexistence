@@ -23,6 +23,7 @@
   "private": true,
   "dependencies": {
     "@poexio/blockcypher": "^0.3.0",
+    "@poexio/light-bootstrap-dashboard": "^2.0.2",
     "animate.css": "^3.5.2",
     "bitcoin-convert": "^1.0.4",
     "bitcore-lib": "^0.15.0",
