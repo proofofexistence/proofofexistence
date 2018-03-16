@@ -1,5 +1,12 @@
 # Changelog
 
+
+## 1.10.7 - 2018-03-16
+
+### Added
+
+* Make light-bootstrap-dashboard CSS available.
+
 ## 1.10.6 - 2018-03-09
 
 ### Changed
