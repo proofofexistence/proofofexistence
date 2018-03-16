@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6, p, .navbar, .brand, a, .td-name, td {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, .sidebar, .navbar, .nav p, .logo, .logo a, .brand, .navbar-brand {
+h1, h2, h3, h4, h5, h6, logo, .logo a, .brand, .navbar-brand {
   font-family: 'Nunito',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   font-weight: 700;
 }
