@@ -12,6 +12,15 @@
   padding-bottom: 0;
 }
 
+#dropbox .card-header {
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125) !important;
+}
+
+#dropbox .nav-tabs {
+  border-bottom: none;
+}
+
 #dropbox.hover {
   opacity: 0.633;
   border-color: #7AC29A;
@@ -106,6 +115,10 @@ body > .navbar-collapse .nav li .nav-link [class^="ti-"] {
 
 .navbar-search .form-control {
   max-width: 100%;
+}
+
+.card .card-body .card-category {
+  margin-bottom: 1rem;
 }
 
 /* paper-dashboard */

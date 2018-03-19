@@ -28,6 +28,9 @@ $(document).ready(function() {
   var bar = $('.progress-bar');
   var upload_submit = $('#upload_submit');
   var upload_form = $('#upload_form');
+  var hashForm = $('#hash-form');
+  var hashInput = $('#hash-input');
+  var hashSubmit = $('#hash-submit');
   var latest = $('#latest');
   var latest_confirmed = $('#latest_confirmed');
   var explain = $('#explain');
@@ -133,6 +136,18 @@ $(document).ready(function() {
     }
   };
 
+  var onRegisterFail = function(xhr, status, error) {
+    var errorMessage;
+
+    if (xhr.status == 400) {
+      errorMessage = 'The document is not a valid hash';
+    } else {
+      errorMessage = 'There was a problem registering the document';
+    }
+
+    show_message(error + ': ' + errorMessage, 'danger');
+  }
+
   var crypto_callback = function(p) {
     var w = ((p * 100).toFixed(0));
     bar.width(w + '%');
@@ -151,6 +166,18 @@ $(document).ready(function() {
     var f = evt.target.files[0];
     handleFileSelect(f);
   }, false);
+
+  hashForm.submit(function(event) {
+    hashSubmit.prop('disabled', true);
+    var postData = { 'd': hashInput.val() };
+    $.post('./api/v1/register/', postData, onRegisterSuccess).fail(onRegisterFail);
+
+    setTimeout(function() {
+      hashSubmit.prop('disabled', false);
+    }, 2000)
+
+    event.preventDefault();
+  });
 
   // upload form (for non-html5 clients)
   upload_submit.click(function() {

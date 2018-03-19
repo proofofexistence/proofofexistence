@@ -25,32 +25,29 @@
     <div class="col-lg-12">
       <div id="dropbox" class="card">
         <div class="card-header">
-          <h3 class="card-title">
-            Select a document and have it certified in the Bitcoin blockchain
-          </h3>
-          <p class="card-category">
-            Drag and drop your document here, or choose a file.
-            The file will <strong>not</strong> be uploaded.
-            <a href="" data-toggle="modal" data-target="#helpModal">
-              Learn more.
-            </a>
-          </p>
+          <ul class="nav nav-tabs" id="dropTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="filedrop-tab" data-toggle="tab" href="#filedrop" role="tab" aria-controls="filedrop" aria-selected="true">File</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="filehash-tab" data-toggle="tab" href="#filehash" role="tab" aria-controls="filehash" aria-selected="false">Hash</a>
+            </li>
+          </ul>
         </div>
         <div class="card-body">
-          <div class="row">
-            <div class="col-lg-12">
-              <div id="wait" class="row">
-                <div class="spinner">
-                  <div class="rect1"></div>
-                  <div class="rect2"></div>
-                  <div class="rect3"></div>
-                  <div class="rect4"></div>
-                  <div class="rect5"></div>
-                </div>
-                Loading...
-              </div>
-
-              <form id="upload_form" method="POST" enctype="multipart/form-data" action="api/document/upload">
+          <div class="tab-content" id="dropTabContent">
+            <div class="tab-pane fade show active" id="filedrop" role="tabpanel" aria-labelledby="filedrop-tab">
+              <h3 class="card-title">
+                Select a document and have it certified in the Bitcoin blockchain
+              </h3>
+              <p class="card-category">
+                Drag and drop your document here, or choose a file.
+                The file will <strong>not</strong> be uploaded.
+                <a href="" data-toggle="modal" data-target="#helpModal">
+                  Learn more.
+                </a>
+              </p>
+              <form id="upload_form" method="POST" enctype="multipart/form-data">
                 <fieldset>
                   <label class="custom-file">
                     <input id="file" class="custom-file-input" type="file">
@@ -59,8 +56,21 @@
                 </fieldset>
               </form>
             </div>
+            <div class="tab-pane fade" id="filehash" role="tabpanel" aria-labelledby="filehash-tab">
+              <h3 class="card-title">
+                Input a Document Hash
+              </h3>
+              <p class="card-category">
+                Compute the SHA256 checksum hexadecimal digest for your file, and input the value here.
+              </p>
+              <form id="hash-form" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <input id="hash-input" type="text" pattern="[A-Fa-f0-9]+" required minlength=64 maxlength=64 class="form-control" placeholder="Document hash" aria-label="Document Hash">
+                </div>
+                <button id="hash-submit" type="submit" class="btn btn-primary">Register</button>
+              </form>
+            </div>
           </div>
-
           <div class="row">
             <div class="col-lg-12">
               <hr />
