@@ -100,6 +100,14 @@ body > .navbar-collapse .nav li .nav-link [class^="ti-"] {
   font-size: 22px;
 }
 
+.navbar-search {
+  padding: 0px 15px;
+}
+
+.navbar-search .form-control {
+  max-width: 100%;
+}
+
 /* paper-dashboard */
 
 body {
