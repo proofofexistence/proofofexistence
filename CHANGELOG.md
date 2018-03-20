@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.11.0 - 2018-03-20
+
+### Added
+
+* Upgrade theme to Bootstrap 4
+* Register document using only the hash
+* Search for documents by hash
+* White version of animated logo
+
+### Fixed
+
+* Purge script can catch delete hook errors
 
 ## 1.10.7 - 2018-03-16
 
