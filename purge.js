@@ -13,6 +13,6 @@ bcapi.listHooks()
     while (data.length > MAX_HOOKS) {
       var hook = data.shift()
       console.log('deleting', hook.id)
-      bcapi.delHook(hook.id, printResponse)
+      bcapi.delHook(hook.id).catch(e => { console.log(e.message) })
     }
   }).catch(e => { console.log(e.message) })
