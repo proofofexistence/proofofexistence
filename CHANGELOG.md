@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.11.1 - 2018-03-26
+
+### Fixed
+
+* Fix incorrect count of output index
+
 ## 1.11.0 - 2018-03-20
 
 ### Added
