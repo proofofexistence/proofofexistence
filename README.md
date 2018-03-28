@@ -271,7 +271,7 @@ See [List WebHooks Endpoint](https://www.blockcypher.com/dev/bitcoin/#using-webh
 
 ## License
 
-© Copyright 2017 PoEx Limited, all rights reserved.<br />
+© Copyright 2017-2018 Proof Of Existence, all rights reserved.<br />
 © Copyright 2015-2017 Smart Contract Solutions Inc., all rights reserved.
 
 [proofofexistence/news]: https://github.com/proofofexistence/news
