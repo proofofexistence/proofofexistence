@@ -92,6 +92,12 @@ config.hostUrl = defer(function () {
   return url.scheme + '://' + url.host + (port === 80 || port === 443 ? '' : ':' + port)
 })
 
+config.testUrl = defer(function () {
+  let url = this.app.url
+  let port = parseInt(url.port)
+  return url.scheme + '://test.' + url.host + (port === 80 || port === 443 ? '' : ':' + port)
+})
+
 config.networkName = bitcore.Networks.defaultNetwork.name === 'testnet' ? 'test3' : 'main'
 
 /**
