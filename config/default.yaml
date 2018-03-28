@@ -4,6 +4,7 @@ app:
     title: Proof of Existence
     slogan: The original Blockchain notary service
     tagline: Instant & secure Proof of Existence for any document
+    email: love@proofofexistence.com
     keywords:
       - blockchain
       - notary
