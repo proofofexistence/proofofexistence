@@ -1,6 +1,5 @@
 #!/bin/bash
 mkdir -p public/vendor
-cp -R node_modules/jquery/dist public/vendor/jquery
 cp -R node_modules/jquery-form/ public/vendor/jquery-form
 cp -R node_modules/bootstrap/dist/ public/vendor/bootstrap
 cp -R node_modules/paper-dashboard/assets/ public/vendor/paper-dashboard
