@@ -18,6 +18,8 @@ app:
       - agreements
       - contracts
 
+social:
+
 services:
   blockcypher:
     url: https://api.blockcypher.com/v1

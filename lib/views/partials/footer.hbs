@@ -2,21 +2,27 @@
   <div class="container-fluid">
     <nav class="pull-left">
       <ul>
+        {{# if social.twitter }}
         <li>
-          <a href="https://twitter.com/poexio">
+          <a href="https://twitter.com/{{ social.twitter }}">
             Twitter
           </a>
         </li>
+        {{/if}}
+        {{# if social.facebook }}
         <li>
-          <a href="https://facebook.com/poexio">
+          <a href="https://facebook.com/{{ social.github }}">
             Facebook
           </a>
         </li>
+        {{/if}}
+        {{# if social.github }}
         <li>
-          <a href="https://github.com/poexio">
+          <a href="https://github.com/{{ social.github }}">
             GitHub
           </a>
         </li>
+        {{/if}}
         <li>
           <a href="https://en.wikipedia.org/wiki/Proof_of_Existence">
             History
