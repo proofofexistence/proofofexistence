@@ -143,7 +143,7 @@ ngrok http 3003
 Note the "Forwarding" address and run the app with:
 
 ```sh
-NODE_ENV=dev HOST=xxxxxxxx.ngrok.io HOST_SCHEME=https HOST_PORT=443 npm run watch
+NODE_ENV=development HOST=xxxxxxxx.ngrok.io HOST_SCHEME=https HOST_PORT=443 npm run watch
 ```
 
 #### Test Certifications
