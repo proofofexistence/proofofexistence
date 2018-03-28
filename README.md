@@ -22,7 +22,7 @@ An online service to prove the existence of documents
 Download [Dockerfile](./Dockerfile), then build it in the same path.
 
 ```sh
-wget https://raw.githubusercontent.com/poexio/proofofexistence/master/Dockerfile
+wget https://raw.githubusercontent.com/proofofexistence/proofofexistence/master/Dockerfile
 ```
 
 ```sh
@@ -41,7 +41,7 @@ docker exec --user node -w /home/node -ti docker-node bash
 ### Installation
 
 ```sh
-git clone git@github.com:poexio/proofofexistence.git
+git clone git@github.com:proofofexistence/proofofexistence.git
 cd proofofexistence
 npm install
 ```
@@ -222,7 +222,7 @@ node purge.js
 
 ### News
 
-The `/news` route should be handled by [poexio/poex-news]. This can be
+The `/news` route should be handled by [proofofexistence/news]. This can be
 configured in Nginx with a directive like:
 
 ```
@@ -274,4 +274,4 @@ See [List WebHooks Endpoint](https://www.blockcypher.com/dev/bitcoin/#using-webh
 © Copyright 2017 PoEx Limited, all rights reserved.<br />
 © Copyright 2015-2017 Smart Contract Solutions Inc., all rights reserved.
 
-[poexio/poex-news]: https://github.com/poexio/poex-news
+[proofofexistence/news]: https://github.com/proofofexistence/news
