@@ -5,6 +5,9 @@ app:
     host: localhost
     port: 3003
   magicNumber: MAGIC_NUMBER
+  site:
+    logo:
+    brand:
 
 db:
   path: /tmp/poex-database-dev

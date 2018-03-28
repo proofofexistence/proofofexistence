@@ -1,6 +1,8 @@
 app:
   port: 3003
   site:
+    brand: PROOF
+    logo: "/img/poex-logo-white.svg"
     title: Proof of Existence
     slogan: The original Blockchain notary service
     tagline: Instant & secure Proof of Existence for any document

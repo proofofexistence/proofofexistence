@@ -2,10 +2,12 @@
   <div class="sidebar-wrapper">
     <div class="logo">
       <div class="logo-wordmark">
+        {{# if site.logo }}
         <div class="logo-svg" >
-          <img class="logo-img" src="/img/poex-logo-white.svg">
+          <img class="logo-img" src="{{ site.logo }}">
         </div>
-        <a href="/" class="simple-text">POEX.IO</a>
+        {{/if}}
+        <a href="/" class="simple-text">{{ site.brand }}</a>
       </div>
     </div>
 
