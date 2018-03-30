@@ -2,6 +2,8 @@
 
 An online service to prove the existence of documents
 
+[![Build Status](https://travis-ci.org/proofofexistence/proofofexistence.svg?branch=master)](https://travis-ci.org/proofofexistence/proofofexistence)
+
 Follow [the instructions](http://proofofexistence.github.io) to setup your own instance.
 
 ## License
