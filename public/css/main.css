@@ -137,17 +137,6 @@ h1, h2, h3, h4, h5, h6, logo, .logo a, .brand, .navbar-brand {
   font-weight: 700;
 }
 
-.sidebar .nav > li.nav-bottom {
-  position: absolute;
-  width: 100%;
-  bottom: 10px;
-}
-.sidebar .nav > li.nav-bottom a{
-  background: rgba(255, 255, 255, 0.14);
-  opacity: 1;
-  color: #FFFFFF;
-}
-
 .navbar .navbar-brand {
   font-size: 18px;
   text-transform: uppercase;
@@ -257,7 +246,7 @@ h1, h2, h3, h4, h5, h6, logo, .logo a, .brand, .navbar-brand {
   height: 100%;
   width: 6px;
   display: inline-block;
-  
+
   -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
   animation: stretchdelay 1.2s infinite ease-in-out;
 }
@@ -283,12 +272,12 @@ h1, h2, h3, h4, h5, h6, logo, .logo a, .brand, .navbar-brand {
 }
 
 @-webkit-keyframes stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
   20% { -webkit-transform: scaleY(1.0) }
 }
 
 @keyframes stretchdelay {
-  0%, 40%, 100% { 
+  0%, 40%, 100% {
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
   } 20% {
