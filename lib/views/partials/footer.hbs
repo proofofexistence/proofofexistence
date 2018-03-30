@@ -2,6 +2,15 @@
   <div class="container-fluid">
     <nav class="pull-left">
       <ul>
+
+        {{# if site.email }}
+
+        <li>
+          <a href="mailto:{{ site.email }}">For questions, email {{ site.email }}</a>
+        </li>
+
+        {{/if}}
+
         {{# if social.twitter }}
         <li>
           <a href="https://twitter.com/{{ social.twitter }}">
