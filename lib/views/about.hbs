@@ -6,82 +6,8 @@
         The original Blockchain notary service, offering instant, anonymous, distributed, and secure proof of existence for any document, agreement, or contract.
       </blockquote>
 
-      <h1>What is Proof of Existence?</h1>
-      <p>
-        Use our service to anonymously and securely store an online distributed proof of existence for any document.
 
-        <strong>Your documents are NOT stored in our database or in the bitcoin blockchain</strong>, so you don't have to worry about your data being accessed by others.
-
-      </p>
-      <p>
-
-        All we store is a <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic
-    digest</a> of the file, linked to the time in which you submitted the document. In this way, you can later certify that the data existed at that time. This is the first online service allowing you to publicly prove that you have certain information without revealing the data or yourself, with a decentralized certification based on the <a href="http://bitcoin.org/">bitcoin network</a>.
-
-      </p>
-      <p>
-
-        The key advantages are anonymity, privacy, and getting a decentralized proof which can't be erased or modified by anyone (third parties or governments). <strong>Your
-    document's existence is permanently validated by the blockchain even
-    if this site is compromised or down</strong>, so you don't depend or need to trust any central authority. All previous data timestamping solutions lack this freedom.
-
-      </p>
-
-      <h3>Common uses</h3>
-
-      <div class="row">
-        <div class="col-md-4">
-          <strong><i class="ti-lock"></i> Demonstrating data
-      ownership without revealing actual data.</strong>
-          <br /> You can publicly reveal the digest and if conflict arises you can prove you had the data that generates the digest. Useful for copyrighted material, patents, etc.
-        </div>
-        <div class="col-md-4">
-          <strong><i class="ti-time"></i> Document timestamping.</strong>
-          <br /> You can prove certain data exists at a certain moment of time. As we use the <a href="https://blockchain.info/">bitcoin blockchain</a> to store the document proof, you can certify the existence of your document without the need of a central authority. Use the computing power of the whole bitcoin network to certify your data.
-
-        </div>
-        <div class="col-md-4">
-          <strong><i class="ti-search"></i> Checking for document
-      integrity.</strong>
-          <br /> If you store a proof for your document and later re-upload it, the system will only recognize it if it is completely and fully the same document. The slightest change, and we'll recognize it is different, giving you the security that certified data can't be changed.
-        </div>
-      </div>
-
-      <h3 id="technical">Technical foundations</h3>
-        <p>
-
-          The document is certified via embedding its <a href="https://en.wikipedia.org/wiki/SHA-2">SHA256</a> digest in the bitcoin blockchain. This is done by generating a special bitcoin transaction that encodes/contains the hash via an <a href="https://en.bitcoin.it/wiki/OP_RETURN">OP_RETURN script</a>. This is a <a href="https://en.bitcoin.it/wiki/Script">
-    bitcoin scripting opcode</a> that marks the transaction output as
-          <a href="https://en.bitcoin.it/wiki/Script#Provably_Unspendable.2FPrunable_Outputs">
-    provably unspendable</a> and allows a small amount of data to be inserted, which in our case is the document's hash, plus a marker to identify all of our transactions.
-
-        </p>
-
-        <p>
-          Once the transaction is confirmed, the document is permanently certified and proven to exist at least as early as the time the transaction was confirmed. If the document hadn't existed at the time the transaction entered the blockchain, it would have been impossible to embed its digest in the transaction (This is because of the hash function's property of being <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function#Properties">
-    second pre-image resistant</a>). Embedding some hash and then adapting a future document to match the hash is also impossible (due to the <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function#Properties">
-    pre-image resistance of hash functions</a>). This is why <strong>once the
-    bitcoin blockchain confirms the transaction generated for the
-    document, its existence is proven, permanently, with no trust required</strong>.</p>
-
-        <p>If anyone wants to manually confirm the document's existence at the timestamped time, they should just follow these steps:
-          <ul>
-            <li>Calculate the document's SHA256 digest.</li>
-            <li>Find a transaction in the bitcoin blockchain containing an OP_RETURN output with the document's hash prepended by our marker bytes, which are 0x444f4350524f4f46 (or 'DOCPROOF' in ascii).</li>
-            <li>Some online services like <a href="http://coinsecrets.org/">
-    Coin Secrets</a> or <a href="https://blockchain.info/strange-transactions">
-    blockchain.info's list</a> can help you locate OP_RETURN transactions more easily.</li>
-            <li>The existence of that transaction in the blockchain proves that the document existed at the time the transaction got included into a block.</li>
-
-          </ul>
-
-        </p>
-
-      <h3>Press, Media &amp; History</h3>
-      <p>
-      <a href="https://en.wikipedia.org/wiki/Proof_of_Existence">Proof of Existence 
-	Wikipedia Article</a>
-      </p>
+        <!-- Info about your brand goes here -->
 
 
   </div>
