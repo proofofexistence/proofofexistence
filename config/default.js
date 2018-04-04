@@ -1,28 +1,9 @@
 'use strict'
 
-var dotenv = require('dotenv')
 var bitcore = require('bitcore-lib')
-var fs = require('fs')
-var path = require('path')
 var defer = require('config/defer').deferConfig
 
 var config = {}
-
-/**
- * Configure dotenv.
- */
-
-// Use .env, or .env.$NODE_ENV if it exists
-var envDir = path.resolve(__dirname, '../')
-var envPath = path.join(envDir, '.env')
-var nodeEnv = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev'
-var nodeEnvPath = envPath + '.' + nodeEnv
-
-if (fs.existsSync(nodeEnvPath)) {
-  envPath = nodeEnvPath
-}
-
-dotenv.config({path: envPath})
 
 /**
  * Configure app

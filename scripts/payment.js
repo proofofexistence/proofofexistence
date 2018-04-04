@@ -1,4 +1,3 @@
-var dotenv = require('dotenv')
 var bitcore = require('bitcore-lib')
 
 var config = require('config')
