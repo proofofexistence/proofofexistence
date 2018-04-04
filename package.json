@@ -8,7 +8,6 @@
     "build:modernizr": "modernizr --config modernizr-config.json --dest public/vendor/modernizr.js",
     "clean": "rm -Rf public/vendor",
     "serve": "npm run start",
-    "setup": "node lib/setup.js",
     "start": "node lib/server.js",
     "sweep": "node lib/sweep.js",
     "test": "mocha --timeout 10000 && standard 'lib/**/*.js' 'config/*.js'",
