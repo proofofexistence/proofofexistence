@@ -64,6 +64,17 @@ config.feeMultiplier = defer(function () {
 })
 
 /**
+ * Configure Insight.
+ */
+
+config.insightUrl = defer(function () {
+  const btc = this.currencies.btc
+  const insight = this.services.insight
+  const url = insight[btc.defaultNetwork].url
+  return url
+})
+
+/**
  * Configure the server.
  */
 
