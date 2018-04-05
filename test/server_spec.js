@@ -311,26 +311,6 @@ before(() => {
     .query({token: blockcypherToken})
     .reply(200, btc.index, {'Content-Type': 'application/json'})
 
-  explorer.post(`${expath}/btc/${networkName}/hooks`, ((body) => {
-    return body.event === 'unconfirmed-tx'
-  }))
-    .query({token: blockcypherToken})
-    .reply(201, ((uri, body) => {
-      return btc.unconfirmedTxHook(body, blockcypherToken)
-    }), {
-      'Content-Type': 'application/json'
-    })
-
-  explorer.post(`${expath}/btc/${networkName}/hooks`, ((body) => {
-    return body.event === 'confirmed-tx'
-  }))
-    .query({token: blockcypherToken})
-    .reply(201, ((uri, body) => {
-      return btc.confirmedTxHook(body, blockcypherToken)
-    }), {
-      'Content-Type': 'application/json'
-    })
-
   addrsRegex = /\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
   explorer.get(addrsRegex)
     .query({token: blockcypherToken, limit: 50, txlimit: 2000})
