@@ -74,6 +74,14 @@ config.insightUrl = defer(function () {
   return url
 })
 
+config.insightApiUrl = defer(function () {
+  const btc = this.currencies.btc
+  const insight = this.services.insight
+  const network = insight[btc.defaultNetwork]
+  const url = network.url + network.api
+  return url
+})
+
 /**
  * Configure the server.
  */
