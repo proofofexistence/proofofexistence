@@ -21,11 +21,15 @@ const request = chai.request(server)
 
 const Btc = require('./fixtures/btc')
 const btc = new Btc()
+
+const Insights = require('./fixtures/insight')
+const insights = new Insights()
 const records = require('./fixtures/records')
 
 const networkName = config.get('networkName')
 const blockcypherToken = config.get('services.blockcypher.token')
 const blockcypherUrl = new URL(config.get('services.blockcypher.url'))
+const insightApiUrl = new URL(config.get('insightApiUrl'))
 const magicNumber = config.get('app.magicNumber')
 
 describe('register a document', () => {
@@ -109,6 +113,7 @@ describe('register a document', () => {
             expect(res).to.be.json
 
             status = res.body
+
             expect(status.success).to.equal(true)
             expect(status.pending).to.equal(false)
             expect(status.digest).to.equal(digest)
@@ -242,6 +247,41 @@ before(() => {
   const explorer = nock(blockcypherUrl.origin, {allowUnmocked: false}).persist()
   const expath = blockcypherUrl.pathname === '/' ? '' : blockcypherUrl.pathname
 
+  const insight = nock(insightApiUrl.origin, {allowUnmocked: false}).persist()
+  const inpath = insightApiUrl.pathname === '/' ? '' : insightApiUrl.pathname
+
+  insight.get(`${inpath}/txs`)
+    .query({address: records.address})
+    .reply(200, insights.addrFull(), {'Content-Type': 'application/json'})
+
+  insight.get(`${inpath}/utils/estimatefee`)
+    .query({nbBlocks: 2})
+    .reply(200, insights.estimateFee, {'Content-Type': 'application/json'})
+
+  insight.post(`${inpath}/tx/send`, ((body) => {
+    const tx = new bitcore.Transaction(body.rawtx).toObject()
+
+    const checkPayment = _.some(tx.inputs, {
+      prevTxId: 'a1802a77ae533a862f7df5d7be2e7fb24fe65d6b6d1b05921a91bdfcdb0c2d1b'
+    })
+
+    const checkDocproof = _.some(tx.outputs, {
+      script: `6a28444f4350524f4f46${records.digest}`
+    })
+
+    const checkFee = _.some(tx.outputs, {
+      satoshis: 79872
+    })
+
+    return checkPayment && checkDocproof && checkFee
+  }))
+    .reply(200, ((uri, body) => {
+      const tx = new bitcore.Transaction(body.tx)
+      return insights.txSend(tx.hash)
+    }), {
+      'Content-Type': 'application/json'
+    })
+
   explorer.get(`${expath}/btc/${networkName}/`)
     .query({token: blockcypherToken})
     .reply(200, btc.index, {'Content-Type': 'application/json'})
@@ -286,4 +326,5 @@ after(() => {
   server.stop()
   db.destroy()
   btc.reset()
+  insights.reset()
 })
