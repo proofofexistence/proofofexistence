@@ -1,6 +1,6 @@
 # Setup development environment for Proof of Existence
 FROM node:carbon
-LABEL maintainer="qinfengling <clement@poex.io>"
+LABEL maintainer="Clement Renaud <clement@poex.io>"
 
 ENV NPM_CONFIG_LOGLEVEL info
 
