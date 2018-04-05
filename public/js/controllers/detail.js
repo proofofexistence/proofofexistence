@@ -7,8 +7,8 @@ $(document).ready(function() {
   var registration = $('#registration');
   var digestInput = $('#digestInput');
   var digestSubmit = $('#digestSubmit');
-  var refresh = $('#refresh');
-  var refreshSubmit = $('#refreshSubmit');
+  var refresh = $('.refresh');
+  var refreshSubmit = $('.refreshSubmit');
   var blockchain_message = $('#blockchain_message');
   var icon = $('#icon');
   var certify_message = $('#certify_message');
