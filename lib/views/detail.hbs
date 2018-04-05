@@ -4,6 +4,12 @@
   <script type="text/javascript" src="/js/controllers/detail.js"></script>
   {{/extend}}
 
+  <script type="text/javascript">
+   var insightTxUrl =  function(tx) {
+    return '{{ insightUrl }}' + '/tx/' + tx;
+   }
+  </script>
+
 <div class="container-fluid js-content">
   <div class="row">
     <div class="col-lg-12">

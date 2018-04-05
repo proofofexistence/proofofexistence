@@ -70,9 +70,9 @@ $(document).ready(function() {
       var is_confirmed = !data.pending && has_tx && has_blockstamp;
       var img_src = '';
       var payment_amount = 0;
-      var txURL = 'https://live.blockcypher.com/' +
-        (data.network === 'testnet' ? 'btc-testnet' : 'btc') + '/tx/' +
-        data.tx;
+
+      var txURL = insightTxUrl(data.tx)
+
       if (is_confirmed) {
         console.log('in blockchain');
         msg = translate('Document proof embedded in the Bitcoin blockchain!');
