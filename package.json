@@ -1,13 +1,13 @@
 {
   "name": "proofxstnce",
-  "version": "1.11.1",
+  "version": "1.11.2",
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "lib/server.js",
   "scripts": {
     "build": "npm run build:modernizr && ./scripts/vendor.sh",
     "build:modernizr": "modernizr --config modernizr-config.json --dest public/vendor/modernizr.js",
     "clean": "rm -Rf public/vendor",
-    "release" : "release-it",
+    "release": "release-it",
     "serve": "npm run start",
     "start": "node lib/server.js",
     "sweep": "node lib/sweep.js",
