@@ -7,6 +7,7 @@
     "build": "npm run build:modernizr && ./scripts/vendor.sh",
     "build:modernizr": "modernizr --config modernizr-config.json --dest public/vendor/modernizr.js",
     "clean": "rm -Rf public/vendor",
+    "release" : "release-it",
     "serve": "npm run start",
     "start": "node lib/server.js",
     "sweep": "node lib/sweep.js",
@@ -52,6 +53,7 @@
     "mocha": "^4.0.1",
     "nock": "^9.1.5",
     "nodemon": "^1.12.0",
+    "release-it": "^7.3.0",
     "standard": "^10.0.3"
   }
 }
