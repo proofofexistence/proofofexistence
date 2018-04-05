@@ -31,3 +31,7 @@
 .social .github {
   background: url('/img/social/github.svg') no-repeat;
 }
+
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
