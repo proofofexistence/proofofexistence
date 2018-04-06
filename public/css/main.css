@@ -5,3 +5,29 @@
 .js .nojs-content {
   display: none;
 }
+
+.social {
+  margin: 0 !important;
+}
+.social a {
+  display: inline-block;
+  text-indent: -9999px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.social svg path {
+  fill: #CCC;
+}
+
+.social .twitter {
+  background: url('/img/social/twitter.svg') no-repeat;
+}
+
+.social .facebook {
+  background: url('/img/social/facebook.svg') no-repeat;
+}
+.social .github {
+  background: url('/img/social/github.svg') no-repeat;
+}

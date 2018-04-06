@@ -22,6 +22,9 @@ app:
       - contracts
 
 social:
+  twitter: proofxstence
+  facebook: proofxstence
+  github: proofofexistence
 
 services:
   blockcypher:
