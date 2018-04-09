@@ -1,10 +1,10 @@
 app:
   port: 3003
   site:
-    brand: PROOF
-    logo: "/img/poex-logo-white.svg"
+    brand: Proof of Existence
+    logo: "/theme/logo.svg"
     title: Proof of Existence
-    slogan: The original Blockchain notary service
+    slogan: Written forever.
     tagline: Instant & secure Proof of Existence for any document
     email: love@proofofexistence.com
     keywords:

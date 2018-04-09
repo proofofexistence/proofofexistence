@@ -1,26 +1,24 @@
-<nav class="navbar navbar-expand-lg">
+<div id="brand" class="navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">{{site.brand}}</a>
-    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-bar burger-lines"></span>
-      <span class="navbar-toggler-bar burger-lines"></span>
-      <span class="navbar-toggler-bar burger-lines"></span>
-    </button>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav mr-auto">
-        <li class="nav-item">
-        </li>
-      </ul>
-      <ul class="nav navbar-nav ml-auto">
-        <form class="navbar-search form-inline my-2 my-lg-0" action="/search" method="post">
-          <input name="digest" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="search">
-        </form>
-        <li class="nav-item">
-          <a class="nav-link" target="_blank" href="http://proofofexistence.github.io">
-            <span>Help</span>
+
+    <a class="navbar-brand" name="{{site.brand}}" href="/">
+      <img src="{{site.logo}}" alt=""> {{site.brand}}
+    </a>
+
+
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item">
+        {{#unless isLivenet}}
+        <a  href="#"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="This site and API use tesnet coins.">
+            <span class="badge badge-pill badge-warning">
+              {{ defaultNetwork }}
+            </span>
           </a>
-        </li>
-      </ul>
-    </div>
+        {{/unless}}
+      </li>
+    </ul>
   </div>
-</nav>
+</div>
