@@ -9,10 +9,6 @@ app:
 db:
   path: DB_PATH
 
-services:
-  blockcypher:
-    token: BLOCKCYPHER_TOKEN
-
 mail:
   from: MAIL_FROM
   to: MAIL_TO

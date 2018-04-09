@@ -27,13 +27,13 @@ social:
   github: proofofexistence
 
 services:
-  blockcypher:
-    url: https://api.blockcypher.com/v1
   insight:
     mainnet:
       url: https://insight.bitpay.com
+      api: /api
     testnet:
       url: https://test-insight.bitpay.com
+      api: /api
 
 nodemailer:
   options:

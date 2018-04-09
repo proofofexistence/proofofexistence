@@ -19,13 +19,12 @@ const db = require('../lib/db')
 const server = require('../lib/server')
 const request = chai.request(server)
 
-const Btc = require('./fixtures/btc')
-const btc = new Btc()
+const Insights = require('./fixtures/insight')
+const insights = new Insights()
 const records = require('./fixtures/records')
 
 const networkName = config.get('networkName')
-const blockcypherToken = config.get('services.blockcypher.token')
-const blockcypherUrl = new URL(config.get('services.blockcypher.url'))
+const insightApiUrl = new URL(config.get('insightApiUrl'))
 const magicNumber = config.get('app.magicNumber')
 
 describe('register a document', () => {
@@ -109,6 +108,7 @@ describe('register a document', () => {
             expect(res).to.be.json
 
             status = res.body
+
             expect(status.success).to.equal(true)
             expect(status.pending).to.equal(false)
             expect(status.digest).to.equal(digest)
@@ -191,71 +191,6 @@ describe('register a document', () => {
         done()
       })
   })
-
-  it('it should process an unconfirmed tx webhook', (done) => {
-    db.batch()
-      .put(`map-${digest}`, address)
-      .put(address, JSON.stringify(document))
-      .write(() => {
-        request
-          .post(`/unconfirmed/${magicNumber}/${address}`)
-          .type('application/json')
-          .send(btc.unconfirmedPaymentTx())
-          .end((err, res) => {
-            expect(err).to.be.null
-            expect(res).to.have.status(200)
-            done()
-          })
-      })
-  })
-
-  it('it should return an error if the unconfirmed tx webhook token is wrong', (done) => {
-    request
-      .post(`/unconfirmed/BAD_TOKEN/${address}`)
-      .type('application/json')
-      .send({})
-      .end((err, res) => {
-        expect(err.message).to.equal('Not Found')
-        expect(res).to.have.status(404)
-        done()
-      })
-  })
-
-  it('it should process a confirmed tx webhook', (done) => {
-    var doc = extend({}, document)
-    doc.pending = false
-    doc.txstamp = new Date()
-    doc.tx = btc.txPush().tx.hash
-
-    btc.confirmed = true
-
-    db.batch()
-      .put(`map-${digest}`, address)
-      .put(address, JSON.stringify(doc))
-      .write(() => {
-        request
-          .post(`/confirmed/${magicNumber}/${address}`)
-          .type('application/json')
-          .send(btc.confirmedDocproofTx())
-          .end((err, res) => {
-            expect(err).to.be.null
-            expect(res).to.have.status(200)
-            done()
-          })
-      })
-  })
-
-  it('it should return an error if the confirmed tx webhook token is wrong', (done) => {
-    request
-      .post(`/confirmed/BAD_TOKEN/${address}`)
-      .type('application/json')
-      .send({})
-      .end((err, res) => {
-        expect(err.message).to.equal('Not Found')
-        expect(res).to.have.status(404)
-        done()
-      })
-  })
 })
 
 describe('/GET latest unconfirmed', () => {
@@ -304,48 +239,22 @@ beforeEach(() => {
 })
 
 before(() => {
-  const explorer = nock(blockcypherUrl.origin, {allowUnmocked: false}).persist()
-  const expath = blockcypherUrl.pathname === '/' ? '' : blockcypherUrl.pathname
+  const insight = nock(insightApiUrl.origin, {allowUnmocked: false}).persist()
+  const inpath = insightApiUrl.pathname === '/' ? '' : insightApiUrl.pathname
 
-  explorer.get(`${expath}/btc/${networkName}/`)
-    .query({token: blockcypherToken})
-    .reply(200, btc.index, {'Content-Type': 'application/json'})
+  insight.get(`${inpath}/txs`)
+    .query({address: records.address})
+    .reply(200, insights.addrFull(), {'Content-Type': 'application/json'})
 
-  explorer.post(`${expath}/btc/${networkName}/hooks`, ((body) => {
-    return body.event === 'unconfirmed-tx'
-  }))
-    .query({token: blockcypherToken})
-    .reply(201, ((uri, body) => {
-      return btc.unconfirmedTxHook(body, blockcypherToken)
-    }), {
-      'Content-Type': 'application/json'
-    })
+  insight.get(`${inpath}/utils/estimatefee`)
+    .query({nbBlocks: 2})
+    .reply(200, insights.estimateFee, {'Content-Type': 'application/json'})
 
-  explorer.post(`${expath}/btc/${networkName}/hooks`, ((body) => {
-    return body.event === 'confirmed-tx'
-  }))
-    .query({token: blockcypherToken})
-    .reply(201, ((uri, body) => {
-      return btc.confirmedTxHook(body, blockcypherToken)
-    }), {
-      'Content-Type': 'application/json'
-    })
-
-  addrsRegex = /\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
-  explorer.get(addrsRegex)
-    .query({token: blockcypherToken, limit: 50, txlimit: 2000})
-    .reply(200, ((uri) => {
-      address = uri.match(addrsRegex)[1]
-      return btc.addressFull(address)
-    }), {
-      'Content-Type': 'application/json'
-    })
-
-  explorer.post(`${expath}/btc/${networkName}/txs/push`, ((body) => {
-    const tx = new bitcore.Transaction(body.tx).toObject()
+  insight.post(`${inpath}/tx/send`, ((body) => {
+    const tx = new bitcore.Transaction(body.rawtx).toObject()
 
     const checkPayment = _.some(tx.inputs, {
-      prevTxId: btc.unconfirmedPaymentTx().hash
+      prevTxId: 'a1802a77ae533a862f7df5d7be2e7fb24fe65d6b6d1b05921a91bdfcdb0c2d1b'
     })
 
     const checkDocproof = _.some(tx.outputs, {
@@ -358,10 +267,9 @@ before(() => {
 
     return checkPayment && checkDocproof && checkFee
   }))
-    .query({token: blockcypherToken})
     .reply(200, ((uri, body) => {
       const tx = new bitcore.Transaction(body.tx)
-      return btc.txPush(tx.hash)
+      return insights.txSend(tx.hash)
     }), {
       'Content-Type': 'application/json'
     })
@@ -370,5 +278,5 @@ before(() => {
 after(() => {
   server.stop()
   db.destroy()
-  btc.reset()
+  insights.reset()
 })
