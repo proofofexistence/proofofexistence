@@ -19,16 +19,11 @@ const db = require('../lib/db')
 const server = require('../lib/server')
 const request = chai.request(server)
 
-const Btc = require('./fixtures/btc')
-const btc = new Btc()
-
 const Insights = require('./fixtures/insight')
 const insights = new Insights()
 const records = require('./fixtures/records')
 
 const networkName = config.get('networkName')
-const blockcypherToken = config.get('services.blockcypher.token')
-const blockcypherUrl = new URL(config.get('services.blockcypher.url'))
 const insightApiUrl = new URL(config.get('insightApiUrl'))
 const magicNumber = config.get('app.magicNumber')
 
@@ -244,9 +239,6 @@ beforeEach(() => {
 })
 
 before(() => {
-  const explorer = nock(blockcypherUrl.origin, {allowUnmocked: false}).persist()
-  const expath = blockcypherUrl.pathname === '/' ? '' : blockcypherUrl.pathname
-
   const insight = nock(insightApiUrl.origin, {allowUnmocked: false}).persist()
   const inpath = insightApiUrl.pathname === '/' ? '' : insightApiUrl.pathname
 
@@ -281,50 +273,10 @@ before(() => {
     }), {
       'Content-Type': 'application/json'
     })
-
-  explorer.get(`${expath}/btc/${networkName}/`)
-    .query({token: blockcypherToken})
-    .reply(200, btc.index, {'Content-Type': 'application/json'})
-
-  addrsRegex = /\/btc\/[a-z0-9]+\/addrs\/([A-Za-z0-9]+)\/full/
-  explorer.get(addrsRegex)
-    .query({token: blockcypherToken, limit: 50, txlimit: 2000})
-    .reply(200, ((uri) => {
-      address = uri.match(addrsRegex)[1]
-      return btc.addressFull(address)
-    }), {
-      'Content-Type': 'application/json'
-    })
-
-  explorer.post(`${expath}/btc/${networkName}/txs/push`, ((body) => {
-    const tx = new bitcore.Transaction(body.tx).toObject()
-
-    const checkPayment = _.some(tx.inputs, {
-      prevTxId: btc.unconfirmedPaymentTx().hash
-    })
-
-    const checkDocproof = _.some(tx.outputs, {
-      script: `6a28444f4350524f4f46${records.digest}`
-    })
-
-    const checkFee = _.some(tx.outputs, {
-      satoshis: 79872
-    })
-
-    return checkPayment && checkDocproof && checkFee
-  }))
-    .query({token: blockcypherToken})
-    .reply(200, ((uri, body) => {
-      const tx = new bitcore.Transaction(body.tx)
-      return btc.txPush(tx.hash)
-    }), {
-      'Content-Type': 'application/json'
-    })
 })
 
 after(() => {
   server.stop()
   db.destroy()
-  btc.reset()
   insights.reset()
 })
