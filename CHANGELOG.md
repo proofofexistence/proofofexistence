@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.12.0 - 2018-04-09
+
+* Replace Blockcypher API by Insight API
+* Social media icons and footer
+
 ## 1.11.2 - 2018-04-05
 
 * Remove sidebar and about page
