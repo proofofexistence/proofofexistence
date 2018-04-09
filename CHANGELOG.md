@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.11.2 - 2018-04-05
+
+* Remove sidebar and about page
+* Simpler config files
+
 ## 1.11.1 - 2018-03-26
 
 ### Fixed
