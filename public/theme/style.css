@@ -16,13 +16,27 @@
 .card {
   margin: 3em 0;
 }
+.card h3.card-title {
+  margin-bottom: .3em;
+}
+#upload {
+  margin-top: 5em;
+}
+
+.card.no-border {
+  border:none
+}
 
 #actions {
   margin: 3em 0 2em 0;
 }
+
+table, td {
+  word-wrap: break-word;
+  word-break:break-all;
+}
 #search {
   /* text-align: center; */
-  width: 80%;
   margin: 0 auto;
 }
 

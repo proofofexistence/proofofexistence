@@ -4,6 +4,7 @@
 {{/extend}}
 
 <div class="index-page container-fluid js-content">
+
   <div class="row">
     <div class="col-lg-12">
       <div id="branding" class="">
@@ -28,76 +29,42 @@
     </div>
   </div>
 
-  <div id="search" class="row">
-    <div class="col-lg-12">
-      <div class="card">
+  <div class="row" id="upload">
+      <div class="no-border card col-lg-6">
+        <h3 class="card-title">
+          Select a document and have it certified in the Bitcoin blockchain
+          <br>
+          <small>
+            <a href="" data-toggle="modal" data-target="#helpModal">
+              Learn more.
+            </a>
+          </small>
+        </h3>
+      </div>
+      <div id="dropbox" class="card col-lg-4 ml-auto ">
         <div class="card-header">
           <h3 class="card-title">
-            Search an existing reference
-          </h3>
-        </div>
-        <div class="card-body">
-          <form class="" action="/search" method="post">
-            <input name="digest" class="form-control mr-sm-2" placeholder="Input a hash" aria-label="Search" type="search">
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <div id="dropbox" class="card">
-        <div class="card-header">
-          <ul class="nav nav-tabs" id="dropTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="filedrop-tab" data-toggle="tab" href="#filedrop" role="tab" aria-controls="filedrop" aria-selected="true">File</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="filehash-tab" data-toggle="tab" href="#filehash" role="tab" aria-controls="filehash" aria-selected="false">Hash</a>
-            </li>
-          </ul>
+          </h3>
+          <p class="card-category">
+            Drag and drop your document here, or choose a file.
+            The file will <strong>not</strong> be uploaded.
+          </p>
         </div>
         <div class="card-body">
-          <div class="tab-content" id="dropTabContent">
-            <div class="tab-pane fade show active" id="filedrop" role="tabpanel" aria-labelledby="filedrop-tab">
-              <h3 class="card-title">
-                Select a document and have it certified in the Bitcoin blockchain
-              </h3>
-              <p class="card-category">
-                Drag and drop your document here, or choose a file.
-                The file will <strong>not</strong> be uploaded.
-                <a href="" data-toggle="modal" data-target="#helpModal">
-                  Learn more.
-                </a>
-              </p>
-              <form id="upload_form" method="POST" enctype="multipart/form-data">
-                <fieldset>
-                  <label class="custom-file">
-                    <input id="file" class="custom-file-input" type="file">
-                    <span class="custom-file-control"></span>
-                  </label>
-                </fieldset>
-              </form>
-            </div>
-            <div class="tab-pane fade" id="filehash" role="tabpanel" aria-labelledby="filehash-tab">
-              <h3 class="card-title">
-                Input a Document Hash
-              </h3>
-              <p class="card-category">
-                Compute the SHA256 checksum hexadecimal digest for your file, and input the value here.
-              </p>
-              <form id="hash-form" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                  <input id="hash-input" type="text" pattern="[A-Fa-f0-9]+" required minlength=64 maxlength=64 class="form-control" placeholder="Document hash" aria-label="Document Hash">
-                </div>
-                <button id="hash-submit" type="submit" class="btn btn-primary">Register</button>
-              </form>
-            </div>
-          </div>
+
+          <form id="upload_form" method="POST" enctype="multipart/form-data">
+            <fieldset>
+              <label class="custom-file">
+                <input id="file" class="custom-file-input" type="file">
+                <span class="custom-file-control"></span>
+              </label>
+            </fieldset>
+          </form>
+
+
           <div class="row">
             <div class="col-lg-12">
-              <hr />
               <div id="explain"></div>
               <div id="hash-progress" class="progress" style="display: none">
                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
@@ -114,15 +81,33 @@
           </div>
         </div>
       </div>
+
+
     </div>
   </div>
 
+
+  <!-- <div>
+    <h3 class="card-title">
+      Input a Document Hash
+    </h3>
+    <p class="card-category">
+      Compute the SHA256 checksum hexadecimal digest for your file, and input the value here.
+    </p>
+    <form id="hash-form" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <input id="hash-input" type="text" pattern="[A-Fa-f0-9]+" required minlength=64 maxlength=64 class="form-control" placeholder="Document hash" aria-label="Document Hash">
+      </div>
+      <button id="hash-submit" type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div> -->
+
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Submissions</h4>
-          <p class="card-category">Documents registered for certification</p>
+          <h3 class="card-title">Ongoing Submissions</h3>
+          <p class="card-category">Documents already registered for certification, waiting for payments.</p>
           </div>
           <div class="card-body table-responsive table-full-width">
             <table class="table table-striped" id="latest">
@@ -130,14 +115,12 @@
           </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Certifications</h4>
-          <p class="card-category">Documents confirmed in the blockchain</p>
+          <h3 class="card-title">Certifications</h3>
+          <p class="card-category">Documents of proven existence, confirmed in the blockchain</p>
         </div>
         <div class="card-body table-responsive table-full-width">
           <table class="table table-striped" id="latest_confirmed">
@@ -146,4 +129,24 @@
       </div>
     </div>
   </div>
+
+
+  <div id="search" class="row">
+    <div class="col-lg-12">
+      <div class="card no-border">
+        <div class="card-header">
+          <h3 class="card-title">
+            Search an existing reference
+          </h3>
+          <p class="card-category">Search for the <em>hash</em> representing your your document to find the proof of its previous existence.</p>
+        </div>
+        <div class="card-body">
+          <form class="" action="/search" method="post">
+            <input name="digest" class="form-control mr-sm-2" placeholder="Input a hash" aria-label="Search" type="search">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
