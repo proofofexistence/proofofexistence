@@ -27,8 +27,6 @@ social:
   github: proofofexistence
 
 services:
-  blockcypher:
-    url: https://api.blockcypher.com/v1
   insight:
     mainnet:
       url: https://insight.bitpay.com

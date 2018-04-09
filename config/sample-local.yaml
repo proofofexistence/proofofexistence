@@ -27,11 +27,6 @@ currencies:
         documentPrice: 100000
         feeMultiplier: 4
 
-services:
-  blockcypher:
-    token:
-    url: https://api.blockcypher.com/v1
-
 mail:
   from:
   to:

@@ -19,10 +19,6 @@ currencies:
         documentPrice: 200000
         feeMultiplier: 4
 
-services:
-  blockcypher:
-    token: BLOCKCYPHER_TOKEN
-
 mail:
   from: poex@localhost
   to: poex@localhost
