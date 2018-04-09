@@ -1,6 +1,6 @@
 {
   "name": "proofxstnce",
-  "version": "1.11.2",
+  "version": "1.12.0",
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "lib/server.js",
   "scripts": {
