@@ -1,0 +1,32 @@
+#branding {
+  padding: 3em;
+  text-align: center;
+}
+
+#brand {
+  position: sticky;
+  top: 0px;
+  z-index: 3000;
+}
+
+#brand img {
+  max-width: 30px;
+  margin: 5px;
+}
+
+.card {
+  margin: 3em 0;
+}
+
+#actions {
+  margin: 3em 0 2em 0;
+}
+#search {
+  /* text-align: center; */
+  width: 80%;
+  margin: 0 auto;
+}
+
+footer {
+  margin: 5em 0 2em 0;
+}
