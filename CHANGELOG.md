@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.12.1 - 2018-04-09
+
+* Cosmetics and some UI graphic design
+
 ## 1.12.0 - 2018-04-09
 
 * Replace Blockcypher API by Insight API
