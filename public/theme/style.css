@@ -3,12 +3,13 @@
   text-align: center;
 }
 
-#brand {
+#navbar {
   position: sticky;
   top: 0px;
+  z-index:100;
 }
 
-#brand img {
+#navbar img {
   max-width: 30px;
   margin: 5px;
 }
