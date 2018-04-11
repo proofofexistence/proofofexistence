@@ -35,6 +35,10 @@
           Select a document and have it certified in the Bitcoin blockchain
           <br>
           <small>
+            <span>
+              If it has been certified already, you will be redirected to the original record.
+            </span>
+            <br>
             <a href="" data-toggle="modal" data-target="#helpModal">
               Learn more.
             </a>
@@ -80,9 +84,32 @@
             </div>
           </div>
         </div>
+        <div class="card-footer">
+          <p class="card-category">
+            or <a href="#" class="toggleHashSearch">input a hash</a> to find previous records.
+          </p>
+        </div>
       </div>
 
 
+    </div>
+  </div>
+
+  <div id="search" class="row">
+    <div class="col-lg-12">
+      <div class="card no-border">
+        <div class="card-header">
+          <h3 class="card-title">
+            Search an existing reference
+          </h3>
+          <p class="card-category">Input the <em>hash</em> representing your document to be directed to the proof of its previous existence.</p>
+        </div>
+        <div class="card-body">
+          <form class="" action="/search" method="post">
+            <input name="digest" class="form-control mr-sm-2" placeholder="Input a hash" aria-label="Search" type="search">
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -125,25 +152,6 @@
         <div class="card-body table-responsive table-full-width">
           <table class="table table-striped" id="latest_confirmed">
           </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div id="search" class="row">
-    <div class="col-lg-12">
-      <div class="card no-border">
-        <div class="card-header">
-          <h3 class="card-title">
-            Search an existing reference
-          </h3>
-          <p class="card-category">Search for the <em>hash</em> representing your your document to find the proof of its previous existence.</p>
-        </div>
-        <div class="card-body">
-          <form class="" action="/search" method="post">
-            <input name="digest" class="form-control mr-sm-2" placeholder="Input a hash" aria-label="Search" type="search">
-          </form>
         </div>
       </div>
     </div>

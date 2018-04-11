@@ -39,6 +39,7 @@ table, td {
 #search {
   /* text-align: center; */
   margin: 0 auto;
+  display: none;
 }
 
 footer {
