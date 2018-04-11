@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.12.2 - 2018-04-11
+
+* Better search feature
+
 ## 1.12.1 - 2018-04-09
 
 * Cosmetics and some UI graphic design
