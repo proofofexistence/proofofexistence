@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const core = require('../core')
-const register = require('../controllers/register')
+const core = require('../../lib/core')
+const register = require('../../lib/controllers/register')
 
 /**
  * Register controller action.

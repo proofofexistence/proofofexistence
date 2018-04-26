@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const store = require('../store')
+const store = require('../../lib/store')
 
 function unconfirmed (req, res) {
   store.getLatestUnconfirmed().then(results => {
