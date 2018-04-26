@@ -1,5 +1,5 @@
 {
-  "name": "proofxstnce",
+  "name": "proofofexistence",
   "version": "1.12.2",
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "lib/server.js",
@@ -9,7 +9,7 @@
     "clean": "rm -Rf public/vendor",
     "release": "release-it",
     "serve": "npm run start",
-    "start": "node lib/server.js",
+    "start": "nodemon lib/app.js",
     "sweep": "node lib/sweep.js",
     "test": "mocha --timeout 10000 && standard 'lib/**/*.js' 'config/*.js'",
     "watch": "nodemon --watch lib --watch config -e js,hbs,yaml,json --exec npm start"
@@ -38,6 +38,7 @@
     "lodash": "^4.0.0",
     "modernizr": "^3.5.0",
     "moment": "^2.19.3",
+    "morgan": "^1.9.0",
     "nodemailer": "^4.4.0",
     "openpgp": "^1.3.0",
     "paper-dashboard": "^1.1.0",
@@ -53,7 +54,7 @@
     "chai-http": "^3.0.0",
     "mocha": "^4.0.1",
     "nock": "^9.1.5",
-    "nodemon": "^1.12.0",
+    "nodemon": "^1.17.3",
     "release-it": "^7.3.0",
     "standard": "^10.0.3"
   }
