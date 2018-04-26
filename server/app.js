@@ -8,7 +8,7 @@ const logger = require('morgan');
 
 const app = express()
 
-app.use(express.static('public'))
+app.use(express.static(path.resolve(__dirname,'../ui/public')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -40,7 +40,7 @@ app.use('/api/admin', admin)
 app.use('/api', api);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname,'public/index.html'))
+  res.sendFile(path.resolve(__dirname,'../ui/public/index.html'))
 })
 
 var server = app.listen(config.get('app.port'), function () {

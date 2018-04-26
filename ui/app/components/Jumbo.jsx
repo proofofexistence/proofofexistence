@@ -1,17 +1,17 @@
 import React from 'react'
 
-const Jumbo = () => (
+const Jumbo = ({site}) => (
   <div class="row">
     <div class="col-lg-12">
       <div id="branding" class="">
-          <img src="{{site.logo}}" alt="Main Logo">
+          <img src="{site.logo}" alt="Main Logo" />
           <h1>
-            {{site.brand}}
+            {site.brand}
             <br />
-            <small>{{site.slogan}}</small>
+            <small>{site.slogan}</small>
           </h1>
 
-          <h4>{{site.tagline}}</h4>
+          <h4>{site.tagline}</h4>
 
           <div id="actions">
             <a class="btn" target="_blank" href="http://github.com/proofofexistence/proofofexistence">
