@@ -3,6 +3,7 @@ node_modules
 *.sw[a-z]
 database
 public/vendor
+public/dist
 log/
 server.pid
 .env*

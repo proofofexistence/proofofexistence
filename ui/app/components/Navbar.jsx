@@ -1,14 +1,13 @@
 
 import React from 'react'
 
-const Navbar = ({isTestnet, defaultNetwork}) => (
+const Navbar = ({isTestnet, defaultNetwork, site}) => (
   <div id="navbar" class="navbar navbar-light">
     <div class="container">
 
-      <a class="navbar-brand" name="{{site.brand}}" href="/">
-        <img src="{{site.logo}}" alt=""> {{site.brand}}
+      <a class="navbar-brand" name="{site.brand}" href="/">
+        <img src="{site.logo}" alt="" /> {site.brand}
       </a>
-
 
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
