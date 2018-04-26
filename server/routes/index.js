@@ -18,6 +18,15 @@ router.get('/v1', function(req, res, next) {
   });
 });
 
+router.get('/v1/config', function(req, res, next) {
+  res.send({
+    apiVersion : 1.0,
+    social : config.get('social'),
+    ...config.get('app')
+  });
+});
+
+
 router.get('/*', function(req, res) {
   res.status(404)        // HTTP status 404: NotFound
       .send('Not found');
