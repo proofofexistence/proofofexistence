@@ -1,7 +1,6 @@
 'use strict'
 
 var config = require('config')
-var db = require('./db')
 
 const express = require('express')
 const path = require('path')
@@ -50,10 +49,5 @@ var server = app.listen(config.get('app.port'), function () {
 
   console.log('Example app listening at http://%s:%s', host, port)
 })
-
-function stop () {
-  server.close()
-  db.close()
-}
 
 module.exports = server

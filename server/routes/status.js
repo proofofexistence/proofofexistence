@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const core = require('../core')
-const status = require('../controllers/status')
+const core = require('../../lib/core')
+const status = require('../../lib/controllers/status')
 
 
 /**

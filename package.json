@@ -8,8 +8,7 @@
     "build:modernizr": "modernizr --config modernizr-config.json --dest public/vendor/modernizr.js",
     "clean": "rm -Rf public/vendor",
     "release": "release-it",
-    "serve": "npm run start",
-    "start": "nodemon lib/app.js",
+    "start": "nodemon server/app.js",
     "sweep": "node lib/sweep.js",
     "test": "mocha --timeout 10000 && standard 'lib/**/*.js' 'config/*.js'",
     "watch": "nodemon --watch lib --watch config -e js,hbs,yaml,json --exec npm start"
