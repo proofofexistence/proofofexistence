@@ -14,7 +14,7 @@ const Footer = ({
         <ul>
           { twitter ?
             <li class="social">
-              <a class="twitter" href="https://twitter.com/{ twitter }">
+              <a class="twitter" href={`https://twitter.com/${ twitter }`}>
                 Twitter
               </a>
             </li>
@@ -23,7 +23,7 @@ const Footer = ({
           }
           { github ?
             <li class="social">
-              <a class="github" href="https://github.com/{ github }">
+              <a class="github" href={`https://github.com/${ github }`}>
                 GitHub
               </a>
             </li>
@@ -32,7 +32,7 @@ const Footer = ({
           }
           { facebook ?
             <li class="social">
-              <a class="facebook" href="https://facebook.com/{ facebook }">
+              <a class="facebook" href={`https://facebook.com/${ facebook }`}>
                 Facebook
               </a>
             </li>
@@ -59,7 +59,13 @@ const Footer = ({
           </li>
         </ul>
       </nav>
-      <div class="copyright pull-right"> Written forever by <a href="http://proofofexistence.com">Proof of Existence</a> - &copy; { year }
+      <div class="copyright pull-right"> Written forever by <a href="http://proofofexistence.com">Proof of Existence</a>
+        {
+          year ?
+            `- &copy; ${ year }`
+          :
+            null
+        }
       </div>
     </div>
   </footer>
