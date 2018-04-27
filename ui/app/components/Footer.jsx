@@ -6,7 +6,8 @@ const Footer = ({
   github,
   facebook,
   email,
-  year
+  year,
+  version
 }) => (
   <footer class="footer">
     <div class="container">
@@ -57,6 +58,16 @@ const Footer = ({
               Read the docs
             </a>
           </li>
+          {
+            version ?
+              <li>
+                <a href="#">
+                  v{version}
+                </a>
+              </li>
+            :
+              null
+          }
         </ul>
       </nav>
       <div class="copyright pull-right"> Written forever by <a href="http://proofofexistence.com">Proof of Existence</a>

@@ -25,6 +25,7 @@ const isTestnet = defaultNetwork === "testnet"
 router.get('/v1/config', function(req, res, next) {
   res.send({
     apiVersion : 1.0,
+    version : package.version,
     social,
     isTestnet,
     defaultNetwork,

@@ -13,7 +13,8 @@ class App extends Component {
         site : {},
         social : {},
         isTestnet: true,
-        defaultNetwork: "testnet"
+        defaultNetwork: "testnet",
+        version: null
       }
     }
   }
@@ -31,7 +32,8 @@ class App extends Component {
       site,
       social,
       isTestnet,
-      defaultNetwork
+      defaultNetwork,
+      version
     } = config
 
     return (
@@ -54,6 +56,7 @@ class App extends Component {
           facebook={social.facebook}
           email={social.email}
           year={site.year}
+          version={version}
           />
       </div>
     );
