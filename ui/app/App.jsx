@@ -9,7 +9,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      config : {}
+      config : {
+        site : {},
+        social : {},
+        isTestnet: true,
+        defaultNetwork: "testnet"
+      }
     }
   }
 
@@ -18,15 +23,38 @@ class App extends Component {
       this.setState({ config })
     })
   }
+
   render() {
     const {config} = this.state
-    console.log(config);
-    const {site, social} = config
+
+    const {
+      site,
+      social,
+      isTestnet,
+      defaultNetwork
+    } = config
+
     return (
       <div className="App">
-        <Navbar site={site ? site : {}} social={social}/>
-        <Jumbo site={site ? site : {}} social={social}/>
-        <Footer />
+        <Navbar
+          brand={site.brand}
+          logo={site.logo}
+          isTestnet={isTestnet}
+          defaultNetwork={defaultNetwork}
+          />
+        <Jumbo
+          logo={site.logo}
+          brand={site.brand}
+          slogan={site.slogan}
+          tagline={site.tagline}
+          />
+        <Footer
+          twitter={social.twitter}
+          github={social.github}
+          facebook={social.facebook}
+          email={social.email}
+          year={site.year}
+          />
       </div>
     );
   }

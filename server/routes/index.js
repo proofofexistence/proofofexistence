@@ -18,10 +18,16 @@ router.get('/v1', function(req, res, next) {
   });
 });
 
+const social = config.get('social')
+const defaultNetwork = config.get('currencies').btc.defaultNetwork
+const isTestnet = defaultNetwork === "testnet"
+
 router.get('/v1/config', function(req, res, next) {
   res.send({
     apiVersion : 1.0,
-    social : config.get('social'),
+    social,
+    isTestnet,
+    defaultNetwork,
     ...config.get('app')
   });
 });
