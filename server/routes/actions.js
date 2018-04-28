@@ -3,8 +3,30 @@ const router = express.Router();
 
 const core = require('../../lib/core')
 const status = require('../../lib/controllers/status')
+const register = require('../../lib/controllers/register')
 
+/**
+ * Register controller action.
+ */
 
+function create (req, res) {
+  const hash = req.params.hash
+
+  if (core.docproof.isValidDigest(req.params.hash)) {
+    register(hash)
+      .then(results => {
+        res.json(results)
+      }).catch(error => {
+        console.log(error.message)
+
+        res.status(500).end('Unexpected error')
+      })
+  } else {
+    return res.status(400).json({
+      reason: 'Invalid `hash` field'
+    })
+  }
+}
 /**
  * Status controller show action.
  */
@@ -52,17 +74,8 @@ function update (req, res) {
   }
 }
 
-// routes
-router.get('/', (req, res) => {
-  req.params.hash = req.query.d
-  show(req, res)
-})
-
-router.get('/:hash', show)
-
-router.post('/', (req, res) => {
-  req.params.hash = req.body.hash || req.body.d
-  update(req, res)
-})
-
-module.exports = router
+module.exports = {
+  create,
+  show,
+  update
+}

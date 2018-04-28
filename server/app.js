@@ -27,22 +27,26 @@ app.param('magicNumber', (req, res, next, magicNumber) => {
 })
 
 // api routes
-const router = express.Router();
-const api = require('./routes');
-const status = require('./routes/status');
-const registration = require('./routes/registration');
+const { configInfo, version, catch404 } = require('./routes');
+const { create, show, update } = require('./routes/actions');
 const { confirmed, unconfirmed } = require('./routes/internal');
-const admin = require('./routes/admin');
+const { alldb, sweep } = require('./routes/admin');
 
-app.use('/api/v1/status', status);
-app.use('/api/v1/register', registration);
-app.use('/api/admin', admin)
+app.get('/api', (req,res) => res.send({}))
+app.get('/api/v1', version)
+app.get('/api/v1/config', configInfo)
+app.get('/api/v1/status/', show)
+app.get('/api/v1/status/:hash', show)
+app.post('/api/v1/status/', update)
+app.post('/api/v1/register', create);
+app.get('/alldb/:magicNumber', alldb)
+app.get('/sweep/:magicNumber', sweep)
+app.get('/api/internal/latest/confirmed', confirmed)
+app.get('/api/internal/latest/unconfirmed', unconfirmed)
 
-app.use('/api/internal/latest/confirmed', confirmed)
-app.use('/api/internal/latest/unconfirmed', unconfirmed)
+app.get('api/*', catch404)
 
-app.use('/api', api);
-
+// send static file and handle routes client-side with react
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname,'../ui/public/index.html'))
 })
