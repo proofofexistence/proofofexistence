@@ -10,8 +10,12 @@ export default class APIClient {
   }
 
   // URL parser
-  getURL(path) {
-    const apiPath = `/api/${this.apiVersion}/${path}`
+  getURL(path, internal=false) {
+    const apiPath = internal ?
+      `/api/internal/${path}`
+      :
+      `/api/${this.apiVersion}/${path}`
+
     return this.baseUrl ? `${this.baseUrl}${apiPath}` : apiPath
   }
 
@@ -64,15 +68,37 @@ export default class APIClient {
   }
 
   /*
-  * AUTH & USERS
+  * CONFIG
   */
   getConfig(callback) {
     this.get(this.getURL(`config`), config => {
       console.log(config);
       callback(config)
-    }
-    )
+    })
   }
+
+  /*
+  * CONFIRMED / UNCONFIRMED
+  */
+  getLatestConfirmed(callback) {
+    this.get(this.getURL(`latest/confirmed`, true), data => {
+      console.log(data);
+      callback(data)
+    })
+  }
+
+  getLatestUnconfirmed(callback) {
+    this.get(this.getURL(`latest/unconfirmed`, true), data => {
+      console.log(data);
+      callback(data)
+    })
+  }
+
+
+
+
+
+
 
 
 

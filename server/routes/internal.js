@@ -17,7 +17,7 @@ function confirmed (req, res) {
   })
 }
 
-router.get('confirmed', confirmed)
-router.get('unconfirmed', unconfirmed)
-
-module.exports = router
+module.exports = {
+  unconfirmed,
+  confirmed
+}
