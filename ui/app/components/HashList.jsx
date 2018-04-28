@@ -1,10 +1,10 @@
 import React from 'react'
 
-const List = () => (
+const HashList = () => (
   <div class="card-body table-responsive table-full-width">
     <table class="table table-striped" id="latest">
     </table>
   </div>
 )
 
-export default List
+export default HashList
