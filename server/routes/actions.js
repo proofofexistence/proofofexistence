@@ -11,7 +11,6 @@ const register = require('../../lib/controllers/register')
 
 function create (req, res) {
   const {hash} = req.body
-  console.log(hash);
 
   if (core.docproof.isValidDigest(hash)) {
     register(hash)
@@ -19,7 +18,6 @@ function create (req, res) {
         res.json(results)
       }).catch(error => {
         console.log(error.message)
-
         res.status(500).end('Unexpected error')
       })
   } else {

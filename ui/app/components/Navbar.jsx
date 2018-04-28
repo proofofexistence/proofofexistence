@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 const Navbar = ({
@@ -20,7 +19,7 @@ const Navbar = ({
             isTestnet ?
               <a href="#"
                 title="This site and API use tesnet coins."
-                > 
+                >
                   <span class="badge badge-pill badge-warning">
                     { defaultNetwork }
                   </span>
