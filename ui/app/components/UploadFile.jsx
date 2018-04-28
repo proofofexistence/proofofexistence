@@ -1,25 +1,31 @@
 import React from 'react'
 import UploadForm from './UploadForm.jsx';
 
-const HashProgress = () => (
-  <div id="hash-progress" class="progress">
+const HashProgress = ({hashingProgress}) => (
+  <div id="hash-progress" className="progress">
     <div
-      class="progress-bar progress-bar-success"
+      className="progress-bar progress-bar-success"
       role="progressbar"
-      aria-valuenow="60"
+      aria-valuenow='70'
       aria-valuemin="0"
       aria-valuemax="100"
+      style={{minWidth: `${hashingProgress}%`}}
       >
+      {hashingProgress}%
     </div>
   </div>
 )
 
-const DigestLink = () => (
-  <small>
-    <a id="digest-link" href="#">
-      Click here if you're not redirected.
-    </a>
-  </small>
+const Finished = ({hash}) => (
+  <span class="card-category">
+    {hash}
+    <br />
+    <small>
+      <a id="digest-link" href="#">
+        Click here if you're not redirected.
+      </a>
+    </small>
+  </span>
 )
 
 const UploadFile = ({
@@ -30,7 +36,9 @@ const UploadFile = ({
   files,
   maxFileSize,
   handleToggleSearch,
-  handleAddFile
+  handleAddFile,
+  hashingProgress,
+  hash
 }) => (
   <div id="dropbox" class="card">
     <div class="card-body">
@@ -44,10 +52,24 @@ const UploadFile = ({
       <div class="row">
         <div class="col-lg-12">
           <div id="explain"></div>
-            <HashProgress />
-          <p class="text-center">
-              <DigestLink />
-          </p>
+            {
+              hashingProgress && hashingProgress < 100?
+                <HashProgress
+                  hashingProgress={hashingProgress}
+                  />
+              :
+                null
+            }
+            {
+              hashingProgress == 100 ?
+                <p class="text-center">
+                  <Finished
+                    hash={hash}
+                    />
+                </p>
+              :
+                null
+            }
         </div>
       </div>
     </div>

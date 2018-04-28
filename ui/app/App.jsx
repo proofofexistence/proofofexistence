@@ -7,6 +7,8 @@ import Search from './components/Search.jsx';
 import HashList from './components/HashList.jsx';
 import Footer from './components/Footer.jsx';
 
+import crypto from './crypto';
+
 class App extends Component {
 
   constructor(props) {
@@ -23,7 +25,9 @@ class App extends Component {
       showSearch: false,
       unconfirmed : [],
       confirmed: [],
-      files: []
+      files: [],
+      hashingProgress:0,
+      hash: null
     }
   }
 
@@ -49,10 +53,29 @@ class App extends Component {
   }
 
   handleAddFile(files) {
-    console.log("files added.");
     this.setState({files})
-    console.log(files);
 
+    const file = files[0];
+    var reader = new FileReader();
+
+    reader.onload = e => {
+      // console.log(e);
+      var arrayBuffer = e.target.result;
+      crypto.SHA256(arrayBuffer,
+        p => {
+          const hashingProgress = Math.round(p*100)
+          this.setState({hashingProgress})
+        },
+        result => {
+          const hash = result.toString()
+          this.setState({ hash, hashingProgress: 100 })
+          var postData = { 'd': hash };
+          // $.post('./api/v1/register/', postData, onRegisterSuccess);
+        }
+      )
+    }
+
+    reader.readAsText(file);
   }
 
   handleRegister(hash) {
@@ -112,6 +135,8 @@ class App extends Component {
               files={this.state.files}
               handleToggleSearch={ (e) =>this.handleToggleSearch(e)}
               handleAddFile={ (e) =>this.handleAddFile(e)}
+              hashingProgress={this.state.hashingProgress}
+              hash={this.state.hash}
               />
           </div>
         </div>
