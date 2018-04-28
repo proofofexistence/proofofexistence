@@ -8,7 +8,8 @@ Modifications for asynchronous callbacks on progress by maraoz
 (c) 2013 by Manuel Araoz.
 https://twitter.com/maraoz
 */
-var CryptoJS = CryptoJS || function (h, s) {
+
+const CryptoJS = CryptoJS || function (h, s) {
         var f = {}, t = f.lib = {}, g = function () {}, j = t.Base = {
                 extend: function (a) {
                     g.prototype = this;
@@ -155,7 +156,7 @@ var CryptoJS = CryptoJS || function (h, s) {
                     				setTimeout(iter, 0);
                     				return;
                     			}
-                    				
+
                     		}
                     		thiz.cbk(m/a);
                     		setTimeout(iter, 0);
@@ -279,3 +280,5 @@ var CryptoJS = CryptoJS || function (h, s) {
     s.SHA256 = g._createHelper(f);
     s.HmacSHA256 = g._createHmacHelper(f)
 })(Math);
+
+export default CryptoJS
