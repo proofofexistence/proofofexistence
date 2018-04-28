@@ -82,14 +82,12 @@ export default class APIClient {
   */
   getLatestConfirmed(callback) {
     this.get(this.getURL(`latest/confirmed`, true), data => {
-      console.log(data);
       callback(data)
     })
   }
 
   getLatestUnconfirmed(callback) {
     this.get(this.getURL(`latest/unconfirmed`, true), data => {
-      console.log(data);
       callback(data)
     })
   }

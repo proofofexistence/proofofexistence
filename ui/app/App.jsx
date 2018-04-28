@@ -20,7 +20,8 @@ class App extends Component {
         version: null
       },
       showSearch: false,
-      unconfirmed : []
+      unconfirmed : [],
+      confirmed: []
     }
   }
 
@@ -34,7 +35,10 @@ class App extends Component {
       this.setState({ unconfirmed })
     })
 
-
+    this.props.api.getLatestConfirmed( confirmed => {
+      console.log(confirmed);
+      this.setState({ confirmed })
+    })
   }
 
   handleToggleSearch(e) {
