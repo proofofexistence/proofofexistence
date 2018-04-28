@@ -36,11 +36,6 @@ table, td {
   word-wrap: break-word;
   word-break:break-all;
 }
-#search {
-  /* text-align: center; */
-  margin: 0 auto;
-  display: none;
-}
 
 footer {
   margin: 5em 0 2em 0;

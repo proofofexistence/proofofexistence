@@ -8,11 +8,18 @@ const Search = () => (
           <h3 class="card-title">
             Search an existing reference
           </h3>
-          <p class="card-category">Input the <em>hash</em> representing your document to be directed to the proof of its previous existence.</p>
+          <p class="card-category">
+            Input the <em>hash</em> representing your document to be directed to the proof of its previous existence.
+          </p>
         </div>
         <div class="card-body">
           <form class="" action="/search" method="post">
-            <input name="digest" class="form-control mr-sm-2" placeholder="Input a hash" aria-label="Search" type="search">
+            <input name="digest"
+              class="form-control mr-sm-2"
+              placeholder="Input a hash"
+              aria-label="Search"
+              type="search"
+              />
           </form>
         </div>
       </div>
