@@ -27,16 +27,20 @@ app.param('magicNumber', (req, res, next, magicNumber) => {
 })
 
 // api routes
+const router = express.Router();
 const api = require('./routes');
 const status = require('./routes/status');
 const registration = require('./routes/registration');
-const internal = require('./routes/internal');
+const { confirmed, unconfirmed } = require('./routes/internal');
 const admin = require('./routes/admin');
 
 app.use('/api/v1/status', status);
 app.use('/api/v1/register', registration);
-app.use('/api/internal/latest', internal)
 app.use('/api/admin', admin)
+
+app.use('/api/internal/latest/confirmed', confirmed)
+app.use('/api/internal/latest/unconfirmed', unconfirmed)
+
 app.use('/api', api);
 
 app.get('*', (req, res) => {

@@ -19,7 +19,8 @@ class App extends Component {
         defaultNetwork: "testnet",
         version: null
       },
-      showSearch: false
+      showSearch: false,
+      unconfirmed : []
     }
   }
 
@@ -27,6 +28,13 @@ class App extends Component {
     this.props.api.getConfig( config => {
       this.setState({ config })
     })
+
+    this.props.api.getLatestUnconfirmed( unconfirmed => {
+      console.log(unconfirmed);
+      this.setState({ unconfirmed })
+    })
+
+
   }
 
   handleToggleSearch(e) {
