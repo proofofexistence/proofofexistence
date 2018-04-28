@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.jsx';
 import Jumbo from './components/Jumbo.jsx';
 import UploadFile from './components/UploadFile.jsx';
 import Search from './components/Search.jsx';
+import HashList from './components/HashList.jsx';
 import Footer from './components/Footer.jsx';
 
 class App extends Component {
@@ -94,6 +95,29 @@ class App extends Component {
             :
             null
         }
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Ongoing Submissions</h3>
+                <p class="card-category">Documents already registered for certification, waiting for payments.</p>
+                </div>
+                <HashList />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Certifications</h3>
+                <p class="card-category">Documents of proven existence, confirmed in the blockchain</p>
+              </div>
+              <HashList />
+            </div>
+          </div>
+        </div>
+
         <Footer
           twitter={social.twitter}
           github={social.github}
