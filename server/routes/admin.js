@@ -47,8 +47,7 @@ function sweep (req, res) {
     })
 }
 
-// admin routes
-router.get('/alldb/:magicNumber', alldb)
-router.get('/sweep/:magicNumber', sweep)
-
-module.exports = router
+module.exports = {
+  alldb,
+  sweep
+}
