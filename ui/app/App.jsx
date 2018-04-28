@@ -7,6 +7,10 @@ import Search from './components/Search.jsx';
 import HashList from './components/HashList.jsx';
 import Footer from './components/Footer.jsx';
 
+import Payment from './components/Payment.jsx'
+import Confirming from './components/Confirming.jsx'
+import Confirmed from './components/Confirmed.jsx'
+
 import crypto from './crypto';
 
 class App extends Component {
@@ -26,8 +30,18 @@ class App extends Component {
       unconfirmed : [],
       confirmed: [],
       files: [],
+
       hashingProgress:0,
-      hash: null
+      hash: null,
+      registered: false,
+
+      digest: null,
+      payAdress: null,
+      price: null,
+
+      registering: false,
+      tx: null,
+      confimed: false
     }
   }
 
@@ -73,14 +87,38 @@ class App extends Component {
         }
       )
     }
-
     reader.readAsText(file);
   }
 
   handleRegister(hash) {
     console.log(hash)
     this.props.api.register(hash,
-      (data) => console.log('ok', data),
+      data => {
+        const { success } = data
+
+        if (success == true) {
+          const { digest, payAdress, price } = data
+          this.setState({digest, payAdress, price, registered: true })
+        } else if (success == false && data.reason == "existing") {
+          this.props.api.getStatus(hash,
+            data => {
+              const { payment_address, price, digest, pending } = data
+              if (pending == true)
+                this.setState({
+                  digest,
+                  price,
+                  payAdress: payment_address,
+                  registered: true
+                })
+              else {
+                console.log('Already confirmed in BNTC blockchain!')
+                this.setState({registering: true})
+              }
+            }
+          )
+          // this.setState({digest, payAdress, price, registered: true })
+        }
+      },
       err => console.log(err)
     )
   }
@@ -88,7 +126,12 @@ class App extends Component {
   render() {
     const {
       config,
-      showSearch
+      showSearch,
+      registered,
+      digest,
+      payAdress,
+      price,
+      registering
     } = this.state
 
     const {
@@ -132,18 +175,34 @@ class App extends Component {
               </small>
             </h3>
           </div>
+
           <div className="col-lg-4 ml-auto">
-            <UploadFile
-              maxFileSize={this.state.maxFileSize}
-              files={this.state.files}
-              handleToggleSearch={ (e) =>this.handleToggleSearch(e)}
-              handleAddFile={ (e) =>this.handleAddFile(e)}
-              hashingProgress={this.state.hashingProgress}
-              hash={this.state.hash}
-              />
+            {
+              !registered ?
+                <UploadFile
+                  maxFileSize={this.state.maxFileSize}
+                  files={this.state.files}
+                  handleToggleSearch={ (e) =>this.handleToggleSearch(e)}
+                  handleAddFile={ (e) =>this.handleAddFile(e)}
+                  hashingProgress={this.state.hashingProgress}
+                  hash={this.state.hash}
+                  />
+                :
+                  registering?
+                    <Confirming
+                      tx={tx}
+                      />
+                    :
+                    <Payment
+                    price={price}
+                    digest={digest}
+                    payAdress={payAdress}
+                    />
+
+            }
+
           </div>
         </div>
-
         {
           showSearch ?
             <Search />
