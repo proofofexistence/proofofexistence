@@ -62,9 +62,32 @@ class App extends Component {
           slogan={site.slogan}
           tagline={site.tagline}
           />
-        <UploadFile
-          handleToggleSearch={ (e) =>this.handleToggleSearch(e)}
-          />
+
+        <div id="uploads" className="row">
+          <div class="no-border card col-lg-6">
+            <h3 class="card-title">
+              Select a document and have it certified in the Bitcoin blockchain
+              <br />
+              <small>
+                <span>
+                  If it has been certified already, you will be redirected to the original record.
+                </span>
+                <br />
+                {
+                  // <a href="" data-toggle="modal" data-target="#helpModal">
+                  //   Learn more.
+                  // </a>
+                }
+              </small>
+            </h3>
+          </div>
+          <div className="col-lg-4 ml-auto">
+            <UploadFile
+              handleToggleSearch={ (e) =>this.handleToggleSearch(e)}
+              />
+          </div>
+        </div>
+
         {
           showSearch ?
             <Search />
