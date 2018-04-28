@@ -10,9 +10,10 @@ const register = require('../../lib/controllers/register')
  */
 
 function create (req, res) {
-  const hash = req.params.hash
+  const {hash} = req.body
+  console.log(hash);
 
-  if (core.docproof.isValidDigest(req.params.hash)) {
+  if (core.docproof.isValidDigest(hash)) {
     register(hash)
       .then(results => {
         res.json(results)

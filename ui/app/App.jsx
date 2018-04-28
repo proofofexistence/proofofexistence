@@ -69,8 +69,7 @@ class App extends Component {
         result => {
           const hash = result.toString()
           this.setState({ hash, hashingProgress: 100 })
-          var postData = { 'd': hash };
-          // $.post('./api/v1/register/', postData, onRegisterSuccess);
+          this.handleRegister(hash)
         }
       )
     }
@@ -79,7 +78,11 @@ class App extends Component {
   }
 
   handleRegister(hash) {
-    hash
+    console.log(hash)
+    this.props.api.register(hash,
+      (data) => console.log('ok', data),
+      err => console.log(err)
+    )
   }
 
   render() {
