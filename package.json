@@ -25,6 +25,7 @@
   "dependencies": {
     "@poexio/light-bootstrap-dashboard": "^2.0.2",
     "animate.css": "^3.5.2",
+    "axios": "^0.18.0",
     "bitcoin-convert": "^1.0.4",
     "bitcore-lib": "^0.15.0",
     "bootstrap": "^3.3.7",
@@ -45,12 +46,12 @@
     "paper-dashboard": "^1.1.0",
     "prompt": "^1.0.0",
     "qrcodejs": "^1.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-dropzone": "^4.2.9",
     "request": "^2.85.0",
     "request-promise-native": "^1.0.5",
-    "sprintf-js": "^1.1.1",
-    "axios": "^0.18.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "sprintf-js": "^1.1.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",

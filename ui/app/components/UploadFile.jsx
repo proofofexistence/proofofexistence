@@ -27,21 +27,19 @@ const UploadFile = ({
   brand,
   slogan,
   tagline,
-  handleToggleSearch
+  files,
+  maxFileSize,
+  handleToggleSearch,
+  handleAddFile
 }) => (
   <div id="dropbox" class="card">
-    <div class="card-header">
-      <h3 class="card-title">
-
-      </h3>
-      <p class="card-category">
-        Drag and drop your document here, or choose a file.
-        The file will <strong>not</strong> be uploaded.
-      </p>
-    </div>
     <div class="card-body">
 
-       <UploadForm />
+       <UploadForm
+         files={files}
+         handleAddFile={handleAddFile}
+         maxFileSize={maxFileSize}
+         />
 
       <div class="row">
         <div class="col-lg-12">

@@ -19,9 +19,11 @@ class App extends Component {
         defaultNetwork: "testnet",
         version: null
       },
+      maxFileSize:0,
       showSearch: false,
       unconfirmed : [],
-      confirmed: []
+      confirmed: [],
+      files: []
     }
   }
 
@@ -46,6 +48,16 @@ class App extends Component {
     this.setState({ showSearch : !this.state.showSearch })
   }
 
+  handleAddFile(files) {
+    console.log("files added.");
+    this.setState({files})
+    console.log(files);
+
+  }
+
+  handleRegister(hash) {
+    hash
+  }
 
   render() {
     const {
@@ -96,7 +108,10 @@ class App extends Component {
           </div>
           <div className="col-lg-4 ml-auto">
             <UploadFile
+              maxFileSize={this.state.maxFileSize}
+              files={this.state.files}
               handleToggleSearch={ (e) =>this.handleToggleSearch(e)}
+              handleAddFile={ (e) =>this.handleAddFile(e)}
               />
           </div>
         </div>
