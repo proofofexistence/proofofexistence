@@ -29,7 +29,7 @@ const UploadFile = ({
   tagline,
   handleToggleSearch
 }) => (
-  <div id="dropbox" class="card col-lg-4 ml-auto ">
+  <div id="dropbox" class="card">
     <div class="card-header">
       <h3 class="card-title">
 
