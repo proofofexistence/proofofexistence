@@ -92,6 +92,28 @@ export default class APIClient {
     })
   }
 
+  /*
+  * CREATE, SHOW, UPDATE based on hash
+  */
+  register(hash, callback, callbackError) {
+    this.post('register',
+      { hash },
+      path => callback(path),
+      error => callbackError(error)
+    )
+  }
+
+  getStatus(hash, callback) {
+    this.get(`status/${hash}`,
+      (status) => callback(status)
+    )
+  }
+
+
+
+
+
+
 
 
 

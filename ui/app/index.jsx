@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import registerServiceWorker from './registerServiceWorker';
 
-import APIClient from './api'
+import APIClient from './APIClient'
 
 const api = new APIClient()
 
