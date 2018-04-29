@@ -97,8 +97,7 @@ class Status extends Component {
 
   handleUpdateStatus(e) {
     e.preventDefault()
-    const { hash } = this.state
-    console.log(hash);
+    const { hash } = this.props
     this.props.api.updateStatus(
       hash,
       data => {
@@ -118,6 +117,7 @@ class Status extends Component {
 
   render() {
 
+    const { hash } = this.props
     const {
       price,
       paymentAddress,
@@ -148,6 +148,15 @@ class Status extends Component {
           )
           }[status]
         }
+        <div class="card-body">
+          <a
+            href={`/detail/${hash}`}
+            title="Permalink to your document"
+            class="card-link"
+            >
+            Permalink to your registration
+          </a>
+        </div>
       </div>
     )
   }
