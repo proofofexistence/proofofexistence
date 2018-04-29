@@ -30,7 +30,7 @@ app.param('magicNumber', (req, res, next, magicNumber) => {
 const { configInfo, version, catch404 } = require('./routes');
 const { create, show, update } = require('./routes/actions');
 const { confirmed, unconfirmed } = require('./routes/internal');
-const { alldb, sweep } = require('./routes/admin');
+const { alldb, sweep, dbClose } = require('./routes/admin');
 
 app.get('/api', (req,res) => res.send({}))
 app.get('/api/v1', version)
@@ -58,4 +58,10 @@ var server = app.listen(config.get('app.port'), function () {
   console.log('Example app listening at http://%s:%s', host, port)
 })
 
+const stop = () => {
+  server.close()
+  dbClose()
+}
+
 module.exports = server
+module.exports.stop = stop
