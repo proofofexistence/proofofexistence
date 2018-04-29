@@ -5,15 +5,15 @@ const Payment = ({
   paymentAddress,
   price
 }) => (
-  <div class="card-body">
-    <span class="badge badge-info">Payment Required</span>
+  <div class='card-body'>
+    <span class='badge badge-info'>Payment Required</span>
 
-    <p class="card-text">
+    <p class='card-text'>
       Please send <strong>{price} mBTC</strong> to
     </p>
     <p>
       <strong id='payment_link'>
-          {paymentAddress}
+        {paymentAddress}
       </strong>
     </p>
 
@@ -21,8 +21,8 @@ const Payment = ({
       After sending your payment, click the button below to continue the document certification process.
     </p>
 
-    <a href="#"
-      class="btn btn-info btn-fill"
+    <a href='#'
+      class='btn btn-info btn-fill'
       onClick={handleUpdateStatus}
       >
       Continue Certification

@@ -1,55 +1,53 @@
-import React from 'react';
-import Dropzone from 'react-dropzone';
+import React from 'react'
+import Dropzone from 'react-dropzone'
 
 const style = {
-  dropZone : {
+  dropZone: {
     borderWidth: 1,
     borderColor: '#CCC',
     borderStyle: 'dashed',
     borderRadius: 4,
     padding: 30,
-    width: "90%",
+    width: '90%',
     transition: 'all 0.5s'
   },
-  errors : {
-    color : 'red',
-    fontSize : '.8em'
+  errors: {
+    color: 'red',
+    fontSize: '.8em'
   }
 }
 
 class UploadForm extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
-    this.state = { errors: [] }
+    this.state = {
+      errors: []
+    }
   }
 
-  onDrop(files) {
-
+  onDrop (files) {
     // check file size
-    const maxFileSize =  this.props.maxFileSize* 1000000 || 1000000000;// convert to octets
+    const maxFileSize = this.props.maxFileSize * 1000000 || 1000000000// convert to octets
 
     const errors = []
-    files.forEach( f =>
-      f.size > maxFileSize ?
-        errors.push(`${f.name} is too big and can not be added.`)
+    files.forEach(f =>
+      f.size > maxFileSize
+        ? errors.push(`${f.name} is too big and can not be added.`)
         : null
     )
     this.setState({errors})
 
-    let checkedFiles =  maxFileSize ?
-      files.filter(f => f.size < maxFileSize)
-      :
-      null
+    let checkedFiles = maxFileSize
+      ? files.filter(f => f.size < maxFileSize)
+      : null
 
     const filesList = [...this.props.files, ...checkedFiles]
 
     this.props.handleAddFile(filesList)
   }
 
-  handleRemoveFile(file) {
-
-    this.setState({errors : []})
+  handleRemoveFile (file) {
+    this.setState({errors: []})
 
     const newFiles = this.props.files
       .filter(f => f.name !== file.name)
@@ -57,10 +55,10 @@ class UploadForm extends React.Component {
     this.props.handleAddFiles(newFiles)
   }
 
-  render() {
-    const { files, maxFileSize } = this.props;
+  render () {
+    const { files } = this.props
 
-    const filesItems = files.map( file =>
+    const filesItems = files.map(file =>
       <span key={file.name}>
         {file.name}
       </span>
@@ -69,46 +67,42 @@ class UploadForm extends React.Component {
     return (
       <div>
         {
-          !files.length ?
-            <Dropzone
+          !files.length
+            ? <Dropzone
               onDrop={this.onDrop.bind(this)}
               style={style.dropZone}
               >
               <div>
-                <p class="card-category">
+                <p class='card-category'>
                   Drag and drop your document here.
                   <br />
                   The file will <strong>not</strong> be uploaded.
                 </p>
               </div>
             </Dropzone>
-          :
-            <div>
-              <p class="card-category">
+          : <div>
+            <p class='card-category'>
                 File added :
                 <br />
-                {filesItems}.
+              {filesItems}.
               </p>
-            </div>
+          </div>
         }
         {
-          this.state.errors.length ?
-            <ul style={{listStyle:'none'}}>
+          this.state.errors.length
+            ? <ul style={{listStyle: 'none'}}>
               {
-                this.state.errors.map(err =>(
+                this.state.errors.map(err => (
                   <li key={err} style={style.errors}>{err}</li>
                 ))
               }
             </ul>
-          :
-            null
+          : null
         }
 
       </div>
     )
   }
 }
-
-
 
 export default UploadForm

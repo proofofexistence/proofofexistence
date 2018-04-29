@@ -9,73 +9,67 @@ const Footer = ({
   year,
   version
 }) => (
-  <footer className="footer">
-    <div className="container">
-      <nav className="pull-left">
+  <footer className='footer'>
+    <div className='container'>
+      <nav className='pull-left'>
         <ul>
-          { twitter ?
-            <li className="social">
-              <a className="twitter" href={`https://twitter.com/${ twitter }`}>
+          { twitter
+            ? <li className='social'>
+              <a className='twitter' href={`https://twitter.com/${twitter}`}>
                 Twitter
               </a>
             </li>
-            :
-            null
+            : null
           }
-          { github ?
-            <li className="social">
-              <a className="github" href={`https://github.com/${ github }`}>
+          { github
+            ? <li className='social'>
+              <a className='github' href={`https://github.com/${github}`}>
                 GitHub
               </a>
             </li>
-            :
-            null
+            : null
           }
-          { facebook ?
-            <li className="social">
-              <a className="facebook" href={`https://facebook.com/${ facebook }`}>
+          { facebook
+            ? <li className='social'>
+              <a className='facebook' href={`https://facebook.com/${facebook}`}>
                 Facebook
               </a>
             </li>
-            :
-            null
+            : null
           }
-          { email ?
-            <li>
+          { email
+            ? <li>
               <a href={`mailto:${email}`}>For questions, email { email }</a>
             </li>
 
-            :
-            null
+            : null
           }
           <li>
-            <a href="https://en.wikipedia.org/wiki/Proof_of_Existence">
+            <a href='https://en.wikipedia.org/wiki/Proof_of_Existence'>
               History
             </a>
           </li>
           <li>
-            <a href="https://proofofexistence.github.io">
+            <a href='https://proofofexistence.github.io'>
               Read the docs
             </a>
           </li>
           {
-            version ?
-              <li>
-                <a href="#">
+            version
+              ? <li>
+                <a href='#'>
                   v{version}
                 </a>
               </li>
-            :
-              null
+            : null
           }
         </ul>
       </nav>
-      <div className="copyright pull-right"> Written forever by <a href="http://proofofexistence.com">Proof of Existence</a>
+      <div className='copyright pull-right'> Written forever by <a href='http://proofofexistence.com'>Proof of Existence</a>
         {
-          year ?
-            `- &copy; ${ year }`
-          :
-            null
+          year
+            ? `- &copy; ${year}`
+          : null
         }
       </div>
     </div>

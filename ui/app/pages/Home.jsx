@@ -1,67 +1,66 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import Jumbo from '../components/Jumbo.jsx';
-import Search from '../components/Search.jsx';
-import HashList from '../components/HashList.jsx';
+import Jumbo from '../components/Jumbo.jsx'
+import Search from '../components/Search.jsx'
+import HashList from '../components/HashList.jsx'
 
-import UploadFile from '../components/UploadFile.jsx';
-import Status from '../components/Status.jsx';
+import UploadFile from '../components/UploadFile.jsx'
+import Status from '../components/Status.jsx'
 
-import crypto from '../crypto';
+import crypto from '../crypto'
 
 class Home extends Component {
-
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       // UI state
       showSearch: false,
-      unconfirmed : [],
+      unconfirmed: [],
       confirmed: [],
 
       // files options
-      maxFileSize:0,
+      maxFileSize: 0,
       files: [],
 
       // state machine
       status: 'default',
-      hashingProgress:0,
+      hashingProgress: 0,
       hash: null
     }
   }
 
-  componentDidMount() {
-    this.props.api.getLatestUnconfirmed( unconfirmed =>
+  componentDidMount () {
+    this.props.api.getLatestUnconfirmed(unconfirmed =>
       this.setState({ unconfirmed })
     )
 
-    this.props.api.getLatestConfirmed( confirmed =>
+    this.props.api.getLatestConfirmed(confirmed =>
       this.setState({ confirmed })
     )
   }
 
-  handleToggleSearch(e) {
+  handleToggleSearch (e) {
     e.preventDefault()
-    this.setState({ showSearch : !this.state.showSearch })
+    this.setState({ showSearch: !this.state.showSearch })
   }
 
-  handleSearch(e){
+  handleSearch (e) {
     e.preventDefault()
     const hash = e.target.elements.hash.value
     this.setState({hash})
   }
 
-  handleAddFile(files) {
+  handleAddFile (files) {
     this.setState({files})
 
-    const file = files[0];
-    var reader = new FileReader();
+    const file = files[0]
+    var reader = new window.FileReader()
 
     reader.onload = e => {
-      var arrayBuffer = e.target.result;
+      var arrayBuffer = e.target.result
       crypto.SHA256(arrayBuffer,
         p => {
-          const hashingProgress = Math.round(p*100)
+          const hashingProgress = Math.round(p * 100)
           this.setState({hashingProgress})
         },
         result => {
@@ -70,11 +69,10 @@ class Home extends Component {
         }
       )
     }
-    reader.readAsText(file);
+    reader.readAsText(file)
   }
 
-  render() {
-
+  render () {
     const {
       showSearch,
       hash,
@@ -99,9 +97,9 @@ class Home extends Component {
           tagline={site.tagline}
           />
 
-        <div id="uploads" className="row">
-          <div class="no-border card col-lg-6">
-            <h3 class="card-title">
+        <div id='uploads' className='row'>
+          <div class='no-border card col-lg-6'>
+            <h3 class='card-title'>
               Select a document and have it certified in the Bitcoin blockchain
               <br />
               <small>
@@ -118,19 +116,18 @@ class Home extends Component {
             </h3>
           </div>
 
-          <div className="col-lg-4 ml-auto card">
+          <div className='col-lg-4 ml-auto card'>
             {
-              !hash ?
-                <UploadFile
+              !hash
+                ? <UploadFile
                   maxFileSize={maxFileSize}
                   files={files}
-                  handleToggleSearch={ (e) =>this.handleToggleSearch(e)}
-                  handleAddFile={ (e) =>this.handleAddFile(e)}
+                  handleToggleSearch={(e) => this.handleToggleSearch(e)}
+                  handleAddFile={(e) => this.handleAddFile(e)}
                   hashingProgress={hashingProgress}
                   hash={hash}
                   />
-                :
-                <Status
+                : <Status
                   hash={hash}
                   api={api}
                   />
@@ -138,37 +135,36 @@ class Home extends Component {
           </div>
         </div>
         {
-          showSearch ?
-            <Search
+          showSearch
+            ? <Search
               hash={hash}
-              handleSearch={ (e) => this.handleSearch(e)}
+              handleSearch={(e) => this.handleSearch(e)}
               />
-            :
-            null
+            : null
         }
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Ongoing Submissions</h3>
-                <p class="card-category">Documents already registered for certification, waiting for payments.</p>
-                </div>
-                <HashList
-                  records={unconfirmed}
+        <div class='row'>
+          <div class='col-md-6'>
+            <div class='card'>
+              <div class='card-header'>
+                <h3 class='card-title'>Ongoing Submissions</h3>
+                <p class='card-category'>Documents already registered for certification, waiting for payments.</p>
+              </div>
+              <HashList
+                records={unconfirmed}
                   />
             </div>
           </div>
 
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Certifications</h3>
-                <p class="card-category">Documents of proven existence, confirmed in the blockchain</p>
+          <div class='col-md-6'>
+            <div class='card'>
+              <div class='card-header'>
+                <h3 class='card-title'>Certifications</h3>
+                <p class='card-category'>Documents of proven existence, confirmed in the blockchain</p>
               </div>
               <HashList
                 records={confirmed}
-                checked={true}
+                checked
                 />
             </div>
           </div>
