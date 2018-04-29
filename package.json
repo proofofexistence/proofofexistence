@@ -9,7 +9,7 @@
     "server": "nodemon server/app.js",
     "sweep": "node lib/sweep.js",
     "lint": "standard --fix 'lib/**/*.js' 'config/*.js' 'server/**/*.js'",
-    "test": "mocha --timeout 10000 && npm run lint && npm run ui:test",
+    "test": "mocha --timeout 10000 && npm run lint && npm run ui:test && npm run ui:lint",
     "start": "concurrently \"npm run ui:watch\" \"npm run server\"",
     "ui:build": "NODE_ENV=production webpack",
     "ui:lint": "standard 'ui/app/**/*.jsx' 'ui/app/**/*.js' 'client/index.js'",
