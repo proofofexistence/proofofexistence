@@ -5,19 +5,26 @@
   "main": "lib/server.js",
   "scripts": {
     "release": "npm run build && release-it",
-    "build" : "npm run ui:build",
+    "build": "npm run ui:build",
     "server": "nodemon server/app.js",
     "sweep": "node lib/sweep.js",
     "lint": "standard --fix 'lib/**/*.js' 'config/*.js' 'server/**/*.js'",
     "test": "mocha --timeout 10000 && npm run lint",
     "start": "concurrently \"npm run ui:watch\" \"npm run server\"",
     "ui:build": "NODE_ENV=production webpack",
+    "ui:test": "NODE_ENV=test mocha --require ui/testHelper.js  --reporter=nyan --require ignore-styles --compilers js:babel-core/register ui/app/**/**.test.js",
     "ui:watch": "NODE_ENV=development webpack",
     "watch": "npm start"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/poexio/proofofexistence.git"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "author": "PoEx Co., Ltd",
   "license": "UNLICENSED",
@@ -64,13 +71,17 @@
     "babel-plugin-react-html-attrs": "^2.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "concurrently": "^3.5.0",
     "css-loader": "^0.28.7",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^11.9.0",
     "mocha": "^4.0.1",
     "nock": "^9.1.5",
     "nodemon": "^1.14.12",
