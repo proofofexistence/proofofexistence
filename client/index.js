@@ -8,6 +8,16 @@ export default class APIClient {
     this.apiVersion = 'v1' || options.apiVersion
   }
 
+  getDocStatus (status) {
+    if (status.pending === true && !status.txstamp) {
+      return 'paymentRequired'
+    } else if (status.txstamp && !status.blockstamp) {
+      return 'confirming'
+    } else if (status.blockstamp) {
+      return 'confirmed'
+    }
+  }
+
   // URL parser
   getURL (path, internal = false) {
     const apiPath = internal
@@ -103,14 +113,20 @@ export default class APIClient {
 
   getStatus (hash, callback) {
     this.get(this.getURL(`status/${hash}`),
-      (status) => callback(status)
+      (statusData) => {
+        const status = this.getDocStatus(statusData)
+        callback(Object.assign({}, statusData, {status}))
+      }
     )
   }
 
   updateStatus (hash, callback, errorCallback) {
     this.post(this.getURL(`status`),
       {d: hash},
-      status => callback(status),
+      (statusData) => {
+        const status = this.getDocStatus(statusData)
+        callback(Object.assign({}, statusData, {status}))
+      },
       error => errorCallback(error)
     )
   }

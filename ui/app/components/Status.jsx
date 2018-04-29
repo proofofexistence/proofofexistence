@@ -24,16 +24,6 @@ class Status extends Component {
     }
   }
 
-  setStatus (pending, txstamp, blockstamp) {
-    if (pending === true && !txstamp) {
-      this.setState({status: 'paymentRequired'})
-    } else if (txstamp && !blockstamp) {
-      this.setState({status: 'confirming'})
-    } else if (blockstamp) {
-      this.setState({status: 'confirmed'})
-    }
-  }
-
   componentDidMount () {
     const {api, hash} = this.props
 
@@ -64,12 +54,13 @@ class Status extends Component {
                 pending,
                 tx,
                 txstamp,
-                blockstamp
+                blockstamp,
+                status
                } = data
 
-              this.setStatus(pending, txstamp, blockstamp)
               this.setState({
                 paymentAddress: payment_address,
+                status,
                 price,
                 tx,
                 txstamp,
@@ -94,10 +85,10 @@ class Status extends Component {
           tx,
           txstamp,
           blockstamp,
-          pending
+          pending,
+          statu
         } = data
-        this.setStatus(pending, txstamp, blockstamp)
-        this.setState({ tx, txstamp, blockstamp })
+        this.setState({ tx, txstamp, blockstamp, status })
       },
       error => console.log(error)
     )
