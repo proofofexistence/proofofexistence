@@ -91,9 +91,9 @@ class App extends Component {
   }
 
   handleRegister(hash) {
-    console.log(hash)
     this.props.api.register(hash,
       data => {
+        console.log(data);
         const { success } = data
 
         if (success == true) {
@@ -102,6 +102,7 @@ class App extends Component {
         } else if (success == false && data.reason == "existing") {
           this.props.api.getStatus(hash,
             data => {
+              console.log(data);
               const { payment_address, price, digest, pending } = data
               if (pending == true)
                 this.setState({
@@ -120,6 +121,20 @@ class App extends Component {
         }
       },
       err => console.log(err)
+    )
+  }
+
+  handleUpdateStatus(e) {
+    e.preventDefault()
+    const { hash } = this.state
+    console.log(hash);
+    this.props.api.updateStatus(
+      hash,
+      data => {
+        const { tx, txstamp, pending } = data
+        this.setState({ tx, txstamp, pending })
+      },
+      error => console.log(error)
     )
   }
 
@@ -190,13 +205,14 @@ class App extends Component {
                 :
                   registering?
                     <Confirming
-                      tx={tx}
+                      handleUpdateStatus={e => this.handleUpdateStatus(e)}
                       />
                     :
                     <Payment
-                    price={price}
-                    digest={digest}
-                    payAdress={payAdress}
+                      handleUpdateStatus={e => this.handleUpdateStatus(e)}
+                      price={price}
+                      digest={digest}
+                      payAdress={payAdress}
                     />
 
             }
