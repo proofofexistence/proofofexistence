@@ -9,13 +9,13 @@ const Footer = ({
   year,
   version
 }) => (
-  <footer class="footer">
-    <div class="container">
-      <nav class="pull-left">
+  <footer className="footer">
+    <div className="container">
+      <nav className="pull-left">
         <ul>
           { twitter ?
-            <li class="social">
-              <a class="twitter" href={`https://twitter.com/${ twitter }`}>
+            <li className="social">
+              <a className="twitter" href={`https://twitter.com/${ twitter }`}>
                 Twitter
               </a>
             </li>
@@ -23,8 +23,8 @@ const Footer = ({
             null
           }
           { github ?
-            <li class="social">
-              <a class="github" href={`https://github.com/${ github }`}>
+            <li className="social">
+              <a className="github" href={`https://github.com/${ github }`}>
                 GitHub
               </a>
             </li>
@@ -32,8 +32,8 @@ const Footer = ({
             null
           }
           { facebook ?
-            <li class="social">
-              <a class="facebook" href={`https://facebook.com/${ facebook }`}>
+            <li className="social">
+              <a className="facebook" href={`https://facebook.com/${ facebook }`}>
                 Facebook
               </a>
             </li>
@@ -70,7 +70,7 @@ const Footer = ({
           }
         </ul>
       </nav>
-      <div class="copyright pull-right"> Written forever by <a href="http://proofofexistence.com">Proof of Existence</a>
+      <div className="copyright pull-right"> Written forever by <a href="http://proofofexistence.com">Proof of Existence</a>
         {
           year ?
             `- &copy; ${ year }`
