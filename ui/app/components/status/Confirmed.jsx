@@ -4,20 +4,20 @@ const Confirmed = ({
   tx
 }) => (
   <div id='confirmed_message'>
-    <div class="card-body">
-      <h3 class="card-title">Congratulations!</h3>
-      <p class="card-text">This document's digest was successfully embedded in the Bitcoin blockchain. It is now permanently certified and proven to exist since the transaction was confirmed.</p>
+    <div class='card-body'>
+      <h3 class='card-title'>Congratulations!</h3>
+      <p class='card-text'>This document's digest was successfully embedded in the Bitcoin blockchain. It is now permanently certified and proven to exist since the transaction was confirmed.</p>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
+    <ul class='list-group list-group-flush'>
+      <li class='list-group-item'>
         {tx}
         <br />
-        <span class="badge badge-success">Certified</span>
+        <span class='badge badge-success'>Certified</span>
       </li>
     </ul>
-    <div class="card-body">
+    <div class='card-body'>
 
-      <p class="card-category">To verify this document again, just re-submit it here.
+      <p class='card-category'>To verify this document again, just re-submit it here.
       </p>
     </div>
   </div>

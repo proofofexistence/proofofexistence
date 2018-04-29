@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-
-import Status from '../components/Status.jsx';
+import React from 'react'
+import Status from '../components/Status.jsx'
 
 const Detail = ({
   api,

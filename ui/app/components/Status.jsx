@@ -1,23 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import UploadFile from './UploadFile.jsx'
 import PaymentRequired from './status/PaymentRequired.jsx'
 import Confirming from './status/Confirming.jsx'
 import Confirmed from './status/Confirmed.jsx'
 
-
-// ({
-//   status,
-//   handleUpdateStatus,
-//   price,
-//   hash,
-//   paymentAddress,
-//   tx
-// }) =>
-
 class Status extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.statuses = [
@@ -31,27 +19,27 @@ class Status extends Component {
       paymentAddress: null,
       price: null,
       tx: null,
-      txtime:null,
+      txtime: null,
       blockstamp: null
     }
   }
 
-  setStatus(pending, txstamp, blockstamp) {
-    if (pending == true && !txstamp)
+  setStatus (pending, txstamp, blockstamp) {
+    if (pending === true && !txstamp) {
       this.setState({status: 'paymentRequired'})
-    else if (txstamp && ! blockstamp)
+    } else if (txstamp && !blockstamp) {
       this.setState({status: 'confirming'})
-    else if ( blockstamp)
+    } else if (blockstamp) {
       this.setState({status: 'confirmed'})
+    }
   }
 
-  componentDidMount() {
-
+  componentDidMount () {
     const {api, hash} = this.props
 
     api.register(hash,
       data => {
-        console.log(data);
+        console.log(data)
         const { success } = data
 
         if (success) {
@@ -65,10 +53,10 @@ class Status extends Component {
             price,
             status: 'paymentRequired'
           })
-        } else if (success == false && data.reason == "existing") { // record already exist in local DB
+        } else if (success === false && data.reason === 'existing') { // record already exist in local DB
           api.getStatus(hash,
             data => {
-              console.log(data);
+              console.log(data)
 
               const {
                 payment_address,
@@ -95,13 +83,13 @@ class Status extends Component {
     )
   }
 
-  handleUpdateStatus(e) {
+  handleUpdateStatus (e) {
     e.preventDefault()
     const { hash } = this.props
     this.props.api.updateStatus(
       hash,
       data => {
-        console.log(data);
+        console.log(data)
         const {
           tx,
           txstamp,
@@ -115,8 +103,7 @@ class Status extends Component {
     )
   }
 
-  render() {
-
+  render () {
     const { hash } = this.props
     const {
       price,
@@ -129,30 +116,30 @@ class Status extends Component {
       <div>
         {
           {
-          'paymentRequired': (
-            <PaymentRequired
-              handleUpdateStatus={e => this.handleUpdateStatus(e)}
-              price={price}
-              paymentAddress={paymentAddress}
+            'paymentRequired': (
+              <PaymentRequired
+                handleUpdateStatus={e => this.handleUpdateStatus(e)}
+                price={price}
+                paymentAddress={paymentAddress}
             />
           ),
-          'confirming': (
-            <Confirming
-              handleUpdateStatus={e => this.handleUpdateStatus(e)}
+            'confirming': (
+              <Confirming
+                handleUpdateStatus={e => this.handleUpdateStatus(e)}
               />
           ),
-          'confirmed': (
-            <Confirmed
-              tx={tx}
+            'confirmed': (
+              <Confirmed
+                tx={tx}
               />
           )
           }[status]
         }
-        <div class="card-body">
+        <div class='card-body'>
           <a
             href={`/detail/${hash}`}
-            title="Permalink to your document"
-            class="card-link"
+            title='Permalink to your document'
+            class='card-link'
             >
             Permalink to your registration
           </a>
@@ -161,6 +148,5 @@ class Status extends Component {
     )
   }
 }
-
 
 export default Status

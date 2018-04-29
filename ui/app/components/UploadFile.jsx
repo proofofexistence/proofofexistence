@@ -1,14 +1,14 @@
 import React from 'react'
-import UploadForm from './UploadForm.jsx';
+import UploadForm from './UploadForm.jsx'
 
 const HashProgress = ({hashingProgress}) => (
-  <div id="hash-progress" className="progress">
+  <div id='hash-progress' className='progress'>
     <div
-      className="progress-bar progress-bar-success"
-      role="progressbar"
+      className='progress-bar progress-bar-success'
+      role='progressbar'
       aria-valuenow='70'
-      aria-valuemin="0"
-      aria-valuemax="100"
+      aria-valuemin='0'
+      aria-valuemax='100'
       style={{minWidth: `${hashingProgress}%`}}
       >
       {hashingProgress}%
@@ -17,11 +17,11 @@ const HashProgress = ({hashingProgress}) => (
 )
 
 const Finished = ({hash}) => (
-  <span class="card-category">
+  <span class='card-category'>
     {hash}
     <br />
     <small>
-      <a id="digest-link" href="#">
+      <a id='digest-link' href='#'>
         Click here if you're not redirected.
       </a>
     </small>
@@ -40,45 +40,43 @@ const UploadFile = ({
   hashingProgress,
   hash
 }) => (
-  <div id="dropbox">
-    <div class="card-body">
-       <UploadForm
-         files={files}
-         handleAddFile={handleAddFile}
-         maxFileSize={maxFileSize}
+  <div id='dropbox'>
+    <div class='card-body'>
+      <UploadForm
+        files={files}
+        handleAddFile={handleAddFile}
+        maxFileSize={maxFileSize}
          />
 
-      <div class="row">
-        <div class="col-lg-12">
-          <div id="explain"></div>
-            {
-              hashingProgress && hashingProgress < 100?
-                <HashProgress
+      <div class='row'>
+        <div class='col-lg-12'>
+          <div id='explain' />
+          {
+              hashingProgress && hashingProgress < 100
+                ? <HashProgress
                   hashingProgress={hashingProgress}
                   />
-              :
-                null
+              : null
             }
-            {
-              hashingProgress == 100 ?
-                <p class="text-center">
+          {
+              hashingProgress === 100
+                ? <p class='text-center'>
                   <Finished
                     hash={hash}
                     />
                 </p>
-              :
-                null
+              : null
             }
         </div>
       </div>
     </div>
 
-    <div class="card-footer">
-      <p class="card-category">
+    <div class='card-footer'>
+      <p class='card-category'>
         or <a
-        href="#"
-        class="handleToggleSearch"
-        onClick={handleToggleSearch}
+          href='#'
+          class='handleToggleSearch'
+          onClick={handleToggleSearch}
         >
           input a hash
         </a> to find previous records.
@@ -86,6 +84,5 @@ const UploadFile = ({
     </div>
   </div>
 )
-
 
 export default UploadFile

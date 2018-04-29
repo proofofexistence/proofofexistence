@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-import Navbar from './components/Navbar.jsx';
-import Footer from './components/Footer.jsx';
+import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 
 const App = ({
   children,
@@ -12,8 +12,8 @@ const App = ({
   defaultNetwork,
   version
 }) => (
-  <div className="App">
-    <div className="header">
+  <div className='App'>
+    <div className='header'>
       <Navbar
         brand={site.brand}
         logo={site.logo}
@@ -21,10 +21,10 @@ const App = ({
         defaultNetwork={defaultNetwork}
         />
     </div>
-    <div className="container {{page.title}}" id="main">
+    <div className='container {{page.title}}' id='main'>
       {children}
     </div>
-    <div className="footer">
+    <div className='footer'>
       <Footer
         twitter={social.twitter}
         github={social.github}
@@ -37,4 +37,4 @@ const App = ({
   </div>
 )
 
-export default App;
+export default App

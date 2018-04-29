@@ -12,10 +12,18 @@
     "test": "mocha --timeout 10000 && npm run lint && npm run ui:test",
     "start": "concurrently \"npm run ui:watch\" \"npm run server\"",
     "ui:build": "NODE_ENV=production webpack",
+    "ui:lint": "standard 'ui/app/**/*.jsx' 'ui/app/**/*.js' 'client/index.js'",
     "ui:test": "NODE_ENV=test mocha --require ui/testHelper.js  --reporter=nyan --require ignore-styles --compilers js:babel-core/register 'ui/app/**/**.test.js'",
     "ui:watch": "NODE_ENV=development webpack",
     "watch": "npm start"
   },
+  "standard": {
+    "ignore": [
+      "ui/app/crypto.js",
+      "ui/app/registerServiceWorker.js",
+      "ui/app/**/*.test.js"
+    ]
+},
   "repository": {
     "type": "git",
     "url": "https://github.com/poexio/proofofexistence.git"

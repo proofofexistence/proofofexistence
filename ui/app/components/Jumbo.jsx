@@ -6,26 +6,26 @@ const Jumbo = ({
   slogan,
   tagline
 }) => (
-  <div class="row">
-    <div class="col-lg-12">
-      <div id="branding" class="">
-          <img src={logo} alt="Main Logo" />
-          <h1>
-            {brand}
-            <br />
-            <small>{slogan}</small>
-          </h1>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <div id='branding' class=''>
+        <img src={logo} alt='Main Logo' />
+        <h1>
+          {brand}
+          <br />
+          <small>{slogan}</small>
+        </h1>
 
-          <h4>{tagline}</h4>
+        <h4>{tagline}</h4>
 
-          <div id="actions">
-            <a class="btn" target="_blank" href="http://github.com/proofofexistence/proofofexistence">
+        <div id='actions'>
+          <a class='btn' target='_blank' href='http://github.com/proofofexistence/proofofexistence'>
               Fork on Github
             </a>
-            <a class="btn btn-primary" target="_blank" href="http://proofofexistence.github.io">
+          <a class='btn btn-primary' target='_blank' href='http://proofofexistence.github.io'>
               Read the docs
             </a>
-          </div>
+        </div>
       </div>
     </div>
   </div>
