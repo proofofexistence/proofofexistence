@@ -2,7 +2,7 @@ import React from 'react'
 
 const Payment = ({
   handleUpdateStatus,
-  payAdress,
+  paymentAddress,
   price
 }) => (
   <div class="card-body">
@@ -13,7 +13,7 @@ const Payment = ({
     </p>
     <p>
       <strong id='payment_link'>
-          {payAdress}
+          {paymentAddress}
       </strong>
     </p>
 
