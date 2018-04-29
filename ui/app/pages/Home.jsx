@@ -45,6 +45,12 @@ class Home extends Component {
     this.setState({ showSearch : !this.state.showSearch })
   }
 
+  handleSearch(e){
+    e.preventDefault()
+    const hash = e.target.elements.hash.value
+    this.setState({hash})
+  }
+
   handleAddFile(files) {
     this.setState({files})
 
@@ -133,7 +139,10 @@ class Home extends Component {
         </div>
         {
           showSearch ?
-            <Search />
+            <Search
+              hash={hash}
+              handleSearch={ (e) => this.handleSearch(e)}
+              />
             :
             null
         }

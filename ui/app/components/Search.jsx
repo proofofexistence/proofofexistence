@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Search = () => (
+const Search = ({
+  handleSearch
+}) => (
   <div id="search" class="row">
     <div class="col-lg-12">
       <div class="card no-border">
@@ -13,12 +15,13 @@ const Search = () => (
           </p>
         </div>
         <div class="card-body">
-          <form class="" action="/search" method="post">
+          <form class="" onSubmit={handleSearch}>
             <input name="digest"
               class="form-control mr-sm-2"
               placeholder="Input a hash"
               aria-label="Search"
               type="search"
+              name="hash"
               />
           </form>
         </div>
@@ -26,5 +29,4 @@ const Search = () => (
     </div>
   </div>
 )
-
 export default Search
