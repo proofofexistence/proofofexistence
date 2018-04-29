@@ -4,8 +4,6 @@
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "lib/server.js",
   "scripts": {
-    "build": "npm run build:modernizr && ./scripts/vendor.sh",
-    "build:modernizr": "modernizr --config modernizr-config.json --dest public/vendor/modernizr.js",
     "clean": "rm -Rf public/vendor",
     "release": "release-it",
     "server": "nodemon server/app.js",
@@ -14,7 +12,7 @@
     "test": "mocha --timeout 10000 && npm run lint",
     "react": "webpack",
     "start": "concurrently \"npm run react\" \"npm run server\"",
-    "watch": "nodemon --watch lib --watch config -e js,hbs,yaml,json --exec npm start"
+    "watch": "npm start"
   },
   "repository": {
     "type": "git",
