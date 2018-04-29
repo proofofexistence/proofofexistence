@@ -60,9 +60,13 @@ class App extends Component {
     }
   }
 
-  setStatus(status) {
-    if (this.statuses.indexOf(status) == -1) throw Error(`Status "${status}" does not exist.`)
-    else this.setState({status})
+  setStatus(pending, txstamp, blockstamp) {
+    if (pending == true && !txstamp)
+      this.setState({status: 'paymentRequired'})
+    else if (txstamp && ! blockstamp)
+      this.setState({status: 'confirming'})
+    else if ( blockstamp)
+      this.setState({status: 'confirmed'})
   }
 
   componentDidMount() {
@@ -127,36 +131,20 @@ class App extends Component {
               const {
                 payment_address,
                 price,
-                timestamp,
-                // digest,
-                tx,
                 pending,
+                tx,
                 txstamp,
                 blockstamp
                } = data
 
-              if (pending == true && !txstamp) {
-                this.setStatus('paymentRequired')
-                this.setState({
-                  payAdress: payment_address,
-                  price
-                })
-              }
-              else if (txstamp && ! blockstamp) {
-                // console.log('Already confirmed in BNTC blockchain!')
-                this.setStatus('confirming')
-                this.setState({
-                  tx,
-                  txstamp
-                })
-              } else if ( blockstamp) {
-                this.setStatus('confirmed')
-                this.setState({
-                  tx,
-                  txstamp,
-                  blockstamp
-                })
-              }
+              this.setStatus(pending, txstamp, blockstamp)
+              this.setState({
+                payAdress: payment_address,
+                price,
+                tx,
+                txstamp,
+                blockstamp
+              })
             }
           )
         }
@@ -172,8 +160,15 @@ class App extends Component {
     this.props.api.updateStatus(
       hash,
       data => {
-        const { tx, txstamp, pending } = data
-        this.setState({ tx, txstamp, pending })
+        console.log(data);
+        const {
+          tx,
+          txstamp,
+          blockstamp,
+          pending
+        } = data
+        this.setStatus(pending, txstamp, blockstamp)
+        this.setState({ tx, txstamp, blockstamp })
       },
       error => console.log(error)
     )
