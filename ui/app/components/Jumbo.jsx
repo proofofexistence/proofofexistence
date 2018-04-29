@@ -17,7 +17,7 @@ const Jumbo = ({
         </h1>
 
         {
-          //<h4>{tagline}</h4>
+          // <h4>{tagline}</h4>
         }
 
         <div id='actions'>

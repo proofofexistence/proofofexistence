@@ -72,7 +72,7 @@ const UploadFile = ({
     </div>
 
     <div class='card-footer'>
-      <p className="card-category">
+      <p className='card-category'>
         If it has been certified already, you will be redirected to the original record.
       </p>
       <p class='card-category'>
