@@ -66,19 +66,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.api.getConfig( config => {
+    this.props.api.getConfig( config =>
       this.setState({ config })
-    })
+    )
 
-    this.props.api.getLatestUnconfirmed( unconfirmed => {
-      console.log(unconfirmed);
+    this.props.api.getLatestUnconfirmed( unconfirmed =>
       this.setState({ unconfirmed })
-    })
+    )
 
-    this.props.api.getLatestConfirmed( confirmed => {
-      console.log(confirmed);
+    this.props.api.getLatestConfirmed( confirmed =>
       this.setState({ confirmed })
-    })
+    )
   }
 
   handleToggleSearch(e) {
@@ -93,7 +91,6 @@ class App extends Component {
     var reader = new FileReader();
 
     reader.onload = e => {
-      // console.log(e);
       var arrayBuffer = e.target.result;
       crypto.SHA256(arrayBuffer,
         p => {
@@ -237,7 +234,7 @@ class App extends Component {
             </h3>
           </div>
 
-          <div className="col-lg-4 ml-auto">
+          <div className="col-lg-4 ml-auto card">
             {{
               'default': (
                 <UploadFile
