@@ -12,7 +12,7 @@
     "test": "mocha --timeout 10000 && npm run lint",
     "start": "concurrently \"npm run ui:watch\" \"npm run server\"",
     "ui:build": "NODE_ENV=production webpack",
-    "ui:test": "NODE_ENV=test mocha --require ui/testHelper.js  --reporter=nyan --require ignore-styles --compilers js:babel-core/register ui/app/**/**.test.js",
+    "ui:test": "NODE_ENV=test mocha --require ui/testHelper.js  --reporter=nyan --require ignore-styles --compilers js:babel-core/register 'ui/app/**/**.test.js'",
     "ui:watch": "NODE_ENV=development webpack",
     "watch": "npm start"
   },
