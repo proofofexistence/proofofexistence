@@ -7,9 +7,9 @@ import Search from './components/Search.jsx';
 import HashList from './components/HashList.jsx';
 import Footer from './components/Footer.jsx';
 
-import Payment from './components/Payment.jsx'
-import Confirming from './components/Confirming.jsx'
-import Confirmed from './components/Confirmed.jsx'
+import PaymentRequired from './components/status/PaymentRequired.jsx'
+import Confirming from './components/status/Confirming.jsx'
+import Confirmed from './components/status/Confirmed.jsx'
 
 import crypto from './crypto';
 
@@ -17,7 +17,17 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+
+    this.statuses = [
+      'default',
+      'paymentRequired',
+      'confirming',
+      'confirmed'
+    ]
+
     this.state = {
+
+      // app config
       config : {
         site : {},
         social : {},
@@ -25,24 +35,34 @@ class App extends Component {
         defaultNetwork: "testnet",
         version: null
       },
-      maxFileSize:0,
+
+      // UI state
       showSearch: false,
       unconfirmed : [],
       confirmed: [],
+
+      // files options
+      maxFileSize:0,
       files: [],
+
+      // state machine
+      status: 'default',
 
       hashingProgress:0,
       hash: null,
-      registered: false,
 
-      digest: null,
+      // data
+      // digest: null,
       payAdress: null,
       price: null,
-
-      registering: false,
       tx: null,
-      confimed: false
+      txtime:null
     }
+  }
+
+  setStatus(status) {
+    if (this.statuses.indexOf(status) == -1) throw Error(`Status "${status}" does not exist.`)
+    else this.setState({status})
   }
 
   componentDidMount() {
@@ -97,27 +117,51 @@ class App extends Component {
         const { success } = data
 
         if (success == true) {
+
           const { digest, payAdress, price } = data
-          this.setState({digest, payAdress, price, registered: true })
-        } else if (success == false && data.reason == "existing") {
+          this.setState({payAdress, price })
+          this.setStatus("paymentRequired")
+
+        } else if (success == false && data.reason == "existing") { // record already exist in local DB
           this.props.api.getStatus(hash,
             data => {
               console.log(data);
-              const { payment_address, price, digest, pending } = data
-              if (pending == true)
+
+              const {
+                payment_address,
+                price,
+                timestamp,
+                // digest,
+                tx,
+                pending,
+                txstamp,
+                blockstamp
+               } = data
+
+              if (pending == true && !txstamp) {
+                this.setStatus('paymentRequired')
                 this.setState({
-                  digest,
-                  price,
                   payAdress: payment_address,
-                  registered: true
+                  price
                 })
-              else {
-                console.log('Already confirmed in BNTC blockchain!')
-                this.setState({registering: true})
+              }
+              else if (txstamp && ! blockstamp) {
+                // console.log('Already confirmed in BNTC blockchain!')
+                this.setStatus('confirming')
+                this.setState({
+                  tx,
+                  txstamp
+                })
+              } else if ( blockstamp) {
+                this.setStatus('confirmed')
+                this.setState({
+                  tx,
+                  txstamp,
+                  blockstamp
+                })
               }
             }
           )
-          // this.setState({digest, payAdress, price, registered: true })
         }
       },
       err => console.log(err)
@@ -192,8 +236,8 @@ class App extends Component {
           </div>
 
           <div className="col-lg-4 ml-auto">
-            {
-              !registered ?
+            {{
+              'default': (
                 <UploadFile
                   maxFileSize={this.state.maxFileSize}
                   files={this.state.files}
@@ -202,21 +246,26 @@ class App extends Component {
                   hashingProgress={this.state.hashingProgress}
                   hash={this.state.hash}
                   />
-                :
-                  registering?
-                    <Confirming
-                      handleUpdateStatus={e => this.handleUpdateStatus(e)}
-                      />
-                    :
-                    <Payment
-                      handleUpdateStatus={e => this.handleUpdateStatus(e)}
-                      price={price}
-                      digest={digest}
-                      payAdress={payAdress}
-                    />
-
-            }
-
+              ),
+              'paymentRequired': (
+                <PaymentRequired
+                  handleUpdateStatus={e => this.handleUpdateStatus(e)}
+                  price={price}
+                  digest={digest}
+                  payAdress={payAdress}
+                />
+              ),
+              'confirming': (
+                <Confirming
+                  handleUpdateStatus={e => this.handleUpdateStatus(e)}
+                  />
+              ),
+              'confirmed': (
+                <Confirmed
+                  tx={this.state.tx}
+                  />
+              )
+            }[this.state.status]}
           </div>
         </div>
         {

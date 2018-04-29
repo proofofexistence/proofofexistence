@@ -12,3 +12,5 @@ const Confirmed = ({
     </p>
   </div>
 )
+
+export default Confirmed
