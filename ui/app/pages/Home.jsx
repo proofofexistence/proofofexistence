@@ -97,51 +97,46 @@ class Home extends Component {
           tagline={site.tagline}
           />
 
-        <div id='uploads' className='row'>
-          <div class='no-border card col-lg-6'>
+        <div
+          id='uploads'
+          className='row justify-content-md-center'
+          style={{textAlign: 'center'}}
+          >
+          <div className="col-lg-10">
             <h3 class='card-title'>
               Select a document and have it certified in the Bitcoin blockchain
-              <br />
-              <small>
-                <span>
-                  If it has been certified already, you will be redirected to the original record.
-                </span>
-                <br />
-                {
-                  // <a href="" data-toggle="modal" data-target="#helpModal">
-                  //   Learn more.
-                  // </a>
-                }
-              </small>
             </h3>
-          </div>
 
-          <div className='col-lg-4 ml-auto card'>
+
+            <div className='card no-border'>
+              {
+                !hash
+                  ? <UploadFile
+                    maxFileSize={maxFileSize}
+                    files={files}
+                    handleToggleSearch={(e) => this.handleToggleSearch(e)}
+                    handleAddFile={(e) => this.handleAddFile(e)}
+                    hashingProgress={hashingProgress}
+                    hash={hash}
+                    />
+                  : <Status
+                    hash={hash}
+                    api={api}
+                    />
+                }
+            </div>
             {
-              !hash
-                ? <UploadFile
-                  maxFileSize={maxFileSize}
-                  files={files}
-                  handleToggleSearch={(e) => this.handleToggleSearch(e)}
-                  handleAddFile={(e) => this.handleAddFile(e)}
-                  hashingProgress={hashingProgress}
+              showSearch
+                ? <Search
                   hash={hash}
+                  handleSearch={(e) => this.handleSearch(e)}
                   />
-                : <Status
-                  hash={hash}
-                  api={api}
-                  />
-              }
+                : null
+            }
+
           </div>
         </div>
-        {
-          showSearch
-            ? <Search
-              hash={hash}
-              handleSearch={(e) => this.handleSearch(e)}
-              />
-            : null
-        }
+
 
         <div class='row'>
           <div class='col-md-6'>

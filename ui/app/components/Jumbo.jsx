@@ -16,7 +16,9 @@ const Jumbo = ({
           <small>{slogan}</small>
         </h1>
 
-        <h4>{tagline}</h4>
+        {
+          //<h4>{tagline}</h4>
+        }
 
         <div id='actions'>
           <a class='btn' target='_blank' href='http://github.com/proofofexistence/proofofexistence'>

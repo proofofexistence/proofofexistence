@@ -3,8 +3,8 @@ import React from 'react'
 const Search = ({
   handleSearch
 }) => (
-  <div id='search' class='row'>
-    <div class='col-lg-12'>
+  <div id='search'>
+    <div>
       <div class='card no-border'>
         <div class='card-header'>
           <h3 class='card-title'>

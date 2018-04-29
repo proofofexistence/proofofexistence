@@ -8,7 +8,8 @@ const style = {
     borderStyle: 'dashed',
     borderRadius: 4,
     padding: 30,
-    width: '90%',
+    width: '100%',
+    height: '20vh',
     transition: 'all 0.5s'
   },
   errors: {
@@ -73,11 +74,13 @@ class UploadForm extends React.Component {
               style={style.dropZone}
               >
               <div>
-                <p class='card-category'>
+                <h4>
                   Drag and drop your document here.
                   <br />
-                  The file will <strong>not</strong> be uploaded.
-                </p>
+                  <small class='card-category'>
+                    The file will <strong>not</strong> be uploaded.
+                  </small>
+                </h4>
               </div>
             </Dropzone>
           : <div>
