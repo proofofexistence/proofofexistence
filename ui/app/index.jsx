@@ -38,10 +38,12 @@ api.getConfig( config => {
       <Router>
         <App {...generalProps}>
           <Switch>
-            <Route path="/" component={ props =>
+            <Route exact path="/" component={ props =>
               <Home {...generalProps} {...props}/>
             }/>
-            <Route path='/detail/:hash' component={Detail} />
+            <Route path="/detail/:hash" component={ props =>
+              <Detail {...generalProps} {...props}/>
+            }/>
             <Route component={Error404} />
           </Switch>
         </App>

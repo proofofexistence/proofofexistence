@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
+import Status from '../components/Status.jsx';
+
 const Detail = ({
-  hash
+  api,
+  match
 }) => (
   <div>
-    {hash}
+    <Status
+      hash={match.params.hash}
+      api={api}
+      />
   </div>
 )
 
