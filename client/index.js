@@ -1,9 +1,9 @@
 const axios = require('axios')
-// import { browserHistory } from 'react-router'
+const logger = require('../scripts/logger')
 
 module.exports = class APIClient {
   constructor (options = {}) {
-    console.log('Init API client', options)
+    logger.debug('Init API client', options)
     this.baseUrl = options.baseUrl
     this.apiVersion = 'v1' || options.apiVersion
   }
@@ -29,8 +29,8 @@ module.exports = class APIClient {
 
   handleError (error, errorCallback) {
     if (errorCallback && error.response) {
-      console.log('ERROR : ' + error.response.status)
-      if (error.response.status === 403) console.log('403')
+      logger.debug('ERROR : ' + error.response.status)
+      if (error.response.status === 403) logger.debug('403')
       // redirect to not authorized page
       // browserHistory.push("unauthorized")
 
@@ -39,7 +39,7 @@ module.exports = class APIClient {
   }
 
   get (url, callback, errorCallback) {
-    console.log('GET : ' + url)
+    logger.debug('GET : ' + url)
     axios.get(url)
       .then(res => {
         var info = res.data
@@ -51,7 +51,7 @@ module.exports = class APIClient {
   }
 
   delete (url, callback, errorCallback) {
-    console.log('DELETE : ' + url)
+    logger.debug('DELETE : ' + url)
     axios.delete(url)
       .then(res => {
         var info = res.data
@@ -63,8 +63,8 @@ module.exports = class APIClient {
   }
 
   post (url, data, callback, errorCallback) {
-    console.log('POST : ' + url)
-    // console.log(data);
+    logger.debug('POST : ' + url)
+    // logger.debug(data);
     axios.post(url, data)
       .then(res => {
         var info = res.data
@@ -80,7 +80,7 @@ module.exports = class APIClient {
   */
   getConfig (callback) {
     this.get(this.getURL(`config`), config => {
-      console.log(config)
+      logger.debug(config)
       callback(config)
     })
   }
