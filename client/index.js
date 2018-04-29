@@ -1,7 +1,7 @@
-import axios from 'axios'
+const axios = require('axios')
 // import { browserHistory } from 'react-router'
 
-export default class APIClient {
+module.exports = class APIClient {
   constructor (options = {}) {
     console.log('Init API client', options)
     this.baseUrl = options.baseUrl
