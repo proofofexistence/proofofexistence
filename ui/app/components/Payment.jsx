@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Payment = ({
+  handleUpdateStatus,
   payAdress,
   price
 }) => (
@@ -18,7 +19,13 @@ const Payment = ({
 
     <form class="refresh">
       <div class="form-group">
-        <button type="submit" className="refreshSubmit btn btn-info btn-lm btn-fill">Continue Certification</button>
+        <button
+          type="submit"
+          className="refreshSubmit btn btn-info btn-lm btn-fill"
+          onClick={handleUpdateStatus}
+          >
+          Continue Certification
+        </button>
       </div>
     </form>
   </div>

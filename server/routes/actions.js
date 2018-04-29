@@ -55,9 +55,8 @@ function show (req, res) {
  */
 
 function update (req, res) {
-  const hash = req.params.hash
-
-  if (core.docproof.isValidDigest(req.params.hash)) {
+  const {hash} = req.body
+  if (core.docproof.isValidDigest(hash)) {
     status.refresh(hash)
       .then(results => {
         res.json(results)

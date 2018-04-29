@@ -57,7 +57,7 @@ export default class APIClient {
 
   post(url, data, callback, errorCallback) {
     console.log("POST : " + url)
-    console.log(data);
+    // console.log(data);
     axios.post(url, data)
       .then(res => {
         var info = res.data
@@ -97,12 +97,6 @@ export default class APIClient {
   * CREATE, SHOW, UPDATE based on hash
   */
   register(hash, callback, callbackError) {
-
-    console.log(hash);
-
-    // const payload = new FormData();
-    // payload.append("hash", JSON.stringify(hash));
-
     var params = new URLSearchParams()
     params.append('hash', hash)
 
@@ -116,6 +110,14 @@ export default class APIClient {
   getStatus(hash, callback) {
     this.get(this.getURL(`status/${hash}`),
       (status) => callback(status)
+    )
+  }
+
+  updateStatus(hash, callback, errorCallback) {
+    this.post(this.getURL(`status`),
+      {hash},
+      status => callback(status),
+      error => errorCallback(error)
     )
   }
 
