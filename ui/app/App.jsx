@@ -185,6 +185,8 @@ class App extends Component {
   render() {
     const {
       config,
+      confirmed,
+      unconfirmed,
       showSearch,
       registered,
       digest,
@@ -282,7 +284,9 @@ class App extends Component {
                 <h3 class="card-title">Ongoing Submissions</h3>
                 <p class="card-category">Documents already registered for certification, waiting for payments.</p>
                 </div>
-                <HashList />
+                <HashList
+                  records={unconfirmed}
+                  />
             </div>
           </div>
 
@@ -292,7 +296,10 @@ class App extends Component {
                 <h3 class="card-title">Certifications</h3>
                 <p class="card-category">Documents of proven existence, confirmed in the blockchain</p>
               </div>
-              <HashList />
+              <HashList
+                records={confirmed}
+                checked={true}
+                />
             </div>
           </div>
         </div>
