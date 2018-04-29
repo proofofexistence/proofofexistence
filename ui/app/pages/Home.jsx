@@ -69,7 +69,7 @@ class Home extends Component {
         }
       )
     }
-    reader.readAsText(file)
+    reader.readAsBinaryString(file)
   }
 
   render () {
