@@ -51,7 +51,6 @@ class Status extends Component {
               const {
                 payment_address,
                 price,
-                pending,
                 tx,
                 txstamp,
                 blockstamp,
@@ -85,8 +84,7 @@ class Status extends Component {
           tx,
           txstamp,
           blockstamp,
-          pending,
-          statu
+          status
         } = data
         this.setState({ tx, txstamp, blockstamp, status })
       },
