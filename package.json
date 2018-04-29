@@ -4,14 +4,15 @@
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "lib/server.js",
   "scripts": {
-    "clean": "rm -Rf public/vendor",
-    "release": "release-it",
+    "release": "npm run build && release-it",
+    "build" : "npm run ui:build",
     "server": "nodemon server/app.js",
     "sweep": "node lib/sweep.js",
     "lint": "standard --fix 'lib/**/*.js' 'config/*.js' 'server/**/*.js'",
     "test": "mocha --timeout 10000 && npm run lint",
-    "react": "webpack",
-    "start": "concurrently \"npm run react\" \"npm run server\"",
+    "start": "concurrently \"npm run ui:watch\" \"npm run server\"",
+    "ui:build": "NODE_ENV=production webpack",
+    "ui:watch": "NODE_ENV=development webpack",
     "watch": "npm start"
   },
   "repository": {
@@ -78,6 +79,7 @@
     "standard": "^10.0.3",
     "style-loader": "^0.19.0",
     "uglifycss": "0.0.27",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.4",
