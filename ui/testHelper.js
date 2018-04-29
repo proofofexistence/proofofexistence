@@ -1,10 +1,9 @@
 import { jsdom } from 'jsdom';
 
-const doc = jsdom('<!doctype html><html><body></body></html>');
-const win = doc.defaultView;
+const document = new jsdom('<!doctype html><html><body></body></html>');
 
-global.document = doc;
-global.window = win;
+global.document = document;
+global.window = document.defaultView;
 
 Object.keys(window).forEach((key) => {
   if (!(key in global)) {
