@@ -1,12 +1,15 @@
-import { jsdom } from 'jsdom';
+var jsdom = require('jsdom').jsdom
+var exposedProperties = ['window', 'navigator', 'document']
 
-const document = new jsdom('<!doctype html><html><body></body></html>');
+process.env.NODE_ENV = 'test'
 
-global.document = document;
-global.window = document.defaultView;
+global.document = jsdom('')
+global.navigator = { userAgent: 'node.js' }
+global.window = document.defaultView
 
-Object.keys(window).forEach((key) => {
-  if (!(key in global)) {
-    global[key] = window[key];
+Object.keys(document.defaultView).forEach((property) => {
+  if (typeof global[property] === 'undefined') {
+    exposedProperties.push(property)
+    global[property] = document.defaultView[property]
   }
-});
+})
