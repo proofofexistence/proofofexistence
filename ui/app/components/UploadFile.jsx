@@ -40,9 +40,8 @@ const UploadFile = ({
   hashingProgress,
   hash
 }) => (
-  <div id="dropbox" class="card">
+  <div id="dropbox">
     <div class="card-body">
-
        <UploadForm
          files={files}
          handleAddFile={handleAddFile}
