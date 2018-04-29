@@ -47,7 +47,11 @@ function sweep (req, res) {
     })
 }
 
+function dbClose () {
+  db.close()
+}
 module.exports = {
   alldb,
-  sweep
+  sweep,
+  dbClose
 }

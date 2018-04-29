@@ -10,10 +10,10 @@ const register = require('../../lib/controllers/register')
  */
 
 function create (req, res) {
-  const {hash} = req.body
-
-  if (core.docproof.isValidDigest(hash)) {
-    register(hash)
+  const {d} = req.body
+  
+  if (core.docproof.isValidDigest(d)) {
+    register(d)
       .then(results => {
         res.json(results)
       }).catch(error => {
@@ -31,9 +31,9 @@ function create (req, res) {
  */
 
 function show (req, res) {
-  const hash = req.params.hash
+  const hash = req.params.hash || req.query.d
 
-  if (core.docproof.isValidDigest(req.params.hash)) {
+  if (core.docproof.isValidDigest(hash)) {
     status.obtain(hash)
       .then(results => {
         const status = results.success === true ? 200 : 404
@@ -55,9 +55,9 @@ function show (req, res) {
  */
 
 function update (req, res) {
-  const {hash} = req.body
-  if (core.docproof.isValidDigest(hash)) {
-    status.refresh(hash)
+  const {d} = req.body
+  if (core.docproof.isValidDigest(d)) {
+    status.refresh(d)
       .then(results => {
         res.json(results)
       }).catch(error => {

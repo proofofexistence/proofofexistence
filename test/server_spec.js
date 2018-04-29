@@ -16,7 +16,7 @@ var Unit = bitcore.Unit
 
 const config = require('config')
 const db = require('../lib/db')
-const server = require('../lib/server')
+const server = require('../server/app')
 const request = chai.request(server)
 
 const Insights = require('./fixtures/insight')

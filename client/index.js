@@ -97,11 +97,9 @@ export default class APIClient {
   * CREATE, SHOW, UPDATE based on hash
   */
   register(hash, callback, callbackError) {
-    var params = new URLSearchParams()
-    params.append('hash', hash)
 
     this.post(this.getURL('register'),
-      {hash},
+      {d: hash},
       path => callback(path),
       error => callbackError(error)
     )
@@ -115,7 +113,7 @@ export default class APIClient {
 
   updateStatus(hash, callback, errorCallback) {
     this.post(this.getURL(`status`),
-      {hash},
+      {d: hash},
       status => callback(status),
       error => errorCallback(error)
     )
