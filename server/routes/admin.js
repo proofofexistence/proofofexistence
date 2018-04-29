@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const db = require('../../lib/db')
 
 function alldb (req, res) {

@@ -1,6 +1,3 @@
-const express = require('express');
-const router = express.Router();
-
 const core = require('../../lib/core')
 const status = require('../../lib/controllers/status')
 const register = require('../../lib/controllers/register')
@@ -11,7 +8,7 @@ const register = require('../../lib/controllers/register')
 
 function create (req, res) {
   const {d} = req.body
-  
+
   if (core.docproof.isValidDigest(d)) {
     register(d)
       .then(results => {
