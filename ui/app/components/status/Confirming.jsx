@@ -4,7 +4,7 @@ const Confirming = ({
   tx,
   handleUpdateStatus
 }) => (
-  <p>
+  <div>
     A transaction embedding your document's digest has been broadcast to the Bitcoin network. Click the button below after the transaction is confirmed to complete the process.
     <span class="tx" class="digest">{tx}</span>
 
@@ -19,7 +19,7 @@ const Confirming = ({
         </button>
       </div>
     </form>
-  </p>
+  </div>
 )
 
 export default Confirming
