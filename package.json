@@ -23,7 +23,7 @@
       "ui/app/registerServiceWorker.js",
       "ui/app/**/*.test.js"
     ]
-},
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/poexio/proofofexistence.git"
@@ -89,6 +89,7 @@
     "chai-http": "^3.0.0",
     "concurrently": "^3.5.0",
     "css-loader": "^0.28.7",
+    "file-loader": "^1.1.11",
     "ignore-styles": "^5.0.1",
     "mocha": "^4.0.1",
     "nock": "^9.1.5",
