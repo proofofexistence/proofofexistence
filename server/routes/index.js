@@ -22,7 +22,7 @@ const configInfo = (req, res, next) =>
     social,
     isTestnet,
     defaultNetwork,
-    ...config.get('app')
+    ...config.get('app.site')
   })
 
 const catch404 = (req, res) =>

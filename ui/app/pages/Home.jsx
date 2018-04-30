@@ -84,17 +84,20 @@ class Home extends Component {
     } = this.state
 
     const {
-      site,
+      logo,
+      brand,
+      slogan,
+      tagline,
       api
     } = this.props
 
     return (
       <div>
         <Jumbo
-          logo={site.logo}
-          brand={site.brand}
-          slogan={site.slogan}
-          tagline={site.tagline}
+          logo={logo}
+          brand={brand}
+          slogan={slogan}
+          tagline={tagline}
           />
 
         <div

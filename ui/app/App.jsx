@@ -6,8 +6,13 @@ import Footer from './components/Footer.jsx'
 const App = ({
   children,
   api,
-  site,
+  brand,
+  logo,
+  slogan,
+  tagline,
   social,
+  email,
+  year,
   isTestnet,
   defaultNetwork,
   version
@@ -15,13 +20,13 @@ const App = ({
   <div className='App'>
     <div className='header'>
       <Navbar
-        brand={site.brand}
-        logo={site.logo}
+        brand={brand}
+        logo={logo}
         isTestnet={isTestnet}
         defaultNetwork={defaultNetwork}
         />
     </div>
-    <div className='container {{page.title}}' id='main'>
+    <div className='container' id='main'>
       {children}
     </div>
     <div className='footer'>
@@ -29,8 +34,8 @@ const App = ({
         twitter={social.twitter}
         github={social.github}
         facebook={social.facebook}
-        email={social.email}
-        year={site.year}
+        email={email}
+        year={year}
         version={version}
         />
     </div>
