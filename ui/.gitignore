@@ -1,3 +1,5 @@
+public/index.html
+
 bower_components
 node_modules
 *.sw[a-z]
