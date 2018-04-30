@@ -46,11 +46,6 @@ app.get('/api/internal/latest/unconfirmed', unconfirmed)
 
 app.get('api/*', catch404)
 
-// send static file and handle routes client-side with react
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../ui/public/index.html'))
-})
-
 var server = app.listen(config.get('app.port'), function () {
   var host = server.address().address
   var port = server.address().port
