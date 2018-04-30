@@ -16,22 +16,7 @@ const api = new APIClient()
 // get config as starter
 api.getConfig(config => {
   // config and global props to pass down to children
-  const {
-    site,
-    social,
-    isTestnet,
-    defaultNetwork,
-    version
-  } = config
-
-  const generalProps = {
-    api,
-    site,
-    social,
-    isTestnet,
-    defaultNetwork,
-    version
-  }
+  const generalProps = { api, ...config }
 
   ReactDOM.render(
     <Router>
