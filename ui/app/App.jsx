@@ -3,12 +3,11 @@ import React from 'react'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 
-
 import '@poexio/light-bootstrap-dashboard/dist/assets/css/bootstrap.min.css'
 import '@poexio/light-bootstrap-dashboard/dist/assets/css/light-bootstrap-dashboard.css'
 
-import'../scss/main.css'
-import'../public/theme/style.css'
+import '../scss/main.css'
+import '../public/theme/style.css'
 
 const App = ({
   children,
