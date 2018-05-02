@@ -20,6 +20,11 @@ app:
       - documents
       - agreements
       - contracts
+  url:
+    scheme: http
+    host: localhost
+    port: 3003
+  magicNumber: magic12345
 
 social:
   twitter: proofxstence
