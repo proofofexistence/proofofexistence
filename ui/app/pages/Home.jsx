@@ -105,10 +105,10 @@ class Home extends Component {
           className='row justify-content-md-center'
           style={{textAlign: 'center'}}
           >
-          <div className='card col-lg-10 no-border'>
-            <h3 class='card-title'>
-              Select a document and have it certified in the Bitcoin blockchain
-            </h3>
+          <h3 class='card-title'>
+            Select a document and have it certified in the Bitcoin blockchain
+          </h3>
+          <div className='card col-lg-8 no-border' style={{margin:0}}>
 
             <div className='no-border'>
               {
