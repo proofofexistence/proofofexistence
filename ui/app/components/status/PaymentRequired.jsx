@@ -4,13 +4,14 @@ import Qrcode from 'qrcode.react'
 const Payment = ({
   handleUpdateStatus,
   paymentAddress,
-  price
+  mBTCPrice,
+  BTCPrice
 }) => (
   <div class='card-body'>
     <span class='badge badge-info'>Payment Required</span>
 
     <p class='card-text'>
-      Please send <strong>{price} mBTC</strong> to
+      Please send <strong>{mBTCPrice} mBTC</strong> to
     </p>
     <p>
       <strong id='payment_link'>
@@ -19,7 +20,7 @@ const Payment = ({
     </p>
 
     <Qrcode
-      value={`bitcoin:${paymentAddress}?amount=${price}`}
+      value={`bitcoin:${paymentAddress}?amount=${BTCPrice}`}
       size={150}
       bgColor='#ffffff'
       fgColor='#000000'

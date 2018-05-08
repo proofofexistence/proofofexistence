@@ -39,11 +39,13 @@ class Status extends Component {
             price
            } = data
 
-          const mBtcDocumentPrice = btcConvert(price, 'Satoshi', 'BTC')
+           const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
+           const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
 
           this.setState({
+            BTCPrice,
+            mBTCPrice,
             paymentAddress: pay_address,
-            price: mBtcDocumentPrice,
             status: 'paymentRequired'
           })
         } else if (success === false && data.reason === 'existing') { // record already exist in local DB
@@ -60,12 +62,14 @@ class Status extends Component {
                 status
                } = data
 
-              const mBtcDocumentPrice = btcConvert(price, 'Satoshi', 'BTC')
+               const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
+              const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
 
               this.setState({
                 paymentAddress: payment_address,
                 status,
-                price: mBtcDocumentPrice,
+                BTCPrice,
+                mBTCPrice,
                 tx,
                 txstamp,
                 blockstamp
@@ -100,7 +104,8 @@ class Status extends Component {
   render () {
     const { hash } = this.props
     const {
-      price,
+      BTCPrice,
+      mBTCPrice,
       paymentAddress,
       tx,
       status
@@ -113,7 +118,8 @@ class Status extends Component {
             'paymentRequired': (
               <PaymentRequired
                 handleUpdateStatus={e => this.handleUpdateStatus(e)}
-                price={price}
+                BTCPrice={BTCPrice}
+                mBTCPrice={mBTCPrice}
                 paymentAddress={paymentAddress}
             />
           ),
