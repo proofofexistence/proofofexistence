@@ -35,7 +35,6 @@ class Status extends Component {
 
         if (success) {
           const {
-            documentPriceMbtc,
             pay_address,
             price
            } = data
@@ -55,14 +54,13 @@ class Status extends Component {
               const {
                 payment_address,
                 price,
-                documentPriceMbtc,
                 tx,
                 txstamp,
                 blockstamp,
                 status
                } = data
 
-               const mBtcDocumentPrice = btcConvert(price, 'Satoshi', 'BTC')
+              const mBtcDocumentPrice = btcConvert(price, 'Satoshi', 'BTC')
 
               this.setState({
                 paymentAddress: payment_address,
