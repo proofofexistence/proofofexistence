@@ -1,4 +1,5 @@
 import React from 'react'
+import Qrcode from 'qrcode.react'
 
 const Payment = ({
   handleUpdateStatus,
@@ -16,6 +17,14 @@ const Payment = ({
         {paymentAddress}
       </strong>
     </p>
+
+    <Qrcode
+      value={`bitcoin:${paymentAddress}?amount=${price}`}
+      size={150}
+      bgColor="#ffffff"
+      fgColor="#000000"
+      level="H"
+      />
 
     <p>
       After sending your payment, click the button below to continue the document certification process.
