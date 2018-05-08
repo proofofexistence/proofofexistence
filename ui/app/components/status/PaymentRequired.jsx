@@ -21,9 +21,9 @@ const Payment = ({
     <Qrcode
       value={`bitcoin:${paymentAddress}?amount=${price}`}
       size={150}
-      bgColor="#ffffff"
-      fgColor="#000000"
-      level="H"
+      bgColor='#ffffff'
+      fgColor='#000000'
+      level='H'
       />
 
     <p>
