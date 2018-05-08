@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.13.2 - 2018-05-08
+
+* bring back QR codes
+
+## 1.13.1 - 2018-05-08
+
+* fix wrong price display in mBTC
+
+## 1.13 - 2018-05-02
+
+See #16 for details
+
+* rewrite UI into React frontend App
+* init API client 
+* split routes into separate reps
+
 ## 1.12.2 - 2018-04-11
 
 * Better search feature
