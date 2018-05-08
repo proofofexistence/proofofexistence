@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import btcConvert from 'bitcoin-convert'
 
 import PaymentRequired from './status/PaymentRequired.jsx'
 import Confirming from './status/Confirming.jsx'
@@ -34,13 +35,16 @@ class Status extends Component {
 
         if (success) {
           const {
+            documentPriceMbtc,
             pay_address,
             price
            } = data
 
+          const mBtcDocumentPrice = btcConvert(price, 'Satoshi', 'BTC')
+
           this.setState({
             paymentAddress: pay_address,
-            price,
+            price: mBtcDocumentPrice,
             status: 'paymentRequired'
           })
         } else if (success === false && data.reason === 'existing') { // record already exist in local DB
@@ -51,16 +55,19 @@ class Status extends Component {
               const {
                 payment_address,
                 price,
+                documentPriceMbtc,
                 tx,
                 txstamp,
                 blockstamp,
                 status
                } = data
 
+               const mBtcDocumentPrice = btcConvert(price, 'Satoshi', 'BTC')
+
               this.setState({
                 paymentAddress: payment_address,
                 status,
-                price,
+                price: mBtcDocumentPrice,
                 tx,
                 txstamp,
                 blockstamp
