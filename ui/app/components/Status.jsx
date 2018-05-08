@@ -39,8 +39,8 @@ class Status extends Component {
             price
            } = data
 
-           const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
-           const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
+          const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
+          const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
 
           this.setState({
             BTCPrice,
@@ -62,7 +62,7 @@ class Status extends Component {
                 status
                } = data
 
-               const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
+              const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
               const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
 
               this.setState({
