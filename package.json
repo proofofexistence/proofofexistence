@@ -8,7 +8,7 @@
     "build": "node ./scripts/build.js && NODE_ENV=production webpack",
     "server": "nodemon server/app.js",
     "sweep": "node lib/sweep.js",
-    "lint": "standard --fix 'lib/**/*.js' 'config/*.js' 'server/**/*.js'",
+    "lint": "standard 'lib/**/*.js' 'config/*.js' 'server/**/*.js'",
     "test": "mocha --timeout 10000 && npm run lint && npm run ui:test && npm run ui:lint",
     "start": "concurrently \"npm run ui:watch\" \"npm run server\"",
     "ui:lint": "standard 'ui/app/**/*.jsx' 'ui/app/**/*.js' 'client/index.js'",
