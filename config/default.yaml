@@ -34,10 +34,10 @@ social:
 services:
   insight:
     mainnet:
-      url: https://insight.bitpay.com
+      url: https://insight.proofofexistence.com
       api: /api
     testnet:
-      url: https://test-insight.bitpay.com
+      url: https://test-insight.proofofexistence.com
       api: /api
 
 nodemailer:
