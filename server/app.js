@@ -35,7 +35,7 @@ const { alldb, sweep, dbClose } = require('./routes/admin')
 app.get('/api', (req, res) => res.send({}))
 app.get('/api/v1', version)
 app.get('/api/v1/config', configInfo)
-app.get('/api/v1/status/', show) // TODO: what is this one for?
+app.get('/api/v1/status/', show) // status resource that accepts a query parameter
 app.get('/api/v1/status/:hash', show)
 app.post('/api/v1/status/', update)
 app.post('/api/v1/register', create)
