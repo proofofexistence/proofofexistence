@@ -6,10 +6,14 @@ const Detail = ({
   match
 }) => (
   <div>
-    <Status
-      hash={match.params.hash}
-      api={api}
-      />
+    <div class='row'>
+      <div class='col-lg-12'>
+        <Status
+          hash={match.params.hash}
+          api={api}
+          />
+      </div>
+    </div>
   </div>
 )
 
