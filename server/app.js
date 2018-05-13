@@ -29,6 +29,7 @@ app.param('magicNumber', (req, res, next, magicNumber) => {
 // api routes
 const { configInfo, version, catch404 } = require('./routes')
 const { create, show, update } = require('./routes/actions')
+const { docproofs } = require('./routes/docproofs')
 const { confirmed, unconfirmed } = require('./routes/internal')
 const { alldb, sweep, dbClose } = require('./routes/admin')
 
@@ -39,6 +40,7 @@ app.get('/api/v1/status/', show) // status resource that accepts a query paramet
 app.get('/api/v1/status/:hash', show)
 app.post('/api/v1/status/', update)
 app.post('/api/v1/register', create)
+app.get('/api/v1/docproofs/:hash', docproofs)
 app.get('/alldb/:magicNumber', alldb)
 app.get('/sweep/:magicNumber', sweep)
 app.get('/api/internal/latest/confirmed', confirmed)
