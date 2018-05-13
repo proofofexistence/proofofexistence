@@ -130,4 +130,8 @@ export default class APIClient {
       error => errorCallback(error)
     )
   }
+
+  getDocproofs (hash, callback, errorCallback) {
+    this.get(this.getURL(`docproofs/${hash}`), callback, errorCallback)
+  }
 }
