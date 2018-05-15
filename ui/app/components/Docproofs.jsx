@@ -29,11 +29,11 @@ class Docproofs extends Component {
           </p>
         </div>
         <div class='card-body table-responsive table-full-width'>
-          <table class='table table-striped'>
+          <table class='table table-striped docproofs-table'>
             <thead>
               {
                 this.state.txs.length > 0
-                  ? <tr><th /><th>Block Height</th><th>Transaction ID</th><th>Block Time</th><th>Confirmations</th></tr>
+                  ? <tr><th /><th>Block Height</th><th>Transaction ID</th><th className='d-none d-md-table-cell'>Block Time</th><th className='d-none d-md-table-cell'>Confirmations</th></tr>
                   : null
               }
             </thead>
@@ -44,16 +44,16 @@ class Docproofs extends Component {
                     <td>
                       <span class='label label-success'>✔</span>
                     </td>
-                    <td>
+                    <td className='no-wrap'>
                       {tx.blockheight}
                     </td>
                     <td>
                       {tx.txid}
                     </td>
-                    <td>
+                    <td className='d-none d-md-table-cell'>
                       {new Date(tx.blocktime * 1000).toUTCString()}
                     </td>
-                    <td>
+                    <td className='no-wrap d-none d-md-table-cell'>
                       {tx.confirmations}
                     </td>
                   </tr>

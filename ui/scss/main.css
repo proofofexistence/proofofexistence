@@ -39,3 +39,12 @@
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
+
+.table.docproofs-table td {
+  vertical-align: top;
+}
+
+.table.docproofs-table .no-wrap,
+.table.docproofs-table th {
+  white-space: nowrap
+}
