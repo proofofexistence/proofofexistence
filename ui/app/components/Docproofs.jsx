@@ -33,7 +33,7 @@ class Docproofs extends Component {
             <thead>
               {
                 this.state.txs.length > 0
-                  ? <tr><th /><th>Block Height</th><th>Transaction ID</th></tr>
+                  ? <tr><th /><th>Block Height</th><th>Transaction ID</th><th>Block Time</th><th>Confirmations</th></tr>
                   : null
               }
             </thead>
@@ -49,6 +49,12 @@ class Docproofs extends Component {
                     </td>
                     <td>
                       {tx.txid}
+                    </td>
+                    <td>
+                      {new Date(tx.blocktime * 1000).toUTCString()}
+                    </td>
+                    <td>
+                      {tx.confirmations}
                     </td>
                   </tr>
                 ))
