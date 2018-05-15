@@ -12,13 +12,11 @@ const specialops = new SpecialOps()
 
 function docproofs (req, res) {
   const hash = req.params.hash
-  let docproofs = {}
 
   if (core.docproof.isValidDigest(hash)) {
     // TODO: add pagination query for additional data.
     specialops.getDocproofs(hash, {limit: 100})
       .then(results => {
-        docproofs = results
         return getProofs(results.items)
       })
       .then(txs => {
@@ -26,7 +24,10 @@ function docproofs (req, res) {
           return a.blockheight > b.blockheight
         })
 
-        docproofs.items = items
+        const docproofs = {
+          pagination: {},
+          items: items
+        }
 
         return res.json(docproofs)
       }).catch(error => {
