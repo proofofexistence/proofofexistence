@@ -4,7 +4,7 @@ class Docproofs extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {txs: [], message: 'Fetching confrirmation data from the BTC blockchain...'}
+    this.state = {txs: [], message: 'Fetching data from the blockchain. Please wait.'}
   }
 
   componentDidMount () {
