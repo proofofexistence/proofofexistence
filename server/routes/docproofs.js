@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const core = require('../../lib/core')
 const Insight = require('../../lib/clients/insight')
 const SpecialOps = require('../../lib/clients/specialops')
@@ -18,18 +19,10 @@ function docproofs (req, res) {
     specialops.getDocproofs(hash, {limit: 100})
       .then(results => {
         docproofs = results
-        return getTxs(results.items)
+        return getProofs(results.items)
       })
       .then(txs => {
-        const items = txs.map(tx => {
-          return {
-            blockhash: tx.blockhash,
-            blockheight: tx.blockheight,
-            blocktime: tx.blocktime,
-            confirmations: tx.confirmations,
-            txid: tx.txid
-          }
-        }).sort((a, b) => {
+        const items = txs.sort((a, b) => {
           return a.blockheight > b.blockheight
         })
 
@@ -48,12 +41,28 @@ function docproofs (req, res) {
   }
 }
 
-async function getTxs (docproofs) {
+async function getProofs (docproofs) {
   const getTxs = docproofs.map(docproof => {
     return insight.getTx(docproof.txid)
   })
 
-  return Promise.all(getTxs)
+  const txs = await Promise.all(getTxs)
+
+  const proofs = _.zip(docproofs, txs)
+
+  return proofs.map(proof => {
+    const [docproof, tx] = proof
+
+    return {
+      blockhash: tx.blockhash,
+      blockheight: tx.blockheight,
+      blocktime: tx.blocktime,
+      confirmations: tx.confirmations,
+      metadata: docproof.metadata,
+      txid: tx.txid,
+      outputIndex: docproof.outputIndex
+    }
+  })
 }
 
 module.exports = {
