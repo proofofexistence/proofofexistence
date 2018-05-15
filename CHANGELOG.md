@@ -1,5 +1,11 @@
 # Changelog
 
+
+## 1.13.3 - 2018-05-15
+
+* request docproof and txs data from insight server using specialops lib
+* introduce docproof UI component
+
 ## 1.13.2 - 2018-05-08
 
 * bring back QR codes
@@ -13,7 +19,7 @@
 See #16 for details
 
 * rewrite UI into React frontend App
-* init API client 
+* init API client
 * split routes into separate reps
 
 ## 1.12.2 - 2018-04-11
