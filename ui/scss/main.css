@@ -32,6 +32,12 @@
 .social .facebook {
   background: url('/img/social/facebook.svg') no-repeat;
 }
+
+.social .telegram {
+  background: url('/img/social/telegram.png') no-repeat;
+  background-size: 30px;
+}
+
 .social .github {
   background: url('/img/social/github.svg') no-repeat;
 }

@@ -40,6 +40,7 @@ const App = ({
         twitter={social.twitter}
         github={social.github}
         facebook={social.facebook}
+        telegram={social.telegram}
         email={email}
         year={year}
         version={version}
