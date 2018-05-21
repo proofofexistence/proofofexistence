@@ -18,7 +18,7 @@ const Footer = ({
             ? <li className='social'>
               <a className='twitter'
                 href={`https://twitter.com/${twitter}`}
-                title="Twitter"
+                title='Twitter'
                 >
                 Twitter
               </a>
@@ -29,7 +29,7 @@ const Footer = ({
             ? <li className='social'>
               <a className='github'
                 href={`https://github.com/${github}`}
-                title="Github"
+                title='Github'
                 >
                 GitHub
               </a>
@@ -40,7 +40,7 @@ const Footer = ({
             ? <li className='social'>
               <a className='telegram'
                 href={`https://t.me/joinchat/${telegram}`}
-                title="Telegram"
+                title='Telegram'
                 >
                 Telegram
               </a>
@@ -51,7 +51,7 @@ const Footer = ({
             ? <li className='social'>
               <a className='facebook'
                 href={`https://facebook.com/${facebook}`}
-                title="Facebook"
+                title='Facebook'
                 >
                 Facebook
               </a>
