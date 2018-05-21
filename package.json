@@ -1,6 +1,6 @@
 {
   "name": "proofofexistence",
-  "version": "1.13.4",
+  "version": "2.0.0-beta",
   "description": "Web application to prove the existence of files using the bitcoin blockchain.",
   "main": "lib/server.js",
   "scripts": {
