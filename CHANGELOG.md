@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 1.13.4 - 2018-05-21
+
+* add support for Telegram groups
+
 ## 1.13.3 - 2018-05-15
 
 * request docproof and txs data from insight server using specialops lib
