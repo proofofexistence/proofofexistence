@@ -5,6 +5,9 @@ import PaymentRequired from './status/PaymentRequired.jsx'
 import Confirming from './status/Confirming.jsx'
 import Confirmed from './status/Confirmed.jsx'
 
+import { register, getStatus, updateStatus } from "@proofofexistence/api-client"
+
+
 class Status extends Component {
   constructor (props) {
     super(props)
@@ -26,18 +29,18 @@ class Status extends Component {
   }
 
   componentDidMount () {
-    const {api, hash} = this.props
+    const {hash} = this.props
 
-    api.register(hash,
-      data => {
-        console.log(data)
-        const { success } = data
+    register(hash)
+      .then(response => {
+        const data = response.data
+        const { success } = response.data
 
         if (success) {
           const {
             pay_address,
             price
-           } = data
+          } = response.data
 
           const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
           const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
@@ -49,10 +52,8 @@ class Status extends Component {
             status: 'paymentRequired'
           })
         } else if (success === false && data.reason === 'existing') { // record already exist in local DB
-          api.getStatus(hash,
-            data => {
-              console.log(data)
-
+          getStatus(hash)
+            .then( response => {
               const {
                 payment_address,
                 price,
@@ -60,7 +61,7 @@ class Status extends Component {
                 txstamp,
                 blockstamp,
                 status
-               } = data
+              } = response.data
 
               const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
               const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
@@ -74,31 +75,33 @@ class Status extends Component {
                 txstamp,
                 blockstamp
               })
-            }
-          )
+            })
+            .catch( error => {
+              console.log(error);
+            })
         }
-      },
-      err => console.log(err)
-    )
+      })
+      .catch( error => {
+        console.log(error);
+      })
   }
 
   handleUpdateStatus (e) {
     e.preventDefault()
     const { hash } = this.props
-    this.props.api.updateStatus(
-      hash,
-      data => {
-        console.log(data)
+    updateStatus(hash)
+      .then( response => {
         const {
           tx,
           txstamp,
           blockstamp,
           status
-        } = data
+        } = reponse.data
         this.setState({ tx, txstamp, blockstamp, status })
-      },
-      error => console.log(error)
-    )
+      })
+      .catch( error => {
+        console.log(error)
+      })
   }
 
   render () {
