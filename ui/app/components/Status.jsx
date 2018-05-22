@@ -5,8 +5,7 @@ import PaymentRequired from './status/PaymentRequired.jsx'
 import Confirming from './status/Confirming.jsx'
 import Confirmed from './status/Confirmed.jsx'
 
-import { register, getStatus, updateStatus } from "@proofofexistence/api-client"
-
+import { register, getStatus, updateStatus } from '@proofofexistence/api-client'
 
 class Status extends Component {
   constructor (props) {
@@ -53,7 +52,7 @@ class Status extends Component {
           })
         } else if (success === false && data.reason === 'existing') { // record already exist in local DB
           getStatus(hash)
-            .then( response => {
+            .then(response => {
               const {
                 payment_address,
                 price,
@@ -76,13 +75,13 @@ class Status extends Component {
                 blockstamp
               })
             })
-            .catch( error => {
-              console.log(error);
+            .catch(error => {
+              console.log(error)
             })
         }
       })
-      .catch( error => {
-        console.log(error);
+      .catch(error => {
+        console.log(error)
       })
   }
 
@@ -90,16 +89,16 @@ class Status extends Component {
     e.preventDefault()
     const { hash } = this.props
     updateStatus(hash)
-      .then( response => {
+      .then(response => {
         const {
           tx,
           txstamp,
           blockstamp,
           status
-        } = reponse.data
+        } = response.data
         this.setState({ tx, txstamp, blockstamp, status })
       })
-      .catch( error => {
+      .catch(error => {
         console.log(error)
       })
   }
