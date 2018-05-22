@@ -40,9 +40,11 @@ getConfig()
   .catch( error => {
     console.log(error);
     ReactDOM.render(
-      <p>
-        Error fetching the config file...
-      </p>
+      <App {...generalProps}>
+        <p>
+          Error fetching the config file...
+        </p>
+      </App>
       ,
       document.getElementById('root')
     )
