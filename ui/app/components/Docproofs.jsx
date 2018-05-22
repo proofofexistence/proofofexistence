@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-import { docproofs } from "@proofofexistence/api-client"
-
+import { docproofs } from '@proofofexistence/api-client'
 
 class Docproofs extends Component {
   constructor (props) {
@@ -10,13 +9,13 @@ class Docproofs extends Component {
   }
 
   componentDidMount () {
-    const {api, hash} = this.props
+    const { hash } = this.props
 
     docproofs(hash)
-      .then( response =>
+      .then(response =>
         this.setState({txs: response.data.items, message: 'Blockchain transactions embedding this document hash.'})
       )
-      .catch( error =>
+      .catch(error =>
         console.log(error)
       )
   }

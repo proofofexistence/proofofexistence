@@ -9,7 +9,7 @@ import Status from '../components/Status.jsx'
 
 import crypto from '../crypto'
 
-import { getLatestConfirmed, getLatestUnconfirmed } from "@proofofexistence/api-client"
+import { getLatestConfirmed, getLatestUnconfirmed } from '@proofofexistence/api-client'
 
 class Home extends Component {
   constructor (props) {
@@ -32,25 +32,23 @@ class Home extends Component {
   }
 
   componentDidMount () {
-
     getLatestConfirmed()
-      .then( response => {
+      .then(response => {
         let unconfirmed = response.data
         this.setState({ unconfirmed })
       })
       .catch(function (error) {
-        console.log(error);
-      });
+        console.log(error)
+      })
 
     getLatestUnconfirmed()
-      .then( response => {
+      .then(response => {
         let confirmed = response.data
         this.setState({ confirmed })
       })
       .catch(function (error) {
-        console.log(error);
-      });
-
+        console.log(error)
+      })
   }
 
   handleToggleSearch (e) {
@@ -101,8 +99,7 @@ class Home extends Component {
       logo,
       brand,
       slogan,
-      tagline,
-      api
+      tagline
     } = this.props
 
     return (

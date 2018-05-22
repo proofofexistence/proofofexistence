@@ -9,12 +9,12 @@ import Error404 from './pages/Error404.jsx'
 
 import registerServiceWorker from './registerServiceWorker'
 
-import { getConfig } from "@proofofexistence/api-client"
+import { getConfig } from '@proofofexistence/api-client'
 
 // get config as starter
 getConfig()
-  .then( response => {
-    let config =response.data
+  .then(response => {
+    let config = response.data
 
     // config and global props to pass down to children
     const generalProps = { ...config }
@@ -37,10 +37,10 @@ getConfig()
       document.getElementById('root')
     )
   })
-  .catch( error => {
-    console.log(error);
+  .catch(error => {
+    console.log(error)
     ReactDOM.render(
-      <App {...generalProps}>
+      <App>
         <p>
           Error fetching the config file...
         </p>
