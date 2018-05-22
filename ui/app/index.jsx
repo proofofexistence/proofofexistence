@@ -9,14 +9,10 @@ import Error404 from './pages/Error404.jsx'
 
 import registerServiceWorker from './registerServiceWorker'
 
-import APIClient from '../../client'
-
-const api = new APIClient()
-
 // get config as starter
 api.getConfig(config => {
   // config and global props to pass down to children
-  const generalProps = { api, ...config }
+  const generalProps = { ...config }
 
   ReactDOM.render(
     <Router>
