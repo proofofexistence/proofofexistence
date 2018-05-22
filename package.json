@@ -39,6 +39,7 @@
   "private": true,
   "dependencies": {
     "@poexio/light-bootstrap-dashboard": "^2.0.2",
+    "@proofofexistence/api-client": "^0.1.2",
     "animate.css": "^3.5.2",
     "axios": "^0.18.0",
     "bitcoin-convert": "^1.0.4",
