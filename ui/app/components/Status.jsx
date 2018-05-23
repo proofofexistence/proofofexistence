@@ -8,6 +8,7 @@ import Confirmed from './status/Confirmed.jsx'
 import { register, getStatus, updateStatus } from '@proofofexistence/api-client'
 
 class Status extends Component {
+
   constructor (props) {
     super(props)
 
@@ -27,19 +28,98 @@ class Status extends Component {
     }
   }
 
+  getDocStatus (status) {
+    if (status.pending === true && !status.txstamp) {
+      return 'paymentRequired'
+    } else if (status.txstamp && !status.blockstamp) {
+      return 'confirming'
+    } else if (status.blockstamp) {
+      return 'confirmed'
+    }
+  }
+
   componentDidMount () {
-    const {hash} = this.props
+    const { hash } = this.props
 
-    register(hash)
+    getStatus(hash, { baseURL : null })
       .then(response => {
-        const data = response.data
-        const { success } = response.data
+        const { data } = response
+        const status = this.getDocStatus(data)
+        this.setState({ status })
 
-        if (success) {
+        switch (status) {
+          case 'paymentRequired':
+            this.handleShowPaymentRequired(data)
+            break;
+          case 'confirming':
+            this.handleShowConfirmation(data)
+            break;
+          case 'confirmed':
+            this.handleShowConfirmation(data)
+            break;
+          default:
+
+        }
+      })
+      .catch(error => {
+        // if the api returns 404, then register the hash
+        if (error.status === 404)
+          this.handleRegisterHash (hash, { baseUrl : null })
+        else console.log(error)
+      })
+  }
+
+  handleShowPaymentRequired (data) {
+    const {
+      payment_address,
+      price
+    } = data
+
+    const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
+    const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
+
+    this.setState({
+      BTCPrice,
+      mBTCPrice,
+      paymentAddress: payment_address,
+      status: 'paymentRequired'
+    })
+  }
+
+  handleShowConfirmation (data) {
+    const {
+      payment_address,
+      price,
+      tx,
+      txstamp,
+      blockstamp
+    } = data
+
+    const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
+    const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
+
+    this.setState({
+      paymentAddress: payment_address,
+      BTCPrice,
+      mBTCPrice,
+      tx,
+      txstamp,
+      blockstamp
+    })
+  }
+
+  handleRegisterHash (hash) {
+    register(hash, { baseURL : null })
+      .then(response => {
+
+        const { data } = response
+
+        getStatus(hash, { baseURL : null })
+          .then(statusResp => {
           const {
-            pay_address,
+            payment_address,
             price
-          } = response.data
+          } = statusResp.data
 
           const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
           const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
@@ -47,56 +127,38 @@ class Status extends Component {
           this.setState({
             BTCPrice,
             mBTCPrice,
-            paymentAddress: pay_address,
+            paymentAddress: payment_address,
             status: 'paymentRequired'
           })
-        } else if (success === false && data.reason === 'existing') { // record already exist in local DB
-          getStatus(hash)
-            .then(response => {
-              const {
-                payment_address,
-                price,
-                tx,
-                txstamp,
-                blockstamp,
-                status
-              } = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
 
-              const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
-              const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
-
-              this.setState({
-                paymentAddress: payment_address,
-                status,
-                BTCPrice,
-                mBTCPrice,
-                tx,
-                txstamp,
-                blockstamp
-              })
-            })
-            .catch(error => {
-              console.log(error)
-            })
-        }
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       })
   }
 
   handleUpdateStatus (e) {
     e.preventDefault()
+
     const { hash } = this.props
-    updateStatus(hash)
+
+    updateStatus(hash, { baseURL : null})
       .then(response => {
         const {
           tx,
           txstamp,
-          blockstamp,
-          status
+          blockstamp
         } = response.data
+
+        const status = this.getDocStatus(response.data)
+
         this.setState({ tx, txstamp, blockstamp, status })
+
+        console.log("updated", status)
       })
       .catch(error => {
         console.log(error)
