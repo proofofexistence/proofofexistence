@@ -32,7 +32,7 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    getLatestConfirmed({ baseURL : null })
+    getLatestConfirmed({ baseURL: null })
       .then(response => {
         let confirmed = response.data
         this.setState({ confirmed })
@@ -41,7 +41,7 @@ class Home extends Component {
         console.log(error)
       })
 
-    getLatestUnconfirmed({ baseURL : null })
+    getLatestUnconfirmed({ baseURL: null })
       .then(response => {
         let unconfirmed = response.data
         this.setState({ unconfirmed })
