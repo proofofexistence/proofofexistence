@@ -8,13 +8,14 @@ app:
   site:
     logo:
     brand:
+  defaultChain: btc
+  defaultNetwork: testnet
 
 db:
   path: /tmp/poex-database-dev
 
 chains:
   btc:
-    defaultNetwork: testnet
     networks:
       mainnet:
         incomingPrivateKey: xprvXXXXX

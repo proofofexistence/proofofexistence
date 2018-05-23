@@ -1,6 +1,5 @@
 'use strict'
 
-var bitcore = require('bitcore-lib')
 var defer = require('config/defer').deferConfig
 
 var config = {}
@@ -21,30 +20,8 @@ config.app = {
  * Configure network
  */
 
-var bitcoinNetwork = process.env.BITCOIN_NETWORK
-
-if (bitcoinNetwork) {
-  bitcore.Networks.defaultNetwork = bitcore.Networks[bitcoinNetwork]
-} else {
-  bitcore.Networks.defaultNetwork = bitcore.Networks.testnet
-}
-
-config.chains = defer(function () {
-  let bitcoinNetworks = {}
-
-  bitcoinNetworks[bitcoinNetwork] = {
-    incomingPrivateKey: process.env.BITCOIN_HD_PRIVATE_KEY,
-    outgoingPublicKey: process.env.BITCOIN_HD_PUBLIC_KEY,
-    documentPrice: parseInt(process.env.DOCUMENT_PRICE),
-    feeMultiplier: parseFloat(process.env.FEE_MULTIPLIER || 2)
-  }
-
-  return {
-    btc: {
-      defaultNetwork: bitcoinNetwork,
-      networks: bitcoinNetworks
-    }
-  }
+config.networkName = defer(function () {
+  return this.app.defaultNetwork === 'testnet' ? 'test3' : 'main'
 })
 
 /**
@@ -52,15 +29,21 @@ config.chains = defer(function () {
  */
 
 config.documentPrice = defer(function () {
-  let btc = this.chains.btc
-  let documentPrice = btc.networks[btc.defaultNetwork].documentPrice
+  const defaultChain = this.app.defaultChain
+  const defaultNetwork = this.app.defaultNetwork
+
+  let chain = this.chains[defaultChain]
+  let documentPrice = chain.networks[defaultNetwork].documentPrice
   return documentPrice
 })
 
 config.feeMultiplier = defer(function () {
-  let btc = this.chains.btc
-  let documentPrice = btc.networks[btc.defaultNetwork].feeMultiplier
-  return documentPrice
+  const defaultChain = this.app.defaultChain
+  const defaultNetwork = this.app.defaultNetwork
+
+  let chain = this.chains[defaultChain]
+  let feeMultiplier = chain.networks[defaultNetwork].feeMultiplier
+  return feeMultiplier
 })
 
 /**
@@ -68,16 +51,18 @@ config.feeMultiplier = defer(function () {
  */
 
 config.insightUrl = defer(function () {
-  const btc = this.chains.btc
+  const defaultNetwork = this.app.defaultNetwork
+
   const insight = this.services.insight
-  const url = insight[btc.defaultNetwork].url
+  const url = insight[defaultNetwork].url
   return url
 })
 
 config.insightApiUrl = defer(function () {
-  const btc = this.chains.btc
+  const defaultNetwork = this.app.defaultNetwork
+
   const insight = this.services.insight
-  const network = insight[btc.defaultNetwork]
+  const network = insight[defaultNetwork]
   const url = network.url + network.api
   return url
 })
@@ -97,8 +82,6 @@ config.testUrl = defer(function () {
   let port = parseInt(url.port)
   return url.scheme + '://test.' + url.host + (port === 80 || port === 443 ? '' : ':' + port)
 })
-
-config.networkName = bitcore.Networks.defaultNetwork.name === 'testnet' ? 'test3' : 'main'
 
 /**
  * Function to generate random bytes.
