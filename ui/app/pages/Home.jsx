@@ -34,8 +34,8 @@ class Home extends Component {
   componentDidMount () {
     getLatestConfirmed()
       .then(response => {
-        let unconfirmed = response.data
-        this.setState({ unconfirmed })
+        let confirmed = response.data
+        this.setState({ confirmed })
       })
       .catch(function (error) {
         console.log(error)
@@ -43,8 +43,8 @@ class Home extends Component {
 
     getLatestUnconfirmed()
       .then(response => {
-        let confirmed = response.data
-        this.setState({ confirmed })
+        let unconfirmed = response.data
+        this.setState({ unconfirmed })
       })
       .catch(function (error) {
         console.log(error)
@@ -134,6 +134,7 @@ class Home extends Component {
                     />
                   : <Status
                     hash={hash}
+
                     />
                 }
             </div>
