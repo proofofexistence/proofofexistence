@@ -29,7 +29,7 @@ if (bitcoinNetwork) {
   bitcore.Networks.defaultNetwork = bitcore.Networks.testnet
 }
 
-config.currencies = defer(function () {
+config.chains = defer(function () {
   let bitcoinNetworks = {}
 
   bitcoinNetworks[bitcoinNetwork] = {
@@ -52,13 +52,13 @@ config.currencies = defer(function () {
  */
 
 config.documentPrice = defer(function () {
-  let btc = this.currencies.btc
+  let btc = this.chains.btc
   let documentPrice = btc.networks[btc.defaultNetwork].documentPrice
   return documentPrice
 })
 
 config.feeMultiplier = defer(function () {
-  let btc = this.currencies.btc
+  let btc = this.chains.btc
   let documentPrice = btc.networks[btc.defaultNetwork].feeMultiplier
   return documentPrice
 })
@@ -68,14 +68,14 @@ config.feeMultiplier = defer(function () {
  */
 
 config.insightUrl = defer(function () {
-  const btc = this.currencies.btc
+  const btc = this.chains.btc
   const insight = this.services.insight
   const url = insight[btc.defaultNetwork].url
   return url
 })
 
 config.insightApiUrl = defer(function () {
-  const btc = this.currencies.btc
+  const btc = this.chains.btc
   const insight = this.services.insight
   const network = insight[btc.defaultNetwork]
   const url = network.url + network.api

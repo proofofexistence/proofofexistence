@@ -12,7 +12,7 @@ app:
 db:
   path: /tmp/poex-database-dev
 
-currencies:
+chains:
   btc:
     defaultNetwork: testnet
     networks:
