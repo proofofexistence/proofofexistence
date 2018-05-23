@@ -8,7 +8,6 @@ import Confirmed from './status/Confirmed.jsx'
 import { register, getStatus, updateStatus } from '@proofofexistence/api-client'
 
 class Status extends Component {
-
   constructor (props) {
     super(props)
 
@@ -41,7 +40,7 @@ class Status extends Component {
   componentDidMount () {
     const { hash } = this.props
 
-    getStatus(hash, { baseURL : null })
+    getStatus(hash, { baseURL: null })
       .then(response => {
         const { data } = response
         const status = this.getDocStatus(data)
@@ -50,22 +49,19 @@ class Status extends Component {
         switch (status) {
           case 'paymentRequired':
             this.handleShowPaymentRequired(data)
-            break;
+            break
           case 'confirming':
             this.handleShowConfirmation(data)
-            break;
+            break
           case 'confirmed':
             this.handleShowConfirmation(data)
-            break;
+            break
           default:
-
         }
       })
       .catch(error => {
         // if the api returns 404, then register the hash
-        if (error.status === 404)
-          this.handleRegisterHash (hash, { baseUrl : null })
-        else console.log(error)
+        if (error.status === 404) { this.handleRegisterHash(hash, { baseUrl: null }) } else console.log(error)
       })
   }
 
@@ -109,35 +105,31 @@ class Status extends Component {
   }
 
   handleRegisterHash (hash) {
-    register(hash, { baseURL : null })
+    register(hash, { baseURL: null })
       .then(response => {
-
-        const { data } = response
-
-        getStatus(hash, { baseURL : null })
+        getStatus(hash, { baseURL: null })
           .then(statusResp => {
-          const {
+            const {
             payment_address,
             price
           } = statusResp.data
 
-          const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
-          const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
+            const BTCPrice = btcConvert(price, 'Satoshi', 'BTC')
+            const mBTCPrice = btcConvert(price, 'Satoshi', 'mBTC')
 
-          this.setState({
-            BTCPrice,
-            mBTCPrice,
-            paymentAddress: payment_address,
-            status: 'paymentRequired'
+            this.setState({
+              BTCPrice,
+              mBTCPrice,
+              paymentAddress: payment_address,
+              status: 'paymentRequired'
+            })
           })
-        })
         .catch(error => {
           console.log(error)
         })
-
       })
       .catch(error => {
-        console.log(error);
+        console.log(error)
       })
   }
 
@@ -146,7 +138,7 @@ class Status extends Component {
 
     const { hash } = this.props
 
-    updateStatus(hash, { baseURL : null})
+    updateStatus(hash, { baseURL: null })
       .then(response => {
         const {
           tx,
@@ -158,7 +150,7 @@ class Status extends Component {
 
         this.setState({ tx, txstamp, blockstamp, status })
 
-        console.log("updated", status)
+        console.log('updated', status)
       })
       .catch(error => {
         console.log(error)

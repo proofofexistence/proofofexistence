@@ -13,7 +13,7 @@ class Docproofs extends Component {
 
   componentDidMount () {
     const { hash } = this.props
-    docproofs(hash, { baseURL : null})
+    docproofs(hash, { baseURL: null })
       .then(response => {
         this.setState({
           txs: response.data.items,
@@ -21,7 +21,7 @@ class Docproofs extends Component {
         })
       })
       .catch(error => {
-        console.log(error);
+        console.log(error)
         this.setState({
           txs: [],
           message: 'No transactions available.'
