@@ -12,7 +12,7 @@ import registerServiceWorker from './registerServiceWorker'
 import { getConfig } from '@proofofexistence/api-client'
 
 // get config as starter
-getConfig()
+getConfig({ baseURL : null })
   .then(response => {
     let config = response.data
 
