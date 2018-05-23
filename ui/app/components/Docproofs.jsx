@@ -13,7 +13,7 @@ class Docproofs extends Component {
 
   componentDidMount () {
     const { hash } = this.props
-    docproofs(hash)
+    docproofs(hash, { baseURL : null})
       .then(response => {
         this.setState({
           txs: response.data.items,
