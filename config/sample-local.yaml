@@ -8,13 +8,14 @@ app:
   site:
     logo:
     brand:
+  defaultChain: btc
+  defaultNetwork: testnet
 
 db:
   path: /tmp/poex-database-dev
 
-currencies:
+chains:
   btc:
-    defaultNetwork: testnet
     networks:
       mainnet:
         incomingPrivateKey: xprvXXXXX
@@ -26,6 +27,18 @@ currencies:
         outgoingPublicKey: tprvXXXXX
         documentPrice: 100000
         feeMultiplier: 4
+  bch:
+    networks:
+      mainnet:
+        incomingPrivateKey: xprvXXXXX
+        outgoingPublicKey: xprvXXXXX
+        documentPrice: 50000
+        feeMultiplier: 2
+      testnet:
+        incomingPrivateKey: tprvXXXXX
+        outgoingPublicKey: tprvXXXXX
+        documentPrice: 50000
+        feeMultiplier: 2
 
 mail:
   from:

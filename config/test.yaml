@@ -9,9 +9,8 @@ app:
 db:
   path: /tmp/poex-database-test
 
-currencies:
+chains:
   btc:
-    defaultNetwork: testnet
     networks:
       testnet:
         incomingPrivateKey: tprv8ZgxMBicQKsPeewq23StQ8B32pn7Vxyhpn4ViPHnfNFi2sXvShkSYzjFYZ5dfhqszEBdzFk5oxDqKt5bxthSjNGWnPhtvUg7KtBuZuckTuD

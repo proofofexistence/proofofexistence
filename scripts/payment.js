@@ -1,4 +1,4 @@
-var bitcore = require('bitcore-lib')
+var bitcore = require('../lib/bitcore')
 
 var config = require('config')
 const Insight = require('../lib/clients/insight')

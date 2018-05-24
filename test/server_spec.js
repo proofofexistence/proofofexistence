@@ -11,7 +11,7 @@ const { URL } = require('url')
 
 chai.use(chaiHttp)
 
-var bitcore = require('bitcore-lib')
+var bitcore = require('../lib/bitcore')
 var Unit = bitcore.Unit
 
 const config = require('config')
@@ -23,7 +23,6 @@ const Insights = require('./fixtures/insight')
 const insights = new Insights()
 const records = require('./fixtures/records')
 
-const networkName = config.get('networkName')
 const insightApiUrl = new URL(config.get('insightApiUrl'))
 const magicNumber = config.get('app.magicNumber')
 

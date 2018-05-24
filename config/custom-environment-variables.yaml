@@ -5,6 +5,8 @@ app:
     host: HOST
     port: HOST_PORT
   magicNumber: MAGIC_NUMBER
+  defaultChain: BITCOIN_CHAIN
+  defaultNetwork: BITCOIN_NETWORK
 
 db:
   path: DB_PATH

@@ -4,7 +4,7 @@ const packageFile = require('../../package.json')
 
 // parse config
 const social = config.get('social')
-const defaultNetwork = config.get('currencies').btc.defaultNetwork
+const defaultNetwork = config.get('app.defaultNetwork')
 const isTestnet = defaultNetwork === 'testnet'
 
 // GET /api
