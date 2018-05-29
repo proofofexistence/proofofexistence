@@ -19,12 +19,12 @@ chains:
     networks:
       mainnet:
         incomingPrivateKey: xprvXXXXX
-        outgoingPublicKey: xprvXXXXX
+        outgoingPublicKey: xpubXXXXX
         documentPrice: 200000
         feeMultiplier: 2
       testnet:
         incomingPrivateKey: tprvXXXXX
-        outgoingPublicKey: tprvXXXXX
+        outgoingPublicKey: tpubXXXXX
         documentPrice: 100000
         feeMultiplier: 4
   bch:
@@ -36,7 +36,7 @@ chains:
         feeMultiplier: 2
       testnet:
         incomingPrivateKey: tprvXXXXX
-        outgoingPublicKey: tprvXXXXX
+        outgoingPublicKey: tpubXXXXX
         documentPrice: 50000
         feeMultiplier: 2
 
