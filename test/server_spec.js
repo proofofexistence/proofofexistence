@@ -11,7 +11,8 @@ const { URL } = require('url')
 
 chai.use(chaiHttp)
 
-var bitcore = require('../lib/bitcore')
+const chains = require('../lib/chains')
+const bitcore = chains.get()
 var Unit = bitcore.Unit
 
 const config = require('config')

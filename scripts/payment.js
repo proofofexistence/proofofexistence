@@ -1,15 +1,16 @@
-var bitcore = require('../lib/bitcore')
-
-var config = require('config')
+const config = require('config')
 const Insight = require('../lib/clients/insight')
 const insightApi = new Insight()
+
+const chains = require('../lib/chains')
+const bitcore = chains.get()
 
 var privateKeyWIF = process.argv[2]
 var targetAddress = process.argv[3]
 var paymentAmount = parseInt(process.argv[4] || config.get('documentPrice'))
 
 var privateKey = bitcore.PrivateKey.fromWIF(privateKeyWIF)
-var sourceAddress = privateKey.toAddress(bitcore.Networks.testnet)
+var sourceAddress = privateKey.toAddress()
 
 insightApi.getUtxo(sourceAddress)
   .then(results => {
