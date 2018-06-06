@@ -4,6 +4,7 @@ const packageFile = require('../../package.json')
 
 // parse config
 const social = config.get('social')
+const defaultChain = config.get('app.defaultChain')
 const defaultNetwork = config.get('app.defaultNetwork')
 const isTestnet = defaultNetwork === 'testnet'
 
@@ -21,6 +22,7 @@ const configInfo = (req, res, next) =>
     version: packageFile.version,
     social,
     isTestnet,
+    defaultChain,
     defaultNetwork,
     ...config.get('app.site')
   })
