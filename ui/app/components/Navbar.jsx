@@ -2,6 +2,7 @@ import React from 'react'
 
 const Navbar = ({
   isTestnet,
+  defaultChain,
   defaultNetwork,
   brand,
   logo
@@ -15,6 +16,9 @@ const Navbar = ({
 
       <ul className='nav navbar-nav ml-auto'>
         <li className='nav-item'>
+          <span className='badge badge-pill badge-info badge-chain'>
+            { defaultChain }
+          </span>
           {
             isTestnet
               ? <span
