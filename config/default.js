@@ -51,20 +51,23 @@ config.feeMultiplier = defer(function () {
  */
 
 config.insightUrl = defer(function () {
+  const defaultChain = this.app.defaultChain
   const defaultNetwork = this.app.defaultNetwork
 
   const insight = this.services.insight
-  const url = insight[defaultNetwork].url
+  const url = insight[defaultChain][defaultNetwork].url
   return url
 })
 
 config.insightApiUrl = defer(function () {
+  const defaultChain = this.app.defaultChain
   const defaultNetwork = this.app.defaultNetwork
 
   const insight = this.services.insight
-  const network = insight[defaultNetwork]
-  const url = network.url + network.api
-  return url
+  const url = insight[defaultChain][defaultNetwork].url
+  const api = insight[defaultChain][defaultNetwork].api
+
+  return url + api
 })
 
 /**

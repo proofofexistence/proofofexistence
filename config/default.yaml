@@ -35,12 +35,20 @@ social:
 
 services:
   insight:
-    mainnet:
-      url: https://insight.proofofexistence.com
-      api: /api
-    testnet:
-      url: https://test-insight.proofofexistence.com
-      api: /api
+    btc:
+      mainnet:
+        url: https://insight.proofofexistence.com
+        api: /api
+      testnet:
+        url: https://test-insight.proofofexistence.com
+        api: /api
+    bch:
+      mainnet:
+        url:
+        api: /api
+      testnet:
+        url:
+        api: /api
 
 nodemailer:
   options:
