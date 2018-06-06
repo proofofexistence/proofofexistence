@@ -14,6 +14,19 @@
   margin: 5px;
 }
 
+.badge-chain {
+  text-transform: uppercase;
+}
+
+.badge-chain + .badge-network {
+  margin-left: 0.5em;
+}
+
+.badge-network:hover,
+.badge-network:focus {
+  cursor: help;
+}
+
 .card {
   margin: 3em 0;
 }

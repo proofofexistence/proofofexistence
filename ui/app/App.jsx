@@ -20,6 +20,7 @@ const App = ({
   email,
   year,
   isTestnet,
+  defaultChain,
   defaultNetwork,
   version
 }) => (
@@ -29,6 +30,7 @@ const App = ({
         brand={brand}
         logo={logo}
         isTestnet={isTestnet}
+        defaultChain={defaultChain}
         defaultNetwork={defaultNetwork}
         />
     </div>
