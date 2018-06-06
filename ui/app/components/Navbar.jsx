@@ -17,13 +17,11 @@ const Navbar = ({
         <li className='nav-item'>
           {
             isTestnet
-              ? <a href='#'
-                title='This site and API use tesnet coins.'
-                >
-                <span className='badge badge-pill badge-warning'>
+              ? <span
+                title='This site and API use testnet coins.'
+                className='badge badge-pill badge-warning badge-network'>
                   { defaultNetwork }
                 </span>
-              </a>
               : null
           }
         </li>
