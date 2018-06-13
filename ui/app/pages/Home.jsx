@@ -21,7 +21,6 @@ class Home extends Component {
       confirmed: [],
 
       // files options
-      maxFileSize: 0,
       files: [],
 
       // state machine
@@ -91,7 +90,6 @@ class Home extends Component {
       unconfirmed,
       confirmed,
       hashingProgress,
-      maxFileSize,
       files
     } = this.state
 
@@ -125,14 +123,13 @@ class Home extends Component {
               {
                 !hash
                   ? <UploadFile
-                    maxFileSize={maxFileSize}
                     files={files}
                     handleToggleSearch={(e) => this.handleToggleSearch(e)}
                     handleAddFile={(e) => this.handleAddFile(e)}
                     hashingProgress={hashingProgress}
                     hash={hash}
                     maxFileSize={
-                      150 //in Mo 
+                      150 // in Mo
                     }
                     />
                   : <Status
