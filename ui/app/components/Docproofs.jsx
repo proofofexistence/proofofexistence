@@ -1,20 +1,32 @@
 import React, { Component } from 'react'
 
+import { docproofs } from '@proofofexistence/api-client'
+
 class Docproofs extends Component {
   constructor (props) {
     super(props)
-
-    this.state = {txs: [], message: 'Fetching data from the blockchain. Please wait.'}
+    this.state = {
+      txs: [],
+      message: 'Fetching data from the blockchain. Please wait.'
+    }
   }
 
   componentDidMount () {
-    const {api, hash} = this.props
-
-    api.getDocproofs(hash, data => {
-      this.setState({txs: data.items, message: 'Blockchain transactions embedding this document hash.'})
-    }, () => {
-      this.setState({txs: [], message: 'No transactions available.'})
-    })
+    const { hash } = this.props
+    docproofs(hash, { baseURL: null })
+      .then(response => {
+        this.setState({
+          txs: response.data.items,
+          message: 'Blockchain transactions embedding this document hash.'
+        })
+      })
+      .catch(error => {
+        console.log(error)
+        this.setState({
+          txs: [],
+          message: 'No transactions available.'
+        })
+      })
   }
 
   render () {

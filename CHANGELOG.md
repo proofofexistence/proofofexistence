@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 1.13.5 - 2018-05-30
+
+* use 'api-client' lib from npm
+
 ## 1.13.4 - 2018-05-21
 
 * add support for Telegram groups
