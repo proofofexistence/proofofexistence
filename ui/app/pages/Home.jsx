@@ -131,6 +131,9 @@ class Home extends Component {
                     handleAddFile={(e) => this.handleAddFile(e)}
                     hashingProgress={hashingProgress}
                     hash={hash}
+                    maxFileSize={
+                      150 //in Mo 
+                    }
                     />
                   : <Status
                     hash={hash}
