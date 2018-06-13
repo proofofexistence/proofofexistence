@@ -13,7 +13,7 @@ const HashList = ({
           <th />
         </tr>
       </thead>
-      <tbody className={ checked ? 'text-success' : 'text-warning' } >
+      <tbody className={checked ? 'text-success' : 'text-warning'} >
         {
         records.map(row => (
           <tr key={row.digest}>

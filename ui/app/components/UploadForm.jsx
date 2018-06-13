@@ -26,12 +26,11 @@ class UploadForm extends React.Component {
     }
   }
 
-  sizeMotoBytes(fileSize) {
-    return fileSize*1048576
+  sizeMotoBytes (fileSize) {
+    return fileSize * 1048576
   }
 
   onDrop (files, rejectedFiles) {
-
     if (rejectedFiles.length) {
       const errors = []
       // check file size
@@ -42,7 +41,6 @@ class UploadForm extends React.Component {
           : null
       )
       this.setState({errors})
-
     } else {
       this.props.handleAddFile(files)
     }
