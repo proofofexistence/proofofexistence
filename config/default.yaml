@@ -56,4 +56,3 @@ mail:
 
 nodemailer:
   options:
-    service: Gmail
