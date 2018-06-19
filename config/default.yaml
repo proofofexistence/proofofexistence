@@ -40,6 +40,10 @@ services:
       url: https://test-insight.proofofexistence.com
       api: /api
 
+mail:
+  from: proofx@localhost
+  to: proofx@localhost
+
 nodemailer:
   options:
     service: Gmail
