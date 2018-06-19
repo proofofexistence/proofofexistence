@@ -1,6 +1,15 @@
 # Changelog
 
 
+## 1.13.7 - 2018-06-21
+
+* bug fixes
+* Docker deployment update
+
+## 1.13.6 - 2018-06-02
+
+* use latest npm-client
+
 ## 1.13.5 - 2018-05-30
 
 * use 'api-client' lib from npm
