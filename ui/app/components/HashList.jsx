@@ -24,7 +24,7 @@ const HashList = ({
             </td>
             <td>{row.timestamp}</td>
             <td>
-              { checked ? '✔' : '...' }
+              { checked ? '✔' : '…' }
             </td>
           </tr>
         ))
