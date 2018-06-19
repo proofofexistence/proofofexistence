@@ -50,6 +50,10 @@ services:
         url:
         api: /api
 
+mail:
+  from: proofx@localhost
+  to: proofx@localhost
+
 nodemailer:
   options:
     service: Gmail
