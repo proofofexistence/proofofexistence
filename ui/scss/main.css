@@ -54,3 +54,9 @@
 .table.docproofs-table th {
   white-space: nowrap
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  #dropbox h4 {
+    margin-top:0;
+  }
+}

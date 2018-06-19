@@ -5,31 +5,27 @@ const HashList = ({
   checked
 }) => (
   <div class='card-body table-responsive table-full-width'>
-    <table class='table table-striped' id='latest'>
+    <table class='table' id='latest'>
       <thead>
         <tr>
-          <th />
           <th>Document Digest</th>
           <th>Timestamp</th>
+          <th />
         </tr>
       </thead>
-      <tbody>
+      <tbody className={checked ? 'text-success' : 'text-warning'} >
         {
         records.map(row => (
           <tr key={row.digest}>
-            <td>
-              {
-                checked
-                  ? <span class='label label-success'>✔</span>
-                  : null
-              }
-            </td>
             <td>
               <a href={`/detail/${row.digest}`}>
                 {row.digest}
               </a>
             </td>
             <td>{row.timestamp}</td>
+            <td>
+              { checked ? '✔' : '...' }
+            </td>
           </tr>
         ))
       }

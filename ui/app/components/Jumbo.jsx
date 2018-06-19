@@ -24,7 +24,7 @@ const Jumbo = ({
           <a class='btn' target='_blank' href='http://github.com/proofofexistence/proofofexistence'>
               Fork on Github
             </a>
-          <a class='btn btn-primary' target='_blank' href='http://proofofexistence.github.io'>
+          <a class='btn btn-primary' target='_blank' href='http://docs.proofofexistence.com'>
               Read the docs
             </a>
         </div>

@@ -26,25 +26,24 @@ class UploadForm extends React.Component {
     }
   }
 
-  onDrop (files) {
-    // check file size
-    const maxFileSize = this.props.maxFileSize * 1000000 || 1000000000// convert to octets
+  sizeMotoBytes (fileSize) {
+    return fileSize * 1048576
+  }
 
-    const errors = []
-    files.forEach(f =>
-      f.size > maxFileSize
-        ? errors.push(`${f.name} is too big and can not be added.`)
-        : null
-    )
-    this.setState({errors})
-
-    let checkedFiles = maxFileSize
-      ? files.filter(f => f.size < maxFileSize)
-      : null
-
-    const filesList = [...this.props.files, ...checkedFiles]
-
-    this.props.handleAddFile(filesList)
+  onDrop (files, rejectedFiles) {
+    if (rejectedFiles.length) {
+      const errors = []
+      // check file size
+      const { maxFileSize } = this.props
+      rejectedFiles.forEach(f =>
+        f.size > this.sizeMotoBytes(maxFileSize)
+          ? errors.push(`${f.name} is too big and can not be added. You may want to generate the hash on your machine and input it directly here.`)
+          : null
+      )
+      this.setState({errors})
+    } else {
+      this.props.handleAddFile(files)
+    }
   }
 
   handleRemoveFile (file) {
@@ -57,7 +56,7 @@ class UploadForm extends React.Component {
   }
 
   render () {
-    const { files } = this.props
+    const { files, maxFileSize } = this.props
 
     const filesItems = files.map(file =>
       <span key={file.name}>
@@ -72,6 +71,7 @@ class UploadForm extends React.Component {
             ? <Dropzone
               onDrop={this.onDrop.bind(this)}
               style={style.dropZone}
+              maxSize={this.sizeMotoBytes(maxFileSize)}
               >
               <div>
                 <h4>

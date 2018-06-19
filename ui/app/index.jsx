@@ -9,32 +9,45 @@ import Error404 from './pages/Error404.jsx'
 
 import registerServiceWorker from './registerServiceWorker'
 
-import APIClient from '../../client'
-
-const api = new APIClient()
+import { getConfig } from '@proofofexistence/api-client'
 
 // get config as starter
-api.getConfig(config => {
-  // config and global props to pass down to children
-  const generalProps = { api, ...config }
+getConfig({ baseURL: null })
+  .then(response => {
+    let config = response.data
 
-  ReactDOM.render(
-    <Router>
-      <App {...generalProps}>
-        <Switch>
-          <Route exact path='/' component={props =>
-            <Home {...generalProps} {...props} />
-            } />
-          <Route path='/detail/:hash' component={props =>
-            <Detail {...generalProps} {...props} />
-            } />
-          <Route component={Error404} />
-        </Switch>
+    // config and global props to pass down to children
+    const generalProps = { ...config }
+
+    ReactDOM.render(
+      <Router>
+        <App {...generalProps}>
+          <Switch>
+            <Route exact path='/' component={props =>
+              <Home {...generalProps} {...props} />
+              } />
+            <Route path='/detail/:hash' component={props =>
+              <Detail {...generalProps} {...props} />
+              } />
+            <Route component={Error404} />
+          </Switch>
+        </App>
+      </Router>
+      ,
+      document.getElementById('root')
+    )
+  })
+  .catch(error => {
+    console.log(error)
+    ReactDOM.render(
+      <App>
+        <p>
+          Error fetching the config file...
+        </p>
       </App>
-    </Router>
-    ,
-    document.getElementById('root')
-  )
-})
+      ,
+      document.getElementById('root')
+    )
+  })
 
 registerServiceWorker()

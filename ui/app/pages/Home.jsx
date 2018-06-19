@@ -9,6 +9,8 @@ import Status from '../components/Status.jsx'
 
 import crypto from '../crypto'
 
+import { getLatestConfirmed, getLatestUnconfirmed } from '@proofofexistence/api-client'
+
 class Home extends Component {
   constructor (props) {
     super(props)
@@ -19,7 +21,6 @@ class Home extends Component {
       confirmed: [],
 
       // files options
-      maxFileSize: 0,
       files: [],
 
       // state machine
@@ -30,13 +31,23 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    this.props.api.getLatestUnconfirmed(unconfirmed =>
-      this.setState({ unconfirmed })
-    )
+    getLatestConfirmed({ baseURL: null })
+      .then(response => {
+        let confirmed = response.data
+        this.setState({ confirmed })
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
 
-    this.props.api.getLatestConfirmed(confirmed =>
-      this.setState({ confirmed })
-    )
+    getLatestUnconfirmed({ baseURL: null })
+      .then(response => {
+        let unconfirmed = response.data
+        this.setState({ unconfirmed })
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 
   handleToggleSearch (e) {
@@ -79,7 +90,6 @@ class Home extends Component {
       unconfirmed,
       confirmed,
       hashingProgress,
-      maxFileSize,
       files
     } = this.state
 
@@ -87,8 +97,7 @@ class Home extends Component {
       logo,
       brand,
       slogan,
-      tagline,
-      api
+      tagline
     } = this.props
 
     return (
@@ -114,16 +123,18 @@ class Home extends Component {
               {
                 !hash
                   ? <UploadFile
-                    maxFileSize={maxFileSize}
                     files={files}
                     handleToggleSearch={(e) => this.handleToggleSearch(e)}
                     handleAddFile={(e) => this.handleAddFile(e)}
                     hashingProgress={hashingProgress}
                     hash={hash}
+                    maxFileSize={
+                      150 // in Mo
+                    }
                     />
                   : <Status
                     hash={hash}
-                    api={api}
+
                     />
                 }
             </div>

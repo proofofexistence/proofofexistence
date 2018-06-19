@@ -11,7 +11,6 @@ import '../public/theme/style.css'
 
 const App = ({
   children,
-  api,
   brand,
   logo,
   slogan,
