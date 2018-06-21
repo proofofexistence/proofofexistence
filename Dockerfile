@@ -1,6 +1,7 @@
 # Setup development environment for Proof of Existence
 FROM node:carbon
-LABEL maintainer="Clement Renaud <clement@poex.io>"
+LABEL maintainer="Clement Renaud <clement@poex.io>, \
+Fengling Qin <qinfengling@poex.io>"
 
 ENV NPM_CONFIG_LOGLEVEL info
 
@@ -17,6 +18,6 @@ RUN npm install bcrypt
 
 COPY . /app
 
-RUN npm run build
+RUN cp config/test.yaml config/local-development.yaml && \
+    npm run build
 CMD npm start
-EXPOSE 3003
