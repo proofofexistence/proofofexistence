@@ -11,7 +11,7 @@ You can use Docker to setup your own instance
 docker pull proofofexistence/proofofexistence
 ```
 
-Read [the docs](http://proofofexistence.github.io) for more.
+Read [the docs](https://docs.proofofexistence.com) for more.
 
 ## License
 
