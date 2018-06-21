@@ -2,7 +2,7 @@
 
 An online service to prove the existence of documents
 
-[![Build Status](https://travis-ci.org/proofofexistence/proofofexistence.svg?branch=master)](https://travis-ci.org/proofofexistence/proofofexistence)
+[![Build Status](https://travis-ci.org/proofofexistence/proofofexistence.svg?branch=master)](https://travis-ci.org/proofofexistence/proofofexistence)  ![Docker Pulls](https://img.shields.io/docker/pulls/proofofexistence/proofofexistence.svg)
 
 
 You can use Docker to setup your own instance
