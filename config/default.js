@@ -25,28 +25,6 @@ config.networkName = defer(function () {
 })
 
 /**
- * Configure prices.
- */
-
-config.documentPrice = defer(function () {
-  const defaultChain = this.app.defaultChain
-  const defaultNetwork = this.app.defaultNetwork
-
-  let chain = this.chains[defaultChain]
-  let documentPrice = chain.networks[defaultNetwork].documentPrice
-  return documentPrice
-})
-
-config.feeMultiplier = defer(function () {
-  const defaultChain = this.app.defaultChain
-  const defaultNetwork = this.app.defaultNetwork
-
-  let chain = this.chains[defaultChain]
-  let feeMultiplier = chain.networks[defaultNetwork].feeMultiplier
-  return feeMultiplier
-})
-
-/**
  * Configure Insight.
  */
 
