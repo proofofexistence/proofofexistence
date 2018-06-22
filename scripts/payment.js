@@ -7,7 +7,13 @@ const bitcore = chains.get()
 
 var privateKeyWIF = process.argv[2]
 var targetAddress = process.argv[3]
-var paymentAmount = parseInt(process.argv[4] || config.get('documentPrice'))
+
+var paymentAmount = parseInt(process.argv[4] || chains.documentPrice())
+
+if (paymentAmount == 0) {
+  console.error('Configure a price or set one as the final argument')
+  process.exit(1)
+}
 
 var privateKey = bitcore.PrivateKey.fromWIF(privateKeyWIF)
 var sourceAddress = privateKey.toAddress()
