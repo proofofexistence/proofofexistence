@@ -181,6 +181,7 @@ class Status extends Component {
           ),
             'confirming': (
               <Confirming
+                tx={tx}
                 handleUpdateStatus={e => this.handleUpdateStatus(e)}
               />
           ),
