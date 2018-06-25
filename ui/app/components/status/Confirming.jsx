@@ -16,12 +16,12 @@ const Confirming = ({
       </li>
     </ul>
     <div class='card-body'>
-    <a href='#'
-      class='refreshSubmit btn btn-success btn-fill'
-      onClick={handleUpdateStatus}
+      <a href='#'
+        class='refreshSubmit btn btn-success btn-fill'
+        onClick={handleUpdateStatus}
       >
       Complete Certification
-    </a>
+      </a>
     </div>
   </div>
 )
