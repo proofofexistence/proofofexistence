@@ -26,7 +26,7 @@ describe('get docproof price', () => {
     expect(docproofPrice).to.equal(50000)
 
     docproofPrice = docproof.adjustedPrice(feePerKb, 4).toSatoshis()
-    expect(docproofPrice).to.equal(150000)
+    expect(docproofPrice).to.equal(125000)
 
     done()
   })
