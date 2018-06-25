@@ -12,6 +12,26 @@ const Insights = require('./fixtures/insight')
 const insights = new Insights()
 const records = require('./fixtures/records')
 
+describe('get docproof price', () => {
+  it('it should get the docproof price unit', (done) => {
+    docproofPrice = docproof.price().toSatoshis()
+    expect(docproofPrice).to.equal(200000)
+    done()
+  })
+
+  it('it should get an adjusted price based on the fee per KB', (done) => {
+    feePerKb = 124099
+
+    docproofPrice = docproof.adjustedPrice(feePerKb).toSatoshis()
+    expect(docproofPrice).to.equal(50000)
+
+    docproofPrice = docproof.adjustedPrice(feePerKb, 4).toSatoshis()
+    expect(docproofPrice).to.equal(125000)
+
+    done()
+  })
+})
+
 describe('estimate docproof fees', () => {
   it('it should estimate a fee based on fee per kb', (done) => {
     feePerKb = 100000

@@ -17,36 +17,6 @@ config.app = {
 }
 
 /**
- * Configure network
- */
-
-config.networkName = defer(function () {
-  return this.app.defaultNetwork === 'testnet' ? 'test3' : 'main'
-})
-
-/**
- * Configure prices.
- */
-
-config.documentPrice = defer(function () {
-  const defaultChain = this.app.defaultChain
-  const defaultNetwork = this.app.defaultNetwork
-
-  let chain = this.chains[defaultChain]
-  let documentPrice = chain.networks[defaultNetwork].documentPrice
-  return documentPrice
-})
-
-config.feeMultiplier = defer(function () {
-  const defaultChain = this.app.defaultChain
-  const defaultNetwork = this.app.defaultNetwork
-
-  let chain = this.chains[defaultChain]
-  let feeMultiplier = chain.networks[defaultNetwork].feeMultiplier
-  return feeMultiplier
-})
-
-/**
  * Configure Insight.
  */
 

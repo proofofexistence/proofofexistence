@@ -1,4 +1,5 @@
 const config = require('config')
+const core = require('../../lib/core')
 
 const packageFile = require('../../package.json')
 
@@ -16,7 +17,11 @@ const version = (req, res, next) =>
     version: packageFile.version
   })
 
-const configInfo = (req, res, next) =>
+async function configInfo (req, res, next) {
+  // the price is a bitcore Unit,
+  // and will appear as, e.g. {"amount":0.0005,"code":"BTC"}
+  const docproofPrice = await core.notary.docproofPrice()
+
   res.send({
     apiVersion: 1.0,
     version: packageFile.version,
@@ -24,8 +29,10 @@ const configInfo = (req, res, next) =>
     isTestnet,
     defaultChain,
     defaultNetwork,
+    docproofPrice,
     ...config.get('app.site')
   })
+}
 
 const catch404 = (req, res) =>
   res.status(404)        // HTTP status 404: NotFound

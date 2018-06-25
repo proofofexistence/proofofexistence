@@ -33,7 +33,7 @@ describe('register a document', () => {
   var digest = records.digest
   var document = records.document
 
-  expected_price_satoshi = config.get('documentPrice')
+  expected_price_satoshi = chains.documentPrice()
   expected_network = bitcore.Networks.defaultNetwork.name
 
   it('it should return payment details', (done) => {

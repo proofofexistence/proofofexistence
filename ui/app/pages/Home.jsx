@@ -97,7 +97,8 @@ class Home extends Component {
       logo,
       brand,
       slogan,
-      tagline
+      tagline,
+      docproofPrice
     } = this.props
 
     return (
@@ -115,7 +116,8 @@ class Home extends Component {
           style={{textAlign: 'center'}}
           >
           <h3 class='card-title'>
-            Select a document and have it certified in the Bitcoin blockchain
+            Select a document and have it certified in the Bitcoin blockchain<br />
+            Only {docproofPrice.amount} {docproofPrice.code}
           </h3>
           <div className='card col-lg-8 no-border' style={{margin: 0}}>
 
