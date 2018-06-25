@@ -21,6 +21,7 @@ const App = ({
   isTestnet,
   defaultChain,
   defaultNetwork,
+  docproofPrice,
   version
 }) => (
   <div className='App'>
