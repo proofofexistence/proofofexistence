@@ -17,14 +17,6 @@ config.app = {
 }
 
 /**
- * Configure network
- */
-
-config.networkName = defer(function () {
-  return this.app.defaultNetwork === 'testnet' ? 'test3' : 'main'
-})
-
-/**
  * Configure Insight.
  */
 
