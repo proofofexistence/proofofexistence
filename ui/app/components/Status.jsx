@@ -155,8 +155,8 @@ class Status extends Component {
         const status = this.getDocStatus(response.data)
 
         const messages = {
-          'paymentRequired': 'Please proceed to payment to continue',
-          'confirming': 'The transaction is now being confirmed by the miners. Please retry in a few minutes to see the final confirmation.'
+          'paymentRequired': 'Payment is required in order to continue.',
+          'confirming': 'Your transaction is being processed. Please retry in a few minutes.'
         }
 
         const message = messages[status]
