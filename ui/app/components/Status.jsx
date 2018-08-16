@@ -23,7 +23,9 @@ class Status extends Component {
       price: null,
       tx: null,
       txtime: null,
-      blockstamp: null
+      blockstamp: null,
+      message: null
+
     }
   }
 
@@ -61,7 +63,11 @@ class Status extends Component {
       })
       .catch(error => {
         // if the api returns 404, then register the hash
-        if (error.status === 404) { this.handleRegisterHash(hash, { baseUrl: null }) } else console.log(error)
+        if (error.status === 404) {
+          this.handleRegisterHash(hash, { baseUrl: null })
+        } else {
+          console.log(error)
+        }
       })
   }
 
@@ -148,7 +154,21 @@ class Status extends Component {
 
         const status = this.getDocStatus(response.data)
 
-        this.setState({ tx, txstamp, blockstamp, status })
+        const messages = {
+          'paymentRequired' : 'Please proceed to payment to continue',
+          'confirming' : 'The transaction is now being confirmed by the miners. Please retry in a few minutes to see the final confirmation.'
+        }
+
+        const message = messages[status]
+
+        this.setState({
+          tx,
+          txstamp,
+          blockstamp,
+          status,
+          message
+        })
+
 
         console.log('updated', status)
       })
@@ -164,7 +184,8 @@ class Status extends Component {
       mBTCPrice,
       paymentAddress,
       tx,
-      status
+      status,
+      message
     } = this.state
 
     return (
@@ -192,6 +213,22 @@ class Status extends Component {
           )
           }[status]
         }
+
+        { message ?
+          <div style={{
+              width: '50%',
+              margin : '0 auto',
+              fontSize : '1em'
+            }}
+            className="alert alert-warning fade show"
+            role="alert"
+            >
+            {message}
+          </div>
+          :
+          null
+        }
+
         <div class='card-body'>
           <a
             href={`/detail/${hash}`}
