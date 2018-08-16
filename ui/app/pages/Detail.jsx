@@ -6,7 +6,7 @@ const Detail = ({
   match
 }) => (
   <div>
-    <div class='row'>
+    <div class='row' style={{ textAlign: 'center'}}>
       <div class='col-lg-12'>
         <Status
           hash={match.params.hash}
