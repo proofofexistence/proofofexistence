@@ -21,12 +21,20 @@ const Jumbo = ({
         }
 
         <div id='actions'>
-          <a class='btn' target='_blank' href='http://github.com/proofofexistence/proofofexistence'>
+          <a class='btn'
+            target='_blank'
+            href='http://github.com/proofofexistence/proofofexistence'
+            style={{ marginRight : '.5em'}}
+            >
               Fork on Github
-            </a>
-          <a class='btn btn-primary' target='_blank' href='http://docs.proofofexistence.com'>
+          </a>
+          <a class='btn btn-primary'
+            target='_blank'
+            href='http://docs.proofofexistence.com'
+            style={{ marginLeft : '.5em'}}
+            >
               Read the docs
-            </a>
+          </a>
         </div>
       </div>
     </div>
