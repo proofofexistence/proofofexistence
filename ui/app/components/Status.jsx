@@ -155,8 +155,8 @@ class Status extends Component {
         const status = this.getDocStatus(response.data)
 
         const messages = {
-          'paymentRequired' : 'Please proceed to payment to continue',
-          'confirming' : 'The transaction is now being confirmed by the miners. Please retry in a few minutes to see the final confirmation.'
+          'paymentRequired': 'Please proceed to payment to continue',
+          'confirming': 'The transaction is now being confirmed by the miners. Please retry in a few minutes to see the final confirmation.'
         }
 
         const message = messages[status]
@@ -168,7 +168,6 @@ class Status extends Component {
           status,
           message
         })
-
 
         console.log('updated', status)
       })
@@ -214,19 +213,18 @@ class Status extends Component {
           }[status]
         }
 
-        { message ?
-          <div style={{
-              width: '50%',
-              margin : '0 auto',
-              fontSize : '1em'
-            }}
-            className="alert alert-warning fade show"
-            role="alert"
+        { message
+          ? <div style={{
+            width: '50%',
+            margin: '0 auto',
+            fontSize: '1em'
+          }}
+            className='alert alert-warning fade show'
+            role='alert'
             >
             {message}
           </div>
-          :
-          null
+          : null
         }
 
         <div class='card-body'>
