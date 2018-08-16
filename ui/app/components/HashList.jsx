@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 
 const HashList = ({
   records,
@@ -10,7 +11,11 @@ const HashList = ({
         <tr>
           <th>Document Digest</th>
           <th>Timestamp</th>
-          <th />
+          { checked ?
+            <th />
+            :
+            null
+          }
         </tr>
       </thead>
       <tbody className={checked ? 'text-success' : 'text-warning'} >
@@ -22,10 +27,16 @@ const HashList = ({
                 {row.digest}
               </a>
             </td>
-            <td>{row.timestamp}</td>
-            <td>
-              { checked ? '✔' : '…' }
+            <td style={{ whiteSpace : 'nowrap' }}>
+              {moment(row.timestamp).fromNow()}
             </td>
+            { checked ?
+                <td>
+                  '✔'
+                </td>
+              :
+                null
+            }
           </tr>
         ))
       }
