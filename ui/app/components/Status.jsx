@@ -172,6 +172,12 @@ class Status extends Component {
         console.log('updated', status)
       })
       .catch(error => {
+        const message = 'There was an error connecting to our payment API. Please try again later.'
+
+        this.setState({
+          message
+        })
+
         console.log(error)
       })
   }

@@ -33,7 +33,9 @@ function docproofs (req, res) {
       }).catch(error => {
         console.log(error.message)
 
-        res.status(error.statusCode).json({reason: error.error})
+        const statusCode = error.statusCode ? error.statusCode : 500
+
+        res.status(statusCode).json({reason: error.error})
       })
   } else {
     return res.status(400).json({
