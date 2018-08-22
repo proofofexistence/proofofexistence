@@ -78,7 +78,7 @@ const Footer = ({
           {
             version
               ? <li>
-                <a href='#'>
+                <a href='https://github.com/proofofexistence/proofofexistence/releases/tag/2.0.1'>
                   v{version}
                 </a>
               </li>
