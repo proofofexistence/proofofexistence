@@ -37,10 +37,10 @@ services:
   insight:
     btc:
       mainnet:
-        url: https://insight.proofofexistence.com
+        url: https://insight.bitpay.com
         api: /api
       testnet:
-        url: https://test-insight.proofofexistence.com
+        url: https://test-insight.bitpay.com
         api: /api
     bch:
       mainnet:
