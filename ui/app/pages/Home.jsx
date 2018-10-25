@@ -136,7 +136,7 @@ class Home extends Component {
                     />
                   : <Status
                     hash={hash}
-
+                    key={hash}
                     />
                 }
             </div>
