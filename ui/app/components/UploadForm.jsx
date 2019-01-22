@@ -10,7 +10,8 @@ const style = {
     padding: 30,
     width: '100%',
     height: '20vh',
-    transition: 'all 0.5s'
+    transition: 'all 0.5s',
+    cursor: 'pointer'
   },
   errors: {
     color: 'red',
