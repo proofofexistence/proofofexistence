@@ -51,6 +51,7 @@
     "browser-request": "^0.3.3",
     "clipboard": "^1.7.1",
     "config": "^1.30.0",
+    "event-stream": "^3.3.4",
     "express": "^4.16.2",
     "hbs": "^4.0.1",
     "hoek": "^5.0.3",
@@ -107,7 +108,7 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.4",
+    "webpack-dev-server": ">=3.1.11",
     "webpack-sass-loaders": "^1.0.0",
     "webpack-stream": "^4.0.0"
   }
