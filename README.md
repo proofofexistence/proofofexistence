@@ -13,6 +13,9 @@ docker pull proofofexistence/proofofexistence
 
 Read [the docs](https://docs.proofofexistence.com) for more.
 
+## Known Issues
+* It can't support Microsoft Windows. (__Even you try to run under MYSYS__)
+
 ## License
 
 © Copyright 2017-2018 Proof Of Existence, all rights reserved.<br />
