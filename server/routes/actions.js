@@ -14,6 +14,7 @@ function create (req, res) {
       .then(results => {
         res.json(results)
       }).catch(error => {
+        console.log('Error digest: ' + d)
         console.log(error.message)
         res.status(500).end('Unexpected error')
       })
@@ -36,6 +37,7 @@ function show (req, res) {
         const status = results.success === true ? 200 : 404
         res.status(status).json(results)
       }).catch(error => {
+        console.log('Error digest: ' + hash)
         console.log(error.message)
 
         res.status(500).end('Unexpected error')
@@ -58,6 +60,7 @@ function update (req, res) {
       .then(results => {
         res.json(results)
       }).catch(error => {
+        console.log('Error digest: ' + d)
         console.log(error.message)
 
         res.status(500).end('Unexpected error')
