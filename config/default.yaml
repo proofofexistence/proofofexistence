@@ -37,18 +37,18 @@ services:
   insight:
     btc:
       mainnet:
-        url: https://insight.bitpay.com
-        api: /api
+        url: https://api.bitcore.io
+        api: /api/BTC/mainnet
       testnet:
-        url: https://test-insight.bitpay.com
-        api: /api
+        url: https://api.bitcore.io
+        api: /api/BTC/testnet
     bch:
       mainnet:
-        url:
-        api: /api
+        url: https://api.bitcore.io
+        api: /api/BCH/mainnet
       testnet:
-        url:
-        api: /api
+        url: https://api.bitcore.io
+        api: /api/BCH/testnet
 
 mail:
   from: proofx@localhost

@@ -23,10 +23,10 @@ insightApi.getUtxo(sourceAddress)
     let utxos = results.map(txref => {
       return bitcore.Transaction.UnspentOutput({
         address: txref.address,
-        outputIndex: txref.vout,
-        satoshis: txref.satoshis,
-        scriptPubKey: txref.scriptPubKey,
-        txid: txref.txid
+        outputIndex: txref.mintIndex,
+        satoshis: txref.value,
+        scriptPubKey: txref.script,
+        txid: txref.mintTxid
       })
     })
 

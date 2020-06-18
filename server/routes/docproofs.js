@@ -57,9 +57,9 @@ async function getProofs (docproofs) {
     const [docproof, tx] = proof
 
     return {
-      blockhash: tx.blockhash,
-      blockheight: tx.blockheight,
-      blocktime: tx.blocktime,
+      blockhash: tx.blockHash,
+      blockheight: tx.blockHeight,
+      blocktime: Date.parse(tx.blockTime) / 1000,
       confirmations: tx.confirmations,
       metadata: docproof.metadata,
       txid: tx.txid,
