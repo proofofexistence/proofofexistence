@@ -1,0 +1,17 @@
+[
+    {
+      "_id": "5c12afdf599d672479b886b6",
+      "chain": "BTC",
+      "network": "testnet",
+      "coinbase": false,
+      "mintIndex": 0,
+      "spentTxid": "",
+      "mintTxid": "a1802a77ae533a862f7df5d7be2e7fb24fe65d6b6d1b05921a91bdfcdb0c2d1b",
+      "mintHeight": 1259494,
+      "spentHeight": -2,
+      "address": "ms6zWKUFA1txnncwcFvxc99899wjXrbGRH",
+      "script": "76a9147f195f5343f103552e2579f3acd11dfdc255644488ac",
+      "value": 200000,
+      "confirmations": -1
+    }
+  ]

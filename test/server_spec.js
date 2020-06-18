@@ -242,16 +242,17 @@ before(() => {
   const insight = nock(insightApiUrl.origin, {allowUnmocked: false}).persist()
   const inpath = insightApiUrl.pathname === '/' ? '' : insightApiUrl.pathname
 
-  insight.get(`${inpath}/txs`)
-    .query({address: records.address})
-    .reply(200, insights.addrFull(), {'Content-Type': 'application/json'})
-
-  insight.get(`${inpath}/utils/estimatefee`)
-    .query({nbBlocks: 2})
+  insight.get(`${inpath}/fee/2`)
     .reply(200, insights.estimateFee, {'Content-Type': 'application/json'})
 
+  insight.get(`${inpath}/address/${records.address}/balance`)
+    .reply(200, insights.getBalance, {'Content-Type': 'application/json'})
+
+  insight.get(`${inpath}/address/${records.address}/?unspent=true`)
+    .reply(200, insights.getUnspent, {'Content-Type': 'application/json'})
+
   insight.post(`${inpath}/tx/send`, ((body) => {
-    const tx = new bitcore.Transaction(body.rawtx).toObject()
+    const tx = new bitcore.Transaction(body.rawTx).toObject()
 
     const checkPayment = _.some(tx.inputs, {
       prevTxId: 'a1802a77ae533a862f7df5d7be2e7fb24fe65d6b6d1b05921a91bdfcdb0c2d1b'

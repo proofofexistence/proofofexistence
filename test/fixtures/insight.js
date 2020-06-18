@@ -12,22 +12,19 @@ Insights.prototype.reset = function() {
   this.confirmed = false
 }
 
-const txsAddress = require('./insights/address.json')
-const txsPayment = require('./insights/payment.json')
+const txsUnspent = require('./insights/unspent.json')
 
 Insights.prototype.estimateFee = {
-  "2":0.00124099
+  "feerate": "0.00124099"
 }
 
-Insights.prototype.txsAddress = txsAddress
-
-Insights.prototype.addrFull = function () {
-  if (this.confirmed) {
-    return txsAddress
-  } else {
-    return txsPayment
-  }
+Insights.prototype.getBalance = {
+    "confirmed": 5000000000,
+    "unconfirmed": 0,
+    "balance": 5000000000
 }
+
+Insights.prototype.getUnspent = txsUnspent
 
 Insights.prototype.txSend = function (hash) {
   return {
